@@ -1075,12 +1075,6 @@ import numpy as np
 
 
 
-from Calendar_Tracker import Calendar_Tacker
-
-instance_calendar_tracker = Calendar_Tracker()
-
-instance_calendar_tracker.get_current_day()
-
 
 
 # def create_pchg_value_list(test_set):
@@ -1177,3 +1171,9 @@ instance_calendar_tracker.get_current_day()
 #         if alphabet in vowel:
 #             count = count + 1
 #     return count
+
+
+from Time_Manager import Time_Manager
+
+tm = Time_Manager()
+print(tm.get_formated_date())

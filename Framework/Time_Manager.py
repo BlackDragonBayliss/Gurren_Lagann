@@ -1,4 +1,4 @@
-import calendar, time
+import calendar, time, datetime
 
 class Time_Manager:
     __instance = None
@@ -30,3 +30,6 @@ class Time_Manager:
     def get_current_epoch_time(self):
         epoch_time = calendar.timegm(time.gmtime())
         return epoch_time
+
+    def get_formated_date(self):
+        return datetime.date.today()
