@@ -15,14 +15,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Operation_Center.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Operation_Center.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Framework/Operation_Center.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
+            <state relative-caret-position="-132">
               <caret line="268" column="25" lean-forward="false" selection-start-line="268" selection-start-column="25" selection-end-line="268" selection-end-column="25" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Bay/test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="4" lean-forward="false" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -52,16 +62,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="170">
               <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Test1/test.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="4" lean-forward="false" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -160,7 +160,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Framework/DM_Action.py" />
         <option value="$PROJECT_DIR$/Framework/Buy_Sell_Manager.py" />
         <option value="$PROJECT_DIR$/Framework/Calendar_Trade_Tracker.py" />
         <option value="$PROJECT_DIR$/Framework/HTTP_Utility.py" />
@@ -211,6 +210,7 @@
         <option value="$PROJECT_DIR$/Framework/dir6/test.py" />
         <option value="$PROJECT_DIR$/Framework/bay/test.py" />
         <option value="$PROJECT_DIR$/Test1/test.py" />
+        <option value="$PROJECT_DIR$/Bay/test.py" />
       </list>
     </option>
   </component>
@@ -243,6 +243,11 @@
             <path>
               <item name="MoneyMachine" type="b2602c69:ProjectViewProjectNode" />
               <item name="MoneyMachine" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MoneyMachine" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MoneyMachine" type="462c0819:PsiDirectoryNode" />
+              <item name="Bay" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MoneyMachine" type="b2602c69:ProjectViewProjectNode" />
@@ -333,14 +338,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Framework/Buy_Sell_Manager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="2" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Framework/Stock_Composite_Manager.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -742,11 +739,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Framework/Operation_Center.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
+        <state relative-caret-position="-132">
           <caret line="268" column="25" lean-forward="false" selection-start-line="268" selection-start-column="25" selection-end-line="268" selection-end-column="25" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Bay/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="4" lean-forward="false" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
