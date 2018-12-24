@@ -35,11 +35,13 @@ class Request_Factory:
         pchg = chosen_stock_stat.get_pchg()
         last = chosen_stock_stat.get_last()
         spread = chosen_stock_stat.get_spread()
-        json_request = {"request_type":"NM_query_stock",
+        list_date = chosen_stock_stat.get_list_date()
+        json_request = {"request_type":"stock_statistics",
                         "sym":sym,
                         "pchg":pchg,
                         "last":last,
                         "spread":spread
+                        "list_date":list_date
                        }
         return json_request
 

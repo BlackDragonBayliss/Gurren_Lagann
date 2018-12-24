@@ -265,9 +265,8 @@ class Operation_Center:
     def process_chosen_to_bought_transformation(self,stock_statistics_composite):
 
         #Stat object to DB
-        #Handle on NM
-        self.node_manager
-
+        #Support for async handling
+        self.node_manager.async_post_stock_statistics_composite(stock_statistics_composite)
 
         #Chosen to DB transformation
         for chosen_stock in self.get_list_chosen_data_manager()

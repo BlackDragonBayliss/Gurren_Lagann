@@ -14,7 +14,7 @@ class Ra_Algorithm:
 
     # caclulate highest chosen data_manager
     # Non-continuous
-    def algorithm_determine_highest_chosen_data_manager(self, data_manager_list, stock_statistics_composite):
+    def algorithm_determine_highest_chosen_data_manager(self, data_manager_list, stock_statistics_composite,calendar_tracker):
         # for data_manager in data_manager_list:
         #
         # #based on metrics, pchg and volatility, price, determine best choice.
@@ -26,8 +26,8 @@ class Ra_Algorithm:
             spread = self.calculate_spread(data_manager_list[0])
             latest_stock = data_manager.get_data_controller().get_latest_stock_from_five_minute_set()
             #Store in Chosen_Statistics Object
-            self.chosen_statistics.create_stat(data_manager.get_sym(), latest_stock.get_pchg(),
-                                               latest_stock.get_last(), spread)
+            self.chosen_statistics.create_stat(data_manager.get_sym(),latest_stock.get_pchg(),
+                                               latest_stock.get_last(),spread,calendar_tracker.get_formated_date())
             # if day to trade continue calculate chosen index
             if (self.calculate_determine_day_to_trade()):
                 self.calculate_determine_highest_chosen_data_manager(stock_statistics_composite)

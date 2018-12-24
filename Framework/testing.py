@@ -1173,7 +1173,7 @@ import numpy as np
 #     return count
 
 
-from Time_Manager import Time_Manager
+from Calendar_Tracker import Calendar_Tracker
 
-tm = Time_Manager()
-print(tm.get_formated_date())
+cm = Calendar_Tracker()
+print(cm.get_formated_date())

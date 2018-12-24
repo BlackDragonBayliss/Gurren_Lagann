@@ -14,3 +14,8 @@ class Calendar_Tracker:
     def is_day_holiday_day(self):
         pass
 
+    def get_formated_date(self):
+        today = str(datetime.date.today())
+        list_date = today.split('-')
+        returned_list = [list_date[1],list_date[2],list_date[0],self.get_current_day()]
+        return returned_list

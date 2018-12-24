@@ -10,8 +10,8 @@ class Stock_Statistics_Composite:
             self.chosen_index = None
         return self.__instance
 
-    def create_stat(self,sym,pchg,last,spread):
-        self.stat_composite.append(Stock_Statistics(sym,pchg,last,spread))
+    def create_stat(self,sym,pchg,last,spread,list_date):
+        self.stat_composite.append(Stock_Statistics(sym,pchg,last,spread,list_date))
     def get_stat_composite(self):
         return self.stat_composite
 

@@ -31,5 +31,3 @@ class Time_Manager:
         epoch_time = calendar.timegm(time.gmtime())
         return epoch_time
 
-    def get_formated_date(self):
-        return datetime.date.today()
