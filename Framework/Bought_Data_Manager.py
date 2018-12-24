@@ -7,6 +7,8 @@ class Bought_Data_Manager(Data_Manager):
     def __init__(self, sym, algo_case, operation_center):
         super().__init__(sym, algo_case, operation_center)
         super().set_data_manager_type('Bought')
+        self.bought_price = None
+        self.current_ask = None
 
     def init_data_processing(self):
         print("init", self.sym)
@@ -19,6 +21,7 @@ class Bought_Data_Manager(Data_Manager):
     def test_print(self):
         print(super().get_data_manager_type())
 
-
-def sell_stock_operation(self):
-    print("selling stock")
+    def get_bought_price(self):
+        return self.bought_price
+    def get_current_ask(self):
+        return self.current_ask

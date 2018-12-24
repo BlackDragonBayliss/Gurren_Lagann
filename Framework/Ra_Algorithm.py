@@ -228,6 +228,8 @@ class Ra_Algorithm:
         if(self.is_baseline_pchg_met & self.is_baseline_last_met & self.is_baseline_spread_met):
             operation_center.process_stock_statistics_to_database(stock_statistics_composite)
             operation_center.perform_chosen_stock_trade(stock_statistics_composite)
+            # operation_center.cancel_chosen_stocks(stock_statistics_composite)
+
     def calculate_stock(self):
         return self.stat_composite
 

@@ -17,7 +17,9 @@ from Day_Decision_Process_Action_Manager import Day_Decision_Process_Action_Mana
 from Day_Decision_Process_Storage_Manager import Day_Decision_Process_Storage_Manager
 from Stock_Statistics_Composite import Stock_Statistics_Composite
 from Trade_Manager import Trade_Manager
+from Email_Manager import Email_Manager
 from Ra_Algorithm import Ra_Algorithm
+from Odin_Algorithm import Odin_Algorithm
 
 class Operation_Center:
     list_stock_composite = []
@@ -54,7 +56,9 @@ class Operation_Center:
             self.day_decision_process_storage_manager = Day_Decision_Process_Storage_Manager()
             self.stock_statistics_composite = Stock_Statistics_Composite
             self.trade_manager = Trade_Manager()
+            self.email_manager = Email_Manager()
             self.ra_algorithm = Ra_Algorithm()
+            self.odin_algorithm = Odin_Algorithm()
             self.task_master = Task_Master()
             self.task_master.setup_instance(self.__instance, self.thread_factory, self.http_utility,
                                             self.request_factory,
@@ -210,8 +214,8 @@ class Operation_Center:
         self.task_master.create_thread_async_initiate_chosen_data_manager(data_manager_list)
 
     # Bought DM Creation
-    def process_async_assemble_bought_data_manager(self, sym):
-        self.task_master.create_thread_async_assemble_bought_data_manager(sym)
+    def process_async_assemble_bought_data_manager(self):
+        self.task_master.create_thread_async_assemble_bought_data_manager(self.data_manager_action)
 
     def process_async_initiate_bought_data_manager(self, data_manager):
         self.task_master.create_thread_async_initiate_bought_data_manager(data_manager)
@@ -265,7 +269,7 @@ class Operation_Center:
 
 
     # BUY PROCEDURE #
-    #Pre buy measure
+    #Pre buy analytics
     def process_stock_statistics_to_database(self,stock_statistics_composite):
         #Stat object to DB
         #Support for async handling
@@ -278,13 +282,23 @@ class Operation_Center:
     #Post buy
     def process_transform_chosen_to_bought(self):
 
-        #Chosen to DB transformation
-        for chosen_stock in self.get_list_chosen_data_manager()
-            if(stock_statistics_composite.get_stat_composite(stock_statistics_composite.get_chosen_index() == chosen_stock.get_sym())):
-                #Call dm creation proocess
-                self.process_async_assemble_bought_data_manager(chosen_stock.get_sym())
+        #     if(stock_statistics_composite.get_stat_composite(self.stock_statistics_composite.get_chosen_index() == chosen_stock.get_sym())):
+        #         #Call dm creation proocess
 
-        #Garbage collect old chosen_data_managers
+        # Chosen to DB transformation
+        self.process_async_assemble_bought_data_manager()
+
+
+    # Garbage collect old chosen_data_managers
+    def cancel_chosen_stocks:
+        # for chosen_stock in self.get_list_chosen_data_manager()
+        #     chosen_stock.cancel
+        pass
+
+    # SELL PROCEDURE #
+    # Pre sell analytics
+    def sell_stock(self):
+        self.trade_manager.sell_stock_full_amount()
 
 
 
