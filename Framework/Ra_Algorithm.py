@@ -226,8 +226,8 @@ class Ra_Algorithm:
         #If passing metrics continue buy process
         #Future support for conditional metrics decision making
         if(self.is_baseline_pchg_met & self.is_baseline_last_met & self.is_baseline_spread_met):
-            operation_center.process_chosen_to_bought_transformation(stock_statistics_composite)
-
+            operation_center.process_stock_statistics_to_database(stock_statistics_composite)
+            operation_center.perform_chosen_stock_trade(stock_statistics_composite)
     def calculate_stock(self):
         return self.stat_composite
 

@@ -1,5 +1,5 @@
 from DM_Buy import DM_Buy
-class DM_Action:
+class Data_Manager_Action:
     __instance = None
 
     def __new__(self):

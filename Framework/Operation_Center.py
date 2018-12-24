@@ -9,13 +9,14 @@ from Thread_Factory import Thread_Factory
 from Perpetual_Timer import Perpetual_Timer
 from Thread_Manager import Thread_Manager
 from Stock_Composite_Manager import Stock_Composite_Manager
-from DM_Action import DM_Action
+from Data_Manager_Action import Data_Manager_Action
 from Time_Manager import Time_Manager
 from Time_Data_Set_Manager import Time_Data_Set_Manager
 from Node_Manager import Node_Manager
 from Day_Decision_Process_Action_Manager import Day_Decision_Process_Action_Manager
 from Day_Decision_Process_Storage_Manager import Day_Decision_Process_Storage_Manager
 from Stock_Statistics_Composite import Stock_Statistics_Composite
+from Trade_Manager import Trade_Manager
 from Ra_Algorithm import Ra_Algorithm
 
 class Operation_Center:
@@ -44,7 +45,7 @@ class Operation_Center:
             self.perpetual_timer = Perpetual_Timer()
             self.thread_manager = Thread_Manager()
             self.stock_composite_manager = Stock_Composite_Manager()
-            self.DM_Action = DM_Action()
+            self.data_manager_action = Data_Manager_Action()
             self.node_manager = Node_Manager()
 
             self.time_manager = Time_Manager()
@@ -52,12 +53,13 @@ class Operation_Center:
             self.day_decision_process_action_manager = Day_Decision_Process_Action_Manager()
             self.day_decision_process_storage_manager = Day_Decision_Process_Storage_Manager()
             self.stock_statistics_composite = Stock_Statistics_Composite
+            self.trade_manager = Trade_Manager()
             self.ra_algorithm = Ra_Algorithm()
             self.task_master = Task_Master()
             self.task_master.setup_instance(self.__instance, self.thread_factory, self.http_utility,
                                             self.request_factory,
                                             self.type_converter, self.top_stock_composite, self.perpetual_timer,
-                                            self.thread_manager, self.stock_composite_manager, self.DM_Action,
+                                            self.thread_manager, self.stock_composite_manager, self.data_manager_action,
                                             self.node_manager, self.time_manager,
                                             self.time_data_set_manager, self.day_decision_process_action_manager,
                                             self.day_decision_process_storage_manager)
@@ -262,11 +264,19 @@ class Operation_Center:
         self.day_decision_process_action_manager.calculate_determine_highest_chosen_data_manager(self.get_list_chosen_data_manager())
 
 
-    def process_chosen_to_bought_transformation(self,stock_statistics_composite):
-
+    # BUY PROCEDURE #
+    #Pre buy measure
+    def process_stock_statistics_to_database(self,stock_statistics_composite):
         #Stat object to DB
         #Support for async handling
         self.node_manager.async_post_stock_statistics_composite(stock_statistics_composite)
+    #Pre buy measure
+    def perform_chosen_stock_trade(self,stock_statistics_composite):
+        # Buy stock procedure
+        # Handle on #DM_Action update
+        self.trade_manager.buy_stock_full_amount(self,stock_statistics_composite)
+    #Post buy
+    def process_transform_chosen_to_bought(self):
 
         #Chosen to DB transformation
         for chosen_stock in self.get_list_chosen_data_manager()
@@ -276,7 +286,6 @@ class Operation_Center:
 
         #Garbage collect old chosen_data_managers
 
-        return ''
 
 
 
@@ -335,8 +344,8 @@ class Operation_Center:
     def get_top_stock_composite(self):
         return self.top_stock_composite
 
-    def get_DM_Action(self):
-        return self.DM_Action
+    def get_data_manager_action(self):
+        return self.data_manager_action
 
     def get_list_data_managers(self):
         return self.list_data_managers

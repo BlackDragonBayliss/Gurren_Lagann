@@ -57,8 +57,6 @@ class Task_Master:
         self.thread_factory.create_thread_async_query_stock_phase1(list_of_objects)
 
 
-
-
     # Buy
     def create_thread_async_phase1_market_buy(self):
         list_of_objects = [self.http_utility, self.request_factory, self.type_converter,
@@ -74,12 +72,6 @@ class Task_Master:
         list_of_objects = [request, self.http_utility, self.request_factory, self.type_converter,
                            self.operation_center, self.stock_composite_manager, self]
         self.thread_factory.create_thread_async_phase3_market_buy(list_of_objects)
-
-
-
-
-
-
 
     # Sell
     def create_thread_async_phase1_market_sell(self):
