@@ -173,15 +173,6 @@ class Ra_Algorithm:
             index_count += 1
         return pchg_list
 
-    # Now given a bought sell point and approximation differences,
-    # Still need to determine spread of of values, of simulated successful test set
-    # Need truthy data. Need to wait till week begins then we can start recording spreads, doing so programmatically and storing data for extra points.
-    # Break here.
-
-    # Given bought price, calculate when to buy or sell given new code_tool_set
-
-
-    # Continuous calculation, given price and current first FM index
 
     def calculate_pchg_delimiter_met(bought_price, five_set_set):
         # Return pchg_list absolute values
