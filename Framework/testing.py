@@ -1185,7 +1185,7 @@ import smtplib
 #
 # from string import Template
 #
-# from email.mime.multipart import MIMEMultipart
+# from .mime.multipart import MIMEMultipart
 # from email.mime.text import MIMEText
 #
 # MY_ADDRESS = 'commandercarr1@gmail.com'
@@ -1270,5 +1270,7 @@ import smtplib
 #   ])
 
 
+from Time_Manager import Time_Manager
 
-
+tm = Time_Manager()
+print(tm.get_current_hour())

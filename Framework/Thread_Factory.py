@@ -101,7 +101,7 @@ class Thread_Factory:
                                                type_converter,
                                                operation_center, task_master):
 
-        #BREAK weekend
+        #
         top_stock_composite.set_json_top_stocks(data)
         top_stock_composite.set_highest_chosen()
         top_stock_composite.calc_highest_chosen()

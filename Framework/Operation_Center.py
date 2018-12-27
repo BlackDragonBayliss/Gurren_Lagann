@@ -85,8 +85,9 @@ class Operation_Center:
         # def setup_timer_stock(self, delay, countToEnd, functionToInvoke, name):
         self.perpetual_timer.setup_timer_stock(1, 1000000, self.main_loop, 'main_process_loop')
 
+
     def main_loop(self):
-        ts = time.time()
+        # ts = time.time()
 
         if (self.is_condition_one_met & self.calculate_time_delimiter_one()):
             print('hit first condition')
@@ -112,22 +113,24 @@ class Operation_Center:
 
 
     def calculate_time_delimiter_one(self):
-        #Get handle on yourself and on time_manager
-        if (self.time_manager.get_current_minute() == 25):
-            self.is_condition_one_met = True
-            return True
+        if(self.time_manager.get_current_hour() == 8):
+            if (self.time_manager.get_current_minute() == 30):
+                self.is_condition_one_met = True
+                return True
         return False
 
     def calculate_time_delimiter_two(self):
-        if (self.time_manager.get_current_minute() == 26):
-            self.is_condition_two_met = True
-            return True
+        if (self.time_manager.get_current_hour() == 9):
+            if (self.time_manager.get_current_minute() == 30):
+                self.is_condition_two_met = True
+                return True
         return False
 
     def calculate_time_delimiter_three(self):
-        if (self.time_manager.get_current_minute() == 27):
-            self.is_condition_three_met = True
-            return True
+        if (self.time_manager.get_current_hour() == 11):
+            if (self.time_manager.get_current_minute() == 30):
+                self.is_condition_three_met = True
+                return True
         return False
 
 
@@ -138,7 +141,8 @@ class Operation_Center:
         # execute buy process, DM_Action_Update chained
         # task_master buy process
 
-        self.process_chosen_to_bought_calculation()
+        self.process_async_top_stock_phase1_internal()
+        # self.process_chosen_to_bought_calculation()
 
 
         # self.task_master.
