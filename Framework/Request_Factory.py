@@ -45,6 +45,25 @@ class Request_Factory:
                        }
         return json_request
 
+    def async_post_data_manager_action(self, data_manager_action):
+        # chosen_stock_stat = data_manager_action.get_chosen_stock_statistics()
+        #Support for sell field updates
+        sym = data_manager_action.get_sym()
+        pchg = data_manager_action.get_pchg()
+        last = data_manager_action.get_last()
+        spread = data_manager_action.get_spread()
+        list_date = data_manager_action.get_list_date()
+        json_request = {"request_type":"stock_statistics",
+                        "sym":sym,
+                        "pchg":pchg,
+                        "last":last,
+                        "spread":spread
+                        "list_date":list_date
+                       }
+        return json_request
+
+
+
     def lookup_top_stocks_phase3(self, top_stock_composite):
 
         data_list = []

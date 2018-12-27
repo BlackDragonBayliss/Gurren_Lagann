@@ -300,7 +300,10 @@ class Operation_Center:
     def sell_stock(self):
         self.trade_manager.sell_stock_full_amount()
 
-
+    def store_data_manager_action_to_database(self):
+        #Stat object to DB
+        #Support for async handling
+        self.node_manager.async_post_data_manager_action(self.get_data_manager_action())
 
 
     #Case Analytics

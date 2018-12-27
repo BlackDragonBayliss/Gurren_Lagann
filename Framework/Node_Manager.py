@@ -30,6 +30,13 @@ class Node_Manager:
             response_returned = await self.fetch(session, url, json_request)
             return response_returned
 
+
+    async def async_post_data_manager_action(self, data_manager_action):
+        async with aiohttp.ClientSession() as session:
+            json_request = self.request_factory.async_post_data_manager_action(data_manager_action)
+            url = 'http://localhost:3000/api/brokerage'
+            response_returned = await self.fetch(session, url, json_request)
+            return response_returned
     #Query stocks, (One request for many? Or multiple aysnc?
     #More effiecient but a lot more work.
 

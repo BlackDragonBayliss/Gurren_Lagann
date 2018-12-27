@@ -29,7 +29,7 @@ class Odin_Algorithm:
         self.bought_price = self.bought_data_manager.get_bought_price()
         self.is_monitoring = True
         #Handle pep timer
-        self.perpetual_timer_monitor_pchg_delimiter.setup_timer_stock(3, 1000, self.monitor_pchg_delimiter, 'data_pull')
+        self.perpetual_timer_monitor_pchg_delimiter.setup_timer_stock(3, 1000, self.monitor_pchg_delimiter, 'odin_monitor')
 
     def monitor_pchg_delimiter(self):
         #pchg calculations

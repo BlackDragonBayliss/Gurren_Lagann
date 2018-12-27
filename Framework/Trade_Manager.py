@@ -36,8 +36,13 @@ class Trade_Manager:
         # Repeat until position gained.
         # Verifying data retrieval
         # Upon verification
+
+        # respones -> type_converter, DM Action handled there.
+
+
         # Handle response and store in Data_Manager_Action
         operation_center.get_data_manager_action()
+        operation_center.
 
         # Store Data_Manager_Action in database
 
@@ -45,7 +50,7 @@ class Trade_Manager:
 
 
         # Callback to operation_center, end_operations and reset
-        operation_center.process_transform_chosen_to_bought()
+        # operation_center.process_transform_chosen_to_bought()
         operation_center.end_operations()
 
     def sell_stock_partial(self, sym):
