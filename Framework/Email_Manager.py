@@ -1,5 +1,6 @@
 class Email_Manager:
     __instance = None
+
     def __new__(self):
         if self.__instance == None:
             self.__instance = object.__new__(self)
@@ -13,7 +14,6 @@ class Email_Manager:
         SUBJECT = subject
         TEXT = body
 
-        # Prepare actual message
         message = """From: %s\nTo: %s\nSubject: %s\n\n%s
         """ % (FROM, ", ".join(TO), SUBJECT, TEXT)
         try:
@@ -23,7 +23,5 @@ class Email_Manager:
             server.login(user, pwd)
             server.sendmail(FROM, TO, message)
             server.close()
-            print('successfully sent the mail')
         except:
-            print("failed to send mail")
-
+            pass
