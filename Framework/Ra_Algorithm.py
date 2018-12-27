@@ -10,13 +10,16 @@ class Ra_Algorithm:
         if self.__instance == None:
             self.__instance = object.__new__(self)
             self.instance_calendar_tracker = Calendar_Tracker()
-            self.is_first_filter_iteration = True
-            # self.chosen_statistics = Chosen_Statistics()
+            self.is_clear_stat_container = True
+            self.baseline_price = 25
+            self.baseline_pchg = 15
+            self.baseline_spread = 3.25
         return self.__instance
 
     # caclulate highest chosen data_manager
     # Non-continuous
-    def algorithm_filter_highest_chosen_data_manager(self, data_manager_list, stock_statistics_composite,
+    def algorithm_filter_highest_chosen_data_manager(self, operation_center, data_manager_list,
+                                                     stock_statistics_composite,
                                                      calendar_tracker):
         # #based on metrics, pchg and volatility, price, determine best choice.
         # #later addition consider Day_of_week and can_purchase_day_calculation
@@ -27,118 +30,102 @@ class Ra_Algorithm:
             spread = self.calculate_spread(data_manager)
             latest_stock = data_manager.get_data_controller().get_latest_stock_from_five_minute_set()
             # Store in Chosen_Statistics Objects
-            stock_statistics_composite.create_stat(data_manager.get_sym(), latest_stock.get_pchg(),
-                                                   latest_stock.get_last(), spread,
+            stock_statistics_composite.create_stat(data_manager.get_sym(), latest_stock.get_last(),
+                                                   latest_stock.get_pchg(),
+                                                   spread,
                                                    calendar_tracker.get_formated_date())
-            self.is_first_filter_iteration = False
-        self.calculate_is_chosen_selection_delimiter_met(stock_statistics_composite)
+            # self.is_first_filter_iteration = False
+        self.calculate_is_chosen_selection_delimiter_met(operation_center, stock_statistics_composite)
 
-
-    def calculate_is_chosen_selection_delimiter_met(self,stock_statistics_composite):
-        #Deterministic filter process
+    def calculate_is_chosen_selection_delimiter_met(self, operation_center, stock_statistics_composite):
+        # Deterministic filter process
         for stat_list in stock_statistics_composite:
             self.calculate_optimized_chosen_selection(stat_list)
 
-        #End-outcome decision process
+        # End-outcome decision process
         for stat_list in stock_statistics_composite:
             # If is_chosen_selected True, buy process, end loop.
-            if(stat_list.get_is_chosen):
+            if (stat_list.get_is_chosen()):
+                operation_center.perform_chosen_stock_trade(stat_list)
+                self.is_clear_stat_container = False
+        # If is_chosen_selected False, clear composite and continue process
+        if (self.is_clear_stat_container):
+            stock_statistics_composite.clear_stat_composite()
 
+    def calculate_optimized_chosen_selection(self, stat_list):
 
-        #If is_chosen_selected False, clear composite and continue process
-        stock_statistics_composite.clear_stat_composite
+        # Run battery of tests for price, pchg, spread into categorization matrices
+        list_temp_stat_conditional_determinate = []
+        list_temp_stat_conditional_determinate.append(self.calculate_is_baseline_condition_met_price(stat_list[1]))
+        list_temp_stat_conditional_determinate.append(self.calculate_is_baseline_condition_met_pchg(stat_list[2]))
+        list_temp_stat_conditional_determinate.append(self.calculate_is_baseline_condition_met_spread(stat_list[3]))
+        if (list_temp_stat_conditional_determinate[0] & list_temp_stat_conditional_determinate[1] &
+                list_temp_stat_conditional_determinate[2]):
+            stat_list.append[True]
+        else:
+            stat_list.append[False]
 
-
-
-
-    def calculate_optimized_chosen_selection(self, parameterized_data_list):
-
-        # Handle var instantiation for chosen stocks
-
-        chosen_data_set_one = parameterized_data_list[0]
-        chosen_data_set_two = parameterized_data_list[1]
-        chosen_data_set_three = parameterized_data_list[2]
-
-        spread_one = chosen_data_set_one[0]
-        spread_two = chosen_data_set_two[0]
-        spread_three = chosen_data_set_three[0]
-
-        pchg_one = chosen_data_set_one[1]
-        pchg_two = chosen_data_set_two[1]
-        pchg_three = chosen_data_set_three[1]
-
-        # Handle process decision metrics process
-        # Determine optimum spread and pchg. Need data for selection process to match optimum scenarios.
-        # Need to hardcode success scenarios, or use machine learning.
-        # Hardcoding baseline success scenario
-        baseline_spread = 5
-        baseline_pchg = .02
-
-        # Take value that's closest to desired metrics
-        # Support for weighted metrics, which metric has higher weight?
-
-        # Calculate chosen differences
-        spread_difference_chosen_one = baseline_spread - spread_one
-        spread_difference_chosen_two = baseline_spread - spread_two
-        spread_difference_chosen_three = baseline_spread - spread_three
-
-        pchg_difference_chosen_one = baseline_pchg - pchg_one
-        pchg_difference_chosen_two = baseline_pchg - pchg_two
-        pchg_difference_chosen_three = baseline_pchg - pchg_three
-
-        # Upon getting pchg and spread differences to basline, apply wieghts for decision process.
+        # Future support for getting pchg and spread differences to basline, apply wieghts for decision process.
         # Then calculate overall value_of_data_filter_outcome
         # Higher value higher worth
-
         # Determine worth metric output, closer to 1 desired matching outcome.
         # Closer to 0 farther undesirables
 
-        spread_difference_chosen_one
+    def calculate_is_baseline_condition_met_price(self, price):
+        # If price falls into acceptable range
+        if (price < self.baseline_price):
+            return True
+        return False
 
-        # Basline weights
+    def calculate_is_baseline_condition_met_pchg(self, pchg):
+        # If pchg falls into acceptable range
+        if (pchg > self.baseline_pchg):
+            return True
+        return False
 
-        if (baseline_spread):
-            return ''
-        return ''
-
-    # Non-continuous
-    # determine pchg and spread, optimized solution calculiz
-    def calculate_pchg_labels(self, stock_statistics_composite):
-
-        #Handle on stat
-        stat_list_one = stock_statistics_composite.get_stat_composite()[0]
-        stat_list_two = stock_statistics_composite.get_stat_composite()[1]
-        stat_list_three = stock_statistics_composite.get_stat_composite()[2]
-
-        pchg_one = stat_list_one[1]
-        pchg_two = stat_list_two[1]
-        pchg_three = stat_list_three[1]
-
-        percentage_list = [pchg_one, pchg_two, pchg_three]
-        percentage_transformed_list = []
-
-        print("Ra_Algorithm list of percentages to be transformed:", percentage_list)
-
-        for val in percentage_list:
-            resultant = (100 * val)
-            percentage_transformed_list.append(resultant)
-
-        sorted_list = sorted(percentage_transformed_list, key=int)
-        print("Sorted list", sorted_list)
-        # Will give val at index
-        current_index = 0
-        for val in percentage_transformed_list:
-            if (val == sorted_list[0]):
-                stock_statistics_composite.set_chosen_index(current_index)
-            current_index += 1
+    def calculate_is_baseline_condition_met_spread(self, spread):
+        # If spread falls into acceptable range
+        if (spread < self.baseline_spread):
+            return True
+        return False
 
 
+        # def calculate_pchg_labels(self, stock_statistics_composite):
+        #
+        #     # Handle on stat
+        #     stat_list_one = stock_statistics_composite.get_stat_composite()[0]
+        #     stat_list_two = stock_statistics_composite.get_stat_composite()[1]
+        #     stat_list_three = stock_statistics_composite.get_stat_composite()[2]
+        #
+        #     pchg_one = stat_list_one[1]
+        #     pchg_two = stat_list_two[1]
+        #     pchg_three = stat_list_three[1]
+        #
+        #     percentage_list = [pchg_one, pchg_two, pchg_three]
+        #     percentage_transformed_list = []
+        #
+        #     print("Ra_Algorithm list of percentages to be transformed:", percentage_list)
+        #
+        #     for val in percentage_list:
+        #         resultant = (100 * val)
+        #         percentage_transformed_list.append(resultant)
+        #
+        #     sorted_list = sorted(percentage_transformed_list, key=int)
+        #     print("Sorted list", sorted_list)
+        #     # Will give val at index
+        #     current_index = 0
+        #     for val in percentage_transformed_list:
+        #         if (val == sorted_list[0]):
+        #             stock_statistics_composite.set_chosen_index(current_index)
+        #         current_index += 1
 
-            # Get filtered paramatized data_list
-            # parameterized_data_list = self.calculate_metrics_data_list()
 
-            # Optimize conditions determine best stock
-            # self.calculate_optimized_chosen_selection(parameterized_data_list)
+
+        # Get filtered paramatized data_list
+        # parameterized_data_list = self.calculate_metrics_data_list()
+
+        # Optimize conditions determine best stock
+        # self.calculate_optimized_chosen_selection(parameterized_data_list)
 
     def calculate_spread(self, data_manager):
         # Handle on each FM set, generate_five_minute_data_set
@@ -155,8 +142,6 @@ class Ra_Algorithm:
         spread = np.std(list_first_index_five_minute_set)
         # print(np.std(list_first_index_five_minute_set))
         return spread
-
-
 
     def calculate_determine_day_to_trade(self):
         # Get handle on day of week

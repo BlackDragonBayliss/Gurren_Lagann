@@ -191,8 +191,7 @@ class Operation_Center:
         self.task_master.create_thread_async_chosen_data_manager_selection(query)
 
     def process_algorithm_determine_highest_chosen_data_manager(self):
-        self.ra_algorithm.algorithm_determine_highest_chosen_data_manager(self.get_list_chosen_data_manager(),self.stock_statistics_composite)
-
+        self.ra_algorithm.algorithm_determine_highest_chosen_data_manager(self,self.get_list_chosen_data_manager(),self.stock_statistics_composite)
 
 
 
@@ -286,10 +285,10 @@ class Operation_Center:
         #Support for async handling
         self.node_manager.async_post_stock_statistics_composite(stock_statistics_composite)
     #Pre buy measure
-    def perform_chosen_stock_trade(self,stock_statistics_composite):
+    def perform_chosen_stock_trade(self,stat_list):
         # Buy stock procedure
         # Handle on #DM_Action update
-        self.trade_manager.buy_stock_full_amount(self,stock_statistics_composite)
+        self.trade_manager.buy_stock_full_amount(self,stat_list)
     #Post buy
     def process_transform_chosen_to_bought(self):
 
