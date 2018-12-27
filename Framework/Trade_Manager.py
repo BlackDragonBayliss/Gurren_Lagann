@@ -37,13 +37,12 @@ class Trade_Manager:
         # Verifying data retrieval
         # Upon verification
 
+
+        # Handle response and store in Data_Manager_Action
         # respones -> type_converter, DM Action handled there.
 
 
-        # Handle response and store in Data_Manager_Action
-        operation_center.get_data_manager_action()
-        operation_center.
-
+        operation_center.store_data_manager_action_to_database()
         # Store Data_Manager_Action in database
 
         # Email analytics

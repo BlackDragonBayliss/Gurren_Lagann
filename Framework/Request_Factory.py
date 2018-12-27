@@ -53,7 +53,7 @@ class Request_Factory:
         last = data_manager_action.get_last()
         spread = data_manager_action.get_spread()
         list_date = data_manager_action.get_list_date()
-        json_request = {"request_type":"stock_statistics",
+        json_request = {"request_type":"store_data_manager_action",
                         "sym":sym,
                         "pchg":pchg,
                         "last":last,
