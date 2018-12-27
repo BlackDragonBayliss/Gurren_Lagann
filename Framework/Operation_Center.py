@@ -100,7 +100,7 @@ class Operation_Center:
             print('hit second condition')
 
             #Get handle on process to invoke
-            self.event_trigger_trade_time__buy(self.top_stock_chosen)
+            self.event_trigger_trade_time_buy_end(self.top_stock_chosen)
             self.is_condition_two_met = False
 
         if (self.is_condition_three_met & self.calculate_time_delimiter_three()):
@@ -141,20 +141,25 @@ class Operation_Center:
         # execute buy process, DM_Action_Update chained
         # task_master buy process
 
+
+        #TSP -> Chosen_Stock init
         self.process_async_top_stock_phase1_internal()
+
+        #Given variabley lengtj
+        self.initiate_monitor_odin_algorithm()
         # self.process_chosen_to_bought_calculation()
 
 
         # self.task_master.
         # self.process_async_top_stock_phase1()
 
-    def event_trigger_trade_time__buy(self, data):
+    def event_trigger_trade_time_buy_end(self, data):
         # Isolate top stock and matching criteria and metrics.
         # trade
         # update DM_Action
         # self.process_async_phase1_market_buy(data)
 
-
+        # operation_center.process_algorithm_determine_highest_chosen_data_manager()
         return ''
 
     def event_trigger_trade_time_sell(self):
@@ -274,6 +279,8 @@ class Operation_Center:
 
     # BUY PROCEDURE #
     #Pre buy analytics
+    def initiate_monitor_odin_algorithm(self):
+        self.odin_algorithm.initiate_buy_monitor_chosen(self)
     def process_stock_statistics_to_database(self,stock_statistics_composite):
         #Stat object to DB
         #Support for async handling
@@ -322,6 +329,7 @@ class Operation_Center:
         self.process_algorithm_determine_highest_chosen_data_manager()
         if(self.stock_statistics_composite.get_chosen_index != None):
             self.ra_algorithm.algorithm_test_against_buy_metrics(self.stock_statistics_composite)
+
 
 
     #Buy condition

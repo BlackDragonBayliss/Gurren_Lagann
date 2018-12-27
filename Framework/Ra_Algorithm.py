@@ -9,39 +9,29 @@ class Ra_Algorithm:
         if self.__instance == None:
             self.__instance = object.__new__(self)
             self.instance_calendar_tracker = Calendar_Tracker()
+            self.is_first_filter_iteration = True
             # self.chosen_statistics = Chosen_Statistics()
         return self.__instance
 
     # caclulate highest chosen data_manager
     # Non-continuous
-    def algorithm_determine_highest_chosen_data_manager(self, data_manager_list, stock_statistics_composite,calendar_tracker):
-        # for data_manager in data_manager_list:
-        #
+    def algorithm_filter_highest_chosen_data_manager(self, data_manager_list, stock_statistics_composite,calendar_tracker):
         # #based on metrics, pchg and volatility, price, determine best choice.
         # #later addition consider Day_of_week and can_purchase_day_calculation
-        # self.calculate_determine_highest_chosen_data_manager(data_manager_list)
 
         #For each chosen in list
-        for data_manager in data_manager_list:
-            spread = self.calculate_spread(data_manager_list[0])
-            latest_stock = data_manager.get_data_controller().get_latest_stock_from_five_minute_set()
-            #Store in Chosen_Statistics Object
-            self.chosen_statistics.create_stat(data_manager.get_sym(),latest_stock.get_pchg(),
-                                               latest_stock.get_last(),spread,calendar_tracker.get_formated_date())
-            # if day to trade continue calculate chosen index
-            if (self.calculate_determine_day_to_trade()):
-                self.calculate_determine_highest_chosen_data_manager(stock_statistics_composite)
+        if(self.is_first_filter_iteration):
+            for data_manager in data_manager_list:
 
+                spread = self.calculate_spread(data_manager_list[0])
+                latest_stock = data_manager.get_data_controller().get_latest_stock_from_five_minute_set()
+                #Store in Chosen_Statistics Object
+                stock_statistics_composite.create_stat(data_manager.get_sym(),latest_stock.get_pchg(),
+                                                   latest_stock.get_last(),spread,calendar_tracker.get_formated_date())
+            self.is_first_filter_iteration = False
 
-    def calculate_determine_day_to_trade(self):
-        # Get handle on day of week
-        current_day = self.instance_calendar_tracker.get_current_day()
+        self.calculate_determine_highest_chosen_data_manager(stock_statistics_composite)
 
-        # Condition day of week
-        print("current day",current_day)
-        if (current_day == 5 or current_day == 6 or current_day == 7):
-            return False
-        return True
 
     # Non-continuous
     # determine pchg and spread, optimized solution calculiz
@@ -150,6 +140,18 @@ class Ra_Algorithm:
         if (baseline_spread):
             return ''
         return ''
+
+
+    def calculate_determine_day_to_trade(self):
+        # Get handle on day of week
+        current_day = self.instance_calendar_tracker.get_current_day()
+
+        # Condition day of week
+        print("current day",current_day)
+        if (current_day == 5 or current_day == 6 or current_day == 7):
+            return False
+        return True
+
 
     def create_pchg_value_list(test_set):
         # Return pchg_list absolute values

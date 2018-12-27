@@ -101,7 +101,7 @@ class Thread_Factory:
                                                type_converter,
                                                operation_center, task_master):
 
-        #
+        #Parse TSP from brokerage, call to assemble Chosen_Data_Manager objects
         top_stock_composite.set_json_top_stocks(data)
         top_stock_composite.set_highest_chosen()
         top_stock_composite.calc_highest_chosen()
@@ -685,7 +685,7 @@ class Thread_Factory:
         for data_manager in data_manager_list:
             data_manager.init_data_processing()
 
-        operation_center.process_algorithm_determine_highest_chosen_data_manager()
+        # operation_center.process_algorithm_determine_highest_chosen_data_manager()
         # operation_center.process_chosen_to_bought_calculation()
         # response = loop.run_until_complete(httpUtility.async_post_stock_query_phase1(stockComposite, requestFactory))
 

@@ -11,7 +11,7 @@ class Stock_Statistics_Composite:
         return self.__instance
 
     def create_stat(self,sym,pchg,last,spread,list_date):
-        self.stat_composite.append(Stock_Statistics(sym,pchg,last,spread,list_date))
+        self.stat_composite.append([sym,pchg,last,spread,list_date])
     def get_stat_composite(self):
         return self.stat_composite
 
@@ -21,3 +21,6 @@ class Stock_Statistics_Composite:
         return self.chosen_index
     def get_chosen_stock_statistics(self):
         return self.stat_composite[self.get_chosen_index()]
+
+    def clear_stat_composite(self):
+        self.stat_composite.clear()
