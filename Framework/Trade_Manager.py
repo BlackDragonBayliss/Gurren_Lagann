@@ -46,7 +46,7 @@ class Trade_Manager:
         # Store Data_Manager_Action in database
 
         # Email analytics
-
+        operation_center.process_email()
 
         # Callback to operation_center, end_operations and reset
         # operation_center.process_transform_chosen_to_bought()

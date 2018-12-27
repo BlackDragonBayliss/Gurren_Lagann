@@ -305,6 +305,11 @@ class Operation_Center:
         #Support for async handling
         self.node_manager.async_post_data_manager_action(self.get_data_manager_action())
 
+    #Support email update
+    def process_email(self):
+        self.email_manager.send_email("commandercarr1@gmail.com",, "commandercarr1@gmail.com", "Code guru", "coding", self.get_data_manager_action())
+
+
 
     #Case Analytics
     #Case condition 1
