@@ -292,10 +292,6 @@ class Operation_Center:
     #Post buy
     def process_transform_chosen_to_bought(self):
 
-        #     if(stock_statistics_composite.get_stat_composite(self.stock_statistics_composite.get_chosen_index() == chosen_stock.get_sym())):
-        #         #Call dm creation proocess
-
-        # Chosen to DB transformation
         self.process_async_assemble_bought_data_manager()
 
 
