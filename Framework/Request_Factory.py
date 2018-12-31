@@ -1,6 +1,6 @@
 class Request_Factory:
     def __init__(self):
-        self.name = ''
+        ''
 
     def query_stock_symbol(self, name):
         json_request = {"request_type": "query_stock",
@@ -384,7 +384,3 @@ class Request_Factory:
         json_request = json
         print(json_request)
 
-    def test(self):
-        json_request = {"request_type": "test"
-                       }
-        return json_request
