@@ -87,7 +87,6 @@ class Operation_Center:
 
 
     def main_loop(self):
-        # ts = time.time()
 
         if (self.is_condition_one_met & self.calculate_time_delimiter_one()):
             print('hit first condition')

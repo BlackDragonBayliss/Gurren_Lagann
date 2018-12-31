@@ -19,10 +19,6 @@ class Odin_Algorithm:
             # self.chosen_statistics = Chosen_Statistics()
         return self.__instance
 
-    #Where setup, after DM bought
-    # def set_bought_DM()
-    #     bought_data_manger
-
 
     def initiate_buy_monitor_chosen(self,operation_center):
         self.perpetual_timer_buy_monitor_pchg_delimiter.setup_timer_stock(3, 1000, operation_center.process_algorithm_determine_highest_chosen_data_manager, 'odin_buy_monitor')
