@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c72e358-cbf2-49d5-9ba7-9056b8dcdf2e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Framework/API.py" afterPath="$PROJECT_DIR$/Framework/API.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Framework/Thread_Factory.py" afterPath="$PROJECT_DIR$/Framework/Thread_Factory.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Framework/Request_Factory.py" afterPath="$PROJECT_DIR$/Framework/Request_Factory.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/MoneyMachine.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Framework/Async_Thread_Task.py" afterPath="$PROJECT_DIR$/Framework/Async_Thread_Task.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,8 +22,8 @@
       <file leaf-file-name="Operation_Center.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Framework/Operation_Center.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-132">
-              <caret line="268" column="25" lean-forward="false" selection-start-line="268" selection-start-column="25" selection-end-line="268" selection-end-column="25" />
+            <state relative-caret-position="195">
+              <caret line="34" column="24" lean-forward="false" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -27,51 +31,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Framework/Bay/test.py">
+      <file leaf-file-name="Odin_Algorithm.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Framework/Odin_Algorithm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="4" lean-forward="false" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
-              <folding />
+            <state relative-caret-position="424">
+              <caret line="31" column="24" lean-forward="false" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
+              <folding>
+                <element signature="e#1#19#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test2.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Framework/Bay/test2.py">
+      <file leaf-file-name="Type_Converter.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Framework/Type_Converter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="7" lean-forward="true" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Stock_Statistics_Composite.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Framework/Stock_Statistics_Composite.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="35" lean-forward="false" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Stock_Statistics.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Framework/Stock_Statistics.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="28" lean-forward="false" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Request_Factory.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Framework/Request_Factory.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+            <state relative-caret-position="1770">
+              <caret line="123" column="0" lean-forward="false" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -80,42 +56,68 @@
       <file leaf-file-name="Ra_Algorithm.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Framework/Ra_Algorithm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="213" column="41" lean-forward="false" selection-start-line="213" selection-start-column="41" selection-end-line="213" selection-end-column="41" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Data_Controller.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Framework/Data_Controller.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#23#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Node_Manager.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Framework/Node_Manager.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="26" column="54" lean-forward="false" selection-start-line="26" selection-start-column="54" selection-end-line="26" selection-end-column="54" />
+            <state relative-caret-position="1350">
+              <caret line="91" column="0" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Day_Decision_Process_Action_Manager.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Framework/Day_Decision_Process_Action_Manager.py">
+      <file leaf-file-name="Stock_Statistics_Composite.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Framework/Stock_Statistics_Composite.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+            <state relative-caret-position="360">
+              <caret line="24" column="28" lean-forward="false" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Trade_Manager.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Framework/Trade_Manager.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Request_Factory.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Framework/Request_Factory.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="9" lean-forward="false" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Account_Information.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Framework/Account_Information.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="API.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Framework/API.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2137">
+              <caret line="45" column="88" lean-forward="false" selection-start-line="45" selection-start-column="49" selection-end-line="45" selection-end-column="88" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Async_Thread_Task.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Framework/Async_Thread_Task.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="45" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -132,52 +134,44 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>create_thread_async_initiate_top_data_managers</find>
-      <find>create_thread_async_initiate_chosen_data_manager</find>
-      <find>chosen</find>
-      <find>Chosen_Data</find>
-      <find>Chosen_Data_Manager</find>
-      <find>data_manager_query_stock_loop</find>
-      <find>tf</find>
       <find>create_thread_async_phase1_market_buy</find>
-      <find>tensor</find>
-      <find>process_chosen_to_bought_calculation</find>
-      <find>transform</find>
-      <find>process_async_top_stock_phase1</find>
+      <find>DM_Action</find>
+      <find>process_async_assemble_bought_data_manager</find>
+      <find>process_chosen_to_bought_transformation</find>
+      <find>data_pull</find>
+      <find>node_manager</find>
+      <find>Email_Manager</find>
+      <find>email</find>
+      <find>event_trigger_top_stock_process</find>
+      <find>process_async_top_stock_phase1_internal</find>
+      <find>create_thread_async_top_stock_phase_internal</find>
+      <find>async_post_stock_top_phase_internal</find>
       <find>create_thread_async_top_stock_phase1</find>
       <find>process_async_assemble_chosen_data_manager</find>
       <find>create_thread_async_assemble_chosen_data_manager</find>
-      <find>create_thread_async_top_stock_phase_internal</find>
-      <find>process_determine_highest_chosen_data_manager</find>
-      <find>spread</find>
-      <find>calculate_metrics_data_list</find>
-      <find>time_data_set_controller</find>
-      <find>generate</find>
-      <find>process_async_case1</find>
-      <find>case</find>
-      <find>algorithm_decide_stock_to_buy</find>
-      <find>calculate_determine_highest_chosen_data_manager</find>
-      <find>chosen_st</find>
-      <find>algorithm_determine_highest_chosen_data_manager</find>
+      <find>process_async_initiate_chosen_data_manager</find>
+      <find>odin</find>
+      <find>odin_algorithm</find>
+      <find>highest_chosen</find>
+      <find>highest</find>
+      <find>process_async_phase1_market_buy</find>
+      <find>trade_manager</find>
+      <find>algorithm_filter_highest_chosen_data_manager</find>
       <find>process_algorithm_determine_highest_chosen_data_manager</find>
-      <find>algorithm_test_against_buy_metrics</find>
-      <find>buy</find>
+      <find>create_thread_async_initiate_chosen_data_manager</find>
+      <find>buy_stock_full_amount</find>
+      <find>sell_stock</find>
+      <find>calculate_is_baseline_condition_met_price</find>
+      <find>lookup_top_stocks_phase_internal</find>
+      <find>buy_stock</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/Framework" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Framework/Calendar_Trade_Tracker.py" />
-        <option value="$PROJECT_DIR$/Framework/HTTP_Utility.py" />
-        <option value="$PROJECT_DIR$/Framework/Composite_Manager.py" />
-        <option value="$PROJECT_DIR$/Framework/Top_Stock_Composite.py" />
-        <option value="$PROJECT_DIR$/Framework/Stock_Composite.py" />
-        <option value="$PROJECT_DIR$/Framework/Stock.py" />
-        <option value="$PROJECT_DIR$/Extended_Data_Manager.py" />
-        <option value="$PROJECT_DIR$/Framework/Day_Decision_Process_Storage_Manager.py" />
         <option value="$PROJECT_DIR$/Framework/lib/BoxTime.py" />
         <option value="$PROJECT_DIR$/Framework/Type_Converter.py" />
         <option value="$PROJECT_DIR$/Framework/Ten_Minute_Set.py" />
@@ -185,30 +179,18 @@
         <option value="$PROJECT_DIR$/Framework/Day_Set.py" />
         <option value="$PROJECT_DIR$/Framework/Data_Controller_Factory.py" />
         <option value="$PROJECT_DIR$/Framework/Perpetual_Timer.py" />
-        <option value="$PROJECT_DIR$/Framework/Time_Manager.py" />
         <option value="$PROJECT_DIR$/Framework/Extended_Data_Manager.py" />
-        <option value="$PROJECT_DIR$/Framework/Task_Master.py" />
-        <option value="$PROJECT_DIR$/Framework/Calendar_Tracker.py" />
         <option value="$PROJECT_DIR$/Framework/Chosen_Data_Manager.py" />
         <option value="$PROJECT_DIR$/Framework/Data_Manager.py" />
         <option value="$PROJECT_DIR$/Framework/Account_Information.py" />
-        <option value="$PROJECT_DIR$/Framework/test.py" />
         <option value="$PROJECT_DIR$/Framework/Time_Data_Set_Controller.py" />
         <option value="$PROJECT_DIR$/Framework/Five_Minute_Set.py" />
-        <option value="$PROJECT_DIR$/Framework/Thread_Factory.py" />
-        <option value="$PROJECT_DIR$/Framework/Bought_Data_Manager.py" />
         <option value="$PROJECT_DIR$/Framework/Data_Controller.py" />
         <option value="$PROJECT_DIR$/Framework/Time_Data_Set_Manager.py" />
         <option value="$PROJECT_DIR$/Framework/lib/Ra_Algorithm.py" />
         <option value="$PROJECT_DIR$/Framework/API.py" />
         <option value="$PROJECT_DIR$/Framework/Day_Decision_Process_Action_Manager.py" />
         <option value="$PROJECT_DIR$/Framework/Chosen_Statistics.py" />
-        <option value="$PROJECT_DIR$/Framework/Stock_Statistics.py" />
-        <option value="$PROJECT_DIR$/Framework/Ra_Algorithm.py" />
-        <option value="$PROJECT_DIR$/Framework/Operation_Center.py" />
-        <option value="$PROJECT_DIR$/Framework/Node_Manager.py" />
-        <option value="$PROJECT_DIR$/Framework/Stock_Statistics_Composite.py" />
-        <option value="$PROJECT_DIR$/Framework/Request_Factory.py" />
         <option value="$PROJECT_DIR$/Framework/ignore_me/ignore_me.py" />
         <option value="$PROJECT_DIR$/Framework/ignore_me_two/ignored.py" />
         <option value="$PROJECT_DIR$/Framework/dir1/test.py" />
@@ -221,10 +203,30 @@
         <option value="$PROJECT_DIR$/Test1/test.py" />
         <option value="$PROJECT_DIR$/Bay/test.py" />
         <option value="$PROJECT_DIR$/Bay/test2.py" />
+        <option value="$PROJECT_DIR$/Framework/test.py" />
+        <option value="$PROJECT_DIR$/Framework/Time_Manager.py" />
+        <option value="$PROJECT_DIR$/Framework/Stock_Statistics.py" />
+        <option value="$PROJECT_DIR$/Framework/Task_Master.py" />
+        <option value="$PROJECT_DIR$/Framework/DM_Action.py" />
+        <option value="$PROJECT_DIR$/Framework/Bought_Data_Manager.py" />
+        <option value="$PROJECT_DIR$/Framework/Node_Manager.py" />
+        <option value="$PROJECT_DIR$/Framework/Trade_Manager.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/Framework/Data_Manager_Action.py" />
+        <option value="$PROJECT_DIR$/Framework/Email_Manager.py" />
+        <option value="$PROJECT_DIR$/Framework/testing.py" />
+        <option value="$PROJECT_DIR$/Framework/Calendar_Tracker.py" />
+        <option value="$PROJECT_DIR$/Framework/Thread_Factory.py" />
+        <option value="$PROJECT_DIR$/Framework/Stock_Statistics_Composite.py" />
+        <option value="$PROJECT_DIR$/Framework/Ra_Algorithm.py" />
+        <option value="$PROJECT_DIR$/Framework/Request_Factory.py" />
+        <option value="$PROJECT_DIR$/Framework/Operation_Center.py" />
+        <option value="$PROJECT_DIR$/Framework/Odin_Algorithm.py" />
+        <option value="$PROJECT_DIR$/Framework/Async_Thread_Task.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="width" value="1440" />
     <option name="height" value="900" />
   </component>
@@ -246,6 +248,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -259,23 +262,16 @@
               <item name="MoneyMachine" type="462c0819:PsiDirectoryNode" />
               <item name="Framework" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="MoneyMachine" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MoneyMachine" type="462c0819:PsiDirectoryNode" />
-              <item name="Framework" type="462c0819:PsiDirectoryNode" />
-              <item name="Bay" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Programming/Tensorflow-Bootcamp-master/pycharmConda/bin/python" />
     <property name="settings.editor.selected.configurable" value="preferences.externalResources" />
-    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/CommanderCarr/PycharmProjects/MoneyMachine/Framework/test.py" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/CommanderCarr/PycharmProjects/MoneyMachine/Framework/Operation_Center.py" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -318,16 +314,16 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19313304" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19599427" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27932286" sideWeight="0.52503574" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.48783976" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27932286" sideWeight="0.47496423" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27932286" sideWeight="0.47496423" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -336,6 +332,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -349,58 +346,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Framework/lib/BoxTime.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="18" lean-forward="true" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/Stock_Composite.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/Day_Set.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/Perpetual_Timer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="160" column="27" lean-forward="false" selection-start-line="160" selection-start-column="27" selection-end-line="160" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/Data_Controller_Factory.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="10" column="30" lean-forward="true" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/Hour_Set.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="14" lean-forward="false" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Framework/Thread_Task.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -408,7 +357,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="16" column="39" lean-forward="true" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -416,15 +364,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="21" lean-forward="true" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/HTTP_Utility.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="44" column="41" lean-forward="false" selection-start-line="44" selection-start-column="41" selection-end-line="44" selection-end-column="65" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -432,7 +371,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -440,39 +378,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="37" lean-forward="false" selection-start-line="0" selection-start-column="37" selection-end-line="0" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/Calendar_Tracker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/Task_Master.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2223">
-          <caret line="46" column="64" lean-forward="false" selection-start-line="46" selection-start-column="28" selection-end-line="46" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/Account_Information.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/DM_Action.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="51" column="0" lean-forward="true" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -480,15 +385,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="1063" column="2" lean-forward="false" selection-start-line="1063" selection-start-column="2" selection-end-line="1063" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -496,47 +392,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="32" lean-forward="false" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/Thread_Factory.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="619" column="58" lean-forward="false" selection-start-line="619" selection-start-column="39" selection-end-line="619" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/Chosen_Data_Manager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/Bought_Data_Manager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="41" lean-forward="false" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/Time_Manager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="29" column="30" lean-forward="false" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/Time_Data_Set_Manager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-276">
-          <caret line="28" column="29" lean-forward="false" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -544,7 +399,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1131">
           <caret line="20" column="41" lean-forward="true" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -552,27 +406,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
           <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#37#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/Data_Manager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="734">
-          <caret line="80" column="27" lean-forward="false" selection-start-line="80" selection-start-column="8" selection-end-line="80" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#35#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/API.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="323" column="56" lean-forward="true" selection-start-line="323" selection-start-column="56" selection-end-line="323" selection-end-column="56" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -580,7 +413,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -588,7 +420,203 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="24" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Framework/ignore_me/ignore_me.py" />
+    <entry file="file://$PROJECT_DIR$/Framework/ignore_me_two/ignored.py" />
+    <entry file="file://$PROJECT_DIR$/Framework/dir1/test.py" />
+    <entry file="file://$PROJECT_DIR$/Framework/dir2/test.py" />
+    <entry file="file://$PROJECT_DIR$/Framework/dir3/dir3.py" />
+    <entry file="file://$PROJECT_DIR$/Framework/dir4/test.py" />
+    <entry file="file://$PROJECT_DIR$/Framework/dir5/test.py" />
+    <entry file="file://$PROJECT_DIR$/Framework/dir6/test.py" />
+    <entry file="file://$PROJECT_DIR$/Framework/Bay/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test1/test.py" />
+    <entry file="file://$PROJECT_DIR$/Framework/Bay/test2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="7" lean-forward="true" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Framework/Bay/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="4" lean-forward="false" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Framework/Time_Data_Set_Manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="28" column="29" lean-forward="false" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Framework/test.py" />
+    <entry file="file://$PROJECT_DIR$/Framework/Stock_Statistics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="29" lean-forward="true" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Framework/Data_Manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="25" column="8" lean-forward="false" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Framework/Chosen_Data_Manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="12" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Framework/Bought_Data_Manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Framework/Perpetual_Timer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="181" column="13" lean-forward="false" selection-start-line="181" selection-start-column="7" selection-end-line="181" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Framework/Data_Controller.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="26" lean-forward="true" selection-start-line="1" selection-start-column="26" selection-end-line="1" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Framework/Data_Manager_Action.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Framework/Email_Manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Framework/Node_Manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="35" column="78" lean-forward="false" selection-start-line="35" selection-start-column="48" selection-end-line="35" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Framework/Time_Manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="24" lean-forward="false" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Framework/testing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="1275" column="28" lean-forward="true" selection-start-line="1275" selection-start-column="28" selection-end-line="1275" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Framework/Calendar_Tracker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Framework/HTTP_Utility.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="37" column="52" lean-forward="false" selection-start-line="37" selection-start-column="41" selection-end-line="37" selection-end-column="73" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Framework/Task_Master.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2250">
+          <caret line="150" column="0" lean-forward="false" selection-start-line="150" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Framework/Thread_Factory.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10230">
+          <caret line="687" column="8" lean-forward="false" selection-start-line="687" selection-start-column="10" selection-end-line="687" selection-end-column="84" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Framework/Ra_Algorithm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1350">
+          <caret line="91" column="0" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Framework/Stock_Statistics_Composite.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="28" lean-forward="false" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Framework/Request_Factory.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="9" lean-forward="false" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Framework/Operation_Center.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="34" column="24" lean-forward="false" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Framework/Odin_Algorithm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="424">
+          <caret line="31" column="24" lean-forward="false" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
+          <folding>
+            <element signature="e#1#19#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -600,168 +628,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/Ra_Algorithm.py">
+    <entry file="file://$PROJECT_DIR$/Framework/Trade_Manager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="213" column="41" lean-forward="false" selection-start-line="213" selection-start-column="41" selection-end-line="213" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/Data_Controller.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/Stock_Statistics.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="28" lean-forward="false" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
+        <state relative-caret-position="165">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/Stock_Statistics_Composite.py">
+    <entry file="file://$PROJECT_DIR$/Framework/Account_Information.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="35" lean-forward="false" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="35" />
+        <state relative-caret-position="135">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/ignore_me/ignore_me.py">
+    <entry file="file://$PROJECT_DIR$/Framework/API.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        <state relative-caret-position="-2137">
+          <caret line="45" column="88" lean-forward="false" selection-start-line="45" selection-start-column="49" selection-end-line="45" selection-end-column="88" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/ignore_me_two/ignored.py">
+    <entry file="file://$PROJECT_DIR$/Framework/Async_Thread_Task.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="13" lean-forward="true" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/dir1/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/dir2/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="4" lean-forward="true" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/dir3/dir3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="4" lean-forward="false" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/dir4/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="4" lean-forward="true" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/dir5/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="4" lean-forward="true" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/dir6/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="4" lean-forward="false" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/Request_Factory.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/Bay/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Test1/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="4" lean-forward="false" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/Node_Manager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="26" column="54" lean-forward="false" selection-start-line="26" selection-start-column="54" selection-end-line="26" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/Operation_Center.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-132">
-          <caret line="268" column="25" lean-forward="false" selection-start-line="268" selection-start-column="25" selection-end-line="268" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/Bay/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="4" lean-forward="false" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/Bay/test2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="7" lean-forward="true" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
+        <state relative-caret-position="459">
+          <caret line="45" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
           <folding />
         </state>
       </provider>
