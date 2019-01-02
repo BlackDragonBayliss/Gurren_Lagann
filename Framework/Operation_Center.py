@@ -78,11 +78,6 @@ class Operation_Center:
         self.main_process_loop()
 
     def main_process_loop(self):
-        # timer condition with perp timer.
-        # Init perpetual timer
-        # setup funct that will check timer condition in Operation_Center
-
-        # def setup_timer_stock(self, delay, countToEnd, functionToInvoke, name):
         self.perpetual_timer.setup_timer_stock(1, 1000000, self.main_loop, 'main_process_loop')
 
 
