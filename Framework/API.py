@@ -13,8 +13,6 @@ def __new__(self):
 
 @app.route('/init_system', methods=['POST'])
 def init_system():
-    # Init perpetual timer
-    # setup funct that will check timer condition in Operation_Center
     operation_center = Operation_Center()
     operation_center.process_main_process_loop()
     return "initiated"
