@@ -118,7 +118,7 @@ def query_stock():
                                 return_value = 'res'
     return return_value
 
-#handled remotely by website, intake sym, begin setup operation
+
 @app.route('/data_manager_assemble', methods=['POST'])
 def dm_assemble():
     content = request.get_json()
