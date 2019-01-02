@@ -17,14 +17,3 @@ class Stock_Statistics:
 
     def get_list_date(self):
         return self.list_date
-
-
-        # def get_bid(self):
-        #     return self.bid
-        # def set_bid(self, bid):
-        #     self.bid = bid
-        #
-        # def get_ask(self):
-        #     return self.ask
-        # def set_ask(self, ask):
-        #     self.ask = ask

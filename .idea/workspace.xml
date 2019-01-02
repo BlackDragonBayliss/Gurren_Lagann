@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c72e358-cbf2-49d5-9ba7-9056b8dcdf2e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Framework/Extended_Data_Manager.py" afterPath="$PROJECT_DIR$/Framework/Extended_Data_Manager.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Framework/Stock_Statistics.py" afterPath="$PROJECT_DIR$/Framework/Stock_Statistics.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,21 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Chosen_Data_Manager.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Framework/Chosen_Data_Manager.py">
+      <file leaf-file-name="Ra_Algorithm.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Framework/Ra_Algorithm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="12" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Data_Controller_Factory.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Framework/Data_Controller_Factory.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="-1481">
+              <caret line="91" column="0" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -38,6 +28,26 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-38">
               <caret line="25" column="8" lean-forward="false" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="58" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Stock_Statistics_Composite.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Framework/Stock_Statistics_Composite.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="24" column="28" lean-forward="false" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Stock_Statistics.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Framework/Stock_Statistics.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -87,27 +97,17 @@
         <entry file="file://$PROJECT_DIR$/Framework/Email_Manager.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="405">
-              <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+              <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Extended_Data_Manager.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Extended_Data_Manager.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Framework/Extended_Data_Manager.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="195">
-              <caret line="13" column="46" lean-forward="false" selection-start-line="13" selection-start-column="46" selection-end-line="13" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Data_Controller.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Framework/Data_Controller.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <caret line="13" column="27" lean-forward="true" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -192,7 +192,6 @@
         <option value="$PROJECT_DIR$/Bay/test2.py" />
         <option value="$PROJECT_DIR$/Framework/test.py" />
         <option value="$PROJECT_DIR$/Framework/Time_Manager.py" />
-        <option value="$PROJECT_DIR$/Framework/Stock_Statistics.py" />
         <option value="$PROJECT_DIR$/Framework/Task_Master.py" />
         <option value="$PROJECT_DIR$/Framework/DM_Action.py" />
         <option value="$PROJECT_DIR$/Framework/Bought_Data_Manager.py" />
@@ -213,6 +212,7 @@
         <option value="$PROJECT_DIR$/Framework/Buy_Sell_Manager.py" />
         <option value="$PROJECT_DIR$/Framework/Day_Decision_Process_Action_Manager.py" />
         <option value="$PROJECT_DIR$/Framework/Extended_Data_Manager.py" />
+        <option value="$PROJECT_DIR$/Framework/Stock_Statistics.py" />
       </list>
     </option>
   </component>
@@ -409,13 +409,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Framework/test.py" />
-    <entry file="file://$PROJECT_DIR$/Framework/Stock_Statistics.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="29" lean-forward="true" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Framework/Perpetual_Timer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="429">
@@ -478,22 +471,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="10230">
           <caret line="687" column="8" lean-forward="false" selection-start-line="687" selection-start-column="10" selection-end-line="687" selection-end-column="84" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/Ra_Algorithm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1350">
-          <caret line="91" column="0" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/Stock_Statistics_Composite.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="28" lean-forward="false" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="28" />
           <folding />
         </state>
       </provider>
@@ -649,7 +626,7 @@
     <entry file="file://$PROJECT_DIR$/Framework/Email_Manager.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
-          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -657,7 +634,31 @@
     <entry file="file://$PROJECT_DIR$/Framework/Extended_Data_Manager.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
-          <caret line="13" column="46" lean-forward="false" selection-start-line="13" selection-start-column="46" selection-end-line="13" selection-end-column="46" />
+          <caret line="13" column="27" lean-forward="true" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Framework/Ra_Algorithm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1481">
+          <caret line="91" column="0" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Framework/Stock_Statistics_Composite.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="28" lean-forward="false" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Framework/Stock_Statistics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding />
         </state>
       </provider>
