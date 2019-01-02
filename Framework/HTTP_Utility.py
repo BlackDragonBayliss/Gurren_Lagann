@@ -25,13 +25,6 @@ class HTTP_Utility:
             responseReturned = await self.fetch(session, url, jsonRequest)
             return responseReturned
 
-    # async def async_post_top_stock(self,requestFactory):
-    #     async with aiohttp.ClientSession() as session:
-    #         jsonRequest = requestFactory.top_stock_pull()
-    #         url = 'http://localhost:3000/api/brokerage'
-    #         responseReturned = await self.fetch(session, url, jsonRequest)
-    #         return responseReturned
-
 #Top Stock
     async def async_post_stock_top_phase_internal(self,requestFactory):
         async with aiohttp.ClientSession() as session:
