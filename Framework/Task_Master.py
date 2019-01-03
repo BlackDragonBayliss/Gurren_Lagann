@@ -157,27 +157,14 @@ class Task_Master:
         list_of_objects = [data_manager, self.type_converter, self.operation_center]
         self.thread_factory.create_thread_async_initiate_bought_data_manager(list_of_objects)
 
-
-
-
-
-    # Data_Manager tasks
+    # Data_Manager (non-specific type) tasks
     def data_manager_query_stock_loop(self, data_manager):
         list_of_objects = [data_manager, self.node_manager, self]
-
         self.thread_factory.data_manager_query_stock_loop(list_of_objects)
-
+    # Parse brokerage response and consume data by data_manager
     def data_manager_query_stock_conversion_loop(self, data_manager, response):
         list_of_objects = [data_manager, response, self.type_converter]
-
         self.thread_factory.data_manager_query_stock_conversion_loop(list_of_objects)
-
-
-
-
-
-
-
 
 
     #Timer processes

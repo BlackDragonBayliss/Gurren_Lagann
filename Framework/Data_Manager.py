@@ -47,11 +47,7 @@ class Data_Manager(ABC):
         self.data_controller.init_processing()
 
     def data_pull(self):
-        # if(self.sym =="NRP"):
-        #     print("data_pull",self.sym)
-
-        # self.task_master.data_manager_query_stock_loop(self)
-        pass
+        self.task_master.data_manager_query_stock_loop(self)
 
     def handle_stock_response(self, stock):
         self.get_data_controller().handle_stock_retrieval(stock)

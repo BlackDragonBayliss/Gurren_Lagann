@@ -887,20 +887,17 @@ class Thread_Factory:
     #     t.start()
 
 
-    #DM tasks
-    def start_background_loop_data_manager_query_stock_loop(self, data_manager, node_manager, task_manager
-                                                    ):
+    # DM tasks
+    def start_background_loop_data_manager_query_stock_loop(self, data_manager, node_manager, task_manager):
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
 
         sym = data_manager.get_sym()
-
-        # data_manager.get_name()
+        # Async call to node, query brokerage, return un-parsed brokerage response
         response = loop.run_until_complete(node_manager.async_post_node_manager_query(sym))
         # print("response: ", response)
-
+        # Consume data_manager and brokerage response
         task_manager.data_manager_query_stock_conversion_loop(data_manager,response)
-
 
 
     def data_manager_query_stock_loop(self, list_of_objects):
