@@ -74,7 +74,9 @@ class Operation_Center:
         return self.__instance
 
     def process_main_process_loop(self):
+        # Init time monitoring process verify
         self.time_data_set_manager.init_time_monitoring()
+        # Init main process loop
         self.main_process_loop()
 
     def main_process_loop(self):
@@ -82,27 +84,29 @@ class Operation_Center:
 
 
     def main_loop(self):
-
+        # Early TSP gather process
         if (self.is_condition_one_met & self.calculate_time_delimiter_one()):
-            print('hit first condition')
-
-            #Get handle on process to invoke
+            print('Early TSP gather process')
             self.event_trigger_top_stock_process()
             self.is_condition_one_met = False
 
+        # TSP "hard" selection process
         if (self.is_condition_two_met & self.calculate_time_delimiter_two()):
             print('hit second condition')
-
-            #Get handle on process to invoke
             self.event_trigger_trade_time_buy_end(self.top_stock_chosen)
             self.is_condition_two_met = False
 
+        # Bought data_manager "hard" sell time
         if (self.is_condition_three_met & self.calculate_time_delimiter_three()):
-            print('hit third condition')
-
-            #Get handle on process to invoke
+            print('Bought data_manager "hard" sell time')
             self.event_trigger_trade_time_sell()
-            self.is_condition_two_met = False
+            self.is_condition_three_met = False
+
+        # End "Buy/Sell analytics process" time
+        if (self.is_condition_four_met & self.calculate_time_delimiter_four()):
+            print('End "Buy/Sell analytics process" time')
+            self.event_trigger_trade_time_sell()
+            self.is_condition_four_met = False
 
 
 
@@ -127,6 +131,12 @@ class Operation_Center:
                 return True
         return False
 
+    def calculate_time_delimiter_four(self):
+        if (self.time_manager.get_current_hour() == 11):
+            if (self.time_manager.get_current_minute() == 30):
+                self.is_condition_three_met = True
+                return True
+        return False
 
 
     def event_trigger_top_stock_process(self):
