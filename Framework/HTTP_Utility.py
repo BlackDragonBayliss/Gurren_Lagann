@@ -25,7 +25,7 @@ class HTTP_Utility:
             responseReturned = await self.fetch(session, url, jsonRequest)
             return responseReturned
 
-#Top Stock
+# TSP Gather process
     async def async_post_stock_top_phase_internal(self,requestFactory):
         async with aiohttp.ClientSession() as session:
             jsonRequest = requestFactory.lookup_top_stocks_phase_internal()

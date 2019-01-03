@@ -100,21 +100,19 @@ class Thread_Factory:
     def start_background_loop_top_stock_phase1(self, data, top_stock_composite, http_utility, request_factory,
                                                type_converter,
                                                operation_center, task_master):
-
         #Parse TSP from brokerage, call to assemble Chosen_Data_Manager objects
         top_stock_composite.set_json_top_stocks(data)
         top_stock_composite.set_highest_chosen()
         top_stock_composite.calc_highest_chosen()
-        # BREAK move to type_converter process
+
         top_stock_composite.collect_top_stock_results_in_list()
+
         data_list = top_stock_composite.get_list_chosen_stocks()
-        #
         sym_data_list = []
         for val in data_list:
             sym_data_list.append(val.get_name())
 
         operation_center.process_async_assemble_chosen_data_manager(sym_data_list)
-        # BREAK update store symbols
         # response = loop.run_until_complete(http_utility.async_post_stock_top_phase1(request_data_list, request_factory))
 
     def create_thread_async_top_stock_phase1(self, list_of_objects):
@@ -584,7 +582,9 @@ class Thread_Factory:
                                                            operation_center):
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
+
         # test_sym_list = ['NRP','AAPL','USG']
+
         chosen_data_manager_list = operation_center.get_list_chosen_data_manager()
 
         for sym in sym_list:
@@ -684,10 +684,6 @@ class Thread_Factory:
         # init chosen_data_manager's
         for data_manager in data_manager_list:
             data_manager.init_data_processing()
-
-        # operation_center.process_algorithm_determine_highest_chosen_data_manager()
-        # operation_center.process_chosen_to_bought_calculation()
-        # response = loop.run_until_complete(httpUtility.async_post_stock_query_phase1(stockComposite, requestFactory))
 
     def create_thread_async_initiate_chosen_data_manager(self, list_of_objects):
         count = 0

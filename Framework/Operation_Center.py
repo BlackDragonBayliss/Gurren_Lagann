@@ -87,7 +87,7 @@ class Operation_Center:
         # Early TSP gather process
         if (self.is_condition_one_met & self.calculate_time_delimiter_one()):
             print('Early TSP gather process')
-            self.event_trigger_top_stock_process()
+            self.event_trigger_top_stock_gather_process()
             self.is_condition_one_met = False
 
         # TSP "hard" selection process
@@ -139,23 +139,18 @@ class Operation_Center:
         return False
 
 
-    def event_trigger_top_stock_process(self):
-        # get top stock data
-        # update DM_Action
-        # execute buy process, DM_Action_Update chained
-        # task_master buy process
-
-
+    def event_trigger_top_stock_gather_process(self):
         #TSP -> Chosen_Stock init
         self.process_async_top_stock_phase1_internal()
-
-        #Given variabley lengtj
         self.initiate_monitor_odin_algorithm()
         # self.process_chosen_to_bought_calculation()
 
-
-        # self.task_master.
-        # self.process_async_top_stock_phase1()
+    # def event_trigger_top_stock_process(self):
+    #     # TSP -> Chosen_Stock init
+    #     self.process_async_top_stock_phase1_internal()
+    #     # Given variabley lengtj
+    #     self.initiate_monitor_odin_algorithm()
+    #     # self.process_chosen_to_bought_calculation()
 
     def event_trigger_trade_time_buy_end(self, data):
         # Isolate top stock and matching criteria and metrics.
@@ -178,7 +173,6 @@ class Operation_Center:
 
 
     def process_async_top_stock_phase1_internal(self):
-        print("inside process_async_top_stock_phase1_internal")
         self.task_master.create_thread_async_top_stock_phase_internal()
 
     def process_async_top_stock_phase1(self, query):
