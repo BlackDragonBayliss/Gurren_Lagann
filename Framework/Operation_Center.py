@@ -76,7 +76,6 @@ class Operation_Center:
     def process_main_process_loop(self):
         # Init time monitoring process verify
         self.time_data_set_manager.init_time_monitoring()
-        # Init main process loop
         self.main_process_loop()
 
     def main_process_loop(self):
