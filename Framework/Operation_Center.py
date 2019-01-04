@@ -145,12 +145,6 @@ class Operation_Center:
         self.initiate_monitor_odin_algorithm()
         # self.process_chosen_to_bought_calculation()
 
-    # def event_trigger_top_stock_process(self):
-    #     # TSP -> Chosen_Stock init
-    #     self.process_async_top_stock_phase1_internal()
-    #     # Given variabley lengtj
-    #     self.initiate_monitor_odin_algorithm()
-    #     # self.process_chosen_to_bought_calculation()
 
     def event_trigger_trade_time_buy_end(self, data):
         # Isolate top stock and matching criteria and metrics.
