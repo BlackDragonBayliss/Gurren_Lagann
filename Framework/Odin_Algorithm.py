@@ -21,6 +21,7 @@ class Odin_Algorithm:
 
 
     def initiate_buy_monitor_chosen(self,operation_center):
+        # Support for delay in initiation
         self.perpetual_timer_buy_monitor_pchg_delimiter.setup_timer_stock(3, 1000, operation_center.process_algorithm_determine_highest_chosen_data_manager, 'odin_buy_monitor')
 
 

@@ -14,12 +14,9 @@ class Data_Controller:
 
     def handle_stock_retrieval(self, stock):
         self.current_stock = stock
-        # later support added to conditional stock pass-over to FM set,
+        # later support added to conditional if "stock pass-over time" to FM set,
         current_five_minute_set = self.get_current_five_minute_set()
-        # current_five_minute_set.append(self.number_count)
-        # self.number_count += 1
         current_five_minute_set.append(self.current_stock)
-        print("DC FM contains:",self.get_current_five_minute_set())
 
 
     def loop_operation_analytics(self):

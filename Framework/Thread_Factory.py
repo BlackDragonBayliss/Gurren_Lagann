@@ -940,11 +940,6 @@ class Thread_Factory:
 
 
 
-
-
-
-
-
     def start_background_loop_DM_stock_creation(self, data, type_converter, operation_center):
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
