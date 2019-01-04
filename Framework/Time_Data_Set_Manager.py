@@ -32,8 +32,8 @@ class Time_Data_Set_Manager:
         self.current_hour = self.time_manager.get_current_minute()
 
         # print("time_monitor current second", self.current_second)
-        print("time_monitor current min", self.current_minute)
-        print("time_monitor current hour", self.current_hour)
+        # print("time_monitor current min", self.current_minute)
+        # print("time_monitor current hour", self.current_hour)
         self.calculate_hour_change()
         self.calculate_five_minute_change()
             # support pause time interval change
