@@ -1268,9 +1268,3 @@ import smtplib
 #   "",
 #   "Why, oh why"
 #   ])
-
-
-from Time_Manager import Time_Manager
-
-tm = Time_Manager()
-print(tm.get_current_hour())
