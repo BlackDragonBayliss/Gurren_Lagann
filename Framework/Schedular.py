@@ -18,21 +18,5 @@ class Schedular:
     def start_thread(thread):
         return 'started thread response'
 
-    def wait_thread(thread):
-        return 'hold thread response'
-
-    def add_method_from_thread(thread,method):
-        return 'method added to thread response'
-
-    def remove_method_to_thread(thread,method):
-        return 'method removed from thread response'
-
-    def list_methods(thread):
-        return 'list thread methods response'
-
-    def lock_thread(thread):
-        return 'lock thread response'
-
-
 schedular = Schedular()
 print(schedular.create_thread())
