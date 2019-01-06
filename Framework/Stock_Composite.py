@@ -1,5 +1,3 @@
-import Stock
-
 
 class Stock_Composite:
     def __init__(self, name):
