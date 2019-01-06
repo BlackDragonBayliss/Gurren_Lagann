@@ -24,6 +24,7 @@ class Ra_Algorithm:
 
 
         # On condtion met, return highest chosen #ON_MONITORING
+            #Update DM_Action chosen based on condition met, or time delimiter
 
         # #based on metrics, pchg and volatility, price, determine best choice.
         # #later addition consider Day_of_week and can_purchase_day_calculation

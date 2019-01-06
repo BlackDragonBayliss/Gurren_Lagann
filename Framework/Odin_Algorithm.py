@@ -11,7 +11,7 @@ class Odin_Algorithm:
         if self.__instance == None:
             self.__instance = object.__new__(self)
             self.instance_calendar_tracker = Calendar_Tracker()
-            self.perpetual_timer_buy_monitor_pchg_delimiter = Perpetual_Timer()
+            self.perpetual_timer_buy_analysis = Perpetual_Timer()
             self.perpetual_timer_sell_monitor_pchg_delimiter = Perpetual_Timer()
             self.is_monitoring = False
             self.max_pchg_difference_baseline = .02
@@ -22,7 +22,7 @@ class Odin_Algorithm:
 
     def initiate_buy_monitor_chosen(self,operation_center):
         # Support for delay in initiation
-        self.perpetual_timer_buy_monitor_pchg_delimiter.setup_timer_stock(3, 1000, operation_center.process_algorithm_determine_highest_chosen_data_manager, 'odin_buy_monitor')
+        self.perpetual_timer_buy_analysis.setup_timer_stock(3, 1000, operation_center.process_algorithm_determine_highest_chosen_data_manager, 'odin_buy_monitor')
 
 
     def initiate_sell_monitor_pchg_delmiter(self,operation_center):

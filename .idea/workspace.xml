@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c72e358-cbf2-49d5-9ba7-9056b8dcdf2e" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Framework/Odin_Algorithm.py" afterPath="$PROJECT_DIR$/Framework/Odin_Algorithm.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Framework/Operation_Center.py" afterPath="$PROJECT_DIR$/Framework/Operation_Center.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Framework/Ra_Algorithm.py" afterPath="$PROJECT_DIR$/Framework/Ra_Algorithm.py" />
     </list>
@@ -34,11 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Operation_Center.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Operation_Center.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Framework/Operation_Center.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="184" column="70" lean-forward="false" selection-start-line="184" selection-start-column="26" selection-end-line="184" selection-end-column="70" />
+            <state relative-caret-position="159">
+              <caret line="48" column="12" lean-forward="false" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="12" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -49,18 +50,18 @@
       <file leaf-file-name="Odin_Algorithm.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Framework/Odin_Algorithm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3">
-              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="136">
+              <caret line="23" column="7" lean-forward="true" selection-start-line="23" selection-start-column="7" selection-end-line="25" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Ra_Algorithm.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Ra_Algorithm.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Framework/Ra_Algorithm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="26" column="8" lean-forward="true" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
+            <state relative-caret-position="96">
+              <caret line="20" column="52" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -127,8 +128,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>odin</find>
-      <find>odin_algorithm</find>
       <find>highest_chosen</find>
       <find>highest</find>
       <find>process_async_phase1_market_buy</find>
@@ -150,13 +149,15 @@
       <find>data_manager_query_stock_loop</find>
       <find>process_async_initiate_chosen_data_manager</find>
       <find>initiate_monitor_odin_algorithm</find>
-      <find>initiate_buy_monitor_chosen</find>
       <find>add_five_minute_to_store</find>
       <find>five_minute_store</find>
       <find>data_manager_query_stock_conversion_loop</find>
       <find>algorithm_determine_highest_chosen_data_manager</find>
+      <find>initiate_buy_monitor_chosen</find>
+      <find>perpetual_timer_buy_monitor_pchg_delimiter</find>
       <find>process_algorithm_determine_highest_chosen_data_manager</find>
       <find>algorithm_filter_highest_chosen_data_manager</find>
+      <find>process_algorithm_filter_highest_chosen_data_manager</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -206,7 +207,6 @@
         <option value="$PROJECT_DIR$/Framework/Thread_Factory.py" />
         <option value="$PROJECT_DIR$/Framework/Time_Data_Set_Controller.py" />
         <option value="$PROJECT_DIR$/Framework/Data_Controller.py" />
-        <option value="$PROJECT_DIR$/Framework/Odin_Algorithm.py" />
         <option value="$PROJECT_DIR$/Framework/Time_Data_Set_Manager.py" />
         <option value="$PROJECT_DIR$/Framework/testing.py" />
         <option value="$PROJECT_DIR$/Framework/Schedular.py" />
@@ -214,8 +214,9 @@
         <option value="$PROJECT_DIR$/Framework/Data_Manager.py" />
         <option value="$PROJECT_DIR$/Framework/Stock_Composite.py" />
         <option value="$PROJECT_DIR$/Framework/Thread_Task.py" />
-        <option value="$PROJECT_DIR$/Framework/Operation_Center.py" />
         <option value="$PROJECT_DIR$/Framework/Ra_Algorithm.py" />
+        <option value="$PROJECT_DIR$/Framework/Odin_Algorithm.py" />
+        <option value="$PROJECT_DIR$/Framework/Operation_Center.py" />
       </list>
     </option>
   </component>
@@ -664,27 +665,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Framework/Odin_Algorithm.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="136">
+          <caret line="23" column="7" lean-forward="true" selection-start-line="23" selection-start-column="7" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Framework/Ra_Algorithm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="20" column="52" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="52" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Framework/Operation_Center.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="184" column="70" lean-forward="false" selection-start-line="184" selection-start-column="26" selection-end-line="184" selection-end-column="70" />
+        <state relative-caret-position="159">
+          <caret line="48" column="12" lean-forward="false" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="12" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/Ra_Algorithm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="26" column="8" lean-forward="true" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>

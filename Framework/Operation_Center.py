@@ -45,6 +45,8 @@ class Operation_Center:
             self.thread_factory = Thread_Factory()
             self.top_stock_composite = Top_Stock_Composite()
             self.perpetual_timer = Perpetual_Timer()
+            self.perpetual_timer_buy_analysis = Perpetual_Timer()
+
             self.thread_manager = Thread_Manager()
             self.stock_composite_manager = Stock_Composite_Manager()
             self.data_manager_action = Data_Manager_Action()
@@ -87,6 +89,7 @@ class Operation_Center:
         if (self.is_condition_one_met & self.calculate_time_delimiter_one()):
             print('Early TSP gather process')
             self.event_trigger_top_stock_gather_process()
+            self.event_trigger_buy_analysis_process()
             self.is_condition_one_met = False
 
         # TSP "hard" selection process
@@ -141,8 +144,23 @@ class Operation_Center:
     def event_trigger_top_stock_gather_process(self):
         #TSP -> Chosen_Stock init
         self.process_async_top_stock_phase1_internal()
-        self.initiate_monitor_odin_algorithm()
+        # self.initiate_monitor_odin_algorithm()
         # self.process_chosen_to_bought_calculation()
+
+    def event_trigger_buy_analysis_process(self):
+        self.perpetual_timer_buy_analysis.setup_timer_stock(3, 1000,
+                                                            self.process_algorithm_filter_highest_chosen_data_manager,
+                                                            'Ra_buy_analysis')
+    def event_trigger_buy_analysis_end(self, data):
+        # Upon buy analytics time end / call to Odin algorithm end Ra_Algo loop
+        #
+        self.end_ra_analytics()
+        return ''
+
+    def end_ra_analytics(self):
+        #Handle on ra_thread
+
+        return ''
 
 
     def event_trigger_trade_time_buy_end(self, data):
@@ -153,6 +171,7 @@ class Operation_Center:
 
         # operation_center.process_algorithm_determine_highest_chosen_data_manager()
         return ''
+
 
     def event_trigger_trade_time_sell(self):
         # trade
@@ -267,8 +286,11 @@ class Operation_Center:
 
     # BUY PROCEDURE #
     #Pre buy analytics
-    def initiate_monitor_odin_algorithm(self):
-        self.odin_algorithm.initiate_buy_monitor_chosen(self)
+    # def initiate_monitor_odin_algorithm(self):
+    #     # self.odin_algorithm.initiate_buy_monitor_chosen(self)
+    #     # Support for delay in initiation
+
+
     def process_stock_statistics_to_database(self,stock_statistics_composite):
         #Stat object to DB
         #Support for async handling
