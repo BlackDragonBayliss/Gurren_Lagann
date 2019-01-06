@@ -53,8 +53,7 @@ class Data_Manager(ABC):
         self.get_data_controller().handle_stock_retrieval(stock)
         print('inc stock last:',stock.get_last())
 
-    def register_data_controller_process(self):
-        return ''
+
     def cancel_all_data_controller_processes(self,process):
         return ''
     def cancel_data_controller_process(self,process):

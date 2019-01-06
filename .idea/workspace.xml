@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c72e358-cbf2-49d5-9ba7-9056b8dcdf2e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Framework/Data_Controller_Factory.py" afterPath="$PROJECT_DIR$/Framework/Data_Controller_Factory.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Framework/Data_Manager.py" afterPath="$PROJECT_DIR$/Framework/Data_Manager.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,16 +35,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Thread_Manager.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Framework/Thread_Manager.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Stock.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Framework/Stock.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -65,11 +55,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Data_Controller_Factory.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Data_Controller_Factory.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Framework/Data_Controller_Factory.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
               <caret line="15" column="41" lean-forward="false" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Data_Manager.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Framework/Data_Manager.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="258">
+              <caret line="55" column="0" lean-forward="true" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -206,7 +206,6 @@
         <option value="$PROJECT_DIR$/Framework/API.py" />
         <option value="$PROJECT_DIR$/Framework/HTTP_Utility.py" />
         <option value="$PROJECT_DIR$/Framework/Chosen_Data_Manager.py" />
-        <option value="$PROJECT_DIR$/Framework/Data_Manager.py" />
         <option value="$PROJECT_DIR$/Framework/Task_Master.py" />
         <option value="$PROJECT_DIR$/Framework/Thread_Factory.py" />
         <option value="$PROJECT_DIR$/Framework/Time_Data_Set_Controller.py" />
@@ -217,6 +216,7 @@
         <option value="$PROJECT_DIR$/Framework/testing.py" />
         <option value="$PROJECT_DIR$/Framework/Schedular.py" />
         <option value="$PROJECT_DIR$/Framework/Data_Controller_Factory.py" />
+        <option value="$PROJECT_DIR$/Framework/Data_Manager.py" />
       </list>
     </option>
   </component>
@@ -541,14 +541,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/Data_Manager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="52" column="57" lean-forward="false" selection-start-line="52" selection-start-column="35" selection-end-line="52" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Framework/Chosen_Data_Manager.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -681,6 +673,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="41" lean-forward="false" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Framework/Data_Manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="55" column="0" lean-forward="true" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
           <folding />
         </state>
       </provider>
