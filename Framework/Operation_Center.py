@@ -181,8 +181,8 @@ class Operation_Center:
     def process_chosen_data_manager_selection(self):
         self.task_master.create_thread_async_chosen_data_manager_selection(query)
 
-    def process_algorithm_determine_highest_chosen_data_manager(self):
-        self.ra_algorithm.algorithm_determine_highest_chosen_data_manager(self,self.get_list_chosen_data_manager(),self.stock_statistics_composite)
+    def process_algorithm_filter_highest_chosen_data_manager(self):
+        self.ra_algorithm.algorithm_filter_highest_chosen_data_manager(self,self.get_list_chosen_data_manager(),self.stock_statistics_composite)
 
     # Query
     def process_async_query_stock_phase1(self, query):

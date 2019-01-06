@@ -21,10 +21,13 @@ class Ra_Algorithm:
     def algorithm_filter_highest_chosen_data_manager(self, operation_center, data_manager_list,
                                                      stock_statistics_composite,
                                                      calendar_tracker):
+
+
+        # On condtion met, return highest chosen #ON_MONITORING
+
         # #based on metrics, pchg and volatility, price, determine best choice.
         # #later addition consider Day_of_week and can_purchase_day_calculation
 
-        # For each chosen in list
 
         for data_manager in data_manager_list:
             spread = self.calculate_spread(data_manager)
