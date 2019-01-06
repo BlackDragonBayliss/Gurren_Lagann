@@ -14,20 +14,4 @@ class Data_Controller_Factory:
         if (case == 0):
             DM_controller_instance = Data_Controller(data_manager)
             return DM_controller_instance
-            # if ():
-            #     DM_Controller_Instance = DM_Controller(sym)
-            #     # DM_Controller_Factory_Instance
-            #     return DM_Controller_Instance
-            # if ():
-            #     DM_Controller_Instance = DM_Controller(sym)
-            #     # DM_Controller_Factory_Instance
-            #     return DM_Controller_Instance
-            # if ():
-            #     DM_Controller_Instance = DM_Controller(sym)
-            #     # DM_Controller_Factory_Instance
-            #     return DM_Controller_Instance
-            # if ():
-            #     DM_Controller_Instance = DM_Controller(sym)
-            #     # DM_Controller_Factory_Instance
-            #     return DM_Controller_Instance
         return 0
