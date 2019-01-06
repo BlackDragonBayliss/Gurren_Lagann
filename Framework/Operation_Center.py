@@ -96,6 +96,7 @@ class Operation_Center:
         if (self.is_condition_two_met & self.calculate_time_delimiter_two()):
             print('hit second condition')
             self.event_trigger_trade_time_buy_end(self.top_stock_chosen)
+
             self.is_condition_two_met = False
 
         # Bought data_manager "hard" sell time
@@ -152,15 +153,14 @@ class Operation_Center:
                                                             self.process_algorithm_filter_highest_chosen_data_manager,
                                                             'Ra_buy_analysis')
     def event_trigger_buy_analysis_end(self, data):
+        #Support hook in time_detection
         # Upon buy analytics time end / call to Odin algorithm end Ra_Algo loop
-        #
         self.end_ra_analytics()
-        return ''
 
     def end_ra_analytics(self):
         #Handle on ra_thread
+        self.perpetual_timer_buy_analysis.cancel()
 
-        return ''
 
 
     def event_trigger_trade_time_buy_end(self, data):
