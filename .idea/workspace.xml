@@ -14,11 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Operation_Center.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Operation_Center.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Framework/Operation_Center.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="368" column="14" lean-forward="true" selection-start-line="368" selection-start-column="14" selection-end-line="368" selection-end-column="14" />
+            <state relative-caret-position="361">
+              <caret line="106" column="0" lean-forward="true" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -36,11 +36,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Day_Decision_Process_Action_Manager.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Day_Decision_Process_Action_Manager.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Framework/Day_Decision_Process_Action_Manager.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="414">
-              <caret line="31" column="45" lean-forward="false" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="45" />
+              <caret line="37" column="16" lean-forward="false" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
               <folding>
                 <element signature="e#54#105#0" expanded="true" />
               </folding>
@@ -129,8 +129,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>highest</find>
-      <find>process_async_phase1_market_buy</find>
       <find>trade_manager</find>
       <find>buy_stock_full_amount</find>
       <find>sell_stock</find>
@@ -158,6 +156,8 @@
       <find>process_algorithm_determine_highest_chosen_data_manager</find>
       <find>algorithm_filter_highest_chosen_data_manager</find>
       <find>process_algorithm_filter_highest_chosen_data_manager</find>
+      <find>event_trigger_top_stock_gather_process</find>
+      <find>event_trigger_buy_analysis_process</find>
       <find>event_trigger_trade_time_buy_end</find>
     </findStrings>
   </component>
@@ -216,8 +216,8 @@
         <option value="$PROJECT_DIR$/Framework/Thread_Task.py" />
         <option value="$PROJECT_DIR$/Framework/Ra_Algorithm.py" />
         <option value="$PROJECT_DIR$/Framework/Odin_Algorithm.py" />
-        <option value="$PROJECT_DIR$/Framework/Day_Decision_Process_Action_Manager.py" />
         <option value="$PROJECT_DIR$/Framework/Operation_Center.py" />
+        <option value="$PROJECT_DIR$/Framework/Day_Decision_Process_Action_Manager.py" />
       </list>
     </option>
   </component>
@@ -676,22 +676,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/Day_Decision_Process_Action_Manager.py">
+    <entry file="file://$PROJECT_DIR$/Framework/Operation_Center.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="31" column="45" lean-forward="false" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="45" />
+        <state relative-caret-position="361">
+          <caret line="106" column="0" lean-forward="true" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
           <folding>
-            <element signature="e#54#105#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Framework/Operation_Center.py">
+    <entry file="file://$PROJECT_DIR$/Framework/Day_Decision_Process_Action_Manager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="368" column="14" lean-forward="true" selection-start-line="368" selection-start-column="14" selection-end-line="368" selection-end-column="14" />
+        <state relative-caret-position="414">
+          <caret line="37" column="16" lean-forward="false" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#54#105#0" expanded="true" />
           </folding>
         </state>
       </provider>

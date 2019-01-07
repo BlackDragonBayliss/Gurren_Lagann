@@ -85,32 +85,39 @@ class Operation_Center:
 
 
     def main_loop(self):
-        # Early TSP gather process
+        # Early TSP gather process 8:30
         if (self.is_condition_one_met & self.calculate_time_delimiter_one()):
             print('Early TSP gather process')
             self.event_trigger_top_stock_gather_process()
             self.event_trigger_buy_analysis_process()
             self.is_condition_one_met = False
+        # Loop routine / Buy Analytics conditional selection process
 
-        # TSP "hard" selection process
+
+
+        # 9:30 conditional begin sell analytics
         if (self.is_condition_two_met & self.calculate_time_delimiter_two()):
             print('hit second condition')
-            self.event_trigger_trade_time_buy_end(self.top_stock_chosen)
-
+            if(self.day_decision_process_action_manager.is_stock_bought() != True):
+                self.event_trigger_trade_time_buy_end(self.top_stock_chosen)
+                self.event_trigger_buy_analysis_process_end()
             self.is_condition_two_met = False
 
-        # Bought data_manager "hard" sell time
+
+
+        # 11:30 conditional end sell analytics
         if (self.is_condition_three_met & self.calculate_time_delimiter_three()):
             print('Bought data_manager "hard" sell time')
             self.event_trigger_trade_time_sell()
             self.is_condition_three_met = False
 
-        # End "Buy/Sell analytics process" time
+
+
+        # End of day / Capture analytics and Reset
         if (self.is_condition_four_met & self.calculate_time_delimiter_four()):
             print('End "Buy/Sell analytics process" time')
             self.event_trigger_trade_time_sell()
             self.is_condition_four_met = False
-
 
 
     def calculate_time_delimiter_one(self):
@@ -135,13 +142,15 @@ class Operation_Center:
         return False
 
     def calculate_time_delimiter_four(self):
-        if (self.time_manager.get_current_hour() == 11):
+        if (self.time_manager.get_current_hour() == 13):
             if (self.time_manager.get_current_minute() == 30):
                 self.is_condition_three_met = True
                 return True
         return False
 
 
+
+    #Event conditionals
     def event_trigger_top_stock_gather_process(self):
         #TSP -> Chosen_Stock init
         self.process_async_top_stock_phase1_internal()
@@ -152,25 +161,31 @@ class Operation_Center:
         self.perpetual_timer_buy_analysis.setup_timer_stock(3, 1000,
                                                             self.process_algorithm_filter_highest_chosen_data_manager,
                                                             'Ra_buy_analysis')
-    def event_trigger_buy_analysis_end(self, data):
+
+    def event_trigger_buy_analysis_process_end(self, data):
         #Support hook in time_detection
+
+        # End buy analytics
+        # Update DM_Action
+        # self.process_async_phase1_market_buy(data)
+        # Begin sell analytics process
+
+        # operation_center.process_algorithm_determine_highest_chosen_data_manager()
+
         # Upon buy analytics time end / call to Odin algorithm end Ra_Algo loop
         self.end_ra_analytics()
+
+    def event_trigger_sell_analysis_process(self):
+        return ''
+
+    def event_trigger_sell_analysis_process_end(self):
+        return ''
+
 
     def end_ra_analytics(self):
         #Handle on ra_thread
         self.perpetual_timer_buy_analysis.cancel()
 
-
-
-    def event_trigger_trade_time_buy_end(self, data):
-        # Isolate top stock and matching criteria and metrics.
-        # trade
-        # update DM_Action
-        # self.process_async_phase1_market_buy(data)
-
-        # operation_center.process_algorithm_determine_highest_chosen_data_manager()
-        return ''
 
 
     def event_trigger_trade_time_sell(self):
@@ -365,8 +380,9 @@ class Operation_Center:
     def capture_analytics_data_manager_action(self):
         self.day_decision_process_action_manager.capture_analytics_data_manager_action()
         self.day_decision_process_action_manager.store_data_manager_action_process()
-
-        #Reset
+    #Reset
+    def reset_analytics(self):
+        return ''
 
     # Garbage collect old chosen_data_managers
     def cancel_chosen_query_collection_processes:

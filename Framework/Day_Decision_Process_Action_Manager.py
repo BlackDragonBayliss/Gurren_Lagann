@@ -34,7 +34,8 @@ class Day_Decision_Process_Action_Manager:
         #set values
 
     def store_data_manager_action_process(self, node_manager):
-        node_manager.
+        # node_manager.
+        return ''
 
     def get_data_manager_action(self):
         return self.data_manager_action
