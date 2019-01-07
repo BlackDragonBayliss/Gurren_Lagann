@@ -685,6 +685,9 @@ class Thread_Factory:
         for data_manager in data_manager_list:
             data_manager.init_data_processing()
 
+        # Update Data_Decision_Process_Action_Manager with chosen stocks
+        operation_center.day_decision_process_action_manager.set_list_chosen_data_manager(data_manager_list)
+
     def create_thread_async_initiate_chosen_data_manager(self, list_of_objects):
         count = 0
         for arg in list_of_objects:

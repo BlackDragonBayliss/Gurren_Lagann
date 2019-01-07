@@ -1,4 +1,5 @@
-import sched, time
+from time import sleep
+from threading import Timer
 from HTTP_Utility import HTTP_Utility
 from Top_Stock_Composite import Top_Stock_Composite
 from Stock_Composite import Stock_Composite
@@ -20,6 +21,7 @@ from Trade_Manager import Trade_Manager
 from Email_Manager import Email_Manager
 from Ra_Algorithm import Ra_Algorithm
 from Odin_Algorithm import Odin_Algorithm
+
 
 class Operation_Center:
     list_stock_composite = []
@@ -88,12 +90,17 @@ class Operation_Center:
         # Early TSP gather process 8:30
         if (self.is_condition_one_met & self.calculate_time_delimiter_one()):
             print('Early TSP gather process')
+            #Update Data_Decision_Process_Action_Manager with chosen stocks
             self.event_trigger_top_stock_gather_process()
+            #Timeout
+            # t = Timer(2, self.event_trigger_buy_analysis_process())
+            # t.daemon = True  # no need to kill yourself if we're already dead
+            # t.start()
+            sleep(2)  # Time in seconds.
             self.event_trigger_buy_analysis_process()
             self.is_condition_one_met = False
+
         # Loop routine / Buy Analytics conditional selection process
-
-
 
         # 9:30 conditional begin sell analytics
         if (self.is_condition_two_met & self.calculate_time_delimiter_two()):

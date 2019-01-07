@@ -1,4 +1,4 @@
-# from DM_Buy import DM_Buy
+# from Bought_Data_Buy import DM_Buy
 # from Stock import Stock
 from Data_Manager_Action import Data_Manager_Action
 from Calendar_Tracker import Calendar_Tracker
@@ -12,14 +12,16 @@ class Day_Decision_Process_Action_Manager:
             self.__instance = object.__new__(self)
             self.data_manager_action = Data_Manager_Action()
             self.instance_calendar_tracker = Calendar_Tracker()
+            self.list_chosen_data_manager = []
             # self.chosen_statistics = Chosen_Statistics()
         return self.__instance
 
-    def get_DM_Buy(self):
-        return self.DM_Buy
-
-    def set_DM_Buy(self, DM_Buy):
-        self.DM_Buy = DM_Buy
+    #Depreciated / Bought_Data_Manager stored in Operation_Center
+    # def get_DM_Buy(self):
+    #     return self.DM_Buy
+    #
+    # def set_DM_Buy(self, DM_Buy):
+    #     self.DM_Buy = DM_Buy
 
     # Analysis question stocks
     def process_check_top_chosen_DM(self):
@@ -39,3 +41,8 @@ class Day_Decision_Process_Action_Manager:
 
     def get_data_manager_action(self):
         return self.data_manager_action
+
+    def get_list_chosen_data_manager(self):
+        return self.list_chosen_data_manager
+    def set_list_chosen_data_manager(self, list_chosen_data_manager):
+        self.list_chosen_data_manager = list_chosen_data_manager
