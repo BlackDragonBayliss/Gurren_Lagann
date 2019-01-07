@@ -306,14 +306,9 @@ class Operation_Center:
         self.process_async_assemble_bought_data_manager()
 
 
-    # Garbage collect old chosen_data_managers
-    def cancel_chosen_stocks:
-        # for chosen_stock in self.get_list_chosen_data_manager()
-        #     chosen_stock.cancel
-        pass
 
-    # SELL PROCEDURE #
-    # Pre sell analytics
+    #SELL PROCEDURE
+    #Pre sell analytics
     def sell_stock(self):
         self.trade_manager.sell_stock_full_amount()
 
@@ -350,7 +345,7 @@ class Operation_Center:
 
 
 
-    # Timer processes
+    #Timer processes
     def process_async_buy_timer_delimiter(self):
         self.task_master.create_thread_async_buy_timer_delimiter()
 
@@ -360,6 +355,26 @@ class Operation_Center:
     def add_stock_composite_to_top_composite(self, stock_composite):
         self.get_top_stock_composite().get_list_stock_composites().append(stock_composite)
         # stock_composite
+
+
+
+
+
+    #End of Day
+    #Capture Analytics
+    def capture_analytics_data_manager_action(self):
+        self.day_decision_process_action_manager.capture_analytics_data_manager_action()
+        self.day_decision_process_action_manager.store_data_manager_action_process()
+
+        #Reset
+
+    # Garbage collect old chosen_data_managers
+    def cancel_chosen_query_collection_processes:
+        # for chosen_stock in self.get_list_chosen_data_manager()
+        #     chosen_stock.cancel
+        pass
+
+
 
     def generate_stock_composite(self, symbol):
         stock_composite_generated = Stock_Composite()
