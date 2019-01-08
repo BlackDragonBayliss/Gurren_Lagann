@@ -93,11 +93,10 @@ class Operation_Center:
             #Update Data_Decision_Process_Action_Manager with chosen stocks
             self.event_trigger_top_stock_gather_process()
             #Timeout
-            # t = Timer(2, self.event_trigger_buy_analysis_process())
-            # t.daemon = True  # no need to kill yourself if we're already dead
-            # t.start()
-            sleep(2)  # Time in seconds.
-            self.event_trigger_buy_analysis_process()
+            t = Timer(2, self.event_trigger_buy_analysis_process())
+            t.start()
+            # sleep(2)  # Time in seconds.
+            # self.event_trigger_buy_analysis_process()
             self.is_condition_one_met = False
 
         # Loop routine / Buy Analytics conditional selection process
@@ -168,6 +167,9 @@ class Operation_Center:
         self.perpetual_timer_buy_analysis.setup_timer_stock(3, 1000,
                                                             self.process_algorithm_filter_highest_chosen_data_manager,
                                                             'Ra_buy_analysis')
+
+    def event_trigger_buy(self):
+        self.perform_chosen_stock_trade()
 
     def event_trigger_buy_analysis_process_end(self, data):
         #Support hook in time_detection
@@ -320,8 +322,9 @@ class Operation_Center:
     #Pre buy measure
     def perform_chosen_stock_trade(self,stat_list):
         # Buy stock procedure
-        # Handle on #DM_Action update
+        # Handle on Day_Decision_Process_Action_Manager update
         self.trade_manager.buy_stock_full_amount(self,stat_list)
+
     #Post buy
     def process_transform_chosen_to_bought(self):
 

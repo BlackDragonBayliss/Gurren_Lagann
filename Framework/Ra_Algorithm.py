@@ -52,7 +52,7 @@ class Ra_Algorithm:
             if (stat_list.get_is_chosen()):
                 operation_center.perform_chosen_stock_trade(stat_list)
                 self.is_clear_stat_container = False
-        # If is_chosen_selected False, clear composite and continue process
+        # If is_chosen_selected False, clear data filter composite and continue process
         if (self.is_clear_stat_container):
             stock_statistics_composite.clear_stat_composite()
 
