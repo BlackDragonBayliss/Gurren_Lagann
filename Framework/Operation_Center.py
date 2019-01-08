@@ -15,7 +15,6 @@ from Time_Manager import Time_Manager
 from Time_Data_Set_Manager import Time_Data_Set_Manager
 from Node_Manager import Node_Manager
 from Day_Decision_Process_Action_Manager import Day_Decision_Process_Action_Manager
-from Day_Decision_Process_Storage_Manager import Day_Decision_Process_Storage_Manager
 from Stock_Statistics_Composite import Stock_Statistics_Composite
 from Trade_Manager import Trade_Manager
 from Email_Manager import Email_Manager
