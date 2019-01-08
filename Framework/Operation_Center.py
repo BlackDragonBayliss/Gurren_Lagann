@@ -56,7 +56,6 @@ class Operation_Center:
             self.time_manager = Time_Manager()
             self.time_data_set_manager = Time_Data_Set_Manager()
             self.day_decision_process_action_manager = Day_Decision_Process_Action_Manager()
-            self.day_decision_process_storage_manager = Day_Decision_Process_Storage_Manager()
             self.stock_statistics_composite = Stock_Statistics_Composite
             self.trade_manager = Trade_Manager()
             self.email_manager = Email_Manager()
@@ -68,8 +67,7 @@ class Operation_Center:
                                             self.type_converter, self.top_stock_composite, self.perpetual_timer,
                                             self.thread_manager, self.stock_composite_manager, self.data_manager_action,
                                             self.node_manager, self.time_manager,
-                                            self.time_data_set_manager, self.day_decision_process_action_manager,
-                                            self.day_decision_process_storage_manager)
+                                            self.time_data_set_manager, self.day_decision_process_action_manager)
             self.is_condition_one_met = False
             self.is_condition_two_met = False
             self.is_condition_three_met = False

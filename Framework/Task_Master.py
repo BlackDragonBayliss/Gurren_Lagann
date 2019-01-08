@@ -10,8 +10,7 @@ class Task_Master:
     def setup_instance(self, operation_center, thread_factory, http_utility, request_factory, type_converter,
                  top_stock_composite,
                  perpetual_timer, thread_manager, stock_composite_manager, dm_action, node_manager, time_manager,
-                                    time_data_set_manager, day_decision_process_action_manager,
-                                    day_decision_process_storage_manager):
+                                    time_data_set_manager, day_decision_process_action_manager):
         self.operation_center = operation_center
         self.thread_factory = thread_factory
         self.http_utility = http_utility
@@ -25,7 +24,6 @@ class Task_Master:
         self.time_manager = time_manager
         self.time_data_set_manager = time_data_set_manager
         self.day_decision_process_action_manager = day_decision_process_action_manager
-        self.day_decision_process_storage_manager = day_decision_process_storage_manager
 
 
     def perf_transform_stock(self, query):
