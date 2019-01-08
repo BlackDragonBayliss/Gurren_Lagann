@@ -17,11 +17,6 @@ class Day_Decision_Process_Action_Manager:
         return self.__instance
 
     #Depreciated / Bought_Data_Manager stored in Operation_Center
-    # def get_DM_Buy(self):
-    #     return self.DM_Buy
-    #
-    # def set_DM_Buy(self, DM_Buy):
-    #     self.DM_Buy = DM_Buy
 
     # Analysis question stocks
     def process_check_top_chosen_DM(self):
@@ -46,3 +41,6 @@ class Day_Decision_Process_Action_Manager:
         return self.list_chosen_data_manager
     def set_list_chosen_data_manager(self, list_chosen_data_manager):
         self.list_chosen_data_manager = list_chosen_data_manager
+
+    def email_end_of_day_results(self, email_manager):
+        email_manager.send_end_of_day_results()

@@ -89,9 +89,11 @@ class Operation_Center:
             print('Early TSP gather process')
             #Update Data_Decision_Process_Action_Manager with chosen stocks
             self.event_trigger_top_stock_gather_process()
-            #Timeout
-            t = Timer(2, self.event_trigger_buy_analysis_process())
-            t.start()
+
+            #Start Ra_Algorithm analysis process
+            # t = Timer(2, self.event_trigger_buy_analysis_process())
+            # t.start()
+
             # sleep(2)  # Time in seconds.
             # self.event_trigger_buy_analysis_process()
             self.is_condition_one_met = False
@@ -119,7 +121,8 @@ class Operation_Center:
         # End of day / Capture analytics and Reset
         if (self.is_condition_four_met & self.calculate_time_delimiter_four()):
             print('End "Buy/Sell analytics process" time')
-            self.event_trigger_trade_time_sell()
+            self.day_decision_process_action_manager.email_end_of_day_results(self.email_manager)
+            # self.event_trigger_trade_time_sell()
             self.is_condition_four_met = False
 
 

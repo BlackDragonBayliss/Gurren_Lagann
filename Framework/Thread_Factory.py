@@ -681,7 +681,7 @@ class Thread_Factory:
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
 
-        # init chosen_data_manager's
+        # init chosen_data_manager'sf
         for data_manager in data_manager_list:
             data_manager.init_data_processing()
 
