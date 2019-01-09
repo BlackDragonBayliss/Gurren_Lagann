@@ -101,17 +101,17 @@ class Thread_Factory:
                                                type_converter,
                                                operation_center, task_master):
         #Parse TSP from brokerage, call to assemble Chosen_Data_Manager objects
-        top_stock_composite.set_json_top_stocks(data)
-        top_stock_composite.set_highest_chosen()
-        top_stock_composite.calc_highest_chosen()
+        type_converter.set_json_top_stocks(data)
+        type_converter.set_highest_chosen()
+        type_converter.calc_highest_chosen()
 
-        top_stock_composite.collect_top_stock_results_in_list()
+        type_converter.collect_top_stock_results_in_list()
 
-        data_list = top_stock_composite.get_list_chosen_stocks()
+        data_list = type_converter.get_list_chosen_stocks()
         sym_data_list = []
         for val in data_list:
             sym_data_list.append(val.get_name())
-
+        # operation_center.list_chosen_data_manager = data_list
         operation_center.process_async_assemble_chosen_data_manager(sym_data_list)
         # response = loop.run_until_complete(http_utility.async_post_stock_top_phase1(request_data_list, request_factory))
 

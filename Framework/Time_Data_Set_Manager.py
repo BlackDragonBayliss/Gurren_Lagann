@@ -42,12 +42,12 @@ class Time_Data_Set_Manager:
     def calculate_hour_change(self):
         # print("calculating hour change")
         if (self.previous_hour == None):
-            print("INIT setting hour change")
+            # print("INIT setting hour change")
             self.previous_hour = self.current_hour
             return False
         if (self.current_hour != self.previous_hour):
             self.previous_hour = self.current_hour
-            print('hour timeshift')
+            # print('hour timeshift')
             self.time_shift_one_hour()
             return True
         return False
@@ -55,15 +55,15 @@ class Time_Data_Set_Manager:
     def calculate_five_minute_change(self):
         # print("calculating five minute change")
         if (self.previous_minute == None):
-            print("INIT setting minute change")
+            # print("INIT setting minute change")
             self.previous_minute = self.current_minute
             return False
         if (self.current_minute != self.previous_minute):
             if (self.current_minute % 5 == 0):
-                print('five_minute timeshift')
+                # print('five_minute timeshift')
 
                 if (self.current_minute % 10 == 0):
-                    print("ten_minute time_shift")
+                    # print("ten_minute time_shift")
                     self.time_shift_ten_minute()
                     self.time_shift_five_minute()
                     self.current_minute = self.previous_minute

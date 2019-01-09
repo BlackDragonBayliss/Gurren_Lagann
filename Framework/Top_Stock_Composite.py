@@ -5,7 +5,19 @@ class Top_Stock_Composite:
 
 
     def __init__(self):
-
+        self.json_top_stocks = {}
+        self.list_top_stocks = []
+        self.list_chosen_stocks = []
+        self.list_top_stocks_json = []
+        self.list_stock_commposites = []
+        self.current_count = 0;
+        self.current_count_calc_highest = 0
+        self.chosen_top_stock_val1 = 0.0;
+        self.chosen_top_stock_val2 = 0.0;
+        self.chosen_top_stock_val3 = 0.0;
+        self.chosen_top_stock_count1 = 0;
+        self.chosen_top_stock_count2 = 0;
+        self.chosen_top_stock_count3 = 0;
 
 
     def set_highest_chosen(self):

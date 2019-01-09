@@ -71,12 +71,12 @@ class Operation_Center:
             self.is_condition_one_met = False
             self.is_condition_two_met = False
             self.is_condition_three_met = False
-
+            self.is_condition_four_met = False
         return self.__instance
 
     def process_main_process_loop(self):
         # Init time monitoring process verify
-        self.time_data_set_manager.init_time_monitoring()
+        # self.time_data_set_manager.init_time_monitoring()
         self.main_process_loop()
 
     def main_process_loop(self):
@@ -85,23 +85,25 @@ class Operation_Center:
 
     def main_loop(self):
         # Early TSP gather process 8:30
-        if (self.is_condition_one_met != True & self.calculate_time_delimiter_one()):
+        if (self.is_condition_one_met != True and self.calculate_time_delimiter_one()):
             print('Early TSP gather process')
             #Update Data_Decision_Process_Action_Manager with chosen stocks
             self.event_trigger_top_stock_gather_process()
+            self.is_condition_one_met = True
 
             #Start Ra_Algorithm analysis process
             # t = Timer(2, self.event_trigger_buy_analysis_process())
             # t.start()
 
 
-            t = Timer(2, self.day_decision_process_action_manager.email_end_of_day_results(self.email_manager))
-            t.start()
+            # t = Timer(4, self.day_decision_process_action_manager.email_end_of_day_results(self.email_manager))
+            # t.start()
 
+            # self.perpetual_timer.setup_timer_stock(1, 1000000, self.day_decision_process_action_manager.email_end_of_day_results, 'main_process_loop')
             # sleep(2)  # Time in seconds.
 
             # self.event_trigger_buy_analysis_process()
-            self.is_condition_one_met = False
+            # self.is_condition_one_met = True
 
         # Loop routine / Buy Analytics conditional selection process
 
@@ -123,39 +125,38 @@ class Operation_Center:
         #
         #
         #
-        # # End of day / Capture analytics and Reset
-        # if (self.is_condition_four_met & self.calculate_time_delimiter_four()):
-        #     print('End "Buy/Sell analytics process" time')
-        #     self.day_decision_process_action_manager.email_end_of_day_results(self.email_manager)
-        #     # self.event_trigger_trade_time_sell()
-        #     self.is_condition_four_met = False
+        # End of day / Capture analytics and Reset
+        if (self.is_condition_four_met != True and self.calculate_time_delimiter_four()):
+            print('End "Buy/Sell analytics process" time')
+            self.day_decision_process_action_manager.email_end_of_day_results(self.email_manager)
+            self.is_condition_four_met = True
 
 
     def calculate_time_delimiter_one(self):
-        if(self.time_manager.get_current_hour() == 15):
-            if (self.time_manager.get_current_minute() == 38):
-                self.is_condition_one_met = True
+        if(self.time_manager.get_current_hour() == 23):
+            if (self.time_manager.get_current_minute() == 45):
+                # self.is_condition_one_met = True
                 return True
         return False
 
     def calculate_time_delimiter_two(self):
         if (self.time_manager.get_current_hour() == 9):
             if (self.time_manager.get_current_minute() == 30):
-                self.is_condition_two_met = True
+                # self.is_condition_two_met = True
                 return True
         return False
 
     def calculate_time_delimiter_three(self):
         if (self.time_manager.get_current_hour() == 11):
-            if (self.time_manager.get_current_minute() == 30):
-                self.is_condition_three_met = True
+            if (self.time_manager.get_current_minute() == 21):
+                # self.is_condition_three_met = True
                 return True
         return False
 
     def calculate_time_delimiter_four(self):
-        if (self.time_manager.get_current_hour() == 13):
-            if (self.time_manager.get_current_minute() == 30):
-                self.is_condition_three_met = True
+        if (self.time_manager.get_current_hour() == 23):
+            if (self.time_manager.get_current_minute() == 46):
+                # self.is_condition_four_met = True
                 return True
         return False
 
