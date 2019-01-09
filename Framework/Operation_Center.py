@@ -96,12 +96,6 @@ class Operation_Center:
             # t.start()
 
 
-            # t = Timer(4, self.day_decision_process_action_manager.email_end_of_day_results(self.email_manager))
-            # t.start()
-
-            # self.perpetual_timer.setup_timer_stock(1, 1000000, self.day_decision_process_action_manager.email_end_of_day_results, 'main_process_loop')
-            # sleep(2)  # Time in seconds.
-
             # self.event_trigger_buy_analysis_process()
             # self.is_condition_one_met = True
 
