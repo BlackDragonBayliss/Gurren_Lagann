@@ -40,7 +40,7 @@ class Request_Factory:
                         "sym":sym,
                         "pchg":pchg,
                         "last":last,
-                        "spread":spread
+                        "spread":spread,
                         "list_date":list_date
                        }
         return json_request
@@ -57,7 +57,7 @@ class Request_Factory:
                         "sym":sym,
                         "pchg":pchg,
                         "last":last,
-                        "spread":spread
+                        "spread":spread,
                         "list_date":list_date
                        }
         return json_request

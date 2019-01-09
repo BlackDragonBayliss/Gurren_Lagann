@@ -22,7 +22,7 @@ class Trade_Manager:
         operation_center.cancel_chosen_stocks()
 
         # Init monitoring for Odin_Algorithm
-        operation_center.
+        # operation_center.
 
     def buy_stock_partial(self, sym):
         pass

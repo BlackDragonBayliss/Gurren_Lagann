@@ -1,13 +1,24 @@
 from Stock_Composite import Stock_Composite
 from Stock import Stock
 from Account_Information import Account_Information
-from DM_Buy import DM_Buy
-import sched, time
-import calendar
+import sched, time, calendar
 
 class Type_Converter:
     def __init__(self):
-        self.name = ''
+        self.json_top_stocks = {}
+        self.list_top_stocks = []
+        self.list_chosen_stocks = []
+        self.list_top_stocks_json = []
+        self.list_stock_commposites = []
+        self.current_count = 0;
+        self.current_count_calc_highest = 0
+        self.chosen_top_stock_val1 = 0.0;
+        self.chosen_top_stock_val2 = 0.0;
+        self.chosen_top_stock_val3 = 0.0;
+        self.chosen_top_stock_count1 = 0;
+        self.chosen_top_stock_count2 = 0;
+        self.chosen_top_stock_count3 = 0;
+
 
     def top_stocks_convert_to_JSON(self, listStocks):
         self.top_stock_symbol1 = ''

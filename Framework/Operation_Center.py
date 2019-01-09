@@ -85,7 +85,7 @@ class Operation_Center:
 
     def main_loop(self):
         # Early TSP gather process 8:30
-        if (self.is_condition_one_met & self.calculate_time_delimiter_one()):
+        if (self.is_condition_one_met != True & self.calculate_time_delimiter_one()):
             print('Early TSP gather process')
             #Update Data_Decision_Process_Action_Manager with chosen stocks
             self.event_trigger_top_stock_gather_process()
@@ -94,41 +94,46 @@ class Operation_Center:
             # t = Timer(2, self.event_trigger_buy_analysis_process())
             # t.start()
 
+
+            t = Timer(2, self.day_decision_process_action_manager.email_end_of_day_results(self.email_manager))
+            t.start()
+
             # sleep(2)  # Time in seconds.
+
             # self.event_trigger_buy_analysis_process()
             self.is_condition_one_met = False
 
         # Loop routine / Buy Analytics conditional selection process
 
         # 9:30 conditional begin sell analytics
-        if (self.is_condition_two_met & self.calculate_time_delimiter_two()):
-            print('hit second condition')
-            if(self.day_decision_process_action_manager.is_stock_bought() != True):
-                self.event_trigger_trade_time_buy_end(self.top_stock_chosen)
-                self.event_trigger_buy_analysis_process_end()
-            self.is_condition_two_met = False
+        # if (self.is_condition_two_met & self.calculate_time_delimiter_two()):
+        #     print('hit second condition')
+        #     if(self.day_decision_process_action_manager.is_stock_bought() != True):
+        #         self.event_trigger_trade_time_buy_end(self.top_stock_chosen)
+        #         self.event_trigger_buy_analysis_process_end()
+        #     self.is_condition_two_met = False
 
 
 
-        # 11:30 conditional end sell analytics
-        if (self.is_condition_three_met & self.calculate_time_delimiter_three()):
-            print('Bought data_manager "hard" sell time')
-            self.event_trigger_trade_time_sell()
-            self.is_condition_three_met = False
-
-
-
-        # End of day / Capture analytics and Reset
-        if (self.is_condition_four_met & self.calculate_time_delimiter_four()):
-            print('End "Buy/Sell analytics process" time')
-            self.day_decision_process_action_manager.email_end_of_day_results(self.email_manager)
-            # self.event_trigger_trade_time_sell()
-            self.is_condition_four_met = False
+        # # 11:30 conditional end sell analytics
+        # if (self.is_condition_three_met & self.calculate_time_delimiter_three()):
+        #     print('Bought data_manager "hard" sell time')
+        #     self.event_trigger_trade_time_sell()
+        #     self.is_condition_three_met = False
+        #
+        #
+        #
+        # # End of day / Capture analytics and Reset
+        # if (self.is_condition_four_met & self.calculate_time_delimiter_four()):
+        #     print('End "Buy/Sell analytics process" time')
+        #     self.day_decision_process_action_manager.email_end_of_day_results(self.email_manager)
+        #     # self.event_trigger_trade_time_sell()
+        #     self.is_condition_four_met = False
 
 
     def calculate_time_delimiter_one(self):
-        if(self.time_manager.get_current_hour() == 8):
-            if (self.time_manager.get_current_minute() == 30):
+        if(self.time_manager.get_current_hour() == 15):
+            if (self.time_manager.get_current_minute() == 38):
                 self.is_condition_one_met = True
                 return True
         return False
@@ -343,8 +348,8 @@ class Operation_Center:
         self.node_manager.async_post_data_manager_action(self.get_data_manager_action())
 
     #Support email update
-    def process_email(self):
-        self.email_manager.send_email("commandercarr1@gmail.com",, "commandercarr1@gmail.com", "Code guru", "coding", self.get_data_manager_action())
+    # def process_email(self):
+    #     self.email_manager.send_email()
 
 
 
@@ -395,7 +400,7 @@ class Operation_Center:
         return ''
 
     # Garbage collect old chosen_data_managers
-    def cancel_chosen_query_collection_processes:
+    def cancel_chosen_query_collection_processes(self):
         # for chosen_stock in self.get_list_chosen_data_manager()
         #     chosen_stock.cancel
         pass

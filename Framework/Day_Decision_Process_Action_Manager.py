@@ -43,4 +43,9 @@ class Day_Decision_Process_Action_Manager:
         self.list_chosen_data_manager = list_chosen_data_manager
 
     def email_end_of_day_results(self, email_manager):
-        email_manager.send_end_of_day_results()
+        json_data = {   "sym1": self.get_list_chosen_data_manager()[0].get_sym(),
+                        "sym2": self.get_list_chosen_data_manager()[1].get_sym(),
+                        "sym3": self.get_list_chosen_data_manager()[2].get_sym()
+                        }
+
+        email_manager.send_end_of_day_results(json_data)
