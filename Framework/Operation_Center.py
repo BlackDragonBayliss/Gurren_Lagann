@@ -124,28 +124,24 @@ class Operation_Center:
     def calculate_time_delimiter_one(self):
         if(self.time_manager.get_current_hour() == 23):
             if (self.time_manager.get_current_minute() == 45):
-                # self.is_condition_one_met = True
                 return True
         return False
 
     def calculate_time_delimiter_two(self):
         if (self.time_manager.get_current_hour() == 9):
             if (self.time_manager.get_current_minute() == 30):
-                # self.is_condition_two_met = True
                 return True
         return False
 
     def calculate_time_delimiter_three(self):
         if (self.time_manager.get_current_hour() == 11):
             if (self.time_manager.get_current_minute() == 21):
-                # self.is_condition_three_met = True
                 return True
         return False
 
     def calculate_time_delimiter_four(self):
         if (self.time_manager.get_current_hour() == 23):
             if (self.time_manager.get_current_minute() == 46):
-                # self.is_condition_four_met = True
                 return True
         return False
 
