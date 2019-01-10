@@ -91,11 +91,6 @@ class Operation_Center:
             self.event_trigger_top_stock_gather_process()
             self.is_condition_one_met = True
 
-            #Start Ra_Algorithm analysis process
-            # t = Timer(2, self.event_trigger_buy_analysis_process())
-            # t.start()
-
-
             # self.event_trigger_buy_analysis_process()
             # self.is_condition_one_met = True
 
