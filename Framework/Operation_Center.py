@@ -68,15 +68,25 @@ class Operation_Center:
                                             self.thread_manager, self.stock_composite_manager, self.data_manager_action,
                                             self.node_manager, self.time_manager,
                                             self.time_data_set_manager, self.day_decision_process_action_manager)
-            self.is_condition_one_met = False
+            self.is_condition_top_stock_pull_gather= False
+            self.is_condition_moirae_phase_one = False
+            self.is_condition_moirae_phase_two = False
+            self.is_condition_moirae_phase_three = False
             self.is_condition_two_met = False
             self.is_condition_three_met = False
             self.is_condition_four_met = False
+
+            self.list_top_stock_pull_one = []
+            self.list_top_stock_pull_two = []
+            self.start_hour = 0
         return self.__instance
 
     def process_main_process_loop(self):
         # Init time monitoring process verify
         # self.time_data_set_manager.init_time_monitoring()
+        self.start_hour = self.time_manager.get_current_hour()
+        self.start_minute = self.time_manager.get_current_minute()
+
         self.main_process_loop()
 
     def main_process_loop(self):
@@ -85,23 +95,43 @@ class Operation_Center:
 
     def main_loop(self):
         # Early TSP gather process 8:30
-        if (self.is_condition_one_met != True and self.calculate_time_delimiter_one()):
+        if (self.is_condition_top_stock_pull_gather != True and self.calculate_time_delimiter_top_stock_pull_gather()):
             print('Early TSP gather process')
             #Update Data_Decision_Process_Action_Manager with chosen stocks
-            self.event_trigger_top_stock_gather_process()
+            self.event_trigger_top_stock_gather_process_phase_one()
             self.is_condition_one_met = True
 
-            # self.event_trigger_buy_analysis_process()
+         #Moirae phase one 8;31
+        if (self.is_condition_moirae_phase_one != True and self.calculate_time_delimiter_moirae_phase_one()):
+            print('Moirae phase one')
+            # Update Data_Decision_Process_Action_Manager with chosen stocks
+            self.create_appendage_top_stock_pull_list_one()
+            self.is_condition_moirae_phase_one = True
 
-        # Loop routine / Buy Analytics conditional selection process
+        #Moirae phase two 9:28
+        if (self.is_condition_moirae_phase_two != True and self.calculate_time_delimiter_moirae_phase_two()):
+            #transfer list tsp_1_chosen_stocks (list of liata) dm, values)
+            print('Moirae phase two')
+            #Reset type_converter calculated values
+            self.type_converter.reset_instance_values()
+            #TSP pull
+            self.event_trigger_top_stock_gather_process_phase_two()
+            self.is_condition_moirae_phase_two = True
+
+        #Moirae phase three 9:29
+        if (self.is_condition_moirae_phase_three != True and self.calculate_time_delimiter_moirae_phase_three()):
+            print('Moirae phase three')
+            #Create appendaged list
+            self.create_appendage_top_stock_pull_list_two()
+            self.is_condition_moirae_phase_three = True
+
 
         # 9:30 conditional begin sell analytics
-        # if (self.is_condition_two_met != True and self.calculate_time_delimiter_two()):
-        #     print('hit second condition')
-        #     if(self.day_decision_process_action_manager.is_stock_bought() != True):
-        #         self.event_trigger_trade_time_buy_end(self.top_stock_chosen)
-        #         self.event_trigger_buy_analysis_process_end()
-        #     self.is_condition_two_met = True
+        if (self.is_condition_two_met != True and self.calculate_time_delimiter_two()):
+            if(self.day_decision_process_action_manager.is_stock_bought() != True):
+                self.event_trigger_trade_time_buy_end(self.top_stock_chosen)
+                self.event_trigger_buy_analysis_process_end()
+            self.is_condition_two_met = True
 
 
 
@@ -120,11 +150,52 @@ class Operation_Center:
             self.is_condition_four_met = True
 
 
-    def calculate_time_delimiter_one(self):
-        if(self.time_manager.get_current_hour() == 23):
-            if (self.time_manager.get_current_minute() == 45):
+
+    def create_appendage_top_stock_pull_list_one(self):
+        #for each data_manager in data_manager_list package in list to be analyzed by DDPAM
+        for data_manager in self.get_list_chosen_data_manager():
+            current_stock = data_manager.get_data_controller().get_current_stock()
+            #Conditional that data_controller data_pull process initialized
+            self.list_top_stock_pull_one.append([data_manager,current_stock.get_name(),current_stock.get_last(),current_stock.get_pchg()])
+
+    def create_appendage_top_stock_pull_list_two(self):
+        #for each data_manager in data_manager_list package in list to be analyzed by DDPAM
+        for data_manager in self.get_list_chosen_data_manager():
+            current_stock = data_manager.get_data_controller().get_current_stock()
+            #Conditional that data_controller data_pull process initialized
+            self.list_top_stock_pull_two.append([data_manager,current_stock.get_name(),current_stock.get_last(),current_stock.get_pchg()])
+
+    def associate_appendage_top_stock_pull_list_to_day_decision_process_action_manager(self):
+        self.day_decision_process_action_manager.associate
+
+    def create_top_stock_pull_list_two(self):
+        return
+
+
+    def calculate_time_delimiter_top_stock_pull_gather(self):
+        if(self.time_manager.get_current_hour() == self.start_hour):
+            if (self.time_manager.get_current_minute() == self.start_minute):
                 return True
         return False
+
+    def calculate_time_delimiter_moirae_phase_one(self):
+        if(self.time_manager.get_current_hour() == (self.start_hour)):
+            if (self.time_manager.get_current_minute() == (self.start_minute + 1)):
+                return True
+        return False
+    def calculate_time_delimiter_moirae_phase_two(self):
+        if(self.time_manager.get_current_hour() == (self.start_hour)):
+            if (self.time_manager.get_current_minute() == (self.start_minute + 2)):
+                return True
+        return False
+
+    def calculate_time_delimiter_moirae_phase_three(self):
+        if(self.time_manager.get_current_hour() == (self.start_hour)):
+            if (self.time_manager.get_current_minute() == (self.start_minute + 3)):
+                return True
+        return False
+
+
 
     def calculate_time_delimiter_two(self):
         if (self.time_manager.get_current_hour() == 9):
@@ -147,11 +218,14 @@ class Operation_Center:
 
 
     #Event conditionals
-    def event_trigger_top_stock_gather_process(self):
+    def event_trigger_top_stock_gather_process_phase_one(self):
         #TSP -> Chosen_Stock init
         self.process_async_top_stock_phase1_internal()
         # self.initiate_monitor_odin_algorithm()
         # self.process_chosen_to_bought_calculation()
+    def event_trigger_top_stock_gather_process_phase_two(self):
+        #Phase 2 TSP process
+        self.process_async_top_stock_phase1_internal()
 
     def event_trigger_buy_analysis_process(self):
         self.perpetual_timer_buy_analysis.setup_timer_stock(3, 1000,

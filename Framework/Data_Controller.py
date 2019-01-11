@@ -134,3 +134,6 @@ class Data_Controller:
             five_minute_data_set.get_list_stock_container().append(stock)
             i += 1
         return five_minute_data_set_store
+
+    def get_current_stock(self):
+        return self.current_stock
