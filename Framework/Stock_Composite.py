@@ -1,17 +1,17 @@
 
 class Stock_Composite:
-    def __init__(self, name):
-        self.name = name
+    def __init__(self, sym):
+        self.sym = sym
         self.list_stocks = []
 
     def get_list_stocks(self):
         return self.listStocks
 
-    def get_name(self):
-        return self.name
+    def get_sym(self):
+        return self.sym
 
-    def set_name(self, name):
-        self.name = name
+    def set_sym(self, sym):
+        self.sym = sym
 
     def get_generation_iteration(self):
         return self.generationIteration

@@ -94,12 +94,12 @@ class Type_Converter:
             # Create stockcomposite synced with symbol
             # operationCenter.add_stock_composite_to_top_composite(operationCenter.generate_stock_composite(stockCreated.get_symbol()))
 
-            operation_center.add_stock_composite_to_top_composite(Stock_Composite(stock_created.get_name()))
+            operation_center.add_stock_composite_to_top_composite(Stock_Composite(stock_created.get_sym()))
             # Handle topStockComposite
             top_stock_composite = operation_center.get_top_stock_composite()
             # Handle stockComposite
             # print(stockCreated.get_symbol())
-            stock_composite = top_stock_composite.get_specific_stock_composite_in_list(stock_created.get_name())
+            stock_composite = top_stock_composite.get_specific_stock_composite_in_list(stock_created.get_sym())
             # stockComposite = topStockComposite.get_listStockComposites()[0]
             # print(stockComposite.get_listStocks())
             stock_composite.get_list_stocks().append(stock_created)
@@ -295,10 +295,21 @@ class Type_Converter:
         for key, value in self.json_top_stocks.items():
             if key == "data_set":
                 self.list_top_stocks_json = value
+                # print(self.list_top_stocks_json)
         for val in self.list_top_stocks_json:
             self.top_stock = Stock()
+            is_applicable_stock = True
             for key, value in val.items():
                 if key == 'symbol':
+                    #if symbol cotains non-alphabetic characters, continue
+                    if ("." in value):
+                        print("value", value, "contains a .'")
+                        is_applicable_stock = False
+                        break
+                    if ("\'" in value):
+                        print("value", value, "contains a .'")
+                        is_applicable_stock = False
+                        break
                     self.top_stock.set_sym(value)
                 if key == 'pchg':
                     self.top_stock.set_pchg(value)
@@ -306,13 +317,15 @@ class Type_Converter:
                     self.top_stock.set_pcls(value)
                 if key == 'last':
                     self.top_stock.set_last(value)
-            self.list_top_stocks.append(self.top_stock)
-            print("length in set_highest "+str(len(self.list_top_stocks)))
+
+            if(is_applicable_stock):
+                self.list_top_stocks.append(self.top_stock)
+            # print("length in set_highest "+str(len(self.list_top_stocks)))
 
     def calc_highest_chosen(self):
         # print(self.listTopStocks)
         for val in self.list_top_stocks:
-            sym = val.get_name()
+            sym = val.get_sym()
             pchg = float(val.get_pchg())
 
             if (float(pchg) > self.chosen_top_stock_val3):
@@ -333,10 +346,10 @@ class Type_Converter:
 
     def collect_top_stock_results_in_list(self):
         # print(len(self.listChosenStocks))
-        print(len(self.list_top_stocks))
-        print(self.chosen_top_stock_count1)
-        print(self.chosen_top_stock_count2)
-        print(self.chosen_top_stock_count3)
+        print("length top stocks",len(self.list_top_stocks))
+        print("count1",self.chosen_top_stock_count1)
+        print("count2",self.chosen_top_stock_count2)
+        print("count3",self.chosen_top_stock_count3)
 
         chosen_object1 = self.list_top_stocks[self.chosen_top_stock_count1]
         chosen_object2 = self.list_top_stocks[self.chosen_top_stock_count2]
@@ -345,7 +358,7 @@ class Type_Converter:
         self.list_chosen_stocks.append(chosen_object2)
         self.list_chosen_stocks.append(chosen_object3)
         for val in self.list_chosen_stocks:
-            print(val.get_name())
+            print(val.get_sym())
 
 
     def clear_top_stocks_processing_values(self):
@@ -386,7 +399,7 @@ class Type_Converter:
     def get_specific_stock_composite_in_list(self, sym):
         list_stock_composites = self.get_list_stock_composites()
         for stock_composite in list_stock_composites:
-            if stock_composite.get_name() == sym:
+            if stock_composite.get_sym() == sym:
                 return stock_composite
     def reset_instance_values(self):
         self.json_top_stocks = {}

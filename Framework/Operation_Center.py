@@ -99,7 +99,7 @@ class Operation_Center:
             print('Early TSP gather process')
             #Update Data_Decision_Process_Action_Manager with chosen stocks
             self.event_trigger_top_stock_gather_process_phase_one()
-            self.is_condition_one_met = True
+            self.is_condition_top_stock_pull_gather = True
 
          #Moirae phase one 8;31
         if (self.is_condition_moirae_phase_one != True and self.calculate_time_delimiter_moirae_phase_one()):
@@ -159,14 +159,14 @@ class Operation_Center:
         for data_manager in self.get_list_chosen_data_manager():
             current_stock = data_manager.get_data_controller().get_current_stock()
             #Conditional that data_controller data_pull process initialized
-            self.list_top_stock_pull_one.append([data_manager,current_stock.get_name(),current_stock.get_last(),current_stock.get_pchg()])
+            self.list_top_stock_pull_one.append([data_manager,current_stock.get_sym(),current_stock.get_last(),current_stock.get_pchg()])
 
     def create_appendage_top_stock_pull_list_two(self):
         #for each data_manager in data_manager_list package in list to be analyzed by DDPAM
         for data_manager in self.get_list_chosen_data_manager():
             current_stock = data_manager.get_data_controller().get_current_stock()
             #Conditional that data_controller data_pull process initialized
-            self.list_top_stock_pull_two.append([data_manager,current_stock.get_name(),current_stock.get_last(),current_stock.get_pchg()])
+            self.list_top_stock_pull_two.append([data_manager,current_stock.get_sym(),current_stock.get_last(),current_stock.get_pchg()])
 
     def associate_appendage_top_stock_pull_list_to_day_decision_process_action_manager(self):
         self.day_decision_process_action_manager.associate_top_stock_pull_lists(self.list_top_stock_pull_one,self.list_top_stock_pull_two)

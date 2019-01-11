@@ -4,18 +4,18 @@ from Stock_Composite import Stock_Composite
 
 class Stock_Composite_Manager:
     def __init__(self):
-        self.symbol = ''
+        self.sym = ''
         self.generation_iteration = 0
         self.stock_composite_list = []
 
     def get_listStocks(self):
         return self.listStocks
 
-    def get_symbol(self):
-        return self.symbol
+    def get_sym(self):
+        return self.sym
 
-    def set_symbol(self, symbol):
-        self.symbol = symbol
+    def set_sym(self, sym):
+        self.sym = sym
 
     def get_generationIteration(self):
         return self.generationIteration
