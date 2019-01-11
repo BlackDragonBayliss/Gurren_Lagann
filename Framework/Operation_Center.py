@@ -123,15 +123,18 @@ class Operation_Center:
             print('Moirae phase three')
             #Create appendaged list
             self.create_appendage_top_stock_pull_list_two()
+            self.associate_appendage_top_stock_pull_list_to_day_decision_process_action_manager()
+
+            self.day_decision_process_action_manager.email_end_of_day_results(self.email_manager)
             self.is_condition_moirae_phase_three = True
 
 
         # 9:30 conditional begin sell analytics
-        if (self.is_condition_two_met != True and self.calculate_time_delimiter_two()):
-            if(self.day_decision_process_action_manager.is_stock_bought() != True):
-                self.event_trigger_trade_time_buy_end(self.top_stock_chosen)
-                self.event_trigger_buy_analysis_process_end()
-            self.is_condition_two_met = True
+        # if (self.is_condition_two_met != True and self.calculate_time_delimiter_two()):
+        #     if(self.day_decision_process_action_manager.is_stock_bought() != True):
+        #         self.event_trigger_trade_time_buy_end(self.top_stock_chosen)
+        #         self.event_trigger_buy_analysis_process_end()
+        #     self.is_condition_two_met = True
 
 
 
@@ -144,10 +147,10 @@ class Operation_Center:
         #
         #
         # End of day / Capture analytics and Reset
-        if (self.is_condition_four_met != True and self.calculate_time_delimiter_four()):
-            print('End "Buy/Sell analytics process" time')
-            self.day_decision_process_action_manager.email_end_of_day_results(self.email_manager)
-            self.is_condition_four_met = True
+        # if (self.is_condition_four_met != True and self.calculate_time_delimiter_four()):
+        #     print('End "Buy/Sell analytics process" time')
+        #     self.day_decision_process_action_manager.email_end_of_day_results(self.email_manager)
+        #     self.is_condition_four_met = True
 
 
 
@@ -166,7 +169,7 @@ class Operation_Center:
             self.list_top_stock_pull_two.append([data_manager,current_stock.get_name(),current_stock.get_last(),current_stock.get_pchg()])
 
     def associate_appendage_top_stock_pull_list_to_day_decision_process_action_manager(self):
-        self.day_decision_process_action_manager.associate
+        self.day_decision_process_action_manager.associate_top_stock_pull_lists(self.list_top_stock_pull_one,self.list_top_stock_pull_two)
 
     def create_top_stock_pull_list_two(self):
         return

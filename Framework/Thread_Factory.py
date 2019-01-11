@@ -10,11 +10,6 @@ class Thread_Factory:
     def __init__(self):
         self.name = ''
 
-    def get_name(self):
-        return self.name
-
-    def set_name(self, name):
-        self.name = name
 
     def start_background_loop_transform_stock(self, data, stock_composite, http_utility, request_factory,
                                               type_converter,
@@ -24,7 +19,7 @@ class Thread_Factory:
         operation_center_stock_list = operation_center_stock_composite_list[0].get_list_stocks()
         print(operation_center_stock_list[0].get_last())
 
-    def create_thread_async_transform_stock(self, list_off_objects):
+    def create_thread_async_transform_stock(self, list_of_objects):
         count = 0
         for arg in list_of_objects:
             if (count == 0):
@@ -110,7 +105,7 @@ class Thread_Factory:
         data_list = type_converter.get_list_chosen_stocks()
         sym_data_list = []
         for val in data_list:
-            sym_data_list.append(val.get_name())
+            sym_data_list.append(val.get_sym())
         # operation_center.list_chosen_data_manager = data_list
         operation_center.process_async_assemble_chosen_data_manager(sym_data_list)
         # response = loop.run_until_complete(http_utility.async_post_stock_top_phase1(request_data_list, request_factory))

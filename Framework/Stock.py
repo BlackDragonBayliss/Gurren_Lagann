@@ -3,9 +3,9 @@ class Stock:
     def __init__(self):
         self.name = ''
 
-    def get_name (self):
+    def get_sym (self):
         return self.name
-    def set_name (self, name):
+    def set_sym (self, name):
         self.name = name
 
     def get_pchg (self):

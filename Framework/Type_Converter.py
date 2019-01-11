@@ -84,7 +84,7 @@ class Type_Converter:
             data_set_group_5_3 = data_set_group_5_2[1].split('</bid');
             data_set_group_6_3 = data_set_group_6_2[1].split('</ask');
             stock_created = Stock()
-            stock_created.set_name(str(data_set_group_1_3[0]))
+            stock_created.set_sym(str(data_set_group_1_3[0]))
             stock_created.set_pchg(float(data_set_group_2_3[0]))
             stock_created.set_pcls(float(data_set_group_3_3[0]))
             stock_created.set_last(float(data_set_group_4_3[0]))
@@ -121,7 +121,7 @@ class Type_Converter:
 
         stock_created = Stock()
 
-        stock_created.set_name(data_set_group_1_3[0])
+        stock_created.set_sym(data_set_group_1_3[0])
         stock_created.set_pchg(data_set_group_2_3[0])
         stock_created.set_pcls(data_set_group_3_3[0])
         stock_created.set_last(data_set_group_4_3[0])
@@ -152,7 +152,7 @@ class Type_Converter:
 
         stock_created = Stock()
 
-        stock_created.set_name(data_set_group_1_3[0])
+        stock_created.set_sym(data_set_group_1_3[0])
         stock_created.set_pchg(data_set_group_2_3[0])
         stock_created.set_pcls(data_set_group_3_3[0])
         stock_created.set_last(data_set_group_4_3[0])
@@ -224,7 +224,7 @@ class Type_Converter:
 
         sell_stock_instance = Stock()
 
-        sell_stock_instance.set_name(data_set_group_1_3[0])
+        sell_stock_instance.set_sym(data_set_group_1_3[0])
         sell_stock_instance.set_pchg(data_set_group_2_3[0])
         sell_stock_instance.set_pcls(data_set_group_3_3[0])
         sell_stock_instance.set_last(data_set_group_4_3[0])
@@ -299,7 +299,7 @@ class Type_Converter:
             self.top_stock = Stock()
             for key, value in val.items():
                 if key == 'symbol':
-                    self.top_stock.set_name(value)
+                    self.top_stock.set_sym(value)
                 if key == 'pchg':
                     self.top_stock.set_pchg(value)
                 if key == 'pcls':
@@ -368,12 +368,6 @@ class Type_Converter:
     def get_list_top_stocks(self):
         return self.list_top_stocks
 
-    def get_name(self):
-        return self.name
-
-    def set_name(self, name):
-        self.name = name
-
     def get_json_top_stocks(self):
         return self.json_top_stocks
 
@@ -389,10 +383,10 @@ class Type_Converter:
     def get_list_stock_composites(self):
         return self.list_stock_commposites
 
-    def get_specific_stock_composite_in_list(self, name):
+    def get_specific_stock_composite_in_list(self, sym):
         list_stock_composites = self.get_list_stock_composites()
         for stock_composite in list_stock_composites:
-            if stock_composite.get_name() == name:
+            if stock_composite.get_name() == sym:
                 return stock_composite
     def reset_instance_values(self):
         self.json_top_stocks = {}
