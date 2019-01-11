@@ -96,7 +96,7 @@ class Operation_Center:
         # Loop routine / Buy Analytics conditional selection process
 
         # 9:30 conditional begin sell analytics
-        # if (self.is_condition_two_met & self.calculate_time_delimiter_two()):
+        # if (self.is_condition_two_met != True and self.calculate_time_delimiter_two()):
         #     print('hit second condition')
         #     if(self.day_decision_process_action_manager.is_stock_bought() != True):
         #         self.event_trigger_trade_time_buy_end(self.top_stock_chosen)
@@ -106,7 +106,7 @@ class Operation_Center:
 
 
         # # 11:30 conditional end sell analytics
-        # if (self.is_condition_three_met & self.calculate_time_delimiter_three()):
+        # if (self.is_condition_three_met != True and self.calculate_time_delimiter_three()):
         #     print('Bought data_manager "hard" sell time')
         #     self.event_trigger_trade_time_sell()
         #     self.is_condition_three_met = True
@@ -165,7 +165,7 @@ class Operation_Center:
         #Support hook in time_detection
 
         # End buy analytics
-        # Update DM_Action
+        # Update DDMA process
         # self.process_async_phase1_market_buy(data)
         # Begin sell analytics process
 
