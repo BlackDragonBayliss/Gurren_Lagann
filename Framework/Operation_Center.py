@@ -92,7 +92,6 @@ class Operation_Center:
             self.is_condition_one_met = True
 
             # self.event_trigger_buy_analysis_process()
-            # self.is_condition_one_met = True
 
         # Loop routine / Buy Analytics conditional selection process
 
@@ -102,7 +101,7 @@ class Operation_Center:
         #     if(self.day_decision_process_action_manager.is_stock_bought() != True):
         #         self.event_trigger_trade_time_buy_end(self.top_stock_chosen)
         #         self.event_trigger_buy_analysis_process_end()
-        #     self.is_condition_two_met = False
+        #     self.is_condition_two_met = True
 
 
 
@@ -110,7 +109,7 @@ class Operation_Center:
         # if (self.is_condition_three_met & self.calculate_time_delimiter_three()):
         #     print('Bought data_manager "hard" sell time')
         #     self.event_trigger_trade_time_sell()
-        #     self.is_condition_three_met = False
+        #     self.is_condition_three_met = True
         #
         #
         #
