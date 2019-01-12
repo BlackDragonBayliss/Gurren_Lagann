@@ -409,11 +409,6 @@ class Operation_Center:
         #Support for async handling
         self.node_manager.async_post_data_manager_action(self.get_data_manager_action())
 
-    #Support email update
-    # def process_email(self):
-    #     self.email_manager.send_email()
-
-
 
     #Case Analytics
     #Case condition 1
@@ -498,7 +493,6 @@ class Operation_Center:
     def get_list_data_managers(self):
         return self.list_data_managers
 
-    # Return type data account
     def get_list_extended_data_manager(self):
         return self.list_extended_data_manager
 
