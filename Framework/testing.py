@@ -1268,3 +1268,62 @@ import smtplib
 #   "",
 #   "Why, oh why"
 #   ])
+
+
+
+
+# def json_creater(self, list_of_values):
+#     # chosen_stock_stat = data_manager_action.get_chosen_stock_statistics()
+#     # Support for sell field updates
+#
+#     # json_begining = "{"
+#     json_request = {"request_type": "store_data_manager_action",
+#                     "sym": sym,
+#                     "pchg": pchg,
+#                     "last": last,
+#                     "spread": spread,
+#                     "list_date": list_date
+#                     }
+#     return json_request
+
+
+
+
+
+import aiohttp
+import asyncio
+from threading import Thread
+# from Request_Factory import Request_Factory
+
+class Node_Manager:
+    __instance = None
+    def __new__(self):
+        if self.__instance == None:
+            self.__instance = object.__new__(self)
+            # self.request_factory = Request_Factory()
+        return self.__instance
+
+    async def fetch(self,session, url, data):
+        async with session.post(url, data=data) as response:
+            return await response.text()
+
+    async def test_list_post(self,list_items):
+        async with aiohttp.ClientSession() as session:
+            json_request = json_request = {
+                    "request_type": "test_list_post",
+                    "sym": "symbol",
+                    "list_items": list_items
+                    }
+            url = 'http://localhost:3000/api/brokerage'
+            response_returned = await self.fetch(session, url, json_request)
+            return response_returned
+
+nm = Node_Manager()
+
+
+
+loop = asyncio.new_event_loop()
+asyncio.set_event_loop(loop)
+response = loop.run_until_complete(nm.test_list_post([1,2,3]))
+
+
