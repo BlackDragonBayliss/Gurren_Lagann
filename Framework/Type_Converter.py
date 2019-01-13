@@ -59,17 +59,11 @@ class Type_Converter:
         return jsonRequest
 
     def parse_stock_queries(self, str_to_parse, operation_center):
-        # Split strToParse into stock results, store in stockResultsList
         data_set_group_0_1 = str_to_parse.split('</quotetype>')
         data_set_group_0_2 = data_set_group_0_1[1].split('</quotetype>')
         data_set_group_0_3 = data_set_group_0_2[0].split('</quotes>')
         data_set_group_0_4 = data_set_group_0_3[0].split('</quote>')
-        data_set_group_0_4 = data_set_group_0_4[:-1]
-        # Luck is the religion of fools.
-        # index1 = 0
         for val in data_set_group_0_4:
-            # print('index '+str(index1))
-            # index1 += 1
             data_set_group_1_2 = val.split('<symbol>');
             data_set_group_2_2 = val.split('<pchg>');
             data_set_group_3_2 = val.split('<pcls>');
@@ -91,17 +85,9 @@ class Type_Converter:
             stock_created.set_bid(float(data_set_group_5_3[0]))
             stock_created.set_ask(float(data_set_group_6_3[0]))
 
-            # Create stockcomposite synced with symbol
-            # operationCenter.add_stock_composite_to_top_composite(operationCenter.generate_stock_composite(stockCreated.get_symbol()))
-
             operation_center.add_stock_composite_to_top_composite(Stock_Composite(stock_created.get_sym()))
-            # Handle topStockComposite
             top_stock_composite = operation_center.get_top_stock_composite()
-            # Handle stockComposite
-            # print(stockCreated.get_symbol())
             stock_composite = top_stock_composite.get_specific_stock_composite_in_list(stock_created.get_sym())
-            # stockComposite = topStockComposite.get_listStockComposites()[0]
-            # print(stockComposite.get_listStocks())
             stock_composite.get_list_stocks().append(stock_created)
 
     def parse_stock_query(self, str_to_parse):
@@ -127,12 +113,6 @@ class Type_Converter:
         stock_created.set_last(data_set_group_4_3[0])
         stock_created.set_bid(data_set_group_5_3[0])
         stock_created.set_ask(data_set_group_6_3[0])
-
-        # stock_composite = composite_manager.create_stock_composite(stock_created.get_name())
-        #
-        # stock_composite.get_list_stocks().append(stock_created)
-        #we want to beind a stockcomposite
-
         return stock_created
 
     def parse_symbol_query(self, str_to_parse):
@@ -168,9 +148,6 @@ class Type_Converter:
 
         account_information = Account_Information()
         account_information.set_balance(data_set_group_1_3[0])
-
-        # print(account_information.get_balance())
-
         return account_information
 
     def parse_market_buy(self, str_to_parse, DM_Action_instance):
@@ -235,8 +212,6 @@ class Type_Converter:
         # Set buy information into DM_Action
         DM_Buy_instance = DM_Action_instance.get_DM_Buy()
 
-        # DM_Action_instance.set_name(sell_stock_instance.get_name())
-        # DM_Buy_instance
         DM_Action_instance.set_is_day_trade(True)
         # ts = time.time()
         # currentTime = time.localtime(ts)
