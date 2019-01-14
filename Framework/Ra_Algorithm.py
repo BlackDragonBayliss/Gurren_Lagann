@@ -93,44 +93,6 @@ class Ra_Algorithm:
             return True
         return False
 
-
-        # def calculate_pchg_labels(self, stock_statistics_composite):
-        #
-        #     # Handle on stat
-        #     stat_list_one = stock_statistics_composite.get_stat_composite()[0]
-        #     stat_list_two = stock_statistics_composite.get_stat_composite()[1]
-        #     stat_list_three = stock_statistics_composite.get_stat_composite()[2]
-        #
-        #     pchg_one = stat_list_one[1]
-        #     pchg_two = stat_list_two[1]
-        #     pchg_three = stat_list_three[1]
-        #
-        #     percentage_list = [pchg_one, pchg_two, pchg_three]
-        #     percentage_transformed_list = []
-        #
-        #     print("Ra_Algorithm list of percentages to be transformed:", percentage_list)
-        #
-        #     for val in percentage_list:
-        #         resultant = (100 * val)
-        #         percentage_transformed_list.append(resultant)
-        #
-        #     sorted_list = sorted(percentage_transformed_list, key=int)
-        #     print("Sorted list", sorted_list)
-        #     # Will give val at index
-        #     current_index = 0
-        #     for val in percentage_transformed_list:
-        #         if (val == sorted_list[0]):
-        #             stock_statistics_composite.set_chosen_index(current_index)
-        #         current_index += 1
-
-
-
-        # Get filtered paramatized data_list
-        # parameterized_data_list = self.calculate_metrics_data_list()
-
-        # Optimize conditions determine best stock
-        # self.calculate_optimized_chosen_selection(parameterized_data_list)
-
     def calculate_spread(self, data_manager):
         # Handle on each FM set, generate_five_minute_data_set
         data_manager.get_time_data_set_controller().set_five_minute_store(
