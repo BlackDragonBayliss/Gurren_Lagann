@@ -80,8 +80,6 @@ class Operation_Center:
         return self.__instance
 
     def process_main_process_loop(self):
-        # Init time monitoring process verify
-        # self.time_data_set_manager.init_time_monitoring()
         self.start_hour = self.time_manager.get_current_hour()
         self.start_minute = self.time_manager.get_current_minute()
 
@@ -99,14 +97,14 @@ class Operation_Center:
             self.event_trigger_top_stock_gather_process_phase_one()
             self.is_condition_top_stock_pull_gather = True
 
-         #Moirae phase one 8;31
+         # Moirae phase one 8;31
         if (self.is_condition_moirae_phase_one != True and self.calculate_time_delimiter_moirae_phase_one()):
             print('Moirae phase one')
             # Update Data_Decision_Process_Action_Manager with chosen stocks
             self.create_appendage_top_stock_pull_list_one()
             self.is_condition_moirae_phase_one = True
 
-        #Moirae phase two 9:28
+        # Moirae phase two 9:28
         if (self.is_condition_moirae_phase_two != True and self.calculate_time_delimiter_moirae_phase_two()):
             #transfer list tsp_1_chosen_stocks (list of liata) dm, values)
             print('Moirae phase two')
@@ -116,7 +114,7 @@ class Operation_Center:
             self.event_trigger_top_stock_gather_process_phase_two()
             self.is_condition_moirae_phase_two = True
 
-        #Moirae phase three 9:29
+        # Moirae phase three 9:29
         if (self.is_condition_moirae_phase_three != True and self.calculate_time_delimiter_moirae_phase_three()):
             print('Moirae phase three')
             #Create appendaged list
@@ -168,9 +166,6 @@ class Operation_Center:
 
     def associate_appendage_top_stock_pull_list_to_day_decision_process_action_manager(self):
         self.day_decision_process_action_manager.associate_top_stock_pull_lists(self.list_top_stock_pull_one,self.list_top_stock_pull_two)
-
-    def create_top_stock_pull_list_two(self):
-        return
 
 
     def calculate_time_delimiter_top_stock_pull_gather(self):
@@ -257,7 +252,6 @@ class Operation_Center:
 
 
     def end_ra_analytics(self):
-        #Handle on ra_thread
         self.perpetual_timer_buy_analysis.cancel()
 
 
@@ -267,9 +261,6 @@ class Operation_Center:
         # update stock query mechanism
         # update DM_Action
         self.process_async_phase2_market_sell()
-
-    def event_trigger_update_DM_action(self):
-        return ''
 
 
 
