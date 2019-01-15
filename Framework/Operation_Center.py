@@ -18,7 +18,6 @@ from Day_Decision_Process_Action_Manager import Day_Decision_Process_Action_Mana
 from Stock_Statistics_Composite import Stock_Statistics_Composite
 from Trade_Manager import Trade_Manager
 from Email_Manager import Email_Manager
-from Ra_Algorithm import Ra_Algorithm
 from Odin_Algorithm import Odin_Algorithm
 
 
@@ -59,7 +58,6 @@ class Operation_Center:
             self.stock_statistics_composite = Stock_Statistics_Composite
             self.trade_manager = Trade_Manager()
             self.email_manager = Email_Manager()
-            self.ra_algorithm = Ra_Algorithm()
             self.odin_algorithm = Odin_Algorithm()
             self.task_master = Task_Master()
             self.task_master.setup_instance(self.__instance, self.thread_factory, self.http_utility,
