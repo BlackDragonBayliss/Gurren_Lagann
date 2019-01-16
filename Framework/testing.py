@@ -1290,40 +1290,95 @@ import smtplib
 
 
 
-import aiohttp
-import asyncio
-from threading import Thread
-# from Request_Factory import Request_Factory
+# import aiohttp
+# import asyncio
+# from threading import Thread
+# # from Request_Factory import Request_Factory
+#
+# class Node_Manager:
+#     __instance = None
+#     def __new__(self):
+#         if self.__instance == None:
+#             self.__instance = object.__new__(self)
+#             # self.request_factory = Request_Factory()
+#         return self.__instance
+#
+#     async def fetch(self,session, url, data):
+#         async with session.post(url, data=data) as response:
+#             return await response.text()
+#
+#     async def test_list_post(self,list_items):
+#         async with aiohttp.ClientSession() as session:
+#             json_request = json_request = {
+#                     "request_type": "test_list_post",
+#                     "sym": "symbol",
+#                     "list_items": list_items
+#                     }
+#             url = 'http://localhost:3000/api/brokerage'
+#             response_returned = await self.fetch(session, url, json_request)
+#             return response_returned
+#
+# nm = Node_Manager()
+#
+#
+#
+# loop = asyncio.new_event_loop()
+# asyncio.set_event_loop(loop)
+# response = loop.run_until_complete(nm.test_list_post([1,2,3]))
 
-class Node_Manager:
-    __instance = None
-    def __new__(self):
-        if self.__instance == None:
-            self.__instance = object.__new__(self)
-            # self.request_factory = Request_Factory()
-        return self.__instance
+# chosen_conditional_symbol1 = 'yo'
+# conditional_dictionary = {chosen_conditional_symbol1: False,"chosen_conditional_symbol2": False,"chosen_conditional_symbol3": False}
+#         # chosen_stock_temp_container_index = 0
+#
+# conditional_dictionary["yo"] = True
+#
+# print(conditional_dictionary)
 
-    async def fetch(self,session, url, data):
-        async with session.post(url, data=data) as response:
-            return await response.text()
+def valdate_chosen_data_manager_bundle():
+    # Sym for each in dm list
 
-    async def test_list_post(self,list_items):
-        async with aiohttp.ClientSession() as session:
-            json_request = json_request = {
-                    "request_type": "test_list_post",
-                    "sym": "symbol",
-                    "list_items": list_items
-                    }
-            url = 'http://localhost:3000/api/brokerage'
-            response_returned = await self.fetch(session, url, json_request)
-            return response_returned
+    # Sym for each in stock_chosen_holder
+    chosen_stock_temp_container = ["test1", "test2", "test3"]
 
-nm = Node_Manager()
+    # for data_manager in self.list_chosen_data_managers:
+    # chosen_conditional_symbol1 = self.list_chosen_data_managers[0].get_sym()
+    # chosen_conditional_symbol2 = self.list_chosen_data_managers[1].get_sym()
+    # chosen_conditional_symbol3 = self.list_chosen_data_managers[2].get_sym()
 
+    chosen_conditional_symbol1 = "test5"
+    chosen_conditional_symbol2 = "test2"
+    chosen_conditional_symbol3 = "test1"
 
+    conditional_dictionary = {chosen_conditional_symbol1: False, chosen_conditional_symbol2: False,
+                              chosen_conditional_symbol3: False}
 
-loop = asyncio.new_event_loop()
-asyncio.set_event_loop(loop)
-response = loop.run_until_complete(nm.test_list_post([1,2,3]))
+    chosen_stock_temp_container_index = 0
 
+    for stock in chosen_stock_temp_container:
+        if (stock == chosen_conditional_symbol1):
+            if (chosen_stock_temp_container_index == 0):
+                conditional_dictionary[chosen_conditional_symbol1] = True
+            if (chosen_stock_temp_container_index == 1):
+                conditional_dictionary[chosen_conditional_symbol2] = True
+            if (chosen_stock_temp_container_index == 2):
+                conditional_dictionary[chosen_conditional_symbol3] = True
 
+        if (stock == chosen_conditional_symbol2):
+            if (chosen_stock_temp_container_index == 0):
+                conditional_dictionary[chosen_conditional_symbol1] = True
+            if (chosen_stock_temp_container_index == 1):
+                conditional_dictionary[chosen_conditional_symbol2] = True
+            if (chosen_stock_temp_container_index == 2):
+                conditional_dictionary[chosen_conditional_symbol3] = True
+
+        if (stock == chosen_conditional_symbol3):
+            if (chosen_stock_temp_container_index == 0):
+                conditional_dictionary[chosen_conditional_symbol1] = True
+            if (chosen_stock_temp_container_index == 1):
+                conditional_dictionary[chosen_conditional_symbol2] = True
+            if (chosen_stock_temp_container_index == 2):
+                conditional_dictionary[chosen_conditional_symbol3] = True
+        chosen_stock_temp_container_index += 1
+    print(conditional_dictionary)
+
+valdate_chosen_data_manager_bundle()

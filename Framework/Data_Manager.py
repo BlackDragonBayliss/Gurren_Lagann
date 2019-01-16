@@ -19,7 +19,7 @@ class Data_Manager(ABC):
         # Handle on needed account
         self.operation_center = operation_center
         self.time_manager = Time_Manager()
-        self.time_data_set_manager = Time_Data_Set_Manager()
+        self.time_data_set_manager = Time_Dat a_Set_Manager()
         self.data_controller_factory = Data_Controller_Factory()
         # Later addition update support for multiple data_controller processes per stock
         self.data_controller = self.data_controller_factory.create_data_controller(self, 0, algo_case)
