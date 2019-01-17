@@ -1335,57 +1335,75 @@ import smtplib
 # print(conditional_dictionary)
 
 
-def validate_chosen_data_manager_bundle():
-    conditional_dictionary = create_conditional_dictionary()
+# def validate_chosen_data_manager_bundle():
+#     conditional_dictionary = create_conditional_dictionary()
+#
+#     #Validate all conditions in dictionary are true
+#     for key in conditional_dictionary:
+#
+#
+# def create_conditional_dictionary():
+#     chosen_stock_temp_container = ["test1", "test2", "test3"]
+#
+#     # for data_manager in self.list_chosen_data_managers:
+#     # chosen_conditional_symbol1 = self.list_chosen_data_managers[0].get_sym()
+#     # chosen_conditional_symbol2 = self.list_chosen_data_managers[1].get_sym()
+#     # chosen_conditional_symbol3 = self.list_chosen_data_managers[2].get_sym()
+#
+#     chosen_conditional_symbol1 = "test2"
+#     chosen_conditional_symbol2 = "test1"
+#     chosen_conditional_symbol3 = "test5"
+#
+#     conditional_dictionary = {chosen_conditional_symbol1: False, chosen_conditional_symbol2: False,
+#                               chosen_conditional_symbol3: False}
+#
+#     chosen_stock_temp_container_index = 0
+#
+#     for stock in chosen_stock_temp_container:
+#         if (chosen_stock_temp_container_index == 0):
+#             if (stock == chosen_conditional_symbol1):
+#                 conditional_dictionary[chosen_conditional_symbol1] = True
+#             if (stock == chosen_conditional_symbol2):
+#                 conditional_dictionary[chosen_conditional_symbol2] = True
+#             if (stock == chosen_conditional_symbol3):
+#                 conditional_dictionary[chosen_conditional_symbol3] = True
+#
+#         if (chosen_stock_temp_container_index == 1):
+#             if (stock == chosen_conditional_symbol1):
+#                 conditional_dictionary[chosen_conditional_symbol1] = True
+#             if (stock == chosen_conditional_symbol2):
+#                 conditional_dictionary[chosen_conditional_symbol2] = True
+#             if (stock == chosen_conditional_symbol3):
+#                 conditional_dictionary[chosen_conditional_symbol3] = True
+#
+#         if (chosen_stock_temp_container_index == 2):
+#             if (stock == chosen_conditional_symbol1):
+#                 conditional_dictionary[chosen_conditional_symbol1] = True
+#             if (stock == chosen_conditional_symbol2):
+#                 conditional_dictionary[chosen_conditional_symbol2] = True
+#             if (stock == chosen_conditional_symbol3):
+#                 conditional_dictionary[chosen_conditional_symbol3] = True
+#
+#         chosen_stock_temp_container_index += 1
+#     print(conditional_dictionary)
+#     return conditional_dictionary
+#
+# validate_chosen_data_manager_bundle()
 
-    #Validate all conditions in dictionary are true
+
+def validate_chosen_data_manager_dictionary(conditional_dictionary):
+    temporary_value_list = []
     for key in conditional_dictionary:
+        print(conditional_dictionary[key])
+        temporary_value_list.append(conditional_dictionary[key])
+    #If False positive exists in conditional list, then clear stock list
+    if False in temporary_value_list:
+        print("clearing stock list")
+        print("clearing conditional_dictional? list")
+    else:
+        print("creating request")
 
 
-def create_conditional_dictionary():
-    chosen_stock_temp_container = ["test1", "test2", "test3"]
-
-    # for data_manager in self.list_chosen_data_managers:
-    # chosen_conditional_symbol1 = self.list_chosen_data_managers[0].get_sym()
-    # chosen_conditional_symbol2 = self.list_chosen_data_managers[1].get_sym()
-    # chosen_conditional_symbol3 = self.list_chosen_data_managers[2].get_sym()
-
-    chosen_conditional_symbol1 = "test2"
-    chosen_conditional_symbol2 = "test1"
-    chosen_conditional_symbol3 = "test5"
-
-    conditional_dictionary = {chosen_conditional_symbol1: False, chosen_conditional_symbol2: False,
-                              chosen_conditional_symbol3: False}
-
-    chosen_stock_temp_container_index = 0
-
-    for stock in chosen_stock_temp_container:
-        if (chosen_stock_temp_container_index == 0):
-            if (stock == chosen_conditional_symbol1):
-                conditional_dictionary[chosen_conditional_symbol1] = True
-            if (stock == chosen_conditional_symbol2):
-                conditional_dictionary[chosen_conditional_symbol2] = True
-            if (stock == chosen_conditional_symbol3):
-                conditional_dictionary[chosen_conditional_symbol3] = True
-
-        if (chosen_stock_temp_container_index == 1):
-            if (stock == chosen_conditional_symbol1):
-                conditional_dictionary[chosen_conditional_symbol1] = True
-            if (stock == chosen_conditional_symbol2):
-                conditional_dictionary[chosen_conditional_symbol2] = True
-            if (stock == chosen_conditional_symbol3):
-                conditional_dictionary[chosen_conditional_symbol3] = True
-
-        if (chosen_stock_temp_container_index == 2):
-            if (stock == chosen_conditional_symbol1):
-                conditional_dictionary[chosen_conditional_symbol1] = True
-            if (stock == chosen_conditional_symbol2):
-                conditional_dictionary[chosen_conditional_symbol2] = True
-            if (stock == chosen_conditional_symbol3):
-                conditional_dictionary[chosen_conditional_symbol3] = True
-
-        chosen_stock_temp_container_index += 1
-    print(conditional_dictionary)
-    return conditional_dictionary
-
-validate_chosen_data_manager_bundle()
+conditional_dictionary = {"sym1": False, "sym2": True,
+                         "sym3": True}
+validate_chosen_data_manager_dictionary(conditional_dictionary)

@@ -1,6 +1,5 @@
-
-#ON re
-
+import asyncio
+from threading import Thread
 
 class Data_Manager_Request_Bundler:
     __instance = None
@@ -20,10 +19,43 @@ class Data_Manager_Request_Bundler:
         #If length of chosen_stock_temp_container is 3 then proceed with data validation
         #amount() equals 3
         if(self.chosen_stock_temp_container.amount() == 3):
-            self.validate_chosen_data_manager_bundle()
+            conditional_dictionary = self.create_conditional_dictionary()
+            self.validate_chosen_data_manager_dictionary(conditional_dictionary)
             self.chosen_stock_temp_container.clear()
 
-    def create_conditional_dictionary():
+    def create_request_bundle(self):
+        stock1 = self.chosen_stock_temp_container[0]
+        stock2 = self.chosen_stock_temp_container[1]
+        stock3 = self.chosen_stock_temp_container[2]
+
+        json = {
+            "stock_symbol_1": stock1.get_sym(),
+            "stock_last_1": stock1.get_last(),
+            "stock_pchg_1": stock1.get_pchg(),
+            "stock_bid_1": stock1.get_bid(),
+            "stock_ask_1": stock1.get_ask(),
+
+            "stock_symbol_2": stock2.get_sym(),
+            "stock_last_2": stock2.get_last(),
+            "stock_pchg_2": stock2.get_pchg(),
+            "stock_bid_2": stock2.get_bid(),
+            "stock_ask_2": stock2.get_ask(),
+
+            "stock_symbol_3": stock3.get_sym(),
+            "stock_last_3": stock3.get_last(),
+            "stock_pchg_3": stock3.get_pchg(),
+            "stock_bid_3": stock3.get_bid(),
+            "stock_ask_3": stock3.get_ask()
+        }
+        return json
+
+    def post_request_bundle(self, json):
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        response = loop.run_until_complete(self.list_chosen_data_managers[0].operation_center.node_manager.async_post_data_manager_request_bundle(json))
+
+
+    def create_conditional_dictionary(self):
         chosen_stock_temp_container = ["test1", "test2", "test3"]
 
         # for data_manager in self.list_chosen_data_managers:
@@ -69,3 +101,11 @@ class Data_Manager_Request_Bundler:
         print(conditional_dictionary)
         return conditional_dictionary
 
+    def validate_chosen_data_manager_dictionary(self,conditional_dictionary):
+        for key in conditional_dictionary:
+            print(conditional_dictionary[key])
+
+        if():
+            return True
+        else:
+            return False

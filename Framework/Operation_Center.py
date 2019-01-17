@@ -59,7 +59,7 @@ class Operation_Center:
             self.trade_manager = Trade_Manager()
             self.email_manager = Email_Manager()
             self.odin_algorithm = Odin_Algorithm()
-            self.data_manager_request_bundler = Data_Manager_Request_Bundler()
+            self.data_manager_request_bundler = Data_Manager_Request_Bundler(self)
             self.task_master = Task_Master()
             self.task_master.setup_instance(self.__instance, self.thread_factory, self.http_utility,
                                             self.request_factory,
