@@ -19,7 +19,7 @@ from Stock_Statistics_Composite import Stock_Statistics_Composite
 from Trade_Manager import Trade_Manager
 from Email_Manager import Email_Manager
 from Odin_Algorithm import Odin_Algorithm
-
+from Data_Manager_Request_Bundler import Data_Manager_Request_Bundler
 
 class Operation_Center:
     list_stock_composite = []
@@ -59,6 +59,7 @@ class Operation_Center:
             self.trade_manager = Trade_Manager()
             self.email_manager = Email_Manager()
             self.odin_algorithm = Odin_Algorithm()
+            self.data_manager_request_bundler = Data_Manager_Request_Bundler()
             self.task_master = Task_Master()
             self.task_master.setup_instance(self.__instance, self.thread_factory, self.http_utility,
                                             self.request_factory,
@@ -452,6 +453,8 @@ class Operation_Center:
         pass
 
 
+    def get_data_manager_request_bundler(self):
+        return self.data_manager_request_bundler
 
     def generate_stock_composite(self, symbol):
         stock_composite_generated = Stock_Composite()

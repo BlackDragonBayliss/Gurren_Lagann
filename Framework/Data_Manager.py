@@ -19,7 +19,7 @@ class Data_Manager(ABC):
         # Handle on needed account
         self.operation_center = operation_center
         self.time_manager = Time_Manager()
-        self.time_data_set_manager = Time_Dat a_Set_Manager()
+        self.time_data_set_manager = Time_Data_Set_Manager()
         self.data_controller_factory = Data_Controller_Factory()
         # Later addition update support for multiple data_controller processes per stock
         self.data_controller = self.data_controller_factory.create_data_controller(self, 0, algo_case)
@@ -52,6 +52,9 @@ class Data_Manager(ABC):
     def handle_stock_response(self, stock):
         self.get_data_controller().handle_stock_retrieval(stock)
         print('inc stock last:',stock.get_last())
+
+    def update_package_bundler(self, stock):
+        self.operation_center.get_data_manager_request_bundler().update_chosen_stock_temp_container(stock)
 
 
     def cancel_all_data_controller_processes(self,process):
