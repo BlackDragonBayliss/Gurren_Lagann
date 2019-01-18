@@ -70,7 +70,7 @@ class Data_Manager_Request_Bundler:
             # "stock_bid_3": stock3.get_bid(),
             # "stock_ask_3": stock3.get_ask()
             "request_type": "data_manager_request_bundle",
-            "stock_symbol_1": "sym1",
+            "stock_symbol_1": "sym5",
             "stock_last_1": "last1",
             "stock_pchg_1": 'pchg1',
             "stock_bid_1": 'bid1',
