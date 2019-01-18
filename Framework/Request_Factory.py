@@ -45,6 +45,23 @@ class Request_Factory:
                        }
         return json_request
 
+    # def async_post_data_manager_request_bundle(self, bundle):
+    #     chosen_stock_stat = bundle.get_chosen_stock_statistics()
+    #     sym = chosen_stock_stat.get_sym()
+    #     pchg = chosen_stock_stat.get_pchg()
+    #     last = chosen_stock_stat.get_last()
+    #     spread = chosen_stock_stat.get_spread()
+    #     list_date = chosen_stock_stat.get_list_date()
+    #     json_request = {"request_type":"stock_statistics",
+    #                     "sym":sym,
+    #                     "pchg":pchg,
+    #                     "last":last,
+    #                     "spread":spread,
+    #                     "list_date":list_date
+    #                    }
+    #     return json_request
+
+
     def async_post_data_manager_action(self, data_manager_action):
         # chosen_stock_stat = data_manager_action.get_chosen_stock_statistics()
         #Support for sell field updates

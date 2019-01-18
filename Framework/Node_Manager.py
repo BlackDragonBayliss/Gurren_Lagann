@@ -30,6 +30,12 @@ class Node_Manager:
             response_returned = await self.fetch(session, url, json_request)
             return response_returned
 
+    async def async_post_data_manager_request_bundle(self,bundle):
+        async with aiohttp.ClientSession() as session:
+            url = 'http://localhost:3000/api/brokerage'
+            response_returned = await self.fetch(session, url, bundle)
+            return response_returned
+
 
     async def async_post_data_manager_action(self, data_manager_action):
         async with aiohttp.ClientSession() as session:

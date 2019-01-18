@@ -1391,19 +1391,24 @@ import smtplib
 # validate_chosen_data_manager_bundle()
 
 
-def validate_chosen_data_manager_dictionary(conditional_dictionary):
-    temporary_value_list = []
-    for key in conditional_dictionary:
-        print(conditional_dictionary[key])
-        temporary_value_list.append(conditional_dictionary[key])
-    #If False positive exists in conditional list, then clear stock list
-    if False in temporary_value_list:
-        print("clearing stock list")
-        print("clearing conditional_dictional? list")
-    else:
-        print("creating request")
+# def validate_chosen_data_manager_dictionary(conditional_dictionary):
+#     temporary_value_list = []
+#     for key in conditional_dictionary:
+#         print(conditional_dictionary[key])
+#         temporary_value_list.append(conditional_dictionary[key])
+#     #If False positive exists in conditional list, then clear stock list
+#     if False in temporary_value_list:
+#         print("clearing stock list")
+#         print("clearing conditional_dictional? list")
+#     else:
+#         print("creating request")
+#
+#
+#
+# conditional_dictionary = {"sym1": False, "sym2": True,
+#                          "sym3": True}
+# validate_chosen_data_manager_dictionary(conditional_dictionary)
 
 
-conditional_dictionary = {"sym1": False, "sym2": True,
-                         "sym3": True}
-validate_chosen_data_manager_dictionary(conditional_dictionary)
+from Data_Manager_Request_Bundler import Data_Manager_Request_Bundler
+

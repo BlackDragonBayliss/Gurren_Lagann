@@ -59,7 +59,7 @@ class Operation_Center:
             self.trade_manager = Trade_Manager()
             self.email_manager = Email_Manager()
             self.odin_algorithm = Odin_Algorithm()
-            self.data_manager_request_bundler = Data_Manager_Request_Bundler(self)
+            self.data_manager_request_bundler = Data_Manager_Request_Bundler()
             self.task_master = Task_Master()
             self.task_master.setup_instance(self.__instance, self.thread_factory, self.http_utility,
                                             self.request_factory,
@@ -95,35 +95,38 @@ class Operation_Center:
         if (self.is_condition_top_stock_pull_gather != True and self.calculate_time_delimiter_top_stock_pull_gather()):
             print('Early TSP gather process')
             #Update Data_Decision_Process_Action_Manager with chosen stocks
-            self.event_trigger_top_stock_gather_process_phase_one()
+            # self.event_trigger_top_stock_gather_process_phase_one()
+            # self.is_condition_top_stock_pull_gather = True
+            self.data_manager_request_bundler.set_operation_center(self)
+            self.data_manager_request_bundler.update_chosen_stock_temp_container('')
             self.is_condition_top_stock_pull_gather = True
 
          # Moirae phase one 8;31
-        if (self.is_condition_moirae_phase_one != True and self.calculate_time_delimiter_moirae_phase_one()):
-            print('Moirae phase one')
-            # Update Data_Decision_Process_Action_Manager with chosen stocks
-            self.create_appendage_top_stock_pull_list_one()
-            self.is_condition_moirae_phase_one = True
-
-        # Moirae phase two 9:28
-        if (self.is_condition_moirae_phase_two != True and self.calculate_time_delimiter_moirae_phase_two()):
-            #transfer list tsp_1_chosen_stocks (list of liata) dm, values)
-            print('Moirae phase two')
-            #Reset type_converter calculated values
-            self.type_converter.reset_instance_values()
-            #TSP pull
-            self.event_trigger_top_stock_gather_process_phase_two()
-            self.is_condition_moirae_phase_two = True
-
-        # Moirae phase three 9:29
-        if (self.is_condition_moirae_phase_three != True and self.calculate_time_delimiter_moirae_phase_three()):
-            print('Moirae phase three')
-            #Create appendaged list
-            self.create_appendage_top_stock_pull_list_two()
-            self.associate_appendage_top_stock_pull_list_to_day_decision_process_action_manager()
-
-            self.day_decision_process_action_manager.email_end_of_day_results(self.email_manager)
-            self.is_condition_moirae_phase_three = True
+        # if (self.is_condition_moirae_phase_one != True and self.calculate_time_delimiter_moirae_phase_one()):
+        #     print('Moirae phase one')
+        #     # Update Data_Decision_Process_Action_Manager with chosen stocks
+        #     self.create_appendage_top_stock_pull_list_one()
+        #     self.is_condition_moirae_phase_one = True
+        #
+        # # Moirae phase two 9:28
+        # if (self.is_condition_moirae_phase_two != True and self.calculate_time_delimiter_moirae_phase_two()):
+        #     #transfer list tsp_1_chosen_stocks (list of liata) dm, values)
+        #     print('Moirae phase two')
+        #     #Reset type_converter calculated values
+        #     self.type_converter.reset_instance_values()
+        #     #TSP pull
+        #     self.event_trigger_top_stock_gather_process_phase_two()
+        #     self.is_condition_moirae_phase_two = True
+        #
+        # # Moirae phase three 9:29
+        # if (self.is_condition_moirae_phase_three != True and self.calculate_time_delimiter_moirae_phase_three()):
+        #     print('Moirae phase three')
+        #     #Create appendaged list
+        #     self.create_appendage_top_stock_pull_list_two()
+        #     self.associate_appendage_top_stock_pull_list_to_day_decision_process_action_manager()
+        #
+        #     self.day_decision_process_action_manager.email_end_of_day_results(self.email_manager)
+        #     self.is_condition_moirae_phase_three = True
 
 
         # 9:30 conditional begin sell analytics
