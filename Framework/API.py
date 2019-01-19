@@ -18,17 +18,6 @@ def init_system():
     return "initiated"
 
 
-@app.route('/add_message', methods=['POST'])
-def add_message():
-    content = request.get_json('value')
-    for key, value in content.items():
-        if key == 'value':
-            return_value = float(value) + 10
-            return_value = str(return_value)
-            print(return_value)
-    return return_value
-
-
 @app.route('/top_stock', methods=['POST'])
 def top_stock():
     content = request.get_json()
@@ -163,6 +152,7 @@ def dm_assemble():
                                 return_value = 'res'
     return return_value
 
+
 @app.route('/NM_query_stock', methods=['POST'])
 def DM_query_stock():
     content = request.get_json()
@@ -288,7 +278,6 @@ def trade_market_sell():
     return return_value
 
 
-
 @app.route('/case_analytics', methods=['POST'])
 def case_analytics():
     content = request.get_json()
@@ -325,10 +314,6 @@ def case_analytics():
                                 operation_center.process_async_case_three(value)
                                 return_value = 'res'
     return return_value
-
-
-
-
 
 
 if __name__ == '__main__':
