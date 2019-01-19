@@ -1,7 +1,7 @@
 class Stock:
 
     def __init__(self):
-        self.name = ''
+        pass
 
     def get_sym (self):
         return self.name
