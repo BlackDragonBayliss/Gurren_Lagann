@@ -20,10 +20,6 @@ class Data_Manager_Request_Bundler:
         self.list_chosen_data_managers.append(data_manager)
 
     def update_chosen_stock_temp_container(self, stock):
-        # self.chosen_stock_temp_container.append(stock)
-        # If length of chosen_stock_temp_container is 3 then proceed with data validation
-        # amount() equals 3
-        # def create_conditional_dictionary(self):
         self.chosen_stock_temp_container = ["test1", "test2", "test3"]
         if (len(self.chosen_stock_temp_container) == 3):
             conditional_dictionary = self.create_conditional_dictionary()
@@ -70,13 +66,26 @@ class Data_Manager_Request_Bundler:
             # "stock_bid_3": stock3.get_bid(),
             # "stock_ask_3": stock3.get_ask()
             "request_type": "data_manager_request_bundle",
-            "stock_symbol_1": "sym5",
+            "isGetLatestHourSet": 1,
+            "isGetLatestTenMinuteSet": 0,
+            "isGetLatestFiveMinuteSet": 0,
+            "isGetLatestStockSet": 0,
+
+            "dataBundleRecordSetInitiation": 0,
+            "dataBundleDaySetInitiation": 0,
+            "isHourChangeover": 0,
+            "isTenMinuteChangeover": 0,
+            "isFiveMinuteChangeover": 0,
+            "isStockStore": 0,
+
+
+            "stock_symbol_1": "sym1",
             "stock_last_1": "last1",
             "stock_pchg_1": 'pchg1',
             "stock_bid_1": 'bid1',
             "stock_ask_1": 'ask1',
 
-            "stock_symbol_2": "sym2",
+            "stock_symbol_2": "sym5",
             "stock_last_2": "last2",
             "stock_pchg_2": "pchg2",
             "stock_bid_2": 'bid2',

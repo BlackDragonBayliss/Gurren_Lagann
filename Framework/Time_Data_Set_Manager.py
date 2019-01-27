@@ -40,39 +40,37 @@ class Time_Data_Set_Manager:
 
     # calculate time sets
     def calculate_hour_change(self):
-        # print("calculating hour change")
         if (self.previous_hour == None):
-            # print("INIT setting hour change")
             self.previous_hour = self.current_hour
             return False
+
         if (self.current_hour != self.previous_hour):
             self.previous_hour = self.current_hour
-            # print('hour timeshift')
-            self.time_shift_one_hour()
             return True
         return False
 
-    def calculate_five_minute_change(self):
-        # print("calculating five minute change")
+    def calculate_ten_minute_change(self):
         if (self.previous_minute == None):
-            # print("INIT setting minute change")
             self.previous_minute = self.current_minute
             return False
+
         if (self.current_minute != self.previous_minute):
-            if (self.current_minute % 5 == 0):
-                # print('five_minute timeshift')
-
-                if (self.current_minute % 10 == 0):
-                    # print("ten_minute time_shift")
-                    self.time_shift_ten_minute()
-                    self.time_shift_five_minute()
-                    self.current_minute = self.previous_minute
-                    return True
-
-                self.time_shift_five_minute()
+            if (self.current_minute % 10 == 0):
                 self.current_minute = self.previous_minute
                 return True
+            self.current_minute = self.previous_minute
+        return False
 
+    def calculate_five_minute_change(self):
+        if (self.previous_minute == None):
+            self.previous_minute = self.current_minute
+            return False
+
+        if (self.current_minute != self.previous_minute):
+            if (self.current_minute % 5 == 0):
+                self.current_minute = self.previous_minute
+                return True
+            self.current_minute = self.previous_minute
         return False
 
     # PARAM ID: Data_Manager generation ID
