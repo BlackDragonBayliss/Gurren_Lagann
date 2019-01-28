@@ -4,8 +4,8 @@ from Data_Manager import Data_Manager
 class Chosen_Data_Manager(Data_Manager):
     global_generation_ID = 0
 
-    def __init__(self, sym, algo_case, operation_center, data_manager_request_bundler):
-        super().__init__(sym, algo_case, operation_center, data_manager_request_bundler)
+    def __init__(self, sym, algo_case, operation_center, data_manager_request_bundler, time_data_set_manager):
+        super().__init__(sym, algo_case, operation_center, data_manager_request_bundler, time_data_set_manager)
         super().set_data_manager_type('Chosen')
 
     def init_data_processing(self):

@@ -1410,5 +1410,68 @@ import smtplib
 # validate_chosen_data_manager_dictionary(conditional_dictionary)
 
 
-from Data_Manager_Request_Bundler import Data_Manager_Request_Bundler
+# from Data_Manager_Request_Bundler import Data_Manager_Request_Bundler
 
+
+
+
+def create_request_bundle(hourValue, tenMinuteValue, fiveMinuteValue):
+    # stock1 = self.chosen_stock_temp_container[0]
+    # stock2 = self.chosen_stock_temp_container[1]
+    # stock3 = self.chosen_stock_temp_container[2]
+
+    json = {
+        # "stock_symbol_1": stock1.get_sym(),
+        # "stock_last_1": stock1.get_last(),
+        # "stock_pchg_1": stock1.get_pchg(),
+        # "stock_bid_1": stock1.get_bid(),
+        # "stock_ask_1": stock1.get_ask(),
+        #
+        # "stock_symbol_2": stock2.get_sym(),
+        # "stock_last_2": stock2.get_last(),
+        # "stock_pchg_2": stock2.get_pchg(),
+        # "stock_bid_2": stock2.get_bid(),
+        # "stock_ask_2": stock2.get_ask(),
+        #
+        # "stock_symbol_3": stock3.get_sym(),
+        # "stock_last_3": stock3.get_last(),
+        # "stock_pchg_3": stock3.get_pchg(),
+        # "stock_bid_3": stock3.get_bid(),
+        # "stock_ask_3": stock3.get_ask(),
+        "request_type": "data_manager_request_bundle",
+        "isGetLatestHourSet": 0,
+        "isGetLatestTenMinuteSet": 0,
+        "isGetLatestFiveMinuteSet": 0,
+        "isGetLatestStockSet": 0,
+
+        "dataBundleRecordSetInitiation": 0,
+        "dataBundleDaySetInitiation": 0,
+        "isHourChangeover": hourValue,
+        "isTenMinuteChangeover": tenMinuteValue,
+        "isFiveMinuteChangeover": fiveMinuteValue,
+        "isStockStore": 0
+
+        # ,
+
+        # "stock_symbol_1": "sym1",
+        # "stock_last_1": "last1",
+        # "stock_pchg_1": 'pchg1',
+        # "stock_bid_1": 'bid1',
+        # "stock_ask_1": 'ask1',
+        #
+        # "stock_symbol_2": "sym5",
+        # "stock_last_2": "last2",
+        # "stock_pchg_2": "pchg2",
+        # "stock_bid_2": 'bid2',
+        # "stock_ask_2": 'ask2',
+        #
+        # "stock_symbol_3": 'sym3',
+        # "stock_last_3": 'last3',
+        # "stock_pchg_3": 'pchg3',
+        # "stock_bid_3": 'bid3',
+        # "stock_ask_3": 'ask3'
+    }
+    return json
+
+jsonResponse = create_request_bundle(1,0,0)
+print(jsonResponse)

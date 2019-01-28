@@ -3,116 +3,99 @@ from threading import Thread
 
 
 class Data_Manager_Request_Bundler:
-    __instance = None
 
     def __new__(self, sym):
         self.sym = sym
+        self.
         self.list_chosen_data_managers = []
         self.chosen_stock_temp_container = []
         self.operation_center = None
+        self.time_data_set_manager = None
 
-    def set_operation_center(self, operation_center):
+        self.isGetLatestHourSet = 0
+        self.isGetLatestTenMinuteSet = 0
+        self.isGetLatestFiveMinuteSet = 0
+        self.isGetLatestStockSet = 0
+
+        self.dataBundleRecordSetInitiation = 0
+        self.dataBundleDaySetInitiation = 0
+        self.isHourChangeoverValue = 0
+        self.isTenMinuteChangeoverValue = 0
+        self.isFiveMinuteChangeoverValue = 0
+        self.isStockStoreValue = 0
+
+    def setup_data_manager_request_bundler(self, operation_center, time_data_set_manager, sym):
         self.operation_center = operation_center
+        self.time_data_set_manager = time_data_set_manager
+        self.sym =  sym
+
+    def process_data_initialization(self, stock):
+        self.dataBundleRecordSetInitiation = 1
+        json = self.create_request_bundle(stock)
+        self.post_request_bundle(json)
+        self.reset_data_initialization_value()
+
+    def reset_data_initialization_value(self):
+        self.dataBundleRecordSetInitiation = 0
+
+    def process_stock_store(self, stock):
+        self.process_changeover_request()
+        json = self.create_request_bundle(stock)
+        self.post_request_bundle(json)
+        self.reset_process_changeover_request()
+
+    def reset_process_changeover_request(self):
+        self.isHourChangeoverValue = 0
+        self.isChangeoverValue = 0
+        self.isHourChangeoverValue = 0
+
+    def process_changeover_request(self):
+        if (self.time_data_set_manager.calculate_hour_change()):
+            self.isHourChangeoverValue = 1
+            return
+        if (self.time_data_set_manager.calculate_ten_minute_change()):
+            self.isTenMinuteChangeoverValue = 1
+            return
+        if (self.time_data_set_manager.calculate_five_minute_change()):
+            self.isFiveMinuteChangeoverValue = 1
+            return
+
+    def create_request_bundle(self, stock):
+        json = {
+            "request_type": "data_manager_request_bundle",
+            "isGetLatestHourSet": self.isGetLatestHourSet,
+            "isGetLatestTenMinuteSet": self.isGetLatestTenMinuteSet,
+            "isGetLatestFiveMinuteSet": self.isGetLatestFiveMinuteSet,
+            "isGetLatestStockSet": self.isGetLatestStockSet,
+
+            "dataBundleRecordSetInitiation": self.dataBundleRecordSetInitiation,
+            "dataBundleDaySetInitiation": self.dataBundleDaySetInitiation,
+            "isHourChangeover": self.isHourChangeoverValue,
+            "isTenMinuteChangeover": self.isTenMinuteChangeoverValue,
+            "isFiveMinuteChangeover": self.isFiveMinuteChangeoverValue,
+            "isStockStore": self.isStockStoreValue,
+
+            "stock_symbol": stock.get_sym(),
+            "stock_last": stock.get_last(),
+            "stock_pchg": stock.get_pchg(),
+            "stock_bid": stock.get_bid(),
+            "stock_ask": stock.get_ask()
+        }
+        return json
 
 
-    def process_stock_store(self, time_data_set_manager, stock):
-
-        edited_request = self.process_changeover_request(time_data_set_manager)
-
-        time_data_set_manager.isSetChangeOverSinceLast()
-
-        time_data_set_manager.calculate_hour_change()
-        time_data_set_manager.calculate_ten_minute_change()
-        time_data_set_manager.calculate_five_minute_change()
+    def post_request_bundle(self, json):
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        response = loop.run_until_complete(
+            self.operation_center.node_manager.async_post_data_manager_request_bundle(
+                json))
 
 
-    def process_changeover_request(self, time_data_set_manager):
-        # time_data_set_manager.calculate_hour_change()
-        # time_data_set_manager.calculate_ten_minute_change()
-        # time_data_set_manager.calculate_five_minute_change()
 
-        if (time_data_set_manager.calculate_hour_change()):
-            pass
 
-    # def validate_chosen_data_manager_dictionary(self, conditional_dictionary):
-    #     temporary_value_list = []
-    #     for key in conditional_dictionary:
-    #         print(conditional_dictionary[key])
-    #         temporary_value_list.append(conditional_dictionary[key])
-    #     # If False positive exists in conditional list, then clear stock list
-    #     if False in temporary_value_list:
-    #         print("clearing stock list")
-    #         self.chosen_stock_temp_container.clear()
-    #     else:
-    #         print("creating request")
-    #         json = self.create_request_bundle()
-    #         self.post_request_bundle(json)
-    #
-    # def create_request_bundle(self):
-    #     stock1 = self.chosen_stock_temp_container[0]
-    #     stock2 = self.chosen_stock_temp_container[1]
-    #     stock3 = self.chosen_stock_temp_container[2]
-    #
-    #
-    #     stock
-    #     json = {
-    #         # "stock_symbol_1": stock1.get_sym(),
-    #         # "stock_last_1": stock1.get_last(),
-    #         # "stock_pchg_1": stock1.get_pchg(),
-    #         # "stock_bid_1": stock1.get_bid(),
-    #         # "stock_ask_1": stock1.get_ask(),
-    #         #
-    #         # "stock_symbol_2": stock2.get_sym(),
-    #         # "stock_last_2": stock2.get_last(),
-    #         # "stock_pchg_2": stock2.get_pchg(),
-    #         # "stock_bid_2": stock2.get_bid(),
-    #         # "stock_ask_2": stock2.get_ask(),
-    #         #
-    #         # "stock_symbol_3": stock3.get_sym(),
-    #         # "stock_last_3": stock3.get_last(),
-    #         # "stock_pchg_3": stock3.get_pchg(),
-    #         # "stock_bid_3": stock3.get_bid(),
-    #         # "stock_ask_3": stock3.get_ask()
-    #         "request_type": "data_manager_request_bundle",
-    #         "isGetLatestHourSet": 1,
-    #         "isGetLatestTenMinuteSet": 0,
-    #         "isGetLatestFiveMinuteSet": 0,
-    #         "isGetLatestStockSet": 0,
-    #
-    #         "dataBundleRecordSetInitiation": 0,
-    #         "dataBundleDaySetInitiation": 0,
-    #         "isHourChangeover": 0,
-    #         "isTenMinuteChangeover": 0,
-    #         "isFiveMinuteChangeover": 0,
-    #         "isStockStore": 0,
-    #
-    #
-    #         "stock_symbol_1": "sym1",
-    #         "stock_last_1": "last1",
-    #         "stock_pchg_1": 'pchg1',
-    #         "stock_bid_1": 'bid1',
-    #         "stock_ask_1": 'ask1',
-    #
-    #         "stock_symbol_2": "sym5",
-    #         "stock_last_2": "last2",
-    #         "stock_pchg_2": "pchg2",
-    #         "stock_bid_2": 'bid2',
-    #         "stock_ask_2": 'ask2',
-    #
-    #         "stock_symbol_3": 'sym3',
-    #         "stock_last_3": 'last3',
-    #         "stock_pchg_3": 'pchg3',
-    #         "stock_bid_3": 'bid3',
-    #         "stock_ask_3": 'ask3'
-    #     }
-    #     return json
-    #
-    # def post_request_bundle(self, json):
-    #     loop = asyncio.new_event_loop()
-    #     asyncio.set_event_loop(loop)
-    #     response = loop.run_until_complete(
-    #         self.operation_center.node_manager.async_post_data_manager_request_bundle(
-    #             json))
+
+
     #
     # def create_conditional_dictionary(self):
     #     chosen_stock_temp_container = ["test1", "test2", "test3"]

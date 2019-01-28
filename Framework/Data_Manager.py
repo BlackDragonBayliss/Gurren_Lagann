@@ -11,7 +11,7 @@ from Task_Master import Task_Master
 class Data_Manager(ABC):
     global_generation_ID = 0
 
-    def __init__(self, sym, algo_case, operation_center, data_manager_request_bundler):
+    def __init__(self, sym, algo_case, operation_center, data_manager_request_bundler, time_data_set_manager):
         self.ID = self.global_generation_ID
         self.global_generation_ID += 1
         self.algo = algo_case
@@ -19,6 +19,7 @@ class Data_Manager(ABC):
         # Handle on needed account
         self.operation_center = operation_center
         self.data_manager_request_bundler = data_manager_request_bundler
+        self.time_data_set_manager = time_data_set_manager
         self.time_manager = Time_Manager()
         self.time_data_set_manager = Time_Data_Set_Manager()
         self.data_controller_factory = Data_Controller_Factory()
