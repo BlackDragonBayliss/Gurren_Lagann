@@ -223,9 +223,9 @@ class Operation_Center:
         self.process_async_top_stock_phase1_internal()
         # self.initiate_monitor_odin_algorithm()
         # self.process_chosen_to_bought_calculation()
-    def event_trigger_top_stock_gather_process_phase_two(self):
-        #Phase 2 TSP process
-        self.process_async_top_stock_phase1_internal()
+    # def event_trigger_top_stock_gather_process_phase_two(self):
+    #     #Phase 2 TSP process
+    #     self.process_async_top_stock_phase1_internal()
 
     def event_trigger_buy_analysis_process(self):
         self.perpetual_timer_buy_analysis.setup_timer_stock(3, 1000,
@@ -267,10 +267,11 @@ class Operation_Center:
         self.process_async_phase2_market_sell()
 
 
-
+    # Query route payload query response
     def process_async_top_stock_phase1_internal(self):
         self.task_master.create_thread_async_top_stock_phase_internal()
 
+    # Route relayed from internal request
     def process_async_top_stock_phase1(self, query):
         self.task_master.create_thread_async_top_stock_phase1(query)
 
@@ -501,5 +502,9 @@ class Operation_Center:
         return self.time_data_set_manager
 
     def generate_data_manager_request_bundler(self, sym):
-        return Data_Manager_Request_Bundler(sym)
+        data_manager_request_bundler = Data_Manager_Request_Bundler()
+        data_manager_request_bundler.setup_data_manager_request_bundler(sym, self, self.get_time_data_set_manager())
+        return data_manager_request_bundler
+
+
 

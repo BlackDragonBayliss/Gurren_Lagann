@@ -14,6 +14,7 @@ class Data_Controller:
 
     def handle_stock_retrieval(self, stock):
         data_manager_request_bundler = self.data_manager.get_data_manager_request_bundler()
+        #Param TDS_Manager, Stock
         data_manager_request_bundler.process_stock_store(
             self.data_manager.get_operation_center().get_time_data_set_manager(), stock)
 
