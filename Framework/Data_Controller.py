@@ -2,6 +2,7 @@ from Stock import Stock
 from Five_Minute_Set import Five_Minute_Set
 from Time_Manager import Time_Manager
 
+
 class Data_Controller:
     def __init__(self, data_manager):
         self.data_manager = data_manager
@@ -11,20 +12,13 @@ class Data_Controller:
 
         self.number_count = 0
 
-
     def handle_stock_retrieval(self, stock):
-        self.current_stock = stock
-        # later support added to conditional if "stock pass-over time" to FM set,
-        # current_five_minute_set = self.get_current_five_minute_set()
-        # current_five_minute_set.append(self.current_stock)
-        #
-        # self.data_manager.update_chosen_stock_temp_container(stock)
-
-
-
+        data_manager_request_bundler = self.data_manager.get_data_manager_request_bundler()
+        data_manager_request_bundler.process_stock_store(
+            self.data_manager.get_operation_center().get_time_data_set_manager(), stock)
 
     def loop_operation_analytics(self):
-        #Later support for multiple algo's and extensibility
+        # Later support for multiple algo's and extensibility
         # if(self.is_stock_purchased):
         #     self.data_manager.operation_center.process_async_case1()
         #     # self.algo_determine_when_to_sell()
@@ -39,7 +33,6 @@ class Data_Controller:
         current_five_minute_set = self.get_current_five_minute_set()
         return current_five_minute_set[(len(current_five_minute_set) - 1)]
 
-
     def algo_determine_when_to_sell(self):
 
         stock_list = self.generate_data_set()
@@ -50,20 +43,21 @@ class Data_Controller:
     def algo_determine_when_to_buy(self):
         return ''
 
-    def determine_pchg_time_to_sell(self,stock_list):
+    def determine_pchg_time_to_sell(self, stock_list):
         difference = self.calculate_pchg_difference(stock_list)
-        if(difference > .03):
+        if (difference > .03):
             return True
         return False
-    def calculate_pchg_difference(self,stock_list):
-        #Return percentage
+
+    def calculate_pchg_difference(self, stock_list):
+        # Return percentage
         return stock_list[0].get_pchg() - stock_list[1].get_pchg()
 
-    def determine_last_difference(self,stock1,stock2):
+    def determine_last_difference(self, stock1, stock2):
         return stock1.get_last() - stock2.get_last()
 
-    def set_bought_stock(self,bought_stock):
-        #DM_buy association
+    def set_bought_stock(self, bought_stock):
+        # DM_buy association
         # bought account information
         # self.bought_stock
         self.bought_stock = bought_stock
@@ -74,12 +68,11 @@ class Data_Controller:
 
     def generate_data_set(self):
         time_manager = Time_Manager()
-        five_minute_data_set_store= []
+        five_minute_data_set_store = []
         i = 0
-        while(i < 10):
-
+        while (i < 10):
             five_minute_data_set = Five_Minute_Set(time_manager.get_current_epoch_time())
-            stock= Stock()
+            stock = Stock()
             stock.set_name('A_test')
             stock.set_pchg(.01)
 
@@ -89,7 +82,6 @@ class Data_Controller:
             i += 1
         print("generated data len", len(five_minute_data_set_store))
 
-
     def generate_five_minute_data_set(self):
         time_manager = Time_Manager()
         five_minute_data_set_store = []
@@ -98,7 +90,7 @@ class Data_Controller:
             five_minute_data_set = Five_Minute_Set(time_manager.get_current_epoch_time())
             stock = Stock()
 
-            if(i == 0):
+            if (i == 0):
                 stock.set_name('NAV')
                 stock.set_last(27.38)
             if (i == 1):

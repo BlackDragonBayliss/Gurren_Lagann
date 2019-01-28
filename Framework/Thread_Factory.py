@@ -577,13 +577,10 @@ class Thread_Factory:
                                                            operation_center):
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
-
         # test_sym_list = ['NRP','AAPL','USG']
-
         chosen_data_manager_list = operation_center.get_list_chosen_data_manager()
-
         for sym in sym_list:
-            chosen_data_manager_instance = Chosen_Data_Manager(sym, 0, operation_center)
+            chosen_data_manager_instance = Chosen_Data_Manager(sym, 0, operation_center, operation_center.generate_data_manager_request_bundler(sym))
             chosen_data_manager_list.append(chosen_data_manager_instance)
 
         operation_center.process_async_initiate_chosen_data_manager(chosen_data_manager_list)
@@ -919,7 +916,7 @@ class Thread_Factory:
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
         stock = type_converter.parse_stock_query(response)
-        data_manager.handle_stock_response(stock)
+        data_manager.handle_stock_retrieval(stock)
 
     def data_manager_query_stock_conversion_loop(self, list_of_objects):
         count = 0

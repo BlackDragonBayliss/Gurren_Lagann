@@ -496,3 +496,10 @@ class Operation_Center:
 
     def get_list_bought_data_manager(self):
         return self.list_bought_data_manager
+
+    def get_time_data_set_manager(self):
+        return self.time_data_set_manager
+
+    def generate_data_manager_request_bundler(self, sym):
+        return Data_Manager_Request_Bundler(sym)
+
