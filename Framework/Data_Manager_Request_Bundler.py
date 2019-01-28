@@ -16,12 +16,23 @@ class Data_Manager_Request_Bundler:
 
 
     def process_stock_store(self, time_data_set_manager, stock):
-        # time_data_set_manager.isSetChangeOverSinceLast()
-        time_data_set_manager
 
-        # pass
+        edited_request = self.process_changeover_request(time_data_set_manager)
+
+        time_data_set_manager.isSetChangeOverSinceLast()
+
+        time_data_set_manager.calculate_hour_change()
+        time_data_set_manager.calculate_ten_minute_change()
+        time_data_set_manager.calculate_five_minute_change()
 
 
+    def process_changeover_request(self, time_data_set_manager):
+        # time_data_set_manager.calculate_hour_change()
+        # time_data_set_manager.calculate_ten_minute_change()
+        # time_data_set_manager.calculate_five_minute_change()
+
+        if (time_data_set_manager.calculate_hour_change()):
+            pass
 
     # def validate_chosen_data_manager_dictionary(self, conditional_dictionary):
     #     temporary_value_list = []
