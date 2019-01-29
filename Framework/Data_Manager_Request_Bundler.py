@@ -1,7 +1,6 @@
 import asyncio
 from threading import Thread
 
-
 class Data_Manager_Request_Bundler:
     def __init__(self):
         self.sym = None
@@ -39,7 +38,7 @@ class Data_Manager_Request_Bundler:
         else:
             self.process_changeover_request()
             json = self.create_request_bundle(stock)
-            print("else json: "+ str(json))
+            print("else json: " + str(json))
             self.post_request_bundle(json)
             self.reset_process_changeover_request()
 
@@ -101,67 +100,3 @@ class Data_Manager_Request_Bundler:
         response = loop.run_until_complete(
             self.operation_center.node_manager.async_post_data_manager_request_bundle(
                 json))
-
-
-
-
-
-
-        #
-        # def create_conditional_dictionary(self):
-        #     chosen_stock_temp_container = ["test1", "test2", "test3"]
-        #
-        #     # for data_manager in self.list_chosen_data_managers:
-        #     # chosen_conditional_symbol1 = self.list_chosen_data_managers[0].get_sym()
-        #     # chosen_conditional_symbol2 = self.list_chosen_data_managers[1].get_sym()
-        #     # chosen_conditional_symbol3 = self.list_chosen_data_managers[2].get_sym()
-        #
-        #     chosen_conditional_symbol1 = "test1"
-        #     chosen_conditional_symbol2 = "test2"
-        #     chosen_conditional_symbol3 = "test3"
-        #
-        #     conditional_dictionary = {chosen_conditional_symbol1: False, chosen_conditional_symbol2: False,
-        #                               chosen_conditional_symbol3: False}
-        #
-        #     chosen_stock_temp_container_index = 0
-        #
-        #     for stock in chosen_stock_temp_container:
-        #         if (chosen_stock_temp_container_index == 0):
-        #             if (stock == chosen_conditional_symbol1):
-        #                 conditional_dictionary[chosen_conditional_symbol1] = True
-        #             if (stock == chosen_conditional_symbol2):
-        #                 conditional_dictionary[chosen_conditional_symbol2] = True
-        #             if (stock == chosen_conditional_symbol3):
-        #                 conditional_dictionary[chosen_conditional_symbol3] = True
-        #
-        #         if (chosen_stock_temp_container_index == 1):
-        #             if (stock == chosen_conditional_symbol1):
-        #                 conditional_dictionary[chosen_conditional_symbol1] = True
-        #             if (stock == chosen_conditional_symbol2):
-        #                 conditional_dictionary[chosen_conditional_symbol2] = True
-        #             if (stock == chosen_conditional_symbol3):
-        #                 conditional_dictionary[chosen_conditional_symbol3] = True
-        #
-        #         if (chosen_stock_temp_container_index == 2):
-        #             if (stock == chosen_conditional_symbol1):
-        #                 conditional_dictionary[chosen_conditional_symbol1] = True
-        #             if (stock == chosen_conditional_symbol2):
-        #                 conditional_dictionary[chosen_conditional_symbol2] = True
-        #             if (stock == chosen_conditional_symbol3):
-        #                 conditional_dictionary[chosen_conditional_symbol3] = True
-        #
-        #         chosen_stock_temp_container_index += 1
-        #     print(conditional_dictionary)
-        #     return conditional_dictionary
-        #
-        # def register_chosen_data_managers(self, data_manager):
-        #     self.list_chosen_data_managers.append(data_manager)
-        #
-        # def update_chosen_stock_temp_container(self, stock):
-        #     self.chosen_stock_temp_container = ["test1", "test2", "test3"]
-        #     if (len(self.chosen_stock_temp_container) == 3):
-        #         conditional_dictionary = self.create_conditional_dictionary()
-        #         self.validate_chosen_data_manager_dictionary(conditional_dictionary)
-        #         self.chosen_stock_temp_container.clear()
-        #     else:
-        #         print("chosen_stock_temp_container amount:", len(self.chosen_stock_temp_container))
