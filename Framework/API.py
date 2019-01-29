@@ -65,6 +65,7 @@ def top_stock():
                                 operation_center = Operation_Center()
                                 operation_center.process_async_top_stock_phase1(value)
                                 return_value = 'res'
+
     for key, value in content.items():
         if key == 'request_type':
             if value == "query_stock":

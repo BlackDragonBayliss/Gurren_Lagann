@@ -580,7 +580,9 @@ class Thread_Factory:
         # test_sym_list = ['NRP','AAPL','USG']
         chosen_data_manager_list = operation_center.get_list_chosen_data_manager()
         for sym in sym_list:
-            chosen_data_manager_instance = Chosen_Data_Manager(sym, 0, operation_center, operation_center.generate_data_manager_request_bundler(sym))
+            chosen_data_manager_instance = Chosen_Data_Manager(sym, 0, operation_center,
+                                                               operation_center.generate_data_manager_request_bundler(sym),
+                                                               operation_center.get_time_data_set_manager())
             chosen_data_manager_list.append(chosen_data_manager_instance)
 
         operation_center.process_async_initiate_chosen_data_manager(chosen_data_manager_list)

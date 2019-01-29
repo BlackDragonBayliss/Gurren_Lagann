@@ -84,8 +84,8 @@ class Data_Manager(ABC):
     def get_data_controller(self):
         return self.data_controller
 
-    def get_time_data_set_controller(self):
-        return self.time_data_set_controller
+    def get_time_data_set_manager(self):
+        return self.time_data_set_manager
 
     def get_data_manager_request_bundler(self):
         return self.data_manager_request_bundler

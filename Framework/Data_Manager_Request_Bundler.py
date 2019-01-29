@@ -3,8 +3,8 @@ from threading import Thread
 
 
 class Data_Manager_Request_Bundler:
-    def __new__(self, sym):
-        self.sym = sym
+    def __init__(self):
+        self.sym = None
         self.list_chosen_data_managers = []
         self.chosen_stock_temp_container = []
         self.operation_center = None
@@ -29,23 +29,29 @@ class Data_Manager_Request_Bundler:
         self.time_data_set_manager = time_data_set_manager
 
     def process_stock_store(self, stock):
+        print("hit process_stock_store")
         if (self.is_data_bundle_initialization_required):
-            self.process_data_initialization(stock)
+            print("Value of bool bundle: " + str(self.is_data_bundle_initialization_required))
             self.is_data_bundle_initialization_required = False
+            self.process_data_initialization(stock)
+            self.reset_data_initialization_value()
             return
         else:
             self.process_changeover_request()
             json = self.create_request_bundle(stock)
+            print("else json: "+ str(json))
             self.post_request_bundle(json)
             self.reset_process_changeover_request()
 
     def process_data_initialization(self, stock):
         self.dataBundleRecordSetInitiation = 1
         json = self.create_request_bundle(stock)
+        # self.reset_data_initialization_value()
+        print("bundle init json: " + str(json))
         self.post_request_bundle(json)
-        self.reset_data_initialization_value()
 
     def reset_data_initialization_value(self):
+        print("reset data intialization")
         self.dataBundleRecordSetInitiation = 0
 
     def process_changeover_request(self):
@@ -58,11 +64,13 @@ class Data_Manager_Request_Bundler:
         if (self.time_data_set_manager.calculate_five_minute_change()):
             self.isFiveMinuteChangeoverValue = 1
             return
+        self.isStockStoreValue = 1
 
     def reset_process_changeover_request(self):
         self.isHourChangeoverValue = 0
         self.isChangeoverValue = 0
         self.isHourChangeoverValue = 0
+        self.isStockStoreValue = 0
 
     def create_request_bundle(self, stock):
         json = {

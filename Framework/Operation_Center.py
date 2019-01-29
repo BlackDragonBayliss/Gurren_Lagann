@@ -59,7 +59,7 @@ class Operation_Center:
             self.trade_manager = Trade_Manager()
             self.email_manager = Email_Manager()
             self.odin_algorithm = Odin_Algorithm()
-            self.data_manager_request_bundler = Data_Manager_Request_Bundler()
+            # self.data_manager_request_bundler = Data_Manager_Request_Bundler()
             self.task_master = Task_Master()
             self.task_master.setup_instance(self.__instance, self.thread_factory, self.http_utility,
                                             self.request_factory,
@@ -95,11 +95,12 @@ class Operation_Center:
         if (self.is_condition_top_stock_pull_gather != True and self.calculate_time_delimiter_top_stock_pull_gather()):
             print('Early TSP gather process')
             #Update Data_Decision_Process_Action_Manager with chosen stocks
-            # self.event_trigger_top_stock_gather_process_phase_one()
-            # self.is_condition_top_stock_pull_gather = True
-            self.data_manager_request_bundler.set_operation_center(self)
-            self.data_manager_request_bundler.update_chosen_stock_temp_container('')
+            self.event_trigger_top_stock_gather_process_phase_one()
             self.is_condition_top_stock_pull_gather = True
+
+            # self.data_manager_request_bundler.set_operation_center(self)
+            # self.data_manager_request_bundler.update_chosen_stock_temp_container('')
+            # self.is_condition_top_stock_pull_gather = True
 
          # Moirae phase one 8;31
         # if (self.is_condition_moirae_phase_one != True and self.calculate_time_delimiter_moirae_phase_one()):
