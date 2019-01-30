@@ -23,20 +23,12 @@ class Time_Data_Set_Manager:
 
     def init_time_monitoring(self):
         self.perpetual_timer.setup_timer_stock(1, 1000000, self.time_monitor_loop, 'time_monitor_loop')
+        print("Time monitor loop initiated")
 
     # Loop time interval check conditions for data_set swap
     def time_monitor_loop(self):
-        print("time looping")
-
         self.current_minute = self.time_manager.get_current_second()
         self.current_hour = self.time_manager.get_current_minute()
-
-        # print("time_monitor current second", self.current_second)
-        # print("time_monitor current min", self.current_minute)
-        # print("time_monitor current hour", self.current_hour)
-        self.calculate_hour_change()
-        self.calculate_five_minute_change()
-            # support pause time interval change
 
     # calculate time sets
     def calculate_hour_change(self):
@@ -45,6 +37,7 @@ class Time_Data_Set_Manager:
             return False
 
         if (self.current_hour != self.previous_hour):
+            print("calculate hour change true")
             self.previous_hour = self.current_hour
             return True
         return False
@@ -56,6 +49,7 @@ class Time_Data_Set_Manager:
 
         if (self.current_minute != self.previous_minute):
             if (self.current_minute % 10 == 0):
+                print("calculate ten_minute change true")
                 self.current_minute = self.previous_minute
                 return True
             self.current_minute = self.previous_minute
@@ -68,6 +62,7 @@ class Time_Data_Set_Manager:
 
         if (self.current_minute != self.previous_minute):
             if (self.current_minute % 5 == 0):
+                print("calculate five_minute change true")
                 self.current_minute = self.previous_minute
                 return True
             self.current_minute = self.previous_minute

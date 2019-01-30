@@ -83,7 +83,7 @@ class Operation_Center:
     def process_main_process_loop(self):
         self.start_hour = self.time_manager.get_current_hour()
         self.start_minute = self.time_manager.get_current_minute()
-
+        self.time_data_set_manager.init_time_monitoring()
         self.main_process_loop()
 
     def main_process_loop(self):

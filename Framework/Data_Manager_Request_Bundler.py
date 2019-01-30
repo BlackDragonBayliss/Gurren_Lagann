@@ -13,7 +13,7 @@ class Data_Manager_Request_Bundler:
         self.isGetLatestHourSet = 0
         self.isGetLatestTenMinuteSet = 0
         self.isGetLatestFiveMinuteSet = 0
-        self.isGetLatestStockSet = 0
+        self.isGetLatestStock = 0
 
         self.dataBundleRecordSetInitiation = 0
         self.dataBundleDaySetInitiation = 0
@@ -77,7 +77,7 @@ class Data_Manager_Request_Bundler:
             "isGetLatestHourSet": self.isGetLatestHourSet,
             "isGetLatestTenMinuteSet": self.isGetLatestTenMinuteSet,
             "isGetLatestFiveMinuteSet": self.isGetLatestFiveMinuteSet,
-            "isGetLatestStockSet": self.isGetLatestStockSet,
+            "isGetLatestStock": self.isGetLatestStock,
 
             "dataBundleRecordSetInitiation": self.dataBundleRecordSetInitiation,
             "dataBundleDaySetInitiation": self.dataBundleDaySetInitiation,

@@ -34,10 +34,10 @@ class Data_Manager(ABC):
         self.current_stock = None
         self.handle_stock_process_not_initiated = True
 
-    def bind_data_object(self, stock):
-        self.stock_bound_iteration += 1
-        self.current_stock = stock
-        print('current stock = ', self.current_stock.get_name(), self.current_stock.get_last())
+    # def bind_data_object(self, stock):
+    #     self.stock_bound_iteration += 1
+    #     self.current_stock = stock
+    #     print('current stock = ', self.current_stock.get_name(), self.current_stock.get_last())
 
     @abstractmethod
     def init_data_processing(self):
