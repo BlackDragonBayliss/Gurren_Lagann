@@ -3,8 +3,6 @@ from Time_Data_Set_Controller import Time_Data_Set_Controller
 from Time_Manager import Time_Manager
 from Perpetual_Timer import Perpetual_Timer
 
-
-# Manage time set changeovers for registered Time_Data_Set_Controllers.
 class Time_Data_Set_Manager:
     __instance = None
 
@@ -73,11 +71,9 @@ class Time_Data_Set_Manager:
         print('TDS incoming global generation:', ID)
         epoch_time = self.time_manager.get_current_epoch_time()
         time_data_set_controller = Time_Data_Set_Controller(ID, epoch_time)
-        # Upon TDSC instantiation, store initial FM set
         time_data_set_controller.add_five_minute_to_store()
         self.list_time_data_set_controllers.append(time_data_set_controller)
         return time_data_set_controller
-
 
     def time_shift_five_minute(self):
         for time_data_set_controller in self.list_time_data_set_controllers:
