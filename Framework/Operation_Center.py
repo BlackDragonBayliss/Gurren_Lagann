@@ -83,7 +83,8 @@ class Operation_Center:
     def process_main_process_loop(self):
         self.start_hour = self.time_manager.get_current_hour()
         self.start_minute = self.time_manager.get_current_minute()
-        self.time_data_set_manager.init_time_monitoring()
+        self.time_data_set_manager.init_time_monitoring(self)
+
         self.main_process_loop()
 
     def main_process_loop(self):
@@ -93,10 +94,21 @@ class Operation_Center:
     def main_loop(self):
         # Early TSP gather process 8:30
         if (self.is_condition_top_stock_pull_gather != True and self.calculate_time_delimiter_top_stock_pull_gather()):
-            print('Early TSP gather process')
+            # print('Early TSP gather process')
             #Update Data_Decision_Process_Action_Manager with chosen stocks
-            self.event_trigger_top_stock_gather_process_phase_one()
-            self.is_condition_top_stock_pull_gather = True
+            # self.event_trigger_top_stock_gather_process_phase_one()
+            print('Calculation OC')
+
+            # self.time_data_set_manager.calculate_hour_change()
+            # self.calculate_ten_minute_change()
+            # self.time_data_set_manager.calculate_five_minute_change()
+            # if (self.time_data_set_manager.calculate_hour_change()):
+            #     print("hour change detected in OC")
+            # if (self.time_data_set_manager.calculate_ten_minute_change()):
+            #     print("TM change detected in OC")
+            # if (self.time_data_set_manager.calculate_five_minute_change()):
+            #     print("FM change detected in OC")
+            # self.is_condition_top_stock_pull_gather = True
 
             # self.data_manager_request_bundler.set_operation_center(self)
             # self.data_manager_request_bundler.update_chosen_stock_temp_container('')
@@ -154,6 +166,11 @@ class Operation_Center:
         #     self.is_condition_four_met = True
 
 
+    #TDS call passing type of set, hour/tm/fm
+    def update_data_mananager_request_bundle_time_data_set_fields(self, type):
+        print("incoming type: "+type)
+        # for data_manager in self.get_list_chosen_data_manager():
+        #     data_manager.get_data_manager_request_bundler().process_changeover(type)
 
     def create_appendage_top_stock_pull_list_one(self):
         #for each data_manager in data_manager_list package in list to be analyzed by DDPAM

@@ -20,7 +20,7 @@ class Data_Manager_Request_Bundler:
         self.isHourChangeoverValue = 0
         self.isTenMinuteChangeoverValue = 0
         self.isFiveMinuteChangeoverValue = 0
-        self.isStockStoreValue = 0
+        self.isStockStoreValue = 1
 
     def setup_data_manager_request_bundler(self, sym, operation_center, time_data_set_manager):
         self.sym = sym
@@ -36,7 +36,7 @@ class Data_Manager_Request_Bundler:
             self.reset_data_initialization_value()
             return
         else:
-            self.process_changeover_request()
+            # self.process_changeover_request()
             json = self.create_request_bundle(stock)
             print("else json: " + str(json))
             self.post_request_bundle(json)
@@ -53,23 +53,23 @@ class Data_Manager_Request_Bundler:
         print("reset data intialization")
         self.dataBundleRecordSetInitiation = 0
 
-    def process_changeover_request(self):
-        if (self.time_data_set_manager.calculate_hour_change()):
+    def process_changeover(self, type):
+        if (type == "hour"):
             self.isHourChangeoverValue = 1
             return
-        if (self.time_data_set_manager.calculate_ten_minute_change()):
+        if (type == "ten"):
             self.isTenMinuteChangeoverValue = 1
             return
-        if (self.time_data_set_manager.calculate_five_minute_change()):
+        if (type == "five"):
             self.isFiveMinuteChangeoverValue = 1
             return
-        self.isStockStoreValue = 1
+        # self.isStockStoreValue = 1
 
     def reset_process_changeover_request(self):
         self.isHourChangeoverValue = 0
-        self.isChangeoverValue = 0
-        self.isHourChangeoverValue = 0
-        self.isStockStoreValue = 0
+        self.isTenMinuteChangeoverValue = 0
+        self.isFiveMinuteChangeoverValue = 0
+        # self.isStockStoreValue = 0
 
     def create_request_bundle(self, stock):
         json = {
