@@ -44,7 +44,7 @@ class Operation_Center:
             self.request_factory = Request_Factory()
             self.thread_factory = Thread_Factory()
             self.top_stock_composite = Top_Stock_Composite()
-            self.perpetual_timer = Perpetual_Timer()
+            self.perpetual_timer_main_process_loop = Perpetual_Timer()
             self.perpetual_timer_buy_analysis = Perpetual_Timer()
 
             self.thread_manager = Thread_Manager()
@@ -71,12 +71,11 @@ class Operation_Center:
             self.is_condition_moirae_phase_one = False
             self.is_condition_moirae_phase_two = False
             self.is_condition_moirae_phase_three = False
-            self.is_condition_two_met = False
-            self.is_condition_three_met = False
-            self.is_condition_four_met = False
+            self.is_condition_end_of_day = False
 
-            self.list_top_stock_pull_one = []
-            self.list_top_stock_pull_two = []
+
+            # self.list_top_stock_pull_one = []
+            # self.list_top_stock_pull_two = []
             self.start_hour = 0
         return self.__instance
 
@@ -88,7 +87,7 @@ class Operation_Center:
         self.main_process_loop()
 
     def main_process_loop(self):
-        self.perpetual_timer.setup_timer_stock(1, 1000000, self.main_loop, 'main_process_loop')
+        self.perpetual_timer_main_process_loop.setup_timer_stock(1, 1000000, self.main_loop, 'main_process_loop')
 
 
     def main_loop(self):
@@ -96,23 +95,14 @@ class Operation_Center:
         if (self.is_condition_top_stock_pull_gather != True and self.calculate_time_delimiter_top_stock_pull_gather()):
             # print('Early TSP gather process')
             #Update Data_Decision_Process_Action_Manager with chosen stocks
-            # self.event_trigger_top_stock_gather_process_phase_one()
-            print('Calculation OC')
+            self.event_trigger_top_stock_gather_process_phase_one()
+            # print('Calculation OC')
+            self.is_condition_top_stock_pull_gather = True
 
-            # self.time_data_set_manager.calculate_hour_change()
-            # self.calculate_ten_minute_change()
-            # self.time_data_set_manager.calculate_five_minute_change()
-            # if (self.time_data_set_manager.calculate_hour_change()):
-            #     print("hour change detected in OC")
-            # if (self.time_data_set_manager.calculate_ten_minute_change()):
-            #     print("TM change detected in OC")
-            # if (self.time_data_set_manager.calculate_five_minute_change()):
-            #     print("FM change detected in OC")
-            # self.is_condition_top_stock_pull_gather = True
+        if (self.is_condition_top_stock_pull_gather != True and self.calculate_time_delimiter_top_stock_pull_gather()):
+            self.event_trigger_top_stock_gather_process_phase_one()
+            self.is_condition_top_stock_pull_gather = True
 
-            # self.data_manager_request_bundler.set_operation_center(self)
-            # self.data_manager_request_bundler.update_chosen_stock_temp_container('')
-            # self.is_condition_top_stock_pull_gather = True
 
          # Moirae phase one 8;31
         # if (self.is_condition_moirae_phase_one != True and self.calculate_time_delimiter_moirae_phase_one()):
@@ -160,17 +150,18 @@ class Operation_Center:
         #
         #
         # End of day / Capture analytics and Reset
-        # if (self.is_condition_four_met != True and self.calculate_time_delimiter_four()):
-        #     print('End "Buy/Sell analytics process" time')
-        #     self.day_decision_process_action_manager.email_end_of_day_results(self.email_manager)
-        #     self.is_condition_four_met = True
+        if (self.is_condition_end_of_day != True):
+            self.reset_procedure()
+
+            # self.day_decision_process_action_manager.email_end_of_day_results(self.email_manager)
+            self.is_condition_end_of_day = True
 
 
     #TDS call passing type of set, hour/tm/fm
     def update_data_mananager_request_bundle_time_data_set_fields(self, type):
         print("incoming type: "+type)
-        # for data_manager in self.get_list_chosen_data_manager():
-        #     data_manager.get_data_manager_request_bundler().process_changeover(type)
+        for data_manager in self.get_list_chosen_data_manager():
+            data_manager.get_data_manager_request_bundler().process_changeover(type)
 
     def create_appendage_top_stock_pull_list_one(self):
         #for each data_manager in data_manager_list package in list to be analyzed by DDPAM
@@ -465,8 +456,25 @@ class Operation_Center:
         self.day_decision_process_action_manager.capture_analytics_data_manager_action()
         self.day_decision_process_action_manager.store_data_manager_action_process()
     #Reset
-    def reset_analytics(self):
-        return ''
+    def reset_procedure(self):
+        for dm in self.get_list_chosen_data_manager():
+            dm.clear_perpetual_timers()
+        self.get_list_chosen_data_manager().clear()
+        self.perpetual_timer_main_process_loop.cancel()
+        self.time_data_set_manager.perpetual_timer_time_monite_loop.cancel()
+
+        self.is_condition_top_stock_pull_gather = False
+        self.is_condition_moirae_phase_one = False
+        self.is_condition_moirae_phase_two = False
+        self.is_condition_moirae_phase_three = False
+        self.is_condition_end_of_day = False
+
+
+
+
+
+
+
 
     # Garbage collect old chosen_data_managers
     def cancel_chosen_query_collection_processes(self):

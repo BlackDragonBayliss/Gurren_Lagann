@@ -16,19 +16,21 @@ class Time_Data_Set_Manager:
             self.current_hour = None
             self.previous_minute = None
             self.previous_hour = None
-            self.perpetual_timer = Perpetual_Timer()
+            self.perpetual_timer_time_monite_loop = Perpetual_Timer()
             # self.init_time_monitoring()
         return self.__instance
 
     def init_time_monitoring(self, operation_center):
         self.operation_center = operation_center
-        self.perpetual_timer.setup_timer_stock(1, 1000000, self.time_monitor_loop, 'time_monitor_loop')
+        self.perpetual_timer_time_monite_loop.setup_timer_stock(5, 1000000, self.time_monitor_loop, 'time_monitor_loop')
         print("Time monitor loop initiated")
 
     # Loop time interval check conditions for data_set swap
     def time_monitor_loop(self):
-        self.current_minute = self.time_manager.get_current_second()
-        self.current_hour = self.time_manager.get_current_minute()
+        # self.current_minute = self.time_manager.get_current_second()
+        # self.current_hour = self.time_manager.get_current_minute()
+        self.current_minute = self.time_manager.get_current_minute()
+        self.current_hour = self.time_manager.get_current_hour()
         print("current_minute: "+str(self.current_minute))
         print("current_hour: " + str(self.current_hour))
         self.calculate_time_change()
@@ -47,8 +49,8 @@ class Time_Data_Set_Manager:
         print("current hour: "+str(self.current_hour) + " previous hour: "+str(self.previous_hour) )
         if (self.current_hour != self.previous_hour):
             print("Doing hour set change")
-            self.operation_center.update_data_mananager_request_bundle_time_data_set_fields("hour")
             self.previous_hour = self.current_hour
+            self.operation_center.update_data_mananager_request_bundle_time_data_set_fields("hour")
             return True
         # return False
 
@@ -57,12 +59,19 @@ class Time_Data_Set_Manager:
                 # print("calculate five_minute change true")
                 if (self.current_minute % 10 == 0):
                     print("Doing ten minute set change")
+                    print("current Minute difference: " + str(self.current_minute) + " previous hour: " + str(
+                        self.previous_minute))
+                    self.previous_minute = self.current_minute
+                    print("current Minute difference: " + str(self.current_minute) + " previous hour: " + str(
+                        self.previous_minute))
                     self.operation_center.update_data_mananager_request_bundle_time_data_set_fields("ten")
-                    self.current_minute = self.previous_minute
                     return True
                 print("Doing five minute set change")
+                print("current Minute difference: " + str(self.current_minute) + " previous hour: " + str(self.previous_minute))
+                self.previous_minute = self.current_minute
+                print("current Minute difference: " + str(self.current_minute) + " previous hour: " + str(
+                    self.previous_minute))
                 self.operation_center.update_data_mananager_request_bundle_time_data_set_fields("five")
-                self.current_minute = self.previous_minute
                 return True
                 # self.current_minute = self.previous_minute
         return False

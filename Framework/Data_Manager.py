@@ -86,3 +86,6 @@ class Data_Manager(ABC):
 
     def get_data_manager_request_bundler(self):
         return self.data_manager_request_bundler
+
+    def clear_perpetual_timers(self):
+        self.perpetual_timer_data_pull.cancel()
