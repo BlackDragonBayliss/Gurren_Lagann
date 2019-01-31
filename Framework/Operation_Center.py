@@ -44,6 +44,7 @@ class Operation_Center:
             self.request_factory = Request_Factory()
             self.thread_factory = Thread_Factory()
             self.top_stock_composite = Top_Stock_Composite()
+            self.perpetual_timer_instance= Perpetual_Timer()
             self.perpetual_timer_main_process_loop = Perpetual_Timer()
             self.perpetual_timer_buy_analysis = Perpetual_Timer()
 
@@ -63,45 +64,37 @@ class Operation_Center:
             self.task_master = Task_Master()
             self.task_master.setup_instance(self.__instance, self.thread_factory, self.http_utility,
                                             self.request_factory,
-                                            self.type_converter, self.top_stock_composite, self.perpetual_timer,
+                                            self.type_converter, self.top_stock_composite, self.perpetual_timer_instance,
                                             self.thread_manager, self.stock_composite_manager, self.data_manager_action,
                                             self.node_manager, self.time_manager,
                                             self.time_data_set_manager, self.day_decision_process_action_manager)
+            self.is_start_time = False
             self.is_condition_top_stock_pull_gather= False
             self.is_condition_moirae_phase_one = False
             self.is_condition_moirae_phase_two = False
             self.is_condition_moirae_phase_three = False
             self.is_condition_end_of_day = False
 
-
-            # self.list_top_stock_pull_one = []
-            # self.list_top_stock_pull_two = []
             self.start_hour = 0
         return self.__instance
 
     def process_main_process_loop(self):
-        self.start_hour = self.time_manager.get_current_hour()
-        self.start_minute = self.time_manager.get_current_minute()
-        self.time_data_set_manager.init_time_monitoring(self)
-
-        self.main_process_loop()
+        print(self.time_manager.get_current_hour())
 
     def main_process_loop(self):
         self.perpetual_timer_main_process_loop.setup_timer_stock(1, 1000000, self.main_loop, 'main_process_loop')
 
 
     def main_loop(self):
-        # Early TSP gather process 8:30
-        if (self.is_condition_top_stock_pull_gather != True and self.calculate_time_delimiter_top_stock_pull_gather()):
-            # print('Early TSP gather process')
-            #Update Data_Decision_Process_Action_Manager with chosen stocks
+        if (self.is_start_time != True and self.calculate_time_delimiter_start_time()):
             self.event_trigger_top_stock_gather_process_phase_one()
-            # print('Calculation OC')
-            self.is_condition_top_stock_pull_gather = True
+            self.is_start_time = True
 
-        if (self.is_condition_top_stock_pull_gather != True and self.calculate_time_delimiter_top_stock_pull_gather()):
-            self.event_trigger_top_stock_gather_process_phase_one()
-            self.is_condition_top_stock_pull_gather = True
+        if (self.is_condition_end_of_day != True and self.calculate_time_delimiter_stop_time()):
+            self.reset_procedure()
+            self.is_condition_end_of_day = True
+
+
 
 
          # Moirae phase one 8;31
@@ -150,11 +143,6 @@ class Operation_Center:
         #
         #
         # End of day / Capture analytics and Reset
-        if (self.is_condition_end_of_day != True):
-            self.reset_procedure()
-
-            # self.day_decision_process_action_manager.email_end_of_day_results(self.email_manager)
-            self.is_condition_end_of_day = True
 
 
     #TDS call passing type of set, hour/tm/fm
@@ -181,11 +169,26 @@ class Operation_Center:
         self.day_decision_process_action_manager.associate_top_stock_pull_lists(self.list_top_stock_pull_one,self.list_top_stock_pull_two)
 
 
-    def calculate_time_delimiter_top_stock_pull_gather(self):
+
+
+    def calculate_time_delimiter_start_time(self):
         if(self.time_manager.get_current_hour() == self.start_hour):
             if (self.time_manager.get_current_minute() == self.start_minute):
                 return True
         return False
+
+    def calculate_time_delimiter_stop_time(self):
+        if(self.time_manager.get_current_hour() == self.start_hour):
+            if (self.time_manager.get_current_minute() == self.start_minute):
+                return True
+        return False
+
+
+    # def calculate_time_delimiter_top_stock_pull_gather(self):
+    #     if(self.time_manager.get_current_hour() == self.start_hour):
+    #         if (self.time_manager.get_current_minute() == self.start_minute):
+    #             return True
+    #     return False
 
     def calculate_time_delimiter_moirae_phase_one(self):
         if(self.time_manager.get_current_hour() == (self.start_hour)):
