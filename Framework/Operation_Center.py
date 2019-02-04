@@ -1,3 +1,4 @@
+
 from time import sleep
 from threading import Timer
 from HTTP_Utility import HTTP_Utility
@@ -17,7 +18,6 @@ from Node_Manager import Node_Manager
 from Day_Decision_Process_Action_Manager import Day_Decision_Process_Action_Manager
 from Stock_Statistics_Composite import Stock_Statistics_Composite
 from Trade_Manager import Trade_Manager
-from Email_Manager import Email_Manager
 from Odin_Algorithm import Odin_Algorithm
 from Data_Manager_Request_Bundler import Data_Manager_Request_Bundler
 
@@ -58,7 +58,6 @@ class Operation_Center:
             self.day_decision_process_action_manager = Day_Decision_Process_Action_Manager()
             self.stock_statistics_composite = Stock_Statistics_Composite
             self.trade_manager = Trade_Manager()
-            self.email_manager = Email_Manager()
             self.odin_algorithm = Odin_Algorithm()
             # self.data_manager_request_bundler = Data_Manager_Request_Bundler()
             self.task_master = Task_Master()
@@ -75,8 +74,8 @@ class Operation_Center:
             self.is_condition_moirae_phase_three = False
             self.is_condition_end_of_day = False
 
-            self.start_hour = 19
-            self.start_minute = 2
+            self.start_hour = 8
+            self.start_minute = 35
         return self.__instance
 
     def process_main_process_loop(self):
@@ -84,6 +83,7 @@ class Operation_Center:
         # self.time_data_set_manager.init_time_monitoring(self)
         # self.start_hour = 6
         # self.start_minute = 58
+        print("start")
         self.main_process_loop()
     def main_process_loop(self):
         self.perpetual_timer_main_process_loop.setup_timer_stock(1, 1000000, self.main_loop, 'main_process_loop')
@@ -539,6 +539,3 @@ class Operation_Center:
         data_manager_request_bundler = Data_Manager_Request_Bundler()
         data_manager_request_bundler.setup_data_manager_request_bundler(sym, self, self.get_time_data_set_manager())
         return data_manager_request_bundler
-
-
-
