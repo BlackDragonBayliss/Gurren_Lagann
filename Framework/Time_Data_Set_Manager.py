@@ -31,8 +31,8 @@ class Time_Data_Set_Manager:
         # self.current_hour = self.time_manager.get_current_minute()
         self.current_minute = self.time_manager.get_current_minute()
         self.current_hour = self.time_manager.get_current_hour()
-        print("current_minute: "+str(self.current_minute))
-        print("current_hour: " + str(self.current_hour))
+        # print("current_minute: "+str(self.current_minute))
+        # print("current_hour: " + str(self.current_hour))
         self.calculate_time_change()
         # self.calculate_five_minute_change()
 

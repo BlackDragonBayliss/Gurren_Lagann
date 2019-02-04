@@ -75,12 +75,16 @@ class Operation_Center:
             self.is_condition_moirae_phase_three = False
             self.is_condition_end_of_day = False
 
-            self.start_hour = 0
+            self.start_hour = 19
+            self.start_minute = 2
         return self.__instance
 
     def process_main_process_loop(self):
-        print(self.time_manager.get_current_hour())
-
+        # print(self.time_manager.get_current_hour())
+        # self.time_data_set_manager.init_time_monitoring(self)
+        # self.start_hour = 6
+        # self.start_minute = 58
+        self.main_process_loop()
     def main_process_loop(self):
         self.perpetual_timer_main_process_loop.setup_timer_stock(1, 1000000, self.main_loop, 'main_process_loop')
 
@@ -90,9 +94,9 @@ class Operation_Center:
             self.event_trigger_top_stock_gather_process_phase_one()
             self.is_start_time = True
 
-        if (self.is_condition_end_of_day != True and self.calculate_time_delimiter_stop_time()):
-            self.reset_procedure()
-            self.is_condition_end_of_day = True
+        # if (self.is_condition_end_of_day != True and self.calculate_time_delimiter_stop_time()):
+        #     self.reset_procedure()
+        #     self.is_condition_end_of_day = True
 
 
 
@@ -172,6 +176,7 @@ class Operation_Center:
 
 
     def calculate_time_delimiter_start_time(self):
+        print(self.time_manager.get_current_hour())
         if(self.time_manager.get_current_hour() == self.start_hour):
             if (self.time_manager.get_current_minute() == self.start_minute):
                 return True
@@ -192,7 +197,7 @@ class Operation_Center:
 
     def calculate_time_delimiter_moirae_phase_one(self):
         if(self.time_manager.get_current_hour() == (self.start_hour)):
-            if (self.time_manager.get_current_minute() == (self.start_minute + 1)):
+            if (self.time_manager.get_current_minute() == (self.start_minute)):
                 return True
         return False
     def calculate_time_delimiter_moirae_phase_two(self):

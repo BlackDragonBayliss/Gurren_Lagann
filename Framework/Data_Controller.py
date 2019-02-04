@@ -2,7 +2,6 @@ from Stock import Stock
 from Five_Minute_Set import Five_Minute_Set
 from Time_Manager import Time_Manager
 
-
 class Data_Controller:
     def __init__(self, data_manager):
         self.data_manager = data_manager

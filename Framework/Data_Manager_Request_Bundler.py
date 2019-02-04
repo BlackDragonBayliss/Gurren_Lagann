@@ -36,7 +36,6 @@ class Data_Manager_Request_Bundler:
             self.reset_data_initialization_value()
             return
         else:
-            # self.process_changeover_request()
             json = self.create_request_bundle(stock)
             print("else json: " + str(json))
             self.post_request_bundle(json)
@@ -90,7 +89,7 @@ class Data_Manager_Request_Bundler:
             "stock_last": stock.get_last(),
             "stock_pchg": stock.get_pchg(),
             "stock_bid": stock.get_bid(),
-            "stock_ask": stock.get_ask()
+            "stock_ask": stock.get_ask(),
         }
         return json
 
