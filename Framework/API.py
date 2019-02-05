@@ -1,7 +1,6 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from Operation_Center import Operation_Center
-from Perpetual_Timer import Perpetual_Timer
 
 app = Flask(__name__)
 CORS(app)
