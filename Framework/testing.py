@@ -1481,6 +1481,20 @@ import smtplib
 from Time_Data_Set_Manager import Time_Data_Set_Manager
 
 
-tdsm = Time_Data_Set_Manager()
+# tdsm = Time_Data_Set_Manager()
 
 # tdsm
+
+
+from datetime import datetime, timedelta
+
+now = datetime.now()
+
+# print(now)
+
+
+testDateTime = datetime(2012, 9, 16, 8, 14, 1)
+print(testDateTime)
+
+now_plus_10 = testDateTime + timedelta(minutes = 30)
+print(now_plus_10.minute)

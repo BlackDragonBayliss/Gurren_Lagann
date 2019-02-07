@@ -17,6 +17,12 @@ def init_system():
     return "initiated"
 
 
+
+
+
+
+
+
 @app.route('/top_stock', methods=['POST'])
 def top_stock():
     content = request.get_json()
