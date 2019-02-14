@@ -1486,15 +1486,20 @@ from Time_Data_Set_Manager import Time_Data_Set_Manager
 # tdsm
 
 
-from datetime import datetime, timedelta
+# from datetime import datetime, timedelta
+#
+# now = datetime.now()
+#
+# # print(now)
+#
+#
+# testDateTime = datetime(2012, 9, 16, 8, 14, 1)
+# print(testDateTime)
+#
+# now_plus_10 = testDateTime + timedelta(minutes = 30)
+# print(now_plus_10.minute)
 
-now = datetime.now()
+from Scraper_Manager import Scraper_Manager
 
-# print(now)
-
-
-testDateTime = datetime(2012, 9, 16, 8, 14, 1)
-print(testDateTime)
-
-now_plus_10 = testDateTime + timedelta(minutes = 30)
-print(now_plus_10.minute)
+sm = Scraper_Manager()
+sm.dow_scrape()

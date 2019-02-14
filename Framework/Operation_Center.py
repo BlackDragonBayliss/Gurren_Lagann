@@ -74,8 +74,8 @@ class Operation_Center:
             self.is_condition_moirae_phase_three = False
             self.is_condition_end_of_day = False
 
-            self.start_hour = 8
-            self.start_minute = 35
+            self.start_hour = 9
+            self.start_minute = 55
         return self.__instance
 
     def process_main_process_loop(self):
