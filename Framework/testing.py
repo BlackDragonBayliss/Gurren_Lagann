@@ -1499,7 +1499,27 @@ from Time_Data_Set_Manager import Time_Data_Set_Manager
 # now_plus_10 = testDateTime + timedelta(minutes = 30)
 # print(now_plus_10.minute)
 
-from Scraper_Manager import Scraper_Manager
 
-sm = Scraper_Manager()
-sm.dow_scrape()
+from time import sleep
+from Scraper_Manager import Scraper_Manager
+from Data_Manager_Request_Bundler import Data_Manager_Request_Bundler
+
+scraper_manager = Scraper_Manager()
+# print(scraper_manager.industry_scrape("aapl"))
+sleep(2)
+# print(scraper_manager.dow_scrape())
+print(scraper_manager.volume_scrape("aapl"))
+
+
+
+# scraper_manager.industry_scrape("aapl")
+
+
+# dmrb = Data_Manager_Request_Bundler()
+# dmrb.on_time_interval_retrieve_dow_volume("aapl")
+
+# sm = Scraper_Manager()
+# dowResult = sm.dow_scrape()
+# result = sm.volume_scrape("aapl")
+# print(result["Volume"])
+# print(dowResult)

@@ -1,5 +1,7 @@
 import asyncio
 from threading import Thread
+from Scraper_Manager import Scraper_Manager
+from Perpetual_Timer import Perpetual_Timer
 
 class Data_Manager_Request_Bundler:
     def __init__(self):
@@ -9,6 +11,7 @@ class Data_Manager_Request_Bundler:
         self.operation_center = None
         self.time_data_set_manager = None
         self.is_data_bundle_initialization_required = True
+        self.is_init_scraped = False
 
         self.isGetLatestHourSet = 0
         self.isGetLatestTenMinuteSet = 0
@@ -21,11 +24,48 @@ class Data_Manager_Request_Bundler:
         self.isTenMinuteChangeoverValue = 0
         self.isFiveMinuteChangeoverValue = 0
         self.isStockStoreValue = 1
+        self.isInitVolumeDowProcessing = 1
+        self.isInitScrape = 1
+
+
+
 
     def setup_data_manager_request_bundler(self, sym, operation_center, time_data_set_manager):
         self.sym = sym
         self.operation_center = operation_center
         self.time_data_set_manager = time_data_set_manager
+
+    def create_scrape_bundle_request(self, symList):
+        if(self.is_init_scraped):
+            scrape_composite = self.create_scrape_composite(symList)
+            # self.
+            # pep_scrape_timer = Perpetual_Timer()
+            # self.pep_scrape_timer.setup_timer_stock(1, 1000000, self.init_scrape_stats, symList)
+
+    def create_scrape_composite(self, symList):
+        scraper_manager = Scraper_Manager()
+        resultsComposite = []
+        for symbol in symList:
+            resultsList = []
+            industry = scraper_manager.industry_scrape(symbol)
+            dow = scraper_manager.dow_scrape()
+            volumeList = scraper_manager.volume_scrape(symbol)
+
+            resultsList.append(industry)
+            resultsList.append(dow)
+            resultsList.append(volumeList)
+            resultsComposite.append(resultsList)
+        return resultsComposite
+
+    # def getDowVolumeIndustryList(self, symbol):
+    #     scraper_manager = Scraper_Manager()
+    #     dow_volume_list = []
+    #     dow_volume_list.append(scraper_manager.dow_scrape())
+    #     listVolume = scraper_manager.volume_scrape(symbol)
+    #     dow_volume_list.append(listVolume[0])
+    #     dow_volume_list.append(listVolume[1])
+    #     print(dow_volume_list)
+
 
     def process_stock_store(self, stock):
         print("hit process_stock_store")
