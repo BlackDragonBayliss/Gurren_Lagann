@@ -29,8 +29,6 @@ class Data_Manager_Request_Bundler:
         self.isInitScrape = 1
 
 
-
-
     def setup_data_manager_request_bundler(self, operation_center, time_data_set_manager):
         # self.sym = sym
         self.operation_center = operation_center
