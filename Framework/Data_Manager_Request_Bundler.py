@@ -1,5 +1,6 @@
 import asyncio
 from threading import Thread
+from Node_Manager import Node_Manager
 from Scraper_Manager import Scraper_Manager
 from Perpetual_Timer import Perpetual_Timer
 
@@ -11,7 +12,7 @@ class Data_Manager_Request_Bundler:
         self.operation_center = None
         self.time_data_set_manager = None
         self.is_data_bundle_initialization_required = True
-        self.is_init_scraped = False
+        self.is_init_scraped = True
 
         self.isGetLatestHourSet = 0
         self.isGetLatestTenMinuteSet = 0
@@ -30,22 +31,27 @@ class Data_Manager_Request_Bundler:
 
 
 
-    def setup_data_manager_request_bundler(self, sym, operation_center, time_data_set_manager):
-        self.sym = sym
+    def setup_data_manager_request_bundler(self, operation_center, time_data_set_manager):
+        # self.sym = sym
         self.operation_center = operation_center
         self.time_data_set_manager = time_data_set_manager
 
-    def create_scrape_bundle_request(self, symList):
+    def create_scrape_bundle_request(self, sym_list):
         if(self.is_init_scraped):
-            scrape_composite = self.create_scrape_composite(symList)
-            # self.
-            # pep_scrape_timer = Perpetual_Timer()
-            # self.pep_scrape_timer.setup_timer_stock(1, 1000000, self.init_scrape_stats, symList)
+            scrape_composite = self.create_scrape_composite(sym_list)
+            self.is_init_scraped = False
+        else:
+            scrape_composite = self.create_scrape_composite(sym_list)
+            self.isInitScrape = 0
+        # print(scrape_composite)
+        json = self.create_scrape_request_bundle(scrape_composite)
+        # print("json: " + str(json))
+        self.post_request_bundle(json)
 
-    def create_scrape_composite(self, symList):
+    def create_scrape_composite(self, sym_list):
         scraper_manager = Scraper_Manager()
         resultsComposite = []
-        for symbol in symList:
+        for symbol in sym_list:
             resultsList = []
             industry = scraper_manager.industry_scrape(symbol)
             dow = scraper_manager.dow_scrape()
@@ -54,17 +60,34 @@ class Data_Manager_Request_Bundler:
             resultsList.append(industry)
             resultsList.append(dow)
             resultsList.append(volumeList)
+            resultsList.append(symbol)
+
             resultsComposite.append(resultsList)
         return resultsComposite
 
-    # def getDowVolumeIndustryList(self, symbol):
-    #     scraper_manager = Scraper_Manager()
-    #     dow_volume_list = []
-    #     dow_volume_list.append(scraper_manager.dow_scrape())
-    #     listVolume = scraper_manager.volume_scrape(symbol)
-    #     dow_volume_list.append(listVolume[0])
-    #     dow_volume_list.append(listVolume[1])
-    #     print(dow_volume_list)
+    def create_scrape_request_bundle(self, scrape_composite):
+        json = {
+            "request_type": "data_manager_request_bundle",
+            "isScrapeStore": 1,
+            "isInitScrape": self.isInitScrape,
+            "dow": scrape_composite[0][1],
+
+            "symbol1": scrape_composite[0][3],
+            "industry1": scrape_composite[0][0],
+            "volume1": scrape_composite[0][2][0],
+            "avgVolume1":scrape_composite[0][2][1],
+
+            "symbol2": scrape_composite[1][3],
+            "industry2": scrape_composite[1][0],
+            "volume2": scrape_composite[1][2][0],
+            "avgVolume2": scrape_composite[1][2][1],
+
+            "symbol3": scrape_composite[2][3],
+            "industry3": scrape_composite[2][0],
+            "volume3": scrape_composite[2][2][0],
+            "avgVolume3": scrape_composite[2][2][1]
+        }
+        return json
 
 
     def process_stock_store(self, stock):
@@ -134,6 +157,7 @@ class Data_Manager_Request_Bundler:
         return json
 
     def post_request_bundle(self, json):
+        # node_manager = Node_Manager()
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
         response = loop.run_until_complete(

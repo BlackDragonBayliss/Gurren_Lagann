@@ -25,7 +25,7 @@ class Scraper_Manager:
         url = "http://finance.yahoo.com/quote/%s?p=%s" % (ticker, ticker)
         response = requests.get(url, verify=False)
         # print("Parsing %s" % (url))
-        sleep(2)
+        # sleep(2)
         parser = html.fromstring(response.text)
         # print(response.text)
         summary_table = parser.xpath('//div[contains(@data-test,"summary-table")]//tr')
@@ -48,7 +48,7 @@ class Scraper_Manager:
     def industry_scrape(self, ticker):
         url = "https://finance.yahoo.com/quote/%s/profile?ltr=1" % (ticker)
         response = requests.get(url, verify=False)
-        sleep(0)
+        # sleep(0)
         parser = html.fromstring(response.text)
         summary_table = parser.xpath('//div[contains(@class, "asset-profile-container")] / div / div / p[2] / span[4]')
         # print(summary_table[0].text)

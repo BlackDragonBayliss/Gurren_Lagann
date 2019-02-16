@@ -1504,18 +1504,19 @@ from time import sleep
 from Scraper_Manager import Scraper_Manager
 from Data_Manager_Request_Bundler import Data_Manager_Request_Bundler
 
-scraper_manager = Scraper_Manager()
-# print(scraper_manager.industry_scrape("aapl"))
-sleep(2)
-# print(scraper_manager.dow_scrape())
-print(scraper_manager.volume_scrape("aapl"))
+# scraper_manager = Scraper_Manager()
+# # print(scraper_manager.industry_scrape("aapl"))
+# sleep(2)
+# # print(scraper_manager.dow_scrape())
+# print(scraper_manager.volume_scrape("aapl"))
 
 
 
 # scraper_manager.industry_scrape("aapl")
 
 
-# dmrb = Data_Manager_Request_Bundler()
+dmrb = Data_Manager_Request_Bundler()
+dmrb.create_scrape_bundle_request(["aapl","nvda","ko"])
 # dmrb.on_time_interval_retrieve_dow_volume("aapl")
 
 # sm = Scraper_Manager()

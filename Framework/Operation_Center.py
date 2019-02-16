@@ -20,6 +20,7 @@ from Stock_Statistics_Composite import Stock_Statistics_Composite
 from Trade_Manager import Trade_Manager
 from Odin_Algorithm import Odin_Algorithm
 from Data_Manager_Request_Bundler import Data_Manager_Request_Bundler
+from Scraper_Manager import Scraper_Manager
 
 class Operation_Center:
     list_stock_composite = []
@@ -59,7 +60,8 @@ class Operation_Center:
             self.stock_statistics_composite = Stock_Statistics_Composite
             self.trade_manager = Trade_Manager()
             self.odin_algorithm = Odin_Algorithm()
-            # self.data_manager_request_bundler = Data_Manager_Request_Bundler()
+            self.scraper_manager = Scraper_Manager()
+            self.data_manager_request_bundler = Data_Manager_Request_Bundler()
             self.task_master = Task_Master()
             self.task_master.setup_instance(self.__instance, self.thread_factory, self.http_utility,
                                             self.request_factory,
@@ -83,8 +85,12 @@ class Operation_Center:
         # self.time_data_set_manager.init_time_monitoring(self)
         # self.start_hour = 6
         # self.start_minute = 58
-        print("start")
-        self.main_process_loop()
+        self.data_manager_request_bundler.setup_data_manager_request_bundler(self, self.time_data_set_manager)
+        self.data_manager_request_bundler.create_scrape_bundle_request(["aapl","nvda","ko"])
+
+
+        # print("start")
+        # self.main_process_loop()
     def main_process_loop(self):
         self.perpetual_timer_main_process_loop.setup_timer_stock(1, 1000000, self.main_loop, 'main_process_loop')
 
