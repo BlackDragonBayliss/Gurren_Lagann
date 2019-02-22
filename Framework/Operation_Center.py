@@ -76,21 +76,20 @@ class Operation_Center:
             self.is_condition_moirae_phase_three = False
             self.is_condition_end_of_day = False
 
-            self.start_hour = 9
-            self.start_minute = 55
+            self.start_hour = 8
+            self.start_minute = 8
         return self.__instance
 
     def process_main_process_loop(self):
         # print(self.time_manager.get_current_hour())
-        # self.time_data_set_manager.init_time_monitoring(self)
+        self.time_data_set_manager.init_time_monitoring(self)
         # self.start_hour = 6
         # self.start_minute = 58
-        self.data_manager_request_bundler.setup_data_manager_request_bundler(self, self.time_data_set_manager)
-        self.data_manager_request_bundler.create_scrape_bundle_request(["aapl","nvda","ko"])
+        # self.data_manager_request_bundler.setup_data_manager_request_bundler(self, self.time_data_set_manager)
+        # self.data_manager_request_bundler.create_scrape_bundle_request(["aapl","nvda","ko"])
 
-
-        # print("start")
-        # self.main_process_loop()
+        print("start")
+        self.main_process_loop()
     def main_process_loop(self):
         self.perpetual_timer_main_process_loop.setup_timer_stock(1, 1000000, self.main_loop, 'main_process_loop')
 
@@ -543,5 +542,5 @@ class Operation_Center:
 
     def generate_data_manager_request_bundler(self, sym):
         data_manager_request_bundler = Data_Manager_Request_Bundler()
-        data_manager_request_bundler.setup_data_manager_request_bundler(sym, self, self.get_time_data_set_manager())
+        data_manager_request_bundler.setup_data_manager_request_bundler(self, self.get_time_data_set_manager())
         return data_manager_request_bundler
