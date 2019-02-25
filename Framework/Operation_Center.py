@@ -76,8 +76,8 @@ class Operation_Center:
             self.is_condition_moirae_phase_three = False
             self.is_condition_end_of_day = False
 
-            self.start_hour = 8
-            self.start_minute = 8
+            self.start_hour = 7
+            self.start_minute = 45
         return self.__instance
 
     def process_main_process_loop(self):
@@ -96,7 +96,7 @@ class Operation_Center:
 
     def main_loop(self):
         if (self.is_start_time != True and self.calculate_time_delimiter_start_time()):
-            self.event_trigger_top_stock_gather_process_phase_one()
+            self.process_async_top_stock_phase1_internal()
             self.is_start_time = True
 
         # if (self.is_condition_end_of_day != True and self.calculate_time_delimiter_stop_time()):
@@ -241,13 +241,9 @@ class Operation_Center:
 
     #Event conditionals
     def event_trigger_top_stock_gather_process_phase_one(self):
-        #TSP -> Chosen_Stock init
         self.process_async_top_stock_phase1_internal()
         # self.initiate_monitor_odin_algorithm()
         # self.process_chosen_to_bought_calculation()
-    # def event_trigger_top_stock_gather_process_phase_two(self):
-    #     #Phase 2 TSP process
-    #     self.process_async_top_stock_phase1_internal()
 
     def event_trigger_buy_analysis_process(self):
         self.perpetual_timer_buy_analysis.setup_timer_stock(3, 1000,
@@ -258,8 +254,6 @@ class Operation_Center:
         self.perform_chosen_stock_trade()
 
     def event_trigger_buy_analysis_process_end(self, data):
-        #Support hook in time_detection
-
         # End buy analytics
         # Update DDMA process
         # self.process_async_phase1_market_buy(data)
