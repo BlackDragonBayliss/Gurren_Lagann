@@ -20,3 +20,9 @@ class Top_Stock_Monument_Composite:
 
     def get_top_stock_data_manager_monument_list(self):
         return self.top_stock_data_manager_monument_list
+
+    def process_get_top_stock_data_manager_monument_symbol_list(self):
+        self.symbol_list = []
+        for data_manager in self.get_top_stock_data_manager_monument_list():
+            self.symbol_list.append(data_manager.get_sym())
+        return self.symbol_list

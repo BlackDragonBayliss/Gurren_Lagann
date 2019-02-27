@@ -47,6 +47,7 @@ class Operation_Center:
             self.perpetual_timer_instance= Perpetual_Timer()
             self.perpetual_timer_main_process_loop = Perpetual_Timer()
             self.perpetual_timer_buy_analysis = Perpetual_Timer()
+            self.perpetual_timer_process_scrape_top_stock_list_dow_volume_industry = Perpetual_Timer()
 
             self.thread_manager = Thread_Manager()
             self.stock_composite_manager = Stock_Composite_Manager()
@@ -68,7 +69,10 @@ class Operation_Center:
                                             self.thread_manager, self.stock_composite_manager, self.data_manager_action,
                                             self.node_manager, self.time_manager,
                                             self.time_data_set_manager, self.day_decision_process_action_manager)
-            self.is_start_time = False
+
+            self.is_start_yet_to_be_initiated = True
+            self.is_scrape_yet_to_be_initiated = True
+
             self.is_condition_top_stock_pull_gather= False
             self.is_condition_moirae_phase_one = False
             self.is_condition_moirae_phase_two = False
@@ -77,6 +81,8 @@ class Operation_Center:
 
             self.start_hour = 7
             self.start_minute = 55
+            self.scrape_hour = self.start_hour
+            self.scrape_minute = self.start_minute + 1
 
         return self.__instance
 
@@ -95,9 +101,13 @@ class Operation_Center:
 
 
     def main_loop(self):
-        if (self.is_start_time != True and self.calculate_time_delimiter_start_time()):
+        if (self.is_start_yet_to_be_initiated and self.calculate_time_delimiter_start()):
             self.process_async_top_stock_phase1_internal()
-            self.is_start_time = True
+            self.is_start_yet_to_be_initiated = False
+
+        if(self.is_scrape_yet_to_be_initiated and self.calculate_time_delimiter_process_scrape_top_stock_list_dow_volume_industry()):
+            self.initiate_process_top_stocks_scrape()
+            self.is_scrape_yet_to_be_initiated = False
 
         # if (self.is_condition_end_of_day != True and self.calculate_time_delimiter_stop_time()):
         #     self.reset_procedure()
@@ -184,18 +194,26 @@ class Operation_Center:
 
 
 
-    def calculate_time_delimiter_start_time(self):
+    def calculate_time_delimiter_start(self):
         print(self.time_manager.get_current_hour())
         if(self.time_manager.get_current_hour() == self.start_hour):
             if (self.time_manager.get_current_minute() == self.start_minute):
                 return True
         return False
 
-    def calculate_time_delimiter_stop_time(self):
-        if(self.time_manager.get_current_hour() == self.start_hour):
-            if (self.time_manager.get_current_minute() == self.start_minute):
+    def calculate_time_delimiter_process_scrape_top_stock_list_dow_volume_industry(self):
+        print(self.time_manager.get_current_hour())
+        if(self.time_manager.get_current_hour() == self.scrape_hour):
+            if (self.time_manager.get_current_minute() == self.scrape_minute):
                 return True
         return False
+
+
+    # def calculate_time_delimiter_stop(self):
+    #     if(self.time_manager.get_current_hour() == self.start_hour):
+    #         if (self.time_manager.get_current_minute() == self.start_minute):
+    #             return True
+    #     return False
 
 
     # def calculate_time_delimiter_top_stock_pull_gather(self):
@@ -542,7 +560,14 @@ class Operation_Center:
         return self.data_manager_request_bundler
 
 
-    def begin_time_interval_top_stocks_interval(self):
+    def initiate_process_top_stocks_scrape(self):
         # self.data_manager_request_bundler.create_scrape_bundle_request(["aapl", "nvda", "ko"])
-        self.data_manager_request_bundler.create_scrape_bundle_request(["aapl", "nvda", "ko"]
+
+        self.perpetual_timer_process_scrape_top_stock_list_dow_volume_industry.setup_timer_stock(1, 50000, self.process_scrape_top_stock_list_dow_volume_industry,
+                                                                                       'process_scrape_top_stock_list_dow_volume_industry')
+
     # support Individual self.day_decision_process_action_manager action
+    def process_scrape_top_stock_list_dow_volume_industry(self):
+        list_of_symbols = self.top_stock_monument_composite.process_get_top_stock_data_manager_monument_symbol_list()
+        self.data_manager_request_bundler.create_scrape_bundle_request(list_of_symbols)
+
