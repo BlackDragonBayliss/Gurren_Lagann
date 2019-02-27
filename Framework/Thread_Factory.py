@@ -583,9 +583,11 @@ class Thread_Factory:
             chosen_data_manager_instance = Chosen_Data_Manager(sym, 0, operation_center,
                                                                operation_center.generate_data_manager_request_bundler(sym),
                                                                operation_center.get_time_data_set_manager())
-            chosen_data_manager_list.append(chosen_data_manager_instance)
+            operation_center.top_stock_monument_composite.add_to_top_stock_data_manager_monument_list(chosen_data_manager_instance)
+            # chosen_data_manager_list.append(chosen_data_manager_instance)
 
-        operation_center.process_async_initiate_chosen_data_manager(chosen_data_manager_list)
+        # operation_center.process_async_initiate_chosen_data_manager(chosen_data_manager_list)
+        operation_center.process_async_initiate_chosen_data_manager()
 
     def create_thread_async_assemble_chosen_data_manager(self, list_of_objects):
         count = 0
@@ -680,7 +682,8 @@ class Thread_Factory:
             data_manager.init_data_processing()
 
         # Update Data_Decision_Process_Action_Manager with chosen stocks
-        operation_center.day_decision_process_action_manager.set_list_chosen_data_manager(data_manager_list)
+        # operation_center.top_stock_monument_composite.set_top_stock_data_manager_monument_list(data_manager_list)
+
 
     def create_thread_async_initiate_chosen_data_manager(self, list_of_objects):
         count = 0

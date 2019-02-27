@@ -154,7 +154,10 @@ class Operation_Center:
         # End of day / Capture analytics and Reset
 
 
-    #TDS call passing type of set, hour/tm/fm
+
+
+    # Support needed
+    # TDS call passing type of set, hour/tm/fm
     def update_data_mananager_request_bundle_time_data_set_fields(self, type):
         print("incoming type: "+type)
         for data_manager in self.get_list_chosen_data_manager():
@@ -176,6 +179,7 @@ class Operation_Center:
 
     def associate_appendage_top_stock_pull_list_to_day_decision_process_action_manager(self):
         self.day_decision_process_action_manager.associate_top_stock_pull_lists(self.list_top_stock_pull_one,self.list_top_stock_pull_two)
+
 
 
 
@@ -327,8 +331,8 @@ class Operation_Center:
     def process_async_assemble_chosen_data_manager(self, sym_list):
         self.task_master.create_thread_async_assemble_chosen_data_manager(sym_list)
 
-    def process_async_initiate_chosen_data_manager(self, data_manager_list):
-        self.task_master.create_thread_async_initiate_chosen_data_manager(data_manager_list)
+    def process_async_initiate_chosen_data_manager(self):
+        self.task_master.create_thread_async_initiate_chosen_data_manager(self.top_stock_monument_composite.get_top_stock_data_manager_monument_list())
 
     # Bought DM Creation
     def process_async_assemble_bought_data_manager(self):
@@ -537,5 +541,8 @@ class Operation_Center:
     def get_data_manager_request_bundler(self):
         return self.data_manager_request_bundler
 
-    def begin_time_interval_get_top_stocks(self):
-        self.data_manager_request_bundler.create_scrape_bundle_request(["aapl", "nvda", "ko"])
+
+    def begin_time_interval_top_stocks_interval(self):
+        # self.data_manager_request_bundler.create_scrape_bundle_request(["aapl", "nvda", "ko"])
+        self.data_manager_request_bundler.create_scrape_bundle_request(["aapl", "nvda", "ko"]
+    # support Individual self.day_decision_process_action_manager action
