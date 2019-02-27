@@ -539,10 +539,3 @@ class Operation_Center:
 
     def begin_time_interval_get_top_stocks(self):
         self.data_manager_request_bundler.create_scrape_bundle_request(["aapl", "nvda", "ko"])
-
-    def update_top_stock_monument_composite(self, dataList):
-
-        if(self.top_stock_monument_composite.):
-            self.updateTopStocksMonumentList =
-            #App
-    def getTop_Stock_Monument_Composite
