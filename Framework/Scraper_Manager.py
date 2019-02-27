@@ -15,7 +15,7 @@ class Scraper_Manager:
         summary_table = parser.xpath('// *[ @ id = "quote-header-info"] / div[3] / div / span')
         # print(summary_table[0].text)
         try:
-            print("break")
+            # print("break")
             return summary_table[0].text
         except:
             print("Failed to parse json response")

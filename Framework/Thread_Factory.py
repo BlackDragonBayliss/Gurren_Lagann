@@ -581,7 +581,6 @@ class Thread_Factory:
         chosen_data_manager_list = operation_center.get_list_chosen_data_manager()
         for sym in sym_list:
             chosen_data_manager_instance = Chosen_Data_Manager(sym, 0, operation_center,
-                                                               operation_center.generate_data_manager_request_bundler(sym),
                                                                operation_center.get_time_data_set_manager())
             operation_center.top_stock_monument_composite.add_to_top_stock_data_manager_monument_list(chosen_data_manager_instance)
             # chosen_data_manager_list.append(chosen_data_manager_instance)

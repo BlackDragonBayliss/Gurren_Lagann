@@ -12,13 +12,13 @@ from Task_Master import Task_Master
 class Data_Manager(ABC):
     global_generation_ID = 0
 
-    def __init__(self, sym, algo_case, operation_center, data_manager_request_bundler, time_data_set_manager):
+    def __init__(self, sym, algo_case, operation_center, time_data_set_manager):
         self.ID = self.global_generation_ID
         self.global_generation_ID += 1
         self.algo = algo_case
         self.sym = sym
         self.operation_center = operation_center
-        self.data_manager_request_bundler = data_manager_request_bundler
+        # self.data_manager_request_bundler = data_manager_request_bundler
         self.time_data_set_manager = time_data_set_manager
         self.time_manager = Time_Manager()
         self.time_data_set_manager = Time_Data_Set_Manager()
@@ -85,7 +85,7 @@ class Data_Manager(ABC):
         return self.time_data_set_manager
 
     def get_data_manager_request_bundler(self):
-        return self.data_manager_request_bundler
+        return self.operation_center.get_data_manager_request_bundler()
 
     def clear_perpetual_timers(self):
         self.perpetual_timer_data_pull.cancel()

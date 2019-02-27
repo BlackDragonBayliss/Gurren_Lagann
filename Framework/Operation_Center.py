@@ -65,7 +65,7 @@ class Operation_Center:
             self.task_master = Task_Master()
             self.task_master.setup_instance(self.__instance, self.thread_factory, self.http_utility,
                                             self.request_factory,
-                                            self.type_converter, self.top_stock_composite, self.perpetual_timer_instance,
+                                            self.type_converter, self.top_stock_monument_composite, self.perpetual_timer_instance,
                                             self.thread_manager, self.stock_composite_manager, self.data_manager_action,
                                             self.node_manager, self.time_manager,
                                             self.time_data_set_manager, self.day_decision_process_action_manager)
@@ -79,8 +79,8 @@ class Operation_Center:
             self.is_condition_moirae_phase_three = False
             self.is_condition_end_of_day = False
 
-            self.start_hour = 7
-            self.start_minute = 55
+            self.start_hour = 14
+            self.start_minute = 32
             self.scrape_hour = self.start_hour
             self.scrape_minute = self.start_minute + 1
 
@@ -563,9 +563,8 @@ class Operation_Center:
     def initiate_process_top_stocks_scrape(self):
         # self.data_manager_request_bundler.create_scrape_bundle_request(["aapl", "nvda", "ko"])
 
-        self.perpetual_timer_process_scrape_top_stock_list_dow_volume_industry.setup_timer_stock(1, 50000, self.process_scrape_top_stock_list_dow_volume_industry,
+        self.perpetual_timer_process_scrape_top_stock_list_dow_volume_industry.setup_timer_stock(1, 500, self.process_scrape_top_stock_list_dow_volume_industry,
                                                                                        'process_scrape_top_stock_list_dow_volume_industry')
-
     # support Individual self.day_decision_process_action_manager action
     def process_scrape_top_stock_list_dow_volume_industry(self):
         list_of_symbols = self.top_stock_monument_composite.process_get_top_stock_data_manager_monument_symbol_list()
