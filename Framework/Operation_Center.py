@@ -2,7 +2,7 @@
 from time import sleep
 from threading import Timer
 from HTTP_Utility import HTTP_Utility
-from Top_Stock_Composite import Top_Stock_Composite
+from Top_Stock_Monument_Composite import Top_Stock_Monument_Composite
 from Stock_Composite import Stock_Composite
 from Request_Factory import Request_Factory
 from Type_Converter import Type_Converter
@@ -31,7 +31,6 @@ class Operation_Center:
     list_chosen_data_manager = []
     list_bought_data_manager = []
 
-    top_stock_composite = Top_Stock_Composite()
     stock_composite_generation_iteration = 0
     top_stock_chosen = 0
     __instance = None
@@ -44,7 +43,7 @@ class Operation_Center:
             self.type_converter = Type_Converter()
             self.request_factory = Request_Factory()
             self.thread_factory = Thread_Factory()
-            self.top_stock_composite = Top_Stock_Composite()
+            self.top_stock_monument_composite = Top_Stock_Monument_Composite()
             self.perpetual_timer_instance= Perpetual_Timer()
             self.perpetual_timer_main_process_loop = Perpetual_Timer()
             self.perpetual_timer_buy_analysis = Perpetual_Timer()
@@ -77,18 +76,19 @@ class Operation_Center:
             self.is_condition_end_of_day = False
 
             self.start_hour = 7
-            self.start_minute = 45
+            self.start_minute = 55
+
         return self.__instance
 
     def process_main_process_loop(self):
         # print(self.time_manager.get_current_hour())
+        print("start")
         self.time_data_set_manager.init_time_monitoring(self)
         # self.start_hour = 6
         # self.start_minute = 58
         # self.data_manager_request_bundler.setup_data_manager_request_bundler(self, self.time_data_set_manager)
-        # self.data_manager_request_bundler.create_scrape_bundle_request(["aapl","nvda","ko"])
+        self.data_manager_request_bundler.setup_data_manager_request_bundler(self, self.get_time_data_set_manager())
 
-        print("start")
         self.main_process_loop()
     def main_process_loop(self):
         self.perpetual_timer_main_process_loop.setup_timer_stock(1, 1000000, self.main_loop, 'main_process_loop')
@@ -534,7 +534,15 @@ class Operation_Center:
     def get_time_data_set_manager(self):
         return self.time_data_set_manager
 
-    def generate_data_manager_request_bundler(self, sym):
-        data_manager_request_bundler = Data_Manager_Request_Bundler()
-        data_manager_request_bundler.setup_data_manager_request_bundler(self, self.get_time_data_set_manager())
-        return data_manager_request_bundler
+    def get_data_manager_request_bundler(self):
+        return self.data_manager_request_bundler
+
+    def begin_time_interval_get_top_stocks(self):
+        self.data_manager_request_bundler.create_scrape_bundle_request(["aapl", "nvda", "ko"])
+
+    def update_top_stock_monument_composite(self, dataList):
+
+        if(self.top_stock_monument_composite.):
+            self.updateTopStocksMonumentList =
+            #App
+    def getTop_Stock_Monument_Composite

@@ -1,7 +1,7 @@
 from Stock import Stock
 
 
-class Top_Stock_Composite:
+class Top_Stock_Monument_Composite:
 
 
     def __init__(self):
