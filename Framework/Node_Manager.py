@@ -1,6 +1,7 @@
 import aiohttp
 import asyncio
 from threading import Thread
+import urllib3
 from Request_Factory import Request_Factory
 
 class Node_Manager:
@@ -9,6 +10,8 @@ class Node_Manager:
         if self.__instance == None:
             self.__instance = object.__new__(self)
             self.request_factory = Request_Factory()
+
+            urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
         return self.__instance
 
     async def fetch(self,session, url, data):

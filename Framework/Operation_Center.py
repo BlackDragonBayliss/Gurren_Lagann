@@ -79,8 +79,8 @@ class Operation_Center:
             self.is_condition_moirae_phase_three = False
             self.is_condition_end_of_day = False
 
-            self.start_hour = 14
-            self.start_minute = 32
+            self.start_hour = self.time_manager.get_current_hour() #15
+            self.start_minute =self.time_manager.get_current_minute()  #42
             self.scrape_hour = self.start_hour
             self.scrape_minute = self.start_minute + 1
 
