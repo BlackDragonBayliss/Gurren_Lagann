@@ -91,9 +91,9 @@ class Data_Manager_Request_Bundler:
 
 
     def process_stock_store(self, stock):
-        print("hit process_stock_store")
+        # print("hit process_stock_store")
         if (self.is_data_bundle_initialization_required):
-            print("Value of bool bundle: " + str(self.is_data_bundle_initialization_required))
+            # print("Value of bool bundle: " + str(self.is_data_bundle_initialization_required))
             self.is_data_bundle_initialization_required = False
             self.process_data_initialization(stock)
             self.reset_data_initialization_value()

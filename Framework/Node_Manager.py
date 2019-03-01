@@ -18,13 +18,29 @@ class Node_Manager:
         async with session.post(url, data=data) as response:
             return await response.text()
 
+
+    #Bird messenger service
+    async def async_bird_messenger_top_stock_process_complete(self):
+        async with aiohttp.ClientSession() as session:
+            json_request = self.request_factory.async_bird_messenger_top_stock_process_complete()
+            url = 'http://localhost:3000/api/brokerage'
+            response_returned = await self.fetch(session, url, json_request)
+            return response_returned
+
+    # async def async_bird_messenger_query_money_machine(self):
+    #     async with aiohttp.ClientSession() as session:
+    #         json_request = self.request_factory.bird_messenger_query_money_machine()
+    #         url = 'http://localhost:3000/api/brokerage'
+    #         response_returned = await self.fetch(session, url, json_request)
+    #         return response_returned
+
+
     async def async_post_node_manager_query(self, sym):
         async with aiohttp.ClientSession() as session:
             json_request = self.request_factory.async_post_node_manager_query(sym)
             url = 'http://localhost:3000/api/brokerage'
             response_returned = await self.fetch(session, url, json_request)
             return response_returned
-            # data_manager.handle_stock_response(response_returned)
 
     async def async_post_stock_statistics_composite(self,stock_statistics_composite):
         async with aiohttp.ClientSession() as session:

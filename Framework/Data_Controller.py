@@ -8,13 +8,16 @@ class Data_Controller:
         self.is_change_operation = True
         self.current_stock = None
         self.is_stock_purchased = True
-
+        self.isBirdNotFlownYet = True
         self.number_count = 0
 
     def handle_stock_retrieval(self, stock):
         data_manager_request_bundler = self.data_manager.get_data_manager_request_bundler()
         #Param TDS_Manager, Stock
         data_manager_request_bundler.process_stock_store(stock)
+        if(self.isBirdNotFlownYet):
+            self.data_manager.operation_center.node_manager.async_bird_messenger_top_stock_process_complete()
+            self.isBirdNotFlownYet = False
 
     def loop_operation_analytics(self):
         # Later support for multiple algo's and extensibility
