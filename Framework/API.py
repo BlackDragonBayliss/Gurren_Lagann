@@ -258,43 +258,6 @@ def trade_market_sell():
     return return_value
 
 
-@app.route('/case_analytics', methods=['POST'])
-def case_analytics():
-    content = request.get_json()
-    print("case_analytics")
-    return_value = ''
-    for key, value in content.items():
-        if key == 'request_type':
-            if value == "case_one":
-                for key, value in content.items():
-                    if key == "payload":
-                        for key, value in value.items():
-                            if key == "data":
-                                operation_center = Operation_Center()
-                                operation_center.process_async_case_one()
-                                return_value = 'res'
-    for key, value in content.items():
-        if key == 'request_type':
-            if value == "case_two":
-                for key, value in content.items():
-                    if key == "payload":
-                        for key, value in value.items():
-                            if key == "data":
-                                operation_center = Operation_Center()
-                                operation_center.process_async_case_two(value)
-                                return_value = 'res'
-    for key, value in content.items():
-        if key == 'request_type':
-            if value == "case_three":
-                for key, value in content.items():
-                    if key == "payload":
-                        for key, value in value.items():
-                            if key == "data":
-                                operation_center = Operation_Center()
-                                operation_center.process_async_case_three(value)
-                                return_value = 'res'
-    return return_value
-
 
 if __name__ == '__main__':
     app.run(debug=False)
