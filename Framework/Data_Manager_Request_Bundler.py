@@ -92,17 +92,17 @@ class Data_Manager_Request_Bundler:
 
     def process_stock_store(self, stock):
         # print("hit process_stock_store")
-        if (self.is_data_bundle_initialization_required):
-            # print("Value of bool bundle: " + str(self.is_data_bundle_initialization_required))
-            self.is_data_bundle_initialization_required = False
-            self.process_data_initialization(stock)
-            self.reset_data_initialization_value()
-            return
-        else:
-            json = self.create_request_bundle(stock)
-            # print("else json: " + str(json))
-            self.post_request_bundle(json)
-            self.reset_process_changeover_request()
+        # if (self.is_data_bundle_initialization_required):
+        #     # print("Value of bool bundle: " + str(self.is_data_bundle_initialization_required))
+        #     self.is_data_bundle_initialization_required = False
+        #     self.process_data_initialization(stock)
+        #     self.reset_data_initialization_value()
+        #     return
+        # else:
+        json = self.create_request_bundle(stock)
+        # print("else json: " + str(json))
+        self.post_request_bundle(json)
+        self.reset_process_changeover_request()
 
     def process_data_initialization(self, stock):
         self.dataBundleRecordSetInitiation = 1
@@ -152,7 +152,7 @@ class Data_Manager_Request_Bundler:
             "stock_last": stock.get_last(),
             "stock_pchg": stock.get_pchg(),
             "stock_bid": stock.get_bid(),
-            "stock_ask": stock.get_ask(),
+            "stock_ask": stock.get_ask()
         }
         return json
 
