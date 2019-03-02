@@ -1,6 +1,11 @@
+import aiohttp
+import asyncio
+from threading import Thread
+
 from Stock import Stock
 from Five_Minute_Set import Five_Minute_Set
 from Time_Manager import Time_Manager
+
 
 class Data_Controller:
     def __init__(self, data_manager):
@@ -15,9 +20,14 @@ class Data_Controller:
         data_manager_request_bundler = self.data_manager.get_data_manager_request_bundler()
         #Param TDS_Manager, Stock
         data_manager_request_bundler.process_stock_store(stock)
-        if(self.isBirdNotFlownYet):
-            self.data_manager.operation_center.node_manager.async_bird_messenger_top_stock_process_complete()
-            self.isBirdNotFlownYet = False
+
+        # if(self.isBirdNotFlownYet):
+        #     loop = asyncio.new_event_loop()
+        #     asyncio.set_event_loop(loop)
+        #     self.isBirdNotFlownYet = False
+        #     response = loop.run_until_complete(
+        #         self.data_manager.operation_center.node_manager.async_bird_messenger_top_stock_process_complete())
+
 
     def loop_operation_analytics(self):
         # Later support for multiple algo's and extensibility
