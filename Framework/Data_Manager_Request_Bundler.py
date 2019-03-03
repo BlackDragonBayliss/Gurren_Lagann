@@ -124,14 +124,11 @@ class Data_Manager_Request_Bundler:
             return
         if (type == "five"):
             self.isFiveMinuteChangeoverValue = 1
-            return
-        # self.isStockStoreValue = 1
 
     def reset_process_changeover_request(self):
         self.isHourChangeoverValue = 0
         self.isTenMinuteChangeoverValue = 0
         self.isFiveMinuteChangeoverValue = 0
-        # self.isStockStoreValue = 0
 
     def create_request_bundle(self, stock):
         json = {
