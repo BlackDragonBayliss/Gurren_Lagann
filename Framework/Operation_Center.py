@@ -72,6 +72,7 @@ class Operation_Center:
 
             self.is_start_yet_to_be_initiated = True
             self.is_scrape_yet_to_be_initiated = True
+            self.is_top_stock_bird_yet_to_be_initiated = True
 
             self.is_condition_top_stock_pull_gather= False
             self.is_condition_moirae_phase_one = False
@@ -83,6 +84,9 @@ class Operation_Center:
             self.start_minute =self.time_manager.get_current_minute()  #42
             self.scrape_hour = self.start_hour
             self.scrape_minute = self.start_minute + 1
+
+            self.top_stock_bird_hour = self.start_hour
+            self.top_stock_bird_minute - self.start_minute + 1
 
         return self.__instance
 
@@ -108,6 +112,11 @@ class Operation_Center:
         if(self.is_scrape_yet_to_be_initiated and self.calculate_time_delimiter_process_scrape_top_stock_list_dow_volume_industry()):
             self.initiate_process_top_stocks_scrape()
             self.is_scrape_yet_to_be_initiated = False
+
+        if (self.is_top_stock_bird_yet_to_be_initiated and self.calculate_time_delimiter_top_stock_bird()):
+            self.initiate_process_top_stock_bird()
+            self.is_scrape_yet_to_be_initiated = False
+
 
         # if (self.is_condition_end_of_day != True and self.calculate_time_delimiter_stop_time()):
         #     self.reset_procedure()
@@ -201,6 +210,8 @@ class Operation_Center:
                 return True
         return False
 
+
+
     def calculate_time_delimiter_process_scrape_top_stock_list_dow_volume_industry(self):
         print(self.time_manager.get_current_hour())
         if(self.time_manager.get_current_hour() == self.scrape_hour):
@@ -208,6 +219,12 @@ class Operation_Center:
                 return True
         return False
 
+    def calculate_time_delimiter_top_stock_bird(self):
+        print(self.time_manager.get_current_hour())
+        if(self.time_manager.get_current_hour() == self.top_stock_bird_hour):
+            if (self.time_manager.get_current_minute() == self.top_stock_bird_minute):
+                return True
+        return False
 
     # def calculate_time_delimiter_stop(self):
     #     if(self.time_manager.get_current_hour() == self.start_hour):
@@ -570,3 +587,5 @@ class Operation_Center:
         list_of_symbols = self.top_stock_monument_composite.process_get_top_stock_data_manager_monument_symbol_list()
         self.data_manager_request_bundler.create_scrape_bundle_request(list_of_symbols)
 
+    def initiate_process_top_stock_bird(self):
+        self.node_manager.async_bird_messenger_top_stock_process_complete();
