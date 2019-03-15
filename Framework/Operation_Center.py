@@ -1,4 +1,5 @@
-
+import aiohttp
+import asyncio
 from time import sleep
 from threading import Timer
 from HTTP_Utility import HTTP_Utility
@@ -83,10 +84,10 @@ class Operation_Center:
             self.start_hour = self.time_manager.get_current_hour() #15
             self.start_minute =self.time_manager.get_current_minute()  #42
             self.scrape_hour = self.start_hour
-            self.scrape_minute = self.start_minute + 1
+            # self.scrape_minute = self.start_minute + 1
 
             self.top_stock_bird_hour = self.start_hour
-            self.top_stock_bird_minute - self.start_minute + 1
+            self.top_stock_bird_minute = self.start_minute + 1
 
         return self.__instance
 
@@ -109,13 +110,15 @@ class Operation_Center:
             self.process_async_top_stock_phase1_internal()
             self.is_start_yet_to_be_initiated = False
 
-        if(self.is_scrape_yet_to_be_initiated and self.calculate_time_delimiter_process_scrape_top_stock_list_dow_volume_industry()):
-            self.initiate_process_top_stocks_scrape()
-            self.is_scrape_yet_to_be_initiated = False
+        #Scrape discontinued for now
+        # if(self.is_scrape_yet_to_be_initiated and self.calculate_time_delimiter_process_scrape_top_stock_list_dow_volume_industry()):
+        #     self.initiate_process_top_stocks_scrape()
+        #     self.is_scrape_yet_to_be_initiated = False
 
         if (self.is_top_stock_bird_yet_to_be_initiated and self.calculate_time_delimiter_top_stock_bird()):
+            print("We're getting a bird!")
             self.initiate_process_top_stock_bird()
-            self.is_scrape_yet_to_be_initiated = False
+            self.is_top_stock_bird_yet_to_be_initiated = False
 
 
         # if (self.is_condition_end_of_day != True and self.calculate_time_delimiter_stop_time()):
@@ -577,15 +580,17 @@ class Operation_Center:
         return self.data_manager_request_bundler
 
 
-    def initiate_process_top_stocks_scrape(self):
-        # self.data_manager_request_bundler.create_scrape_bundle_request(["aapl", "nvda", "ko"])
-
-        self.perpetual_timer_process_scrape_top_stock_list_dow_volume_industry.setup_timer_stock(1, 500, self.process_scrape_top_stock_list_dow_volume_industry,
-                                                                                       'process_scrape_top_stock_list_dow_volume_industry')
+    # def initiate_process_top_stocks_scrape(self):
+    #     # self.data_manager_request_bundler.create_scrape_bundle_request(["aapl", "nvda", "ko"])
+    #
+    #     self.perpetual_timer_process_scrape_top_stock_list_dow_volume_industry.setup_timer_stock(1, 500, self.process_scrape_top_stock_list_dow_volume_industry,
+    #                                                                                    'process_scrape_top_stock_list_dow_volume_industry')
     # support Individual self.day_decision_process_action_manager action
     def process_scrape_top_stock_list_dow_volume_industry(self):
         list_of_symbols = self.top_stock_monument_composite.process_get_top_stock_data_manager_monument_symbol_list()
         self.data_manager_request_bundler.create_scrape_bundle_request(list_of_symbols)
 
     def initiate_process_top_stock_bird(self):
-        self.node_manager.async_bird_messenger_top_stock_process_complete();
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        response = loop.run_until_complete(self.node_manager.async_bird_messenger_top_stock_process_complete());

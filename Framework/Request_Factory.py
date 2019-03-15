@@ -30,7 +30,7 @@ class Request_Factory:
     # Bird messenger service
     def async_bird_messenger_top_stock_process_complete(self):
         json_request = {"request_type": "bird_messenger_query_money_machine",
-                        "isTopStockResponse": 1
+                        "isTopStockResponse": "1"
                         }
         return json_request
 
