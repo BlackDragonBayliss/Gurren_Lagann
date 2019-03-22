@@ -120,6 +120,10 @@ class Operation_Center:
             self.initiate_process_top_stock_bird()
             self.is_top_stock_bird_yet_to_be_initiated = False
 
+        #TSP pull initial, stock moves, bird_TSP pulled process Neo Linked
+            #
+
+
 
         # if (self.is_condition_end_of_day != True and self.calculate_time_delimiter_stop_time()):
         #     self.reset_procedure()
