@@ -22,6 +22,7 @@ from Trade_Manager import Trade_Manager
 from Odin_Algorithm import Odin_Algorithm
 from Data_Manager_Request_Bundler import Data_Manager_Request_Bundler
 from Scraper_Manager import Scraper_Manager
+from StockObservanceRotationManager import StockObservanceRotationManager
 
 class Operation_Center:
     list_stock_composite = []
@@ -104,8 +105,52 @@ class Operation_Center:
     def main_process_loop(self):
         self.perpetual_timer_main_process_loop.setup_timer_stock(1, 1000000, self.main_loop, 'main_process_loop')
 
+    def intakeGoldenGooseReport(self,GGReport):
+        #GG BuySell Watch is measured locally Neo,
+        #GG Update current Golden in Node.
+
+
+        #Stock rotation piece
+        stockObservanceRotationManager = StockObservanceRotationManager()
+        stockObservanceRotationManager.rotateStocks(GGReport)
+        #Upon new TSP pulled, evaluated, stock stored, ...
 
     def main_loop(self):
+
+        #On loop 30 minute interval, TSP Bird process
+
+        #If 30 minute time period pass, process,
+            #Process TSP pull, Node stock store,
+            #Interminnent dilly dally-projective stock rotation
+
+        #Begin 5 minute pause.
+        #30 minute rotation
+
+        #Handle 45 start
+        #Test purpose. current minute, minute iterate, continue fast enough to do all measures
+        #Live handling turnover,
+
+        # #First minute iterate.
+        # # if():
+        # #     calculate_time_delimiter_start
+        # #Second minute iterate.
+        # if (self.time_manager.get_current_minute() == 30 & self.isGoldenGooseTimeMarker1):
+        #     self.isGoldenGooseTimeMarker1 = False
+        #     self.isGoldenGooseTimeMarker2 = True
+        #     self.process_async_top_stock_phase1_internal()
+        #     # self.is_start_yet_to_be_initiated = False
+        #
+        # #Third minute iterate.
+        # if (self.time_manager.get_current_minute() == 31 & self.isGoldenGooseTimeMarker2):
+        #     self.isGoldenGooseTimeMarker1 = True
+        #     self.isGoldenGooseTimeMarker2 = False
+        #     self.initiate_process_top_stock_bird()
+        #
+        #
+        #
+
+        #Iterate through whole, receiving Neo bird GGResult, processing and then rotation.
+            #Follow time
         if (self.is_start_yet_to_be_initiated and self.calculate_time_delimiter_start()):
             self.process_async_top_stock_phase1_internal()
             self.is_start_yet_to_be_initiated = False
@@ -218,7 +263,6 @@ class Operation_Center:
         return False
 
 
-
     def calculate_time_delimiter_process_scrape_top_stock_list_dow_volume_industry(self):
         print(self.time_manager.get_current_hour())
         if(self.time_manager.get_current_hour() == self.scrape_hour):
@@ -232,6 +276,10 @@ class Operation_Center:
             if (self.time_manager.get_current_minute() == self.top_stock_bird_minute):
                 return True
         return False
+
+
+
+
 
     # def calculate_time_delimiter_stop(self):
     #     if(self.time_manager.get_current_hour() == self.start_hour):
