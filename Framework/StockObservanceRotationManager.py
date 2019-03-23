@@ -6,5 +6,6 @@ class StockObservanceRotationManager():
     def __init__(self, operationCenter):
         self.operationCenter = operationCenter
 
-    def rotateStocks(self,GGReport):
-        self.GGReport = GGReport
+    def rotateStocks(self,goldenGooseReport):
+        self.goldenGooseReport = goldenGooseReport
+        print(self.goldenGooseReport)

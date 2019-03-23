@@ -21,7 +21,7 @@ from Top_Stock_Monument_Composite import Top_Stock_Monument_Composite
 from Trade_Manager import Trade_Manager
 from Type_Converter import Type_Converter
 
-from Framework.StockObservanceRotationManager import StockObservanceRotationManager
+from StockObservanceRotationManager import StockObservanceRotationManager
 
 
 class Operation_Center:
@@ -105,14 +105,13 @@ class Operation_Center:
     def main_process_loop(self):
         self.perpetual_timer_main_process_loop.setup_timer_stock(1, 1000000, self.main_loop, 'main_process_loop')
 
-    def intakeGoldenGooseReport(self,GGReport):
+    def intakeGoldenGooseReport(self,goldenGooseReport):
         #GG BuySell Watch is measured locally Neo,
         #GG Update current Golden in Node.
 
-
         #Stock rotation piece
         stockObservanceRotationManager = StockObservanceRotationManager()
-        stockObservanceRotationManager.rotateStocks(GGReport)
+        stockObservanceRotationManager.rotateStocks(goldenGooseReport)
         #Upon new TSP pulled, evaluated, stock stored, ...
 
     def main_loop(self):
