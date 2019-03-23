@@ -16,6 +16,21 @@ def init_system():
     operation_center.process_main_process_loop()
     return "initiated"
 
+@app.route('/top_stock', methods=['POST'])
+def top_stock():
+    content = request.get_json()
+    return_value = 'pass'
+    for key, value in content.items():
+        if key == 'request_type':
+            if value == "lookup_top_stocks_phase_internal":
+                for key, value in content.items():
+                    if key == "payload":
+                        for key, value in value.items():
+                            if key == "data":
+                                operation_center = Operation_Center()
+                                operation_center.process_async_top_stock_phase1_internal()
+                                return_value = 'res'
+
 
 
 
