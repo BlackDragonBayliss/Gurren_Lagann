@@ -87,5 +87,16 @@ class Data_Manager(ABC):
     def get_data_manager_request_bundler(self):
         return self.operation_center.get_data_manager_request_bundler()
 
+    def setIsGoldenGoose(self, isGoldenGoose):
+        self.isGoldenGoose = isGoldenGoose
+    def getIsGoldenGoose(self):
+        return self.isGoldenGoose
+
+    def setGoldenGoosePriority(self, goldenGoosePriority):
+        self.goldenGoosePriority = goldenGoosePriority
+    def getGoldenGoosePriority(self):
+        return self.goldenGoosePriority
+
+
     def clear_perpetual_timers(self):
         self.perpetual_timer_data_pull.cancel()

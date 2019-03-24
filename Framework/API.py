@@ -19,18 +19,18 @@ def init_system():
 @app.route('/bird_relay', methods=['POST'])
 def bird_relay():
     content = request.get_json()
-    print(content)
+    # print(content)
     for key, value in content.items():
         if key == 'request_type':
             if value == "bird1":
                 for key, value in content.items():
                     if key == "payload":
-                        # for key, value in value.items():
-                        #     if key == "data":
-
-                        operation_center = Operation_Center()
-                        # operation_center.process_async_top_stock_phase1_internal()
-                        return_value = 'res'
+                        for key, value in value.items():
+                            if key == "data":
+                                # print(value)
+                                operation_center = Operation_Center()
+                                operation_center.intakeGoldenGooseReport(value)
+                                return_value = 'res'
     return return_value
 
 
