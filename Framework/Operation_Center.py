@@ -93,7 +93,6 @@ class Operation_Center:
         return self.__instance
 
     def process_main_process_loop(self):
-        # print(self.time_manager.get_current_hour())
         print("start")
         self.time_data_set_manager.init_time_monitoring(self)
         # self.start_hour = 6
