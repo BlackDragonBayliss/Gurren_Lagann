@@ -27,9 +27,11 @@ def bird_relay():
                     if key == "payload":
                         # for key, value in value.items():
                         #     if key == "data":
+
                         operation_center = Operation_Center()
-                        operation_center.process_async_top_stock_phase1_internal()
+                        # operation_center.process_async_top_stock_phase1_internal()
                         return_value = 'res'
+    return return_value
 
 
 
