@@ -34,6 +34,8 @@ class Data_Manager(ABC):
         self.current_stock = None
         self.handle_stock_process_not_initiated = True
 
+        self.golden_goose_priority = 11
+
     # def bind_data_object(self, stock):
     #     self.stock_bound_iteration += 1
     #     self.current_stock = stock
@@ -87,15 +89,15 @@ class Data_Manager(ABC):
     def get_data_manager_request_bundler(self):
         return self.operation_center.get_data_manager_request_bundler()
 
-    def setIsGoldenGoose(self, isGoldenGoose):
-        self.isGoldenGoose = isGoldenGoose
-    def getIsGoldenGoose(self):
+    def set_is_golden_goose(self, is_golden_goose):
+        self.isGoldenGoose = is_golden_goose
+    def get_is_golden_goose(self):
         return self.isGoldenGoose
 
-    def setGoldenGoosePriority(self, goldenGoosePriority):
-        self.goldenGoosePriority = goldenGoosePriority
-    def getGoldenGoosePriority(self):
-        return self.goldenGoosePriority
+    def set_golden_goose_priority(self, golden_goose_priority):
+        self.golden_goose_priority = golden_goose_priority
+    def get_golden_goose_priority(self):
+        return self.golden_goose_priority
 
 
     def clear_perpetual_timers(self):

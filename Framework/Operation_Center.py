@@ -107,10 +107,29 @@ class Operation_Center:
     def intake_golden_goose_report(self,golden_goose_report):
         #GG BuySell Watch is measured locally Neo,
         #GG Update current Golden in Node.
-
+        print("golden_goose_report: "+str(golden_goose_report))
         #Stock rotation piece
-        stock_observance_rotation_manager = Stock_Observance_Rotation_Manager(self)
-        stock_observance_rotation_manager.rotate_stocks(golden_goose_report)
+        stock_observance_rotation_manager = Stock_Observance_Rotation_Manager(self, self.get_top_stock_monument_composite())
+        isContinueOperations = int(stock_observance_rotation_manager.intake_query(golden_goose_report))
+
+        # print("isContinueOperations: "+str(isContinueOperations))
+
+        # stock_observance_rotation_manager.tag_data_managers()
+
+        # If proceed with activations.
+        if(isContinueOperations == 1):
+            print("Returning true")
+            stock_observance_rotation_manager.tag_data_managers()
+            #Filter each DM, cancel or slow, set slow.
+            #return res ...? probably no.
+
+            #Filter each non-priory DM, Filter for highest priory,
+            #Highest priory never match - check Neo
+            #Slow non-highest priorities.
+            stock_observance_rotation_manager.filter_data_managers()
+        else:
+            print("Returning false")
+
         #Upon new TSP pulled, evaluated, stock stored, ...
 
     def main_loop(self):
@@ -628,6 +647,10 @@ class Operation_Center:
 
     def get_data_manager_request_bundler(self):
         return self.data_manager_request_bundler
+
+    def get_top_stock_monument_composite(self):
+        return self.top_stock_monument_composite
+
 
 
     # def initiate_process_top_stocks_scrape(self):

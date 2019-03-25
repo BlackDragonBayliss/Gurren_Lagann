@@ -29,7 +29,7 @@ def bird_relay():
                             if key == "data":
                                 # print(value)
                                 operation_center = Operation_Center()
-                                operation_center.intakeGoldenGooseReport(value)
+                                operation_center.intake_golden_goose_report(value)
                                 return_value = 'res'
     return return_value
 
