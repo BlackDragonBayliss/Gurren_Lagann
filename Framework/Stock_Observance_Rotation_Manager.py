@@ -9,30 +9,23 @@ class Stock_Observance_Rotation_Manager():
         self.isCurrentChosenDetermined = 0
         self.list_values = []
 
-    def filter_data_managers(self):
+    def filter_highest_priority_data_manager(self):
         data_manager_list = self.top_stock_monument_composite.get_top_stock_data_manager_monument_list()
+        highest_data_manager = 0
+
         for data_manager in data_manager_list:
             print("Filtered sym: "+ data_manager.get_sym()+ " priority:"+data_manager.get_golden_goose_priority())
             #What to put here?
                 #What do we need? Filter
                     #What do we filter here?
+            if(highest_data_manager == 0):
+                highest_data_manager = data_manager
+                continue
+            if (highest_data_manager.get_golden_goose_priority() <= data_manager.get_golden_goose_priority()):
+                highest_data_manager = data_manager
+                continue
+        return highest_data_manager
 
-            def fuckthisshit(something):
-
-        # print()
-        # self.current_query = current_query
-        # print(self.current_query)
-        # for key, value in current_query.items():
-        #     if key == 'isChosenDetermined':
-        #         self.isCurrentChosenDetermined = value
-        #         print("isChosen: "+self.isCurrentChosenDetermined)
-        #
-        #     if key == 'dataList':
-        #         dataList = value
-        #         self.list_values = dataList
-        #         print("dataList: "+str(self.list_values))
-        #
-        # return self.isCurrentChosenDetermined
 
     def intake_query(self, current_query):
         self.current_query = current_query
