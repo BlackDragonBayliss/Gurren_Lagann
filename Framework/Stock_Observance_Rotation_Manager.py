@@ -13,6 +13,11 @@ class Stock_Observance_Rotation_Manager():
         data_manager_list = self.top_stock_monument_composite.get_top_stock_data_manager_monument_list()
         for data_manager in data_manager_list:
             print("Filtered sym: "+ data_manager.get_sym()+ " priority:"+data_manager.get_golden_goose_priority())
+            #What to put here?
+                #What do we need? Filter
+                    #What do we filter here?
+
+            def fuckthisshit(something):
 
         # print()
         # self.current_query = current_query

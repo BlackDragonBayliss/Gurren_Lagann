@@ -126,6 +126,7 @@ class Operation_Center:
             #Filter each non-priory DM, Filter for highest priory,
             #Highest priory never match - check Neo
             #Slow non-highest priorities.
+
             stock_observance_rotation_manager.filter_data_managers()
         else:
             print("Returning false")
@@ -181,7 +182,7 @@ class Operation_Center:
             print("We're getting a bird!")
             self.initiate_process_top_stock_bird()
             self.is_top_stock_bird_yet_to_be_initiated = False
-
+            def calculateBi
         #TSP pull initial, stock moves, bird_TSP pulled process Neo Linked
             #
 
