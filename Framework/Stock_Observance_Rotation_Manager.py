@@ -62,7 +62,7 @@ class Stock_Observance_Rotation_Manager():
             if(highest_data_manager == 0):
                 highest_data_manager = data_manager
                 continue
-            if (highest_data_manager.get_golden_goose_priority() <= data_manager.get_golden_goose_priority()):
+            if (highest_data_manager.get_golden_goose_priority() < data_manager.get_golden_goose_priority()):
                 highest_data_manager = data_manager
                 continue
         return highest_data_manager
