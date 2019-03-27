@@ -15,10 +15,11 @@ class Stock_Observance_Rotation_Manager():
 
         data_manager_index = 0
         # a = [0, 1, 2]
-        end_slice_index = data_manager_index + 1
+
         # del a[internalIndex:endSliceIndex]
         # print(a)
-        print("DMLIST before removal: "+str(data_manager_list))
+        for dm in data_manager_list:
+            print("DMLIST before removal: " + dm.get_sym())
         for data_manager in data_manager_list:
             if(data_manager.get_sym() == highest_priority_data_manager.get_sym()):
                 print("hit at index: "+str(data_manager_index))
@@ -26,16 +27,23 @@ class Stock_Observance_Rotation_Manager():
                 # data_manager_list.
                 if(data_manager_index == 2):
                     print("data_manager_index == 2")
-                    begin_slice_index = data_manager_index - 1
-                    print("begin_slice_index: "+str(begin_slice_index))
+                    # begin_slice_index = data_manager_index - 1
+                    end_slice_index = data_manager_index + 1
+                    print("end_slice_index: "+str(end_slice_index))
                     print("data_manager_index: " + str(data_manager_index))
 
-                    del data_manager_list[begin_slice_index:data_manager_index]
-                    print("DMLIST after removal: " + str(data_manager_list))
+                    del data_manager_list[data_manager_index:end_slice_index]
+
+                    for dm in data_manager_list:
+                        print("DMLIST after removal: " + dm.get_sym())
+                    break
                 else:
                     print("data_manager_index != 2")
+                    end_slice_index = data_manager_index + 1
                     del data_manager_list[data_manager_index:end_slice_index]
-                    print("DMLIST after removal: " + str(data_manager_list))
+                    for dm in data_manager_list:
+                        print("DMLIST after removal: " + dm.get_sym())
+                    break
                 # print(a)
                 # data_manager_list_index
             data_manager_index += 1
