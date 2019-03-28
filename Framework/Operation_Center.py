@@ -131,9 +131,10 @@ class Operation_Center:
             extended_data_manager_List = stock_observance_rotation_manager.transform_nonchosen_data_managers_to_extended_data_manager_list(highest_priority_data_manager)
 
             #Varient testing
-            # print("highest_priority_data_manager: "+highest_priority_data_manager.get_sym())
-            # for data_manager in extended_data_manager_List:
-            #     print("extended DM: "+data_manager.get_sym())
+            print("highest_priority_data_manager: "+highest_priority_data_manager.get_sym())
+            for data_manager in extended_data_manager_List:
+                print("extended DM: "+data_manager.get_sym())
+                # transform_nonchosen_data_managers_to_extended_data_manager_list
 
         else:
             print("Returning false")

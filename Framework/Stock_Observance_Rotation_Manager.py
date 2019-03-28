@@ -9,17 +9,22 @@ class Stock_Observance_Rotation_Manager():
         self.isCurrentChosenDetermined = 0
         self.list_values = []
 
+
+    def change_over_data_managers_to_extended(self, data_manager_list):
+        for data_manager in data_manager_list:
+            #Cancel, create, store in list.
+            data_manager.cancel()
+            #Cancel DC? DM locally? No handle here, abstraction level higher.
+            # data_manager.exten
+
     def transform_nonchosen_data_managers_to_extended_data_manager_list(self, highest_priority_data_manager):
         data_manager_list = self.top_stock_monument_composite.get_top_stock_data_manager_monument_list()
-        # data_manager_list_index = 0
-
         data_manager_index = 0
-        # a = [0, 1, 2]
 
-        # del a[internalIndex:endSliceIndex]
-        # print(a)
         for dm in data_manager_list:
             print("DMLIST before removal: " + dm.get_sym())
+
+
         for data_manager in data_manager_list:
             if(data_manager.get_sym() == highest_priority_data_manager.get_sym()):
                 print("hit at index: "+str(data_manager_index))
@@ -49,13 +54,14 @@ class Stock_Observance_Rotation_Manager():
             data_manager_index += 1
 
         return data_manager_list
-        # pass
+
+
     def filter_highest_priority_data_manager(self):
         data_manager_list = self.top_stock_monument_composite.get_top_stock_data_manager_monument_list()
         highest_data_manager = 0
 
         for data_manager in data_manager_list:
-            print("Filtered sym: "+ data_manager.get_sym()+ " priority:"+data_manager.get_golden_goose_priority())
+            print("Filtered sym: "+ data_manager.get_sym()+ " priority: "+str(data_manager.get_golden_goose_priority()))
             #What to put here?
                 #What do we need? Filter
                     #What do we filter here?
