@@ -135,6 +135,7 @@ class Operation_Center:
             for data_manager in extended_data_manager_List:
                 print("extended DM: "+data_manager.get_sym())
                 # transform_nonchosen_data_managers_to_extended_data_manager_list
+                data_manager.chosen_extend_process()
 
         else:
             print("Returning false")

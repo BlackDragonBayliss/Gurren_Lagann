@@ -181,4 +181,5 @@ class Perpetual_Timer():
 
    def cancel(self):
       # self.thread.cancel()
+      print("quiting pep timer: "+self.name)
       self.stopped.set()

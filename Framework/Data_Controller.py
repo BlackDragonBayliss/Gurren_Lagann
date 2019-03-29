@@ -46,7 +46,6 @@ class Data_Controller:
         return current_five_minute_set[(len(current_five_minute_set) - 1)]
 
     def algo_determine_when_to_sell(self):
-
         stock_list = self.generate_data_set()
 
         # if (self.determine_pchg_time_to_sell(stock_list)):

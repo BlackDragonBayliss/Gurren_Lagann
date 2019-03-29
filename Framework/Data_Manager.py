@@ -26,6 +26,8 @@ class Data_Manager(ABC):
         self.data_controller = self.data_controller_factory.create_data_controller(self, 0, algo_case)
         self.perpetual_timer_data_pull = Perpetual_Timer()
         self.perpetual_timer_data_analytics = Perpetual_Timer()
+
+        self.perpetual_timer_container = []
         self.time_data_set_controller = self.time_data_set_manager.register_time_data_set_controller(
             self.get_global_generation_ID())
         self.node_manager = Node_Manager()
@@ -54,7 +56,7 @@ class Data_Manager(ABC):
 
     def handle_stock_retrieval(self, stock):
         self.get_data_controller().handle_stock_retrieval(stock)
-        print('inc stock last:', stock.get_last())
+        print("inc stock: "+ stock.get_sym() + " stock last: "+stock.get_last())
 
     def update_package_bundler(self, stock):
         self.operation_center.get_data_manager_request_bundler().update_chosen_stock_temp_container(stock)
