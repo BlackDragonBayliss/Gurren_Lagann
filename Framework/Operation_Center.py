@@ -33,6 +33,8 @@ class Operation_Center:
     list_chosen_data_manager = []
     list_bought_data_manager = []
 
+
+
     stock_composite_generation_iteration = 0
     top_stock_chosen = 0
     __instance = None
@@ -82,6 +84,8 @@ class Operation_Center:
             self.is_condition_moirae_phase_three = False
             self.is_condition_end_of_day = False
 
+            self.is_interval_top_stock_pull = True
+
             self.start_hour = self.time_manager.get_current_hour() #15
             self.start_minute =self.time_manager.get_current_minute()  #42
             self.scrape_hour = self.start_hour
@@ -89,6 +93,9 @@ class Operation_Center:
 
             self.top_stock_bird_hour = self.start_hour
             self.top_stock_bird_minute = self.start_minute + 1
+
+            self.list_start_hour = [self.start_hour]
+            self.list_start_minute = [self.start_minute]
 
         return self.__instance
 
@@ -142,6 +149,11 @@ class Operation_Center:
 
         #Upon new TSP pulled, evaluated, stock stored, ...
 
+
+
+
+
+
     def main_loop(self):
 
         #On loop 30 minute interval, TSP Bird process
@@ -178,21 +190,65 @@ class Operation_Center:
 
         #Iterate through whole, receiving Neo bird GGResult, processing and then rotation.
             #Follow time
-        if (self.is_start_yet_to_be_initiated and self.calculate_time_delimiter_start()):
-            self.process_async_top_stock_phase1_internal()
-            self.is_start_yet_to_be_initiated = False
+        #
+        # if (self.is_start_yet_to_be_initiated and self.calculate_time_delimiter_start()):
+        #     self.process_async_top_stock_phase1_internal()
+        #     self.is_start_yet_to_be_initiated = False
+        #
+        # #Scrape discontinued for now
+        # # if(self.is_scrape_yet_to_be_initiated and self.calculate_time_delimiter_process_scrape_top_stock_list_dow_volume_industry()):
+        # #     self.initiate_process_top_stocks_scrape()
+        # #     self.is_scrape_yet_to_be_initiated = False
+        #
+        # if (self.is_top_stock_bird_yet_to_be_initiated and self.calculate_time_delimiter_top_stock_bird()):
+        #     print("We're getting a bird!")
+        #     self.initiate_process_top_stock_bird()
+        #     self.is_top_stock_bird_yet_to_be_initiated = False
 
-        #Scrape discontinued for now
-        # if(self.is_scrape_yet_to_be_initiated and self.calculate_time_delimiter_process_scrape_top_stock_list_dow_volume_industry()):
-        #     self.initiate_process_top_stocks_scrape()
-        #     self.is_scrape_yet_to_be_initiated = False
-
-        if (self.is_top_stock_bird_yet_to_be_initiated and self.calculate_time_delimiter_top_stock_bird()):
-            print("We're getting a bird!")
-            self.initiate_process_top_stock_bird()
-            self.is_top_stock_bird_yet_to_be_initiated = False
         #TSP pull initial, stock moves, bird_TSP pulled process Neo Linked
             #
+
+
+        # # Handle intervaled TSP processing
+        # #Interval_one
+        # if (self.is_interval_one and self.calculate_time_interval_one()):
+        #     print("We're getting a bird!")
+        #     #Handle top stock interval one
+        #     self.is_top_stock_bird_yet_to_be_initiated = False
+
+
+        if (self.is_interval_top_stock_pull and self.calculate_time_interval_one()):
+            print("Intervaled calculations")
+            # Handle top stock interval one
+            self.is_top_stock_bird_yet_to_be_initiated = False
+
+        #If time equal in calc, if match then true
+            #For each value in store, if value match, fire.
+
+
+
+        # #Interval_two
+        # if (self.is_interval_two and self.calculate_time_interval_two()):
+        #     print("We're getting a bird!")
+        #     # Handle top stock interval two
+        #     self.is_top_stock_bird_yet_to_be_initiated = False
+        #
+        # #Interval_three
+        # if (self.is_interval_three and self.calculate_time_interval_three()):
+        #     print("We're getting a bird!")
+        #     # Handle top stock interval three
+        #     self.is_top_stock_bird_yet_to_be_initiated = False
+        #
+        # # Interval_four
+        # if (self.is_interval_four and self.calculate_time_interval_four()):
+        #     print("We're getting a bird!")
+        #     # Handle top stock interval four
+        #     self.is_top_stock_bird_yet_to_be_initiated = False
+
+
+
+
+
 
 
 
@@ -288,6 +344,62 @@ class Operation_Center:
                 return True
         return False
 
+
+    def calculate_time_interval_one(self):
+        self.time_set_container = [[7,45],[8,15],[8,45],[9,15],[9,45],[10,15],[10,45]]
+
+        for time_set in self.time_set_container:
+            print("time_set str(time_set[0]): " + str(time_set[0]) + " time_set str(time_set[1]): " + str(time_set[1]))
+        # print("hit calc interval"
+        # if (self.time_manager.get_current_hour() == self.list_start_hour[0]):
+        #     if (self.time_manager.get_current_minute() == self.list_start_minute[0]):
+        #         print("external self.list_start_hour: " + str(self.list_start_hour))
+        #         print("external self.list_start_minute: " + str(self.list_start_minute))
+        #         return True
+        #
+        #     # Handle third eye. Fully immerse
+        #
+        #     # See the code before you write it
+        #     if (self.time_manager.get_current_hour() == self.list_start_hour[0]):
+        #         if (self.time_manager.get_current_minute() == self.list_start_minute[0] + 1):
+        #             self.is_interval_top_stock_pull = True
+        #
+        #             internalIndex = 0
+        #             endSliceIndex = 1
+        #
+        #             first_index_hour_list = self.list_start_hour[0]
+        #             first_index_minute_list = self.list_start_minute[0]
+        #
+        #             del self.list_start_hour[internalIndex:endSliceIndex]
+        #             del self.list_start_minute[internalIndex:endSliceIndex]
+        #
+        #             print("Should be empty: "+str(self.list_start_hour))
+        #             print("Should be empty: " + str(self.list_start_minute))
+        #
+        #             self.list_start_hour.append(first_index_hour_list)
+        #             self.list_start_minute.append(first_index_minute_list + 2)
+        #
+        #
+        #             print("Internal self.list_start_hour: " + str(self.list_start_hour))
+        #             print("Internal self.list_start_minute: " + str(self.list_start_minute))
+
+        return False
+
+    # # def calculate_time_interval_one(self):
+    # #     # print(self.time_manager.get_current_hour())'
+    # #     #30 minute interval change
+    # #
+    # #     if(self.time_manager.get_current_hour() == self.start_hour):
+    # #         if (self.time_manager.get_current_minute() == self.start_minute):
+    # #             return True
+    # #
+    # #         #Handle third eye. FUlly immerse
+    # #
+    # #         #See the code before you write it
+    # #self.list_start_hour = []
+    #         self.list_start_minute = []
+    # #         calculate third eye
+    # #     return False
 
     def calculate_time_delimiter_process_scrape_top_stock_list_dow_volume_industry(self):
         print(self.time_manager.get_current_hour())
