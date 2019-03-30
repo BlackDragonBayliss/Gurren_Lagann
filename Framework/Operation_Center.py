@@ -92,11 +92,18 @@ class Operation_Center:
 
             self.is_second_hour = True
 
-            self.start_hour = self.time_manager.get_current_hour() #15
-            self.start_minute =self.time_manager.get_current_minute()  #42
+            self.start_hour = self.time_manager.get_current_hour() #15 7
+            self.start_minute =self.time_manager.get_current_minute()  #42 45
 
-            self.second_set_automation_time_minute = self.start_minute + 1
-            self.third_set_automation_time_minute = self.second_set_automation_time_minute + 1
+            self.first_set_automation_time_top_stock_pull_minute = self.start_minute  # 46
+            self.first_set_automation_time_goose_minute = self.first_set_automation_time_top_stock_pull_minute + 1   # 47
+
+            self.second_set_automation_time_top_stock_pull_minute = self.first_set_automation_time_goose_minute + 1 #46
+            self.second_set_automation_time_goose_minute = self.second_set_automation_time_top_stock_pull_minute + 1 #47
+
+
+            self.third_set_automation_time_top_stock_pull_minute = self.second_set_automation_time_goose_minute + 1
+            self.third_set_automation_time_goose_minute = self.third_set_automation_time_top_stock_pull_minute + 1
 
             # self.is_first_set_automation_time
 
@@ -214,7 +221,7 @@ class Operation_Center:
 
         # if (self.is_top_stock_bird_yet_to_be_initiated and self.calculate_time_delimiter_top_stock_bird()):
         #     print("We're getting a bird!")
-        #     self.initiate_process_top_stock_bird()
+        #     self.initiate_process_top_stock_goose()
         #     self.is_top_stock_bird_yet_to_be_initiated = False
 
         #TSP pull initial, stock moves, bird_TSP pulled process Neo Linked
@@ -228,14 +235,26 @@ class Operation_Center:
         #     #Handle top stock interval one
         #     self.is_top_stock_bird_yet_to_be_initiated = False
 
+        if (self.calculate_time_interval_top_stock_pull()):
+            print("HIT Intervaled calculations ")
+            print("top stock pull!")
+
+            #We want this process to occur 1 minute after each TSP
+            self.initiate_process_top_stock_pull()
+
 
         if (self.calculate_time_interval_goose()):
-            print("HIT Intervaled calculations")
+            print("HIT Intervaled calculations goose")
             print("goose time!")
-            self.initiate_process_top_stock_bird()
-            #so how do we handle?
-                #
 
+            #We want this process to occur 1 minute after each TSP
+            self.initiate_process_top_stock_goose()
+            #so how do we handle?
+                #look at tsp prcoess, edit, recreate pathways.
+
+            #what do we want?
+                #recreate tsp for goose pull,
+                    #goose process will pull current so need to change.
 
 
 
@@ -362,18 +381,18 @@ class Operation_Center:
                 return True
         return False
 
+    # self.first_set_automation_time_top_stock_pull_minute = self.start_minute  # 46
+    # self.first_set_automation_time_goose_minute = self.first_set_automation_time_top_stock_pull_minute + 1  # 47
 
-
-
-    def calculate_time_interval_goose(self):
-        self.time_set_container = [[7,50],[8,15],[8,45],[9,15],[9,45],[10,15],[10,45]]
+    def calculate_time_interval_top_stock_pull(self):
+        self.time_set_container = [[7,45],[8,15],[8,45],[9,15],[9,45],[10,15],[10,45]]
         print("hit calc interval")
 
         #Fix time section
         if (self.time_manager.get_current_hour() == self.start_hour):
-            if (self.time_manager.get_current_minute() == self.start_minute):
+            if (self.time_manager.get_current_minute() == self.first_set_automation_time_top_stock_pull_minute):
                 # print("Times up 7:45")
-                print("current_minute: self.start_minute")
+                print("current_minute: self.first_set_automation_time_top_stock_pull_minute")
                 self.artificial_hour = self.time_set_container[0][0]
                 self.artificial_minute = self.time_set_container[0][1]
 
@@ -381,9 +400,9 @@ class Operation_Center:
                 print("minute: "+str(self.artificial_minute))
 
         if (self.time_manager.get_current_hour() == self.start_hour):
-            if (self.time_manager.get_current_minute() == self.second_set_automation_time_minute):
+            if (self.time_manager.get_current_minute() == self.second_set_automation_time_top_stock_pull_minute):
                 # print("Times up 8:15")
-                print("current_minute: self.start_minute+1")
+                print("current_minute: self.second_set_automation_time_top_stock_pull_minute")
                 self.artificial_hour = self.time_set_container[1][0]
                 self.artificial_minute = self.time_set_container[1][1]
 
@@ -391,9 +410,9 @@ class Operation_Center:
                 print("minute1: " + str(self.artificial_minute))
 
         if (self.time_manager.get_current_hour() == self.start_hour):
-            if (self.time_manager.get_current_minute() == self.third_set_automation_time_minute):
+            if (self.time_manager.get_current_minute() == self.third_set_automation_time_top_stock_pull_minute):
                 # print("Times up 8:15")
-                print("current_minute: self.start_minute+2")
+                print("current_minute: self.third_set_automation_time_top_stock_pull_minute")
                 self.artificial_hour = self.time_set_container[2][0]
                 self.artificial_minute = self.time_set_container[2][1]
 
@@ -404,7 +423,7 @@ class Operation_Center:
         #######
 
         if (self.artificial_hour ==  7):
-            if(self.artificial_minute == 50):
+            if(self.artificial_minute == 45):
                 print("escomo internal")
                 if(self.is_first_set_automation_time):
                     print("Times up 7:50")
@@ -427,7 +446,71 @@ class Operation_Center:
                     self.is_third_set_automation_time = False
                     return True
 
+        return False
 
+    def calculate_time_interval_goose(self):
+        self.time_set_container = [[7,46],[8,16],[8,47],[9,16],[9,46],[10,16],[10,46]]
+        print("hit calc interval")
+
+        #Fix time section
+        if (self.time_manager.get_current_hour() == self.start_hour):
+            if (self.time_manager.get_current_minute() == self.first_set_automation_time_goose_minute):
+                # print("Times up 7:45")
+                print("current_minute: self.first_set_automation_time_goose_minute")
+                self.artificial_hour = self.time_set_container[0][0]
+                self.artificial_minute = self.time_set_container[0][1]
+
+                print("hour: "+str(self.artificial_hour))
+                print("minute: "+str(self.artificial_minute))
+
+        if (self.time_manager.get_current_hour() == self.start_hour):
+            if (self.time_manager.get_current_minute() == self.second_set_automation_time_goose_minute):
+                # print("Times up 8:15")
+                print("current_minute: self.second_set_automation_time_goose_minute")
+                self.artificial_hour = self.time_set_container[1][0]
+                self.artificial_minute = self.time_set_container[1][1]
+
+                print("hour1: " + str(self.artificial_hour))
+                print("minute1: " + str(self.artificial_minute))
+
+        if (self.time_manager.get_current_hour() == self.start_hour):
+            if (self.time_manager.get_current_minute() == self.third_set_automation_time_goose_minute):
+                # print("Times up 8:15")
+                print("current_minute: self.third_set_automation_time_goose_minute")
+                self.artificial_hour = self.time_set_container[2][0]
+                self.artificial_minute = self.time_set_container[2][1]
+
+                print("hour2: " + str(self.artificial_hour))
+                print("minute2: " + str(self.artificial_minute))
+
+
+        #######
+
+        if (self.artificial_hour ==  7):
+            if(self.artificial_minute == 46):
+                print("escomo internal")
+                if(self.is_first_set_automation_time):
+                    print("Times up 7:50")
+                    self.is_first_set_automation_time = False
+                    return True
+
+        if (self.artificial_hour == 8):
+            if (self.artificial_minute == 16):
+                print("echo internal")
+                if (self.is_second_set_automation_time):
+                    print("Times up 8:15")
+                    self.is_second_set_automation_time = False
+                    return True
+
+        if (self.artificial_hour == 8):
+            if(self.artificial_minute == 46):
+                print("crawdad internal")
+                if (self.is_third_set_automation_time):
+                    print("Times up 8:45")
+                    self.is_third_set_automation_time = False
+                    return True
+
+        return False
         # if (self.time_manager.get_current_hour() == self.time_set_container[0][0] & self.time_manager.get_current_hour() == self.time_set_container[0][1]):
         #     print("Times up 7:45")
         #
@@ -465,7 +548,7 @@ class Operation_Center:
             #         print("Internal self.list_start_hour: " + str(self.list_start_hour))
             #         print("Internal self.list_start_minute: " + str(self.list_start_minute))
 
-        return False
+        # return False
 
     # # def calculate_time_interval_one(self):
     # #     # print(self.time_manager.get_current_hour())'
@@ -866,7 +949,9 @@ class Operation_Center:
         list_of_symbols = self.top_stock_monument_composite.process_get_top_stock_data_manager_monument_symbol_list()
         self.data_manager_request_bundler.create_scrape_bundle_request(list_of_symbols)
 
-    def initiate_process_top_stock_bird(self):
+    def initiate_process_top_stock_goose(self):
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
         response = loop.run_until_complete(self.node_manager.async_bird_messenger_top_stock_process_complete());
+
+
