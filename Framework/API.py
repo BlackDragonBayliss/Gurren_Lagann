@@ -51,6 +51,8 @@ def top_stock():
                                 operation_center.process_async_top_stock_phase1_internal()
                                 return_value = 'res'
 
+
+    #Begin TSP process.
     for key, value in content.items():
         if key == 'request_type':
             if value == "transform_top_stock":

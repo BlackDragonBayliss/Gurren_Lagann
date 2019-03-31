@@ -210,9 +210,9 @@ class Operation_Center:
         #Iterate through whole, receiving Neo bird GGResult, processing and then rotation.
             #Follow time
         #
-        if (self.is_start_yet_to_be_initiated and self.calculate_time_delimiter_start()):
-            self.process_async_top_stock_phase1_internal()
-            self.is_start_yet_to_be_initiated = False
+        # if (self.is_start_yet_to_be_initiated and self.calculate_time_delimiter_start()):
+        #     self.process_async_top_stock_phase1_internal()
+        #     self.is_start_yet_to_be_initiated = False
         #
         # #Scrape discontinued for now
         # # if(self.is_scrape_yet_to_be_initiated and self.calculate_time_delimiter_process_scrape_top_stock_list_dow_volume_industry()):
@@ -238,15 +238,13 @@ class Operation_Center:
         if (self.calculate_time_interval_top_stock_pull()):
             print("HIT Intervaled calculations ")
             print("top stock pull!")
-
             #We want this process to occur 1 minute after each TSP
-            self.initiate_process_top_stock_pull()
-
+            # self.initiate_process_top_stock_pull()
+            self.process_async_top_stock_phase1_internal()
 
         if (self.calculate_time_interval_goose()):
             print("HIT Intervaled calculations goose")
             print("goose time!")
-
             #We want this process to occur 1 minute after each TSP
             self.initiate_process_top_stock_goose()
             #so how do we handle?
@@ -255,6 +253,8 @@ class Operation_Center:
             #what do we want?
                 #recreate tsp for goose pull,
                     #goose process will pull current so need to change.
+
+
 
 
 
