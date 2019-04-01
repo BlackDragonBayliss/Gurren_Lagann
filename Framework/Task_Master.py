@@ -132,16 +132,16 @@ class Task_Master:
 
     # DM type creation process
     # Extended DM Creation
-    def create_thread_async_assemble_extended_data_manager(self, sym):
-        list_of_objects = [sym, self.type_converter, self.operation_center]
+    def create_thread_async_assemble_extended_data_manager(self, sym_list):
+        list_of_objects = [sym_list, self.type_converter, self.operation_center]
         self.thread_factory.create_thread_async_assemble_extended_data_manager(list_of_objects)
-    def create_thread_async_initiate_extended_data_manager(self, data_manager):
-        list_of_objects = [data_manager, self.type_converter, self.operation_center]
+    def create_thread_async_initiate_extended_data_manager(self, data_manager_list):
+        list_of_objects = [data_manager_list, self.operation_center]
         self.thread_factory.create_thread_async_initiate_extended_data_manager(list_of_objects)
 
     # Chosen DM Creation
-    def create_thread_async_assemble_chosen_data_manager(self, sym_list):
-        list_of_objects = [sym_list, self.type_converter, self.operation_center]
+    def create_thread_async_assemble_chosen_data_manager(self, sym):
+        list_of_objects = [sym, self.type_converter, self.operation_center]
         self.thread_factory.create_thread_async_assemble_chosen_data_manager(list_of_objects)
     def create_thread_async_initiate_chosen_data_manager(self, data_manager_list):
         list_of_objects = [data_manager_list, self.operation_center]

@@ -26,3 +26,9 @@ class Top_Stock_Monument_Composite:
         for data_manager in self.get_top_stock_data_manager_monument_list():
             self.symbol_list.append(data_manager.get_sym())
         return self.symbol_list
+
+    def set_chosen_data_manager(self, chosen_data_manager):
+        self.chosen_data_manager = chosen_data_manager
+
+    def get_chosen_data_manager(self):
+        return self.chosen_data_manager

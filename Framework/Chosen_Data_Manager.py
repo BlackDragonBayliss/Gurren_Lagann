@@ -16,15 +16,5 @@ class Chosen_Data_Manager(Data_Manager):
     def test_print(self):
         print(super().get_data_manager_type())
 
-    def chosen_extend_process(self):
-        #End process
-        self.perpetual_timer_data_pull.cancel()
-        #Begin second slower process
-        #Handle second process
 
-        perpetual_timer = Perpetual_Timer()
-        self.perpetual_timer_container.append(perpetual_timer)
-        self.perpetual_timer_data_pull.setup_timer_stock(10, 10000, super().data_pull, 'data_pull_extend')
-        # self.perpetual_timer_data_pull.cancel()
-        #testing phase
 

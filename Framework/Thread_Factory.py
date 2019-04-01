@@ -107,7 +107,7 @@ class Thread_Factory:
         for val in data_list:
             sym_data_list.append(val.get_sym())
         # operation_center.list_chosen_data_manager = data_list
-        operation_center.process_async_assemble_chosen_data_manager(sym_data_list)
+        operation_center.process_async_assemble_extended_data_manager(sym_data_list)
         # response = loop.run_until_complete(http_utility.async_post_stock_top_phase1(request_data_list, request_factory))
 
     def create_thread_async_top_stock_phase1(self, list_of_objects):
@@ -530,59 +530,60 @@ class Thread_Factory:
     #Advanced DM assembly
     #Extended DM
     #Assembly of DM
-    def start_background_loop_assemble_extended_data_manager(self, sym, type_converter,
-                                           operation_center):
-
+    # Chosen DM
+    # Assembly of DM
+    def start_background_loop_assemble_extended_data_manager(self, sym_list,
+                                                           operation_center):
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
+        # test_sym_list = ['NRP','AAPL','USG']
 
-        # sym intake, DM creation and storage into OC
-        # is this just a Sym intake?
+        # extended_data_manager_list = operation_center.get_list_chosen_data_manager()
+        for sym in sym_list:
+            extended_data_manager_instance = Extended_Data_Manager(sym, 0, operation_center,
+                                                                   operation_center.get_time_data_set_manager())
+            operation_center.top_stock_monument_composite.add_to_top_stock_data_manager_monument_list(
+                extended_data_manager_instance)
 
-        extended_DM_instance = Extended_Data_Manager(sym,0)
-        extended_DM_list  = operation_center.get_list_extended_data_manager()
-
-
-        #ID storage process...
-
-        extended_DM_list.append(extended_DM_instance)
-
-
-        #init process
-        operation_center.process_async_initiate_extended_data_manager(extended_DM_instance)
-
-        # stock = type_converter.parse_symbol_query(data)
-        # data_manager.bind_data_object(stock)
+        # operation_center.process_async_initiate_chosen_data_manager(chosen_data_manager_list)
+        operation_center.process_async_initiate_extended_data_manager()
 
     def create_thread_async_assemble_extended_data_manager(self, list_of_objects):
         count = 0
 
         for arg in list_of_objects:
             if (count == 0):
-                sym = arg
+                sym_list = arg
             if (count == 1):
-                type_converter = arg
-            if (count == 2):
                 operation_center = arg
             count = count + 1
 
-        t = Thread(target=self.start_background_loop_assemble_extended_data_manager,
-                   args=(sym, type_converter, operation_center))
+        t = Thread(target=self.start_background_loop_assemble_chosen_data_manager,
+                   args=(sym_list, operation_center))
         t.start()
 
 
     # Chosen DM
     # Assembly of DM
-    def start_background_loop_assemble_chosen_data_manager(self, sym_list, type_converter,
+    def start_background_loop_assemble_chosen_data_manager(self, sym, type_converter,
                                                            operation_center):
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
         # test_sym_list = ['NRP','AAPL','USG']
-        chosen_data_manager_list = operation_center.get_list_chosen_data_manager()
-        for sym in sym_list:
-            chosen_data_manager_instance = Chosen_Data_Manager(sym, 0, operation_center,
-                                                               operation_center.get_time_data_set_manager())
-            operation_center.top_stock_monument_composite.add_to_top_stock_data_manager_monument_list(chosen_data_manager_instance)
+
+
+        # extended_data_manager_list = operation_center.get_list_chosen_data_manager()
+        # for sym in sym_list:
+        chosen_data_manager_instance = Chosen_Data_Manager(sym, 0, operation_center,
+                                                           operation_center.get_time_data_set_manager())
+        operation_center.top_stock_monument_composite.set_chosen_data_manager(
+            chosen_data_manager_instance)
+
+        # chosen_data_manager_list = operation_center.get_list_chosen_data_manager()
+        # for sym in sym_list:
+        #     chosen_data_manager_instance = Chosen_Data_Manager(sym, 0, operation_center,
+        #                                                        operation_center.get_time_data_set_manager())
+        #     operation_center.top_stock_monument_composite.add_to_top_stock_data_manager_monument_list(chosen_data_manager_instance)
             # chosen_data_manager_list.append(chosen_data_manager_instance)
 
         # operation_center.process_async_initiate_chosen_data_manager(chosen_data_manager_list)
@@ -593,15 +594,13 @@ class Thread_Factory:
 
         for arg in list_of_objects:
             if (count == 0):
-                sym_list = arg
+                sym = arg
             if (count == 1):
-                type_converter = arg
-            if (count == 2):
                 operation_center = arg
             count = count + 1
 
         t = Thread(target=self.start_background_loop_assemble_chosen_data_manager,
-                   args=(sym_list, type_converter, operation_center))
+                   args=(sym, operation_center))
         t.start()
 
 
@@ -643,28 +642,29 @@ class Thread_Factory:
 
     #Extended DM
     #Initiation
-    def start_background_loop_initiate_extended_data_manager(self, data_manager,
-                                                             operation_center):
+    def start_background_loop_initiate_extended_data_manager(self, data_manager_list, operation_center
+                                                           ):
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
 
-        data_manager.init_data_processing()
-        # operation_center bind
-        # operation_center.add_data_manager_to_list(data_manager)
+        # init chosen_data_manager'sf
+        for data_manager in data_manager_list:
+            data_manager.init_data_processing()
 
-        # response = loop.run_until_complete(httpUtility.async_post_stock_query_phase1(stockComposite, requestFactory))
+            # Update Data_Decision_Process_Action_Manager with chosen stocks
+            # operation_center.top_stock_monument_composite.set_top_stock_data_manager_monument_list(data_manager_list)
 
     def create_thread_async_initiate_extended_data_manager(self, list_of_objects):
         count = 0
         for arg in list_of_objects:
             if (count == 0):
-                data_manager = arg
+                data_manager_list = arg
             if (count == 1):
                 operation_center = arg
             count = count + 1
 
-        t = Thread(target=self.start_background_loop_initiate_extended_data_manager,
-                   args=(data_manager, operation_center))
+        t = Thread(target=self.start_background_loop_initiate_chosen_data_manager,
+                   args=(data_manager_list, operation_center))
         t.start()
 
 

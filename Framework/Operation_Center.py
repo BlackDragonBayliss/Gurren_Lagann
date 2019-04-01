@@ -157,11 +157,16 @@ class Operation_Center:
             extended_data_manager_List = stock_observance_rotation_manager.transform_nonchosen_data_managers_to_extended_data_manager_list(highest_priority_data_manager)
 
             #Varient testing
-            print("highest_priority_data_manager: "+highest_priority_data_manager.get_sym())
-            for data_manager in extended_data_manager_List:
-                print("extended DM: "+data_manager.get_sym())
-                # transform_nonchosen_data_managers_to_extended_data_manager_list
-                data_manager.chosen_extend_process()
+            # print("highest_priority_data_manager: "+highest_priority_data_manager.get_sym())
+            # for data_manager in extended_data_manager_List:
+            #     print("extended DM: "+data_manager.get_sym())
+            #     # transform_nonchosen_data_managers_to_extended_data_manager_list
+            #
+            #     #Delete old data managers, and add chosen.
+            #     #Add chosen to chosen list
+
+            chosen_data_manager = highest_priority_data_manager.extended_to_chosen_process(self)
+            self.get_top_stock_monument_composite().set_chosen_data_manager(chosen_data_manager)
 
         else:
             print("Returning false")
@@ -253,8 +258,6 @@ class Operation_Center:
             #what do we want?
                 #recreate tsp for goose pull,
                     #goose process will pull current so need to change.
-
-
 
 
 
@@ -714,18 +717,18 @@ class Operation_Center:
 
     # DM type creation process
     # Extended DM Creation
-    def process_async_assemble_extended_data_manager(self, sym):
-        self.task_master.create_thread_async_assemble_extended_data_manager(sym)
+    def process_async_assemble_extended_data_manager(self, sym_list):
+        self.task_master.create_thread_async_assemble_extended_data_manager(sym_list)
 
-    def process_async_initiate_extended_data_manager(self, data_manager):
-        self.task_master.create_thread_async_initiate_extended_data_manager(data_manager)
+    def process_async_initiate_extended_data_manager(self):
+        self.task_master.create_thread_async_initiate_extended_data_manager(self.top_stock_monument_composite.get_top_stock_data_manager_monument_list())
 
     # Chosen DM Creation
-    def process_async_assemble_chosen_data_manager(self, sym_list):
-        self.task_master.create_thread_async_assemble_chosen_data_manager(sym_list)
+    def process_async_assemble_chosen_data_manager(self, sym):
+        self.task_master.create_thread_async_assemble_chosen_data_manager(sym)
 
-    def process_async_initiate_chosen_data_manager(self):
-        self.task_master.create_thread_async_initiate_chosen_data_manager(self.top_stock_monument_composite.get_top_stock_data_manager_monument_list())
+    def process_async_initiate_chosen_data_manager(self, data_manager):
+        self.task_master.create_thread_async_initiate_chosen_data_manager(data_manager)
 
     # Bought DM Creation
     def process_async_assemble_bought_data_manager(self):
