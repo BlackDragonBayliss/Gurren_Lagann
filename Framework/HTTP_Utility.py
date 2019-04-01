@@ -198,26 +198,3 @@ class HTTP_Utility:
 #         new_loop
 #     ).add_done_callback(lambda future: print(future.result()))
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# def post_request(url, jsonPayload):
-#     internalUrl = url
-#     payload = jsonPayload
-#     # Adding empty header as parameters are being sent in payload
-#     headers = {"Content-Type": "application/json"}
-#     r = requests.post(internalUrl, data=json.dumps(jsonPayload), headers=headers)
-#     print(r.content)
-#     return r.content
