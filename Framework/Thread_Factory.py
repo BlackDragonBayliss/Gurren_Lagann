@@ -107,6 +107,7 @@ class Thread_Factory:
         for val in data_list:
             sym_data_list.append(val.get_sym())
         # operation_center.list_chosen_data_manager = data_list
+        print("start_background_loop_top_stock_phase1: "+str(sym_data_list))
         operation_center.process_async_assemble_extended_data_manager(sym_data_list)
         # response = loop.run_until_complete(http_utility.async_post_stock_top_phase1(request_data_list, request_factory))
 
@@ -558,14 +559,14 @@ class Thread_Factory:
                 operation_center = arg
             count = count + 1
 
-        t = Thread(target=self.start_background_loop_assemble_chosen_data_manager,
+        t = Thread(target=self.start_background_loop_assemble_extended_data_manager,
                    args=(sym_list, operation_center))
         t.start()
 
 
     # Chosen DM
     # Assembly of DM
-    def start_background_loop_assemble_chosen_data_manager(self, sym, type_converter,
+    def start_background_loop_assemble_chosen_data_manager(self, sym,
                                                            operation_center):
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
@@ -587,7 +588,7 @@ class Thread_Factory:
             # chosen_data_manager_list.append(chosen_data_manager_instance)
 
         # operation_center.process_async_initiate_chosen_data_manager(chosen_data_manager_list)
-        operation_center.process_async_initiate_chosen_data_manager()
+        operation_center.process_async_initiate_chosen_data_manager(chosen_data_manager_instance)
 
     def create_thread_async_assemble_chosen_data_manager(self, list_of_objects):
         count = 0
@@ -648,7 +649,9 @@ class Thread_Factory:
         asyncio.set_event_loop(loop)
 
         # init chosen_data_manager'sf
+
         for data_manager in data_manager_list:
+            print("init ex data_manager: "+data_manager.get_sym())
             data_manager.init_data_processing()
 
             # Update Data_Decision_Process_Action_Manager with chosen stocks
@@ -663,7 +666,7 @@ class Thread_Factory:
                 operation_center = arg
             count = count + 1
 
-        t = Thread(target=self.start_background_loop_initiate_chosen_data_manager,
+        t = Thread(target=self.start_background_loop_initiate_extended_data_manager,
                    args=(data_manager_list, operation_center))
         t.start()
 
@@ -671,14 +674,14 @@ class Thread_Factory:
 
     # Chosen DM
     # Initiation
-    def start_background_loop_initiate_chosen_data_manager(self, data_manager_list, operation_center
+    def start_background_loop_initiate_chosen_data_manager(self, data_manager, operation_center
                                                              ):
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
 
         # init chosen_data_manager'sf
-        for data_manager in data_manager_list:
-            data_manager.init_data_processing()
+        # for data_manager in data_manager_list:
+        data_manager.init_data_processing()
 
         # Update Data_Decision_Process_Action_Manager with chosen stocks
         # operation_center.top_stock_monument_composite.set_top_stock_data_manager_monument_list(data_manager_list)
@@ -688,13 +691,13 @@ class Thread_Factory:
         count = 0
         for arg in list_of_objects:
             if (count == 0):
-                data_manager_list = arg
+                data_manager = arg
             if (count == 1):
                 operation_center = arg
             count = count + 1
 
         t = Thread(target=self.start_background_loop_initiate_chosen_data_manager,
-                   args=(data_manager_list, operation_center))
+                   args=(data_manager, operation_center))
         t.start()
 
 

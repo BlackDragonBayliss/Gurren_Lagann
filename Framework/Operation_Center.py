@@ -89,6 +89,9 @@ class Operation_Center:
             self.is_second_set_automation_time = True
             self.is_third_set_automation_time = True
 
+            self.is_first_set_automation_time_goose = True
+            self.is_second_set_automation_time_goose = True
+            self.is_third_set_automation_time_goose = True
 
             self.is_second_hour = True
 
@@ -121,6 +124,15 @@ class Operation_Center:
     def process_main_process_loop(self):
         print("start")
         self.time_data_set_manager.init_time_monitoring(self)
+
+        print("self.first_set_automation_time_top_stock_pull_minute "+ str(self.first_set_automation_time_top_stock_pull_minute))
+        print("self.first_set_automation_time_goose_minute " + str(self.first_set_automation_time_goose_minute))
+        print("self.second_set_automation_time_top_stock_pull_minute " + str(self.second_set_automation_time_top_stock_pull_minute))
+        print("self.second_set_automation_time_goose_minute " + str(self.second_set_automation_time_goose_minute))
+
+        print("self.third_set_automation_time_top_stock_pull_minute " + str(self.third_set_automation_time_top_stock_pull_minute))
+        print("self.third_set_automation_time_goose_minute " + str(self.third_set_automation_time_goose_minute))
+
         # self.start_hour = 6
         # self.start_minute = 58
         # self.data_manager_request_bundler.setup_data_manager_request_bundler(self, self.time_data_set_manager)
@@ -157,7 +169,7 @@ class Operation_Center:
             extended_data_manager_List = stock_observance_rotation_manager.transform_nonchosen_data_managers_to_extended_data_manager_list(highest_priority_data_manager)
 
             #Varient testing
-            # print("highest_priority_data_manager: "+highest_priority_data_manager.get_sym())
+            print("highest_priority_data_manager: "+highest_priority_data_manager.get_sym())
             # for data_manager in extended_data_manager_List:
             #     print("extended DM: "+data_manager.get_sym())
             #     # transform_nonchosen_data_managers_to_extended_data_manager_list
@@ -389,7 +401,7 @@ class Operation_Center:
 
     def calculate_time_interval_top_stock_pull(self):
         self.time_set_container = [[7,45],[8,15],[8,45],[9,15],[9,45],[10,15],[10,45]]
-        print("hit calc interval")
+        # print("hit calc interval")
 
         #Fix time section
         if (self.time_manager.get_current_hour() == self.start_hour):
@@ -452,16 +464,16 @@ class Operation_Center:
         return False
 
     def calculate_time_interval_goose(self):
-        self.time_set_container = [[7,46],[8,16],[8,47],[9,16],[9,46],[10,16],[10,46]]
-        print("hit calc interval")
+        time_set_container = [[7,46],[8,16],[8,47],[9,16],[9,46],[10,16],[10,46]]
+        # print("hit calc interval")
 
         #Fix time section
         if (self.time_manager.get_current_hour() == self.start_hour):
             if (self.time_manager.get_current_minute() == self.first_set_automation_time_goose_minute):
                 # print("Times up 7:45")
                 print("current_minute: self.first_set_automation_time_goose_minute")
-                self.artificial_hour = self.time_set_container[0][0]
-                self.artificial_minute = self.time_set_container[0][1]
+                self.artificial_hour = time_set_container[0][0]
+                self.artificial_minute = time_set_container[0][1]
 
                 print("hour: "+str(self.artificial_hour))
                 print("minute: "+str(self.artificial_minute))
@@ -470,8 +482,8 @@ class Operation_Center:
             if (self.time_manager.get_current_minute() == self.second_set_automation_time_goose_minute):
                 # print("Times up 8:15")
                 print("current_minute: self.second_set_automation_time_goose_minute")
-                self.artificial_hour = self.time_set_container[1][0]
-                self.artificial_minute = self.time_set_container[1][1]
+                self.artificial_hour = time_set_container[1][0]
+                self.artificial_minute = time_set_container[1][1]
 
                 print("hour1: " + str(self.artificial_hour))
                 print("minute1: " + str(self.artificial_minute))
@@ -480,8 +492,8 @@ class Operation_Center:
             if (self.time_manager.get_current_minute() == self.third_set_automation_time_goose_minute):
                 # print("Times up 8:15")
                 print("current_minute: self.third_set_automation_time_goose_minute")
-                self.artificial_hour = self.time_set_container[2][0]
-                self.artificial_minute = self.time_set_container[2][1]
+                self.artificial_hour = time_set_container[2][0]
+                self.artificial_minute = time_set_container[2][1]
 
                 print("hour2: " + str(self.artificial_hour))
                 print("minute2: " + str(self.artificial_minute))
@@ -491,26 +503,26 @@ class Operation_Center:
 
         if (self.artificial_hour ==  7):
             if(self.artificial_minute == 46):
-                print("escomo internal")
-                if(self.is_first_set_automation_time):
+                print("jackrabbit internal")
+                if(self.is_first_set_automation_time_goose):
                     print("Times up 7:50")
-                    self.is_first_set_automation_time = False
+                    self.is_first_set_automation_time_goose = False
                     return True
 
         if (self.artificial_hour == 8):
             if (self.artificial_minute == 16):
-                print("echo internal")
-                if (self.is_second_set_automation_time):
+                print("basement internal")
+                if (self.is_second_set_automation_time_goose):
                     print("Times up 8:15")
-                    self.is_second_set_automation_time = False
+                    self.is_second_set_automation_time_goose = False
                     return True
 
         if (self.artificial_hour == 8):
             if(self.artificial_minute == 46):
-                print("crawdad internal")
-                if (self.is_third_set_automation_time):
+                print("pony internal")
+                if (self.is_third_set_automation_time_goose):
                     print("Times up 8:45")
-                    self.is_third_set_automation_time = False
+                    self.is_third_set_automation_time_goose = False
                     return True
 
         return False

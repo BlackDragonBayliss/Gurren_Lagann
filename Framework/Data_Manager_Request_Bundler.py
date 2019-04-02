@@ -100,7 +100,7 @@ class Data_Manager_Request_Bundler:
         #     return
         # else:
         json = self.create_request_bundle(stock)
-        # print("else json: " + str(json))
+        print("else json: " + str(json))
         self.post_request_bundle(json)
         self.reset_process_changeover_request()
 

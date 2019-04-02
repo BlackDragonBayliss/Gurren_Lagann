@@ -22,7 +22,7 @@ class Node_Manager:
     #Bird messenger service
     async def async_bird_messenger_top_stock_process_complete(self):
         async with aiohttp.ClientSession() as session:
-            json_request = self.request_factory.async_bird_messenger_query_money_machine()
+            json_request = self.request_factory.async_bird_messenger_top_stock_process_complete()
             url = 'http://localhost:3000/api/brokerage'
             response_returned = await self.fetch(session, url, json_request)
             return response_returned
