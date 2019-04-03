@@ -11,7 +11,7 @@ class Chosen_Data_Manager(Data_Manager):
         super().set_data_manager_type('Chosen')
 
     def init_data_processing(self):
-        self.perpetual_timer_data_pull.setup_timer_stock(3, 1000, super().data_pull, 'data_pull')
+        self.perpetual_timer_data_pull.setup_timer_stock(1, 1000, super().data_pull, 'data_pull')
         print("init chosen", self.sym)
 
     def test_print(self):

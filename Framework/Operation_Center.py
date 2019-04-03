@@ -263,6 +263,7 @@ class Operation_Center:
             print("HIT Intervaled calculations goose")
             print("goose time!")
             #We want this process to occur 1 minute after each TSP
+            self.type_converter.reset_instance_values()
             self.initiate_process_top_stock_goose()
             #so how do we handle?
                 #look at tsp prcoess, edit, recreate pathways.

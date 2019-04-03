@@ -9,6 +9,7 @@ from Bought_Data_Manager import Bought_Data_Manager
 class Thread_Factory:
     def __init__(self):
         self.name = ''
+        self.start_background_loop_assemble_extended_data_manager_index = 0
 
 
     def start_background_loop_transform_stock(self, data, stock_composite, http_utility, request_factory,
@@ -540,11 +541,20 @@ class Thread_Factory:
         # test_sym_list = ['NRP','AAPL','USG']
 
         # extended_data_manager_list = operation_center.get_list_chosen_data_manager()
-        for sym in sym_list:
-            extended_data_manager_instance = Extended_Data_Manager(sym, 0, operation_center,
-                                                                   operation_center.get_time_data_set_manager())
-            operation_center.top_stock_monument_composite.add_to_top_stock_data_manager_monument_list(
-                extended_data_manager_instance)
+
+        if(self.start_background_loop_assemble_extended_data_manager_index == 0):
+            for sym in sym_list:
+                extended_data_manager_instance = Extended_Data_Manager(sym, 0, operation_center,
+                                                                       operation_center.get_time_data_set_manager())
+                operation_center.top_stock_monument_composite.add_to_top_stock_data_manager_monument_list(
+                    extended_data_manager_instance)
+                
+        else:
+            for sym in sym_list:
+                extended_data_manager_instance = Extended_Data_Manager(sym, 0, operation_center,
+                                                                       operation_center.get_time_data_set_manager())
+                operation_center.top_stock_monument_composite.add_to_top_stock_data_manager_monument_list(
+                    extended_data_manager_instance)
 
         # operation_center.process_async_initiate_chosen_data_manager(chosen_data_manager_list)
         operation_center.process_async_initiate_extended_data_manager()
