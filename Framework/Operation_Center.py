@@ -143,33 +143,91 @@ class Operation_Center:
         self.perpetual_timer_main_process_loop.setup_timer_stock(1, 1000000, self.main_loop, 'main_process_loop')
 
     def intake_golden_goose_report(self,golden_goose_report):
-        #GG BuySell Watch is measured locally Neo,
-        #GG Update current Golden in Node.
         print("golden_goose_report: "+str(golden_goose_report))
         #Stock rotation piece
         stock_observance_rotation_manager = Stock_Observance_Rotation_Manager(self, self.get_top_stock_monument_composite())
         isContinueOperations = int(stock_observance_rotation_manager.intake_query(golden_goose_report))
 
-        # print("isContinueOperations: "+str(isContinueOperations))
-
-        # stock_observance_rotation_manager.tag_data_managers()
-
-        # If proceed with activations.
         if(isContinueOperations == 1):
             print("Returning true")
             stock_observance_rotation_manager.tag_data_managers()
-            #Filter each DM, cancel or slow, set slow.
-            #return res ...? probably no.
-
-            #Filter each non-priory DM, Filter for highest priory,
-            #Highest priory never match - check Neo
-            #Slow non-highest priorities.
 
             highest_priority_data_manager = stock_observance_rotation_manager.filter_highest_priority_data_manager()
             extended_data_manager_List = stock_observance_rotation_manager.transform_nonchosen_data_managers_to_extended_data_manager_list(highest_priority_data_manager)
 
-            #Varient testing
+
             print("highest_priority_data_manager: "+highest_priority_data_manager.get_sym())
+
+
+            #Assembly of data_manager will need to be done prior to adding.
+
+
+            #Handle second iteration
+            old_list = ["A", "B"]
+            chosen_sym = "C"
+            extended_data_manager_list_yet_to_be_assembled_symbols = ["F", "B", "C"]
+            match_results = []
+            for new_sym in extended_data_manager_list_yet_to_be_assembled_symbols:
+                for old_sym in old_list:
+                    if (new_sym == old_sym):
+                        match_results.append(new_sym)
+            for new_sym in extended_data_manager_list_yet_to_be_assembled_symbols:
+                if (chosen_sym == new_sym):
+                    match_results.append(chosen_sym)
+
+            print("Match results: " + str(match_results))
+
+            for match_item in match_results:
+                extended_data_manager_list_yet_to_be_assembled_symbols.remove(match_item)
+
+            #assemble extended data_managers
+            for sym in extended_data_manager_list_yet_to_be_assembled_symbols:
+                pass
+                #create extended data_managers... But what are we really intaking?
+                    #GG results, if they are not already made into a DM,
+                        #Then add them as a DM...
+                            #But we need to question, if new chosen is being made...?
+                                #Shouldn't we first get all prices and determine elegatabley of not like things.
+                                    #Given same property of price, can we get chosen?
+                                        #If shared property belongs to a non-existant DM, than create Chosen for that
+                                            #Rest in list, create extended.
+
+            #Upon calculating non-dupilcant entrants
+            #Calculate unlike objects, that which shares a property
+                #Decide if non_DM objects match chosen decided.
+                    #If chosen instantiate chosen, removing old, setting TSMC
+                #Rest non_DM objects
+
+
+
+            # #Those which were not a match will be in a seperate list, those will be added to list
+            # data_manager_list_to_be_revaluated = []
+            # for item in old_list:
+            #     data_manager_list_to_be_revaluated.append(item)
+            # for item in new_list:
+            #     data_manager_list_to_be_revaluated.append(item)
+            # for item in new_list:
+            #     data_manager_list_to_be_revaluated.append(item)
+
+
+
+            # print("Finalized data_manager_list_to_be_revaluated: " + str(data_manager_list_to_be_revaluated))
+
+
+            #data_manager list to be revaluted
+            # data_manager_list_to_be_revaluated =
+
+            #If is_running is false, create extended start
+            # If is_running is false, create chosen start
+
+            #I have extended old list, I have extended new list, I have chosen,
+            #Given these, I want the highest priority as chosen.
+                #So all will have to be tested again, but no duplicate symbols please.
+
+
+            # Given a new_list, now what, a decision to add to extended?
+
+
             # for data_manager in extended_data_manager_List:
             #     print("extended DM: "+data_manager.get_sym())
             #     # transform_nonchosen_data_managers_to_extended_data_manager_list
@@ -177,12 +235,15 @@ class Operation_Center:
             #     #Delete old data managers, and add chosen.
             #     #Add chosen to chosen list
 
+
+
+
+
             chosen_data_manager = highest_priority_data_manager.extended_to_chosen_process(self)
             self.get_top_stock_monument_composite().set_chosen_data_manager(chosen_data_manager)
 
         else:
             print("Returning false")
-
         #Upon new TSP pulled, evaluated, stock stored, ...
 
 
