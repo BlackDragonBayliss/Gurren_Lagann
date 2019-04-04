@@ -543,19 +543,29 @@ class Thread_Factory:
         # extended_data_manager_list = operation_center.get_list_chosen_data_manager()
 
         if(self.start_background_loop_assemble_extended_data_manager_index == 0):
-            for sym in sym_list:
-                extended_data_manager_instance = Extended_Data_Manager(sym, 0, operation_center,
-                                                                       operation_center.get_time_data_set_manager())
-                operation_center.top_stock_monument_composite.add_to_top_stock_data_manager_monument_list(
-                    extended_data_manager_instance)
-                
-        else:
+            print("start_background_loop_assemble_extended_data_manager: hit true")
             for sym in sym_list:
                 extended_data_manager_instance = Extended_Data_Manager(sym, 0, operation_center,
                                                                        operation_center.get_time_data_set_manager())
                 operation_center.top_stock_monument_composite.add_to_top_stock_data_manager_monument_list(
                     extended_data_manager_instance)
 
+        else:
+            print("start_background_loop_assemble_extended_data_manager: hit else")
+            old_list = operation_center.top_stock_monument_composite.get_top_stock_data_manager_monument_list()
+            chosen = operation_center.top_stock_monument_composite.get_chosen_data_manager()
+            new_list = sym_list
+
+            for sym in sym_list:
+                if(sym)
+
+
+            for sym in sym_list:
+                extended_data_manager_instance = Extended_Data_Manager(sym, 0, operation_center,
+                                                                       operation_center.get_time_data_set_manager())
+                operation_center.top_stock_monument_composite.add_to_top_stock_data_manager_monument_list(
+                    extended_data_manager_instance)
+        self.start_background_loop_assemble_extended_data_manager_index += 1
         # operation_center.process_async_initiate_chosen_data_manager(chosen_data_manager_list)
         operation_center.process_async_initiate_extended_data_manager()
 

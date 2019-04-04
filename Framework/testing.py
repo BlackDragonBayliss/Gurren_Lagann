@@ -600,8 +600,31 @@
 # print(dowResult)
 
 
-internalIndex = 1
-a = [0, 1, 2]
-endSliceIndex = internalIndex + 1
-del a[internalIndex:endSliceIndex]
-print(a)
+# internalIndex = 1
+# a = [0, 1, 2]
+# endSliceIndex = internalIndex + 1
+# del a[internalIndex:endSliceIndex]
+# print(a)
+
+old_list = ["A","B"]
+chosen_sym = "C"
+new_list = ["F","B","C"]
+
+match_results = []
+for new_sym in new_list:
+    for old_sym in old_list:
+        if(new_sym == old_sym):
+            match_results.append(new_sym)
+for new_sym in new_list:
+    if(chosen_sym == new_sym):
+        match_results.append(chosen_sym)
+
+print("Match results: " + str(match_results))
+
+
+for match_item in match_results:
+    new_list.remove(match_item)
+
+print("Finalized new_list: "+str(new_list))
+
+#Given a new_list, now what, a decision to add to extended?
