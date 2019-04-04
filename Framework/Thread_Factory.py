@@ -97,6 +97,8 @@ class Thread_Factory:
                                                type_converter,
                                                operation_center, task_master):
         #Parse TSP from brokerage, call to assemble Chosen_Data_Manager objects
+
+
         type_converter.set_json_top_stocks(data)
         type_converter.set_highest_chosen()
         type_converter.calc_highest_chosen()
@@ -109,8 +111,17 @@ class Thread_Factory:
             sym_data_list.append(val.get_sym())
         # operation_center.list_chosen_data_manager = data_list
         print("start_background_loop_top_stock_phase1: "+str(sym_data_list))
+        operation_center.set_is_initial_top_stock_pull_completed("1")
         operation_center.process_async_assemble_extended_data_manager(sym_data_list)
-        # response = loop.run_until_complete(http_utility.async_post_stock_top_phase1(request_data_list, request_factory))
+
+        # else:
+        #     #Handle extended creation, given type_converter metrics reset.
+        #     #What is different for handling new extended,
+        #
+        #
+        #     pass
+
+
 
     def create_thread_async_top_stock_phase1(self, list_of_objects):
         count = 0
@@ -542,30 +553,32 @@ class Thread_Factory:
 
         # extended_data_manager_list = operation_center.get_list_chosen_data_manager()
 
-        if(self.start_background_loop_assemble_extended_data_manager_index == 0):
+        if(operation_center.get_is_initial_extended_assembled() == "0"):
             print("start_background_loop_assemble_extended_data_manager: hit true")
             for sym in sym_list:
                 extended_data_manager_instance = Extended_Data_Manager(sym, 0, operation_center,
                                                                        operation_center.get_time_data_set_manager())
                 operation_center.top_stock_monument_composite.add_to_top_stock_data_manager_monument_list(
                     extended_data_manager_instance)
-
         else:
             print("start_background_loop_assemble_extended_data_manager: hit else")
             old_list = operation_center.top_stock_monument_composite.get_top_stock_data_manager_monument_list()
             chosen = operation_center.top_stock_monument_composite.get_chosen_data_manager()
             new_list = sym_list
 
+            #If match remove from new_list
             for sym in sym_list:
                 if(sym)
 
-
+            #for sym in match_list, create extended and add to
             for sym in sym_list:
                 extended_data_manager_instance = Extended_Data_Manager(sym, 0, operation_center,
                                                                        operation_center.get_time_data_set_manager())
                 operation_center.top_stock_monument_composite.add_to_top_stock_data_manager_monument_list(
                     extended_data_manager_instance)
-        self.start_background_loop_assemble_extended_data_manager_index += 1
+
+        operation_center.set_is_initial_extended_assembled("1")
+        # self.start_background_loop_assemble_extended_data_manager_index += 1
         # operation_center.process_async_initiate_chosen_data_manager(chosen_data_manager_list)
         operation_center.process_async_initiate_extended_data_manager()
 

@@ -5,6 +5,7 @@ class Top_Stock_Monument_Composite:
 
     def __init__(self):
         self.top_stock_data_manager_monument_list = []
+        self.chosen_data_manager = "0"
 
     def replace_at_index_top_stock_monument_composite(self, index_replacement_list_composite):
         # internal_index = 0

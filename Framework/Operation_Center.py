@@ -95,6 +95,8 @@ class Operation_Center:
 
             self.is_second_hour = True
 
+            self.is_initial_golden_geese_process_completed = "0"
+
             self.start_hour = self.time_manager.get_current_hour() #15 7
             self.start_minute =self.time_manager.get_current_minute()  #42 45
 
@@ -150,39 +152,61 @@ class Operation_Center:
 
         if(isContinueOperations == 1):
             print("Returning true")
-            stock_observance_rotation_manager.tag_data_managers()
-
-            highest_priority_data_manager = stock_observance_rotation_manager.filter_highest_priority_data_manager()
-            extended_data_manager_List = stock_observance_rotation_manager.transform_nonchosen_data_managers_to_extended_data_manager_list(highest_priority_data_manager)
-
-
-            print("highest_priority_data_manager: "+highest_priority_data_manager.get_sym())
-
-
-            #Assembly of data_manager will need to be done prior to adding.
-
 
             #Handle second iteration
-            old_list = ["A", "B"]
-            chosen_sym = "C"
-            extended_data_manager_list_yet_to_be_assembled_symbols = ["F", "B", "C"]
-            match_results = []
-            for new_sym in extended_data_manager_list_yet_to_be_assembled_symbols:
-                for old_sym in old_list:
-                    if (new_sym == old_sym):
-                        match_results.append(new_sym)
-            for new_sym in extended_data_manager_list_yet_to_be_assembled_symbols:
-                if (chosen_sym == new_sym):
-                    match_results.append(chosen_sym)
+            # old_list = ["A", "B"]
+            # chosen_sym = "C"
+            # extended_data_manager_list_yet_to_be_assembled_symbols = ["F", "B", "C"]
 
-            print("Match results: " + str(match_results))
 
-            for match_item in match_results:
-                extended_data_manager_list_yet_to_be_assembled_symbols.remove(match_item)
+            #Handle if chosen never determined but TSP completed
+            #If chosen_data_manager not initialized, then first Goose analytics
+            chosen_sym = self.top_stock_monument_composite.get_chosen_data_manager()
+            if(self.get_is_initial_golden_geese_process_completed() == "0"):
+                stock_observance_rotation_manager.tag_data_managers()
+                # Filter process, highest priority data_manager
+                highest_priority_data_manager = stock_observance_rotation_manager.filter_highest_priority_data_manager()
+                # Filter. rest of extemded data managers
+                extended_data_manager_List = stock_observance_rotation_manager.filter_extended_data_manager_list(
+                    highest_priority_data_manager)
+                print("highest_priority_data_manager: " + highest_priority_data_manager.get_sym())
+                self.set_is_initial_golden_geese_process_completed("1")
+            else:
+                #Comparison of existing data_manager latest prices, with new TSP stocks...
+                    #TSP will create extended data_managers during first phase,
+                    #Verify TSP phase consecutive iteration creating extended_data_manager
+                    #Goose will return ALL choices, narrow new non_initiated Goose Results
+                    #Bridge
+                new_list = []
+                old_list = self.top_stock_monument_composite.get_chosen_data_manager()
+                extended_data_manager_list_yet_to_be_assembled_symbols = ["F", "B", "C"]
+                match_results = []
+                for new_sym in extended_data_manager_list_yet_to_be_assembled_symbols:
+                    for old_sym in old_list:
+                        if (new_sym == old_sym):
+                            match_results.append(new_sym)
+                for new_sym in extended_data_manager_list_yet_to_be_assembled_symbols:
+                    if (chosen_sym == new_sym):
+                        match_results.append(chosen_sym)
+
+                print("Match results: " + str(match_results))
+
+                for match_item in match_results:
+                    extended_data_manager_list_yet_to_be_assembled_symbols.remove(match_item)
+
+            chosen_data_manager = highest_priority_data_manager.extended_to_chosen_process(self)
+            self.get_top_stock_monument_composite().set_chosen_data_manager(chosen_data_manager)
+
+
+
+
 
             #assemble extended data_managers
-            for sym in extended_data_manager_list_yet_to_be_assembled_symbols:
-                pass
+            # for sym in extended_data_manager_list_yet_to_be_assembled_symbols:
+            #     pass
+
+
+
                 #create extended data_managers... But what are we really intaking?
                     #GG results, if they are not already made into a DM,
                         #Then add them as a DM...
@@ -234,13 +258,6 @@ class Operation_Center:
             #
             #     #Delete old data managers, and add chosen.
             #     #Add chosen to chosen list
-
-
-
-
-
-            chosen_data_manager = highest_priority_data_manager.extended_to_chosen_process(self)
-            self.get_top_stock_monument_composite().set_chosen_data_manager(chosen_data_manager)
 
         else:
             print("Returning false")
@@ -528,7 +545,6 @@ class Operation_Center:
     def calculate_time_interval_goose(self):
         time_set_container = [[7,46],[8,16],[8,47],[9,16],[9,46],[10,16],[10,46]]
         # print("hit calc interval")
-
         #Fix time section
         if (self.time_manager.get_current_hour() == self.start_hour):
             if (self.time_manager.get_current_minute() == self.first_set_automation_time_goose_minute):
@@ -1014,7 +1030,11 @@ class Operation_Center:
     def get_top_stock_monument_composite(self):
         return self.top_stock_monument_composite
 
+    def set_is_initial_extended_assembled(self, is_initial_extended_assembled):
+        self.is_initial_extended_assembled = is_initial_extended_assembled
 
+    def get_is_initial_extended_assembled(self):
+        return self.is_initial_extended_assembled
 
     # def initiate_process_top_stocks_scrape(self):
     #     # self.data_manager_request_bundler.create_scrape_bundle_request(["aapl", "nvda", "ko"])

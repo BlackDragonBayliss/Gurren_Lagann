@@ -17,7 +17,7 @@ class Stock_Observance_Rotation_Manager():
             #Cancel DC? DM locally? No handle here, abstraction level higher.
             # data_manager.exten
 
-    def transform_nonchosen_data_managers_to_extended_data_manager_list(self, highest_priority_data_manager):
+    def filter_extended_data_manager_list(self, highest_priority_data_manager):
         data_manager_list = self.top_stock_monument_composite.get_top_stock_data_manager_monument_list()
         data_manager_index = 0
 
