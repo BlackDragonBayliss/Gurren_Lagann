@@ -177,26 +177,15 @@ class Operation_Center:
                     #Verify TSP phase consecutive iteration creating extended_data_manager
                     #Goose will return ALL choices, narrow new non_initiated Goose Results
                     #Bridge
-                new_list = []
-                old_list = self.top_stock_monument_composite.get_chosen_data_manager()
-                extended_data_manager_list_yet_to_be_assembled_symbols = ["F", "B", "C"]
-                match_results = []
-                for new_sym in extended_data_manager_list_yet_to_be_assembled_symbols:
-                    for old_sym in old_list:
-                        if (new_sym == old_sym):
-                            match_results.append(new_sym)
-                for new_sym in extended_data_manager_list_yet_to_be_assembled_symbols:
-                    if (chosen_sym == new_sym):
-                        match_results.append(chosen_sym)
 
-                print("Match results: " + str(match_results))
+                chosen_data_manager = highest_priority_data_manager.extended_to_chosen_process(self)
+                self.get_top_stock_monument_composite().set_chosen_data_manager(chosen_data_manager)
 
-                for match_item in match_results:
-                    extended_data_manager_list_yet_to_be_assembled_symbols.remove(match_item)
 
-            chosen_data_manager = highest_priority_data_manager.extended_to_chosen_process(self)
-            self.get_top_stock_monument_composite().set_chosen_data_manager(chosen_data_manager)
-
+            #boring as fuck but we have to do it. We have to do this shit.
+            #It's important and worthwhile.
+            # focus now bayliss focus on
+            #Way in the weeds of things. This is some crazy shit.
 
 
 

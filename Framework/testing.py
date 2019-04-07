@@ -628,7 +628,51 @@
 # print("Finalized new_list: "+str(new_list))
 
 
-chosen_sym = "0"
+# chosen_sym = "0"
+#
+# if(chosen_sym != "0"):
+#     print("hit")
 
-if(chosen_sym != "0"):
-    print("hit")
+
+
+
+
+
+
+
+# chosen = "A"#operation_center.top_stock_monument_composite.get_chosen_data_manager()
+# extended_list = ["B","C"]#operation_center.top_stock_monument_composite.get_top_stock_data_manager_monument_list()
+# new_symbol_list = ["A","B","C","D"]#sym_list
+#
+# # new_symbol_list = ["F", "B", "C"]
+#
+#
+# #If match remove from new_list
+# match_results = []
+#
+#
+# #Filter for chosen
+# for new_sym in new_symbol_list:
+#     if (new_sym == chosen):
+#         match_results.append(new_sym)
+#
+# #Filter for extended.
+# for new_sym in new_symbol_list:
+#     for extended in extended_list:
+#         if (extended == new_sym):
+#             match_results.append(extended)
+#
+#
+# print("new_symbol_list before results: " + str(new_symbol_list))
+#
+# for match_item in match_results:
+#     new_symbol_list.remove(match_item)
+#
+# # new_symbol_list
+#
+#
+# print("Match results: " + str(match_results))
+# print("new_symbol_list results: " + str(new_symbol_list))
+
+#Handle new_symbol_list
+
