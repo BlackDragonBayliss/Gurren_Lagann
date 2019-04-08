@@ -717,7 +717,6 @@ class Thread_Factory:
                 else:
                     print("init ex data_manager: "+data_manager.get_sym())
                     data_manager.init_data_processing()
-                    # fuck.
 
     def create_thread_async_initiate_extended_data_manager(self, list_of_objects):
         count = 0

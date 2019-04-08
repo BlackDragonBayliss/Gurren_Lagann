@@ -17,7 +17,7 @@ class Stock_Observance_Rotation_Manager():
             #Cancel DC? DM locally? No handle here, abstraction level higher.
             # data_manager.exten
 
-    def filter_extended_data_manager_list(self, highest_priority_data_manager):
+    def filter_chosen_from_extended_data_manager_list(self, highest_priority_data_manager):
         data_manager_list = self.top_stock_monument_composite.get_top_stock_data_manager_monument_list()
         data_manager_index = 0
 
@@ -28,8 +28,7 @@ class Stock_Observance_Rotation_Manager():
         for data_manager in data_manager_list:
             if(data_manager.get_sym() == highest_priority_data_manager.get_sym()):
                 print("hit at index: "+str(data_manager_index))
-                #remove at index
-                # data_manager_list.
+                #remove at index chosen data_manager
                 if(data_manager_index == 2):
                     print("data_manager_index == 2")
                     # begin_slice_index = data_manager_index - 1
@@ -62,9 +61,7 @@ class Stock_Observance_Rotation_Manager():
 
         for data_manager in data_manager_list:
             print("Filtered sym: "+ data_manager.get_sym()+ " priority: "+str(data_manager.get_golden_goose_priority()))
-            #What to put here?
-                #What do we need? Filter
-                    #What do we filter here?
+
             if(highest_data_manager == 0):
                 highest_data_manager = data_manager
                 continue
@@ -81,7 +78,6 @@ class Stock_Observance_Rotation_Manager():
             if key == 'isChosenDetermined':
                 self.isCurrentChosenDetermined = value
                 print("isChosen: "+self.isCurrentChosenDetermined)
-
             if key == 'dataList':
                 dataList = value
                 self.list_values = dataList
@@ -90,48 +86,27 @@ class Stock_Observance_Rotation_Manager():
         return self.isCurrentChosenDetermined
 
     def tag_data_managers(self):
-        #for DM in DMList that is OC localized
         data_manager_list = self.top_stock_monument_composite.get_top_stock_data_manager_monument_list()
 
+        #Read results
+        item_list_store = []
         for data_manager in data_manager_list:
-            symbol1 = "0"
-            priority1 = "0"
-            symbol2 = "0"
-            priority2 = "0"
-            symbol3 = "0"
-            priority3 = "0"
-
-            valueIndex = 0
+            # item_list_store = []
             for value in self.list_values:
-                # singule {} dict
+                list_to_be_added = []
                 for key, value in value.items():
-                    if(valueIndex == 0):
-                        if (key == "symbol"):
-                            symbol1 = value
-                        if (key == "stockPriority"):
-                            priority1 = value
+                    if (key == "symbol"):
+                        list_to_be_added.append(value)
+                    if (key == "stockPriority"):
+                        list_to_be_added.append(value)
+                item_list_store.append(list_to_be_added)
 
-                    if (valueIndex == 1):
-                        if (key == "symbol"):
-                            symbol2 = value
-                        if (key == "stockPriority"):
-                            priority2 = value
+        #This was originally made to store symbol and priority.
+        #But then what happened. Symbol priority of extended,
 
-                    if (valueIndex == 2):
-                        if (key == "symbol"):
-                            symbol3 = value
-                        if (key == "stockPriority"):
-                            priority3 = value
-                valueIndex += 1
-                # if
-            print("symbol1 is: "+symbol1)
-            print("priority1 is: " + priority1)
-            print("symbol2 is: " + symbol2)
-            print("priority2 is: " + priority2)
-            print("symbol3 is: " + symbol3)
-            print("priority3 is: " + priority3)
+        print(str(item_list_store))
 
-
+        for data_manager_symbol in data_manager_symbol:
             if(symbol1 == data_manager.get_sym()):
                 print("hit symbol: "+data_manager.get_sym())
                 data_manager.set_golden_goose_priority(priority1)

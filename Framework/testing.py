@@ -676,3 +676,25 @@
 
 #Handle new_symbol_list
 
+
+
+# if (valueIndex == 1):
+#     if (key == "symbol"):
+#         symbol2 = value
+#     if (key == "stockPriority"):
+#         priority2 = value
+#
+# if (valueIndex == 2):
+#     if (key == "symbol"):
+#         symbol3 = value
+#     if (key == "stockPriority"):
+#         priority3 = value
+# valueIndex += 1
+# if
+# print("symbol1 is: "+symbol1)
+# print("priority1 is: " + priority1)
+# print("symbol2 is: " + symbol2)
+# print("priority2 is: " + priority2)
+# print("symbol3 is: " + symbol3)
+# print("priority3 is: " + priority3)
+

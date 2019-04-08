@@ -146,64 +146,41 @@ class Operation_Center:
 
     def intake_golden_goose_report(self,golden_goose_report):
         print("golden_goose_report: "+str(golden_goose_report))
+
         #Stock rotation piece
         stock_observance_rotation_manager = Stock_Observance_Rotation_Manager(self, self.get_top_stock_monument_composite())
         isContinueOperations = int(stock_observance_rotation_manager.intake_query(golden_goose_report))
 
         if(isContinueOperations == 1):
             print("Returning true")
-
-            #Handle second iteration
-            # old_list = ["A", "B"]
-            # chosen_sym = "C"
-            # extended_data_manager_list_yet_to_be_assembled_symbols = ["F", "B", "C"]
-
-
-            #Handle if chosen never determined but TSP completed
-            #If chosen_data_manager not initialized, then first Goose analytics
             chosen_sym = self.top_stock_monument_composite.get_chosen_data_manager()
             if(self.get_is_initial_golden_geese_process_completed() == "0"):
-                stock_observance_rotation_manager.tag_data_managers()
-                # Filter process, highest priority data_manager
-                highest_priority_data_manager = stock_observance_rotation_manager.filter_highest_priority_data_manager()
-                # Filter. rest of extemded data managers
-                extended_data_manager_List = stock_observance_rotation_manager.filter_extended_data_manager_list(
-                    highest_priority_data_manager)
-                print("highest_priority_data_manager: " + highest_priority_data_manager.get_sym())
                 self.set_is_initial_golden_geese_process_completed("1")
-            else:
-                #Comparison of existing data_manager latest prices, with new TSP stocks...
-                    #TSP will create extended data_managers during first phase,
-                    #Verify TSP phase consecutive iteration creating extended_data_manager
-                    #Goose will return ALL choices, narrow new non_initiated Goose Results
-                    #Bridge
 
-                chosen_data_manager = highest_priority_data_manager.extended_to_chosen_process(self)
-                self.get_top_stock_monument_composite().set_chosen_data_manager(chosen_data_manager)
+            stock_observance_rotation_manager.tag_data_managers()
+            # Filter process, getting highest priority data_manager
+            highest_priority_data_manager = stock_observance_rotation_manager.filter_highest_priority_data_manager()
+            # Filterrest of extemded data managers
+            extended_data_manager_List = stock_observance_rotation_manager.filter_chosen_from_extended_data_manager_list(
+                highest_priority_data_manager)
 
+            print("highest_priority_data_manager: " + highest_priority_data_manager.get_sym())
 
-            #boring as fuck but we have to do it. We have to do this shit.
-            #It's important and worthwhile.
-            # focus now bayliss focus on
-            #Way in the weeds of things. This is some crazy shit.
-
-
-
+            chosen_data_manager = highest_priority_data_manager.extended_to_chosen_process(self)
+            self.get_top_stock_monument_composite().set_chosen_data_manager(chosen_data_manager)
 
             #assemble extended data_managers
             # for sym in extended_data_manager_list_yet_to_be_assembled_symbols:
             #     pass
 
-
-
-                #create extended data_managers... But what are we really intaking?
-                    #GG results, if they are not already made into a DM,
-                        #Then add them as a DM...
-                            #But we need to question, if new chosen is being made...?
-                                #Shouldn't we first get all prices and determine elegatabley of not like things.
-                                    #Given same property of price, can we get chosen?
-                                        #If shared property belongs to a non-existant DM, than create Chosen for that
-                                            #Rest in list, create extended.
+            #create extended data_managers... But what are we really intaking?
+            #GG results, if they are not already made into a DM,
+            #Then add them as a DM...
+            #But we need to question, if new chosen is being made...?
+            #Shouldn't we first get all prices and determine elegatabley of not like things.
+            #Given same property of price, can we get chosen?
+            #If shared property belongs to a non-existant DM, than create Chosen for that
+            #Rest in list, create extended.
 
             #Upon calculating non-dupilcant entrants
             #Calculate unlike objects, that which shares a property
@@ -211,6 +188,9 @@ class Operation_Center:
                     #If chosen instantiate chosen, removing old, setting TSMC
                 #Rest non_DM objects
 
+            # I have extended old list, I have extended new list, I have chosen,
+            # Given these, I want the highest priority as chosen.
+            # So all will have to be tested again, but no duplicate symbols please.
 
 
             # #Those which were not a match will be in a seperate list, those will be added to list
@@ -223,36 +203,15 @@ class Operation_Center:
             #     data_manager_list_to_be_revaluated.append(item)
 
 
-
-            # print("Finalized data_manager_list_to_be_revaluated: " + str(data_manager_list_to_be_revaluated))
-
-
-            #data_manager list to be revaluted
-            # data_manager_list_to_be_revaluated =
-
-            #If is_running is false, create extended start
-            # If is_running is false, create chosen start
-
-            #I have extended old list, I have extended new list, I have chosen,
-            #Given these, I want the highest priority as chosen.
-                #So all will have to be tested again, but no duplicate symbols please.
-
-
             # Given a new_list, now what, a decision to add to extended?
 
 
             # for data_manager in extended_data_manager_List:
             #     print("extended DM: "+data_manager.get_sym())
             #     # transform_nonchosen_data_managers_to_extended_data_manager_list
-            #
-            #     #Delete old data managers, and add chosen.
-            #     #Add chosen to chosen list
 
         else:
             print("Returning false")
-        #Upon new TSP pulled, evaluated, stock stored, ...
-
-
 
 
 
