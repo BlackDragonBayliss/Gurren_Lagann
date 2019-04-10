@@ -121,6 +121,8 @@ class Operation_Center:
             self.list_start_hour = [self.start_hour]
             self.list_start_minute = [self.start_minute]
 
+            self.is_initial_top_stock_pull_completed = "0"
+
         return self.__instance
 
     def process_main_process_loop(self):
@@ -154,8 +156,9 @@ class Operation_Center:
         if(isContinueOperations == 1):
             print("Returning true")
             chosen_sym = self.top_stock_monument_composite.get_chosen_data_manager()
-            if(self.get_is_initial_golden_geese_process_completed() == "0"):
-                self.set_is_initial_golden_geese_process_completed("1")
+            # if(self.get_is_initial_golden_goose_process_completed() == "0"):
+
+            # self.set_is_initial_golden_goose_process_completed("1")
 
             stock_observance_rotation_manager.tag_data_managers()
             # Filter process, getting highest priority data_manager
@@ -759,7 +762,7 @@ class Operation_Center:
         self.task_master.create_thread_async_assemble_extended_data_manager(sym_list)
 
     def process_async_initiate_extended_data_manager(self):
-        self.task_master.create_thread_async_initiate_extended_data_manager(self.top_stock_monument_composite.get_top_stock_data_manager_monument_list())
+        self.task_master.create_thread_async_initiate_extended_data_manager(self.top_stock_monument_composite.get_top_stock_data_manager_monument_list(), self)
 
     # Chosen DM Creation
     def process_async_assemble_chosen_data_manager(self, sym):
@@ -1000,3 +1003,11 @@ class Operation_Center:
         response = loop.run_until_complete(self.node_manager.async_bird_messenger_top_stock_process_complete());
 
 
+    def set_is_initial_top_stock_pull_completed(self, is_initial_top_stock_pull_completed):
+        self.is_initial_top_stock_pull_completed = is_initial_top_stock_pull_completed
+
+    def get_is_initial_golden_goose_process_completed(self):
+        return self.is_initial_golden_goose_process_completed
+
+    def set_is_initial_golden_goose_process_completed(self, is_initial_golden_goose_process_completed):
+        self.is_initial_golden_goose_process_completed = is_initial_golden_goose_process_completed
