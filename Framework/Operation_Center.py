@@ -95,7 +95,9 @@ class Operation_Center:
 
             self.is_second_hour = True
 
-            self.is_initial_golden_geese_process_completed = "0"
+            self.is_initial_extended_assembled = "0"
+            self.is_initial_golden_goose_process_completed = "0"
+
 
             self.start_hour = self.time_manager.get_current_hour() #15 7
             self.start_minute =self.time_manager.get_current_minute()  #42 45
@@ -146,11 +148,13 @@ class Operation_Center:
     def main_process_loop(self):
         self.perpetual_timer_main_process_loop.setup_timer_stock(1, 1000000, self.main_loop, 'main_process_loop')
 
-    def intake_golden_goose_report(self,golden_goose_report):
+    def intake_golden_goose_report(self, golden_goose_report):
         print("golden_goose_report: "+str(golden_goose_report))
 
         #Stock rotation piece
         stock_observance_rotation_manager = Stock_Observance_Rotation_Manager(self, self.get_top_stock_monument_composite())
+
+        #Handle metrics and set isContinueOperations
         isContinueOperations = int(stock_observance_rotation_manager.intake_query(golden_goose_report))
 
         if(isContinueOperations == 1):
@@ -163,6 +167,9 @@ class Operation_Center:
             stock_observance_rotation_manager.tag_data_managers()
             # Filter process, getting highest priority data_manager
             highest_priority_data_manager = stock_observance_rotation_manager.filter_highest_priority_data_manager()
+
+
+
             # Filterrest of extemded data managers
             extended_data_manager_List = stock_observance_rotation_manager.filter_chosen_from_extended_data_manager_list(
                 highest_priority_data_manager)
@@ -291,9 +298,17 @@ class Operation_Center:
         if (self.calculate_time_interval_goose()):
             print("HIT Intervaled calculations goose")
             print("goose time!")
-            #We want this process to occur 1 minute after each TSP
-            self.type_converter.reset_instance_values()
+
+            print(str(self.get_is_initial_golden_goose_process_completed()))
+
+            #Goose iteration process occured.
+            if(self.get_is_initial_golden_goose_process_completed() == "1"):
+                self.type_converter.reset_instance_values()
+
             self.initiate_process_top_stock_goose()
+
+
+
             #so how do we handle?
                 #look at tsp prcoess, edit, recreate pathways.
 
@@ -762,7 +777,8 @@ class Operation_Center:
         self.task_master.create_thread_async_assemble_extended_data_manager(sym_list)
 
     def process_async_initiate_extended_data_manager(self):
-        self.task_master.create_thread_async_initiate_extended_data_manager(self.top_stock_monument_composite.get_top_stock_data_manager_monument_list(), self)
+        list_data_managers = self.top_stock_monument_composite.get_top_stock_data_manager_monument_list()
+        self.task_master.create_thread_async_initiate_extended_data_manager(list_data_managers)
 
     # Chosen DM Creation
     def process_async_assemble_chosen_data_manager(self, sym):

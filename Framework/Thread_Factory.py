@@ -704,18 +704,18 @@ class Thread_Factory:
         asyncio.set_event_loop(loop)
 
         #passing DM list to...or
-        if(operation_center.get_is_initial_golden_goose_process_completed() == "0"):
+        if(operation_center.get_is_initial_extended_assembled() == "0"):
             for data_manager in data_manager_list:
                 print("init ex data_manager: "+data_manager.get_sym())
                 data_manager.init_data_processing()
 
-            operation_center.set_is_initial_golden_goose_process_completed("1")
+            operation_center.set_is_initial_extended_assembled("1")
 
         else:
             print("hit inside consecutive iteration extended data_manager")
             #Handle check DM isRunning
             for data_manager in data_manager_list:
-                if(data_manager.get_is_running()):
+                if(data_manager.get_is_running() == "1"):
                     print("sweet running do nothing")
                 else:
                     print("init ex data_manager: "+data_manager.get_sym())

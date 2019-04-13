@@ -27,7 +27,6 @@ def bird_relay():
                     if key == "payload":
                         for key, value in value.items():
                             if key == "data":
-                                # print(value)
                                 operation_center = Operation_Center()
                                 operation_center.intake_golden_goose_report(value)
                                 return_value = 'res'

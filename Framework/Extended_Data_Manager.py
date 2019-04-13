@@ -9,6 +9,7 @@ class Extended_Data_Manager(Data_Manager):
     def init_data_processing(self):
         self.perpetual_timer_data_pull.setup_timer_stock(5, 10000, super().data_pull, 'data_pull')
         print("init extend",self.sym)
+        self.set_is_running("1")
 
     def test_print(self):
         print(super().get_data_manager_type())
@@ -18,7 +19,6 @@ class Extended_Data_Manager(Data_Manager):
         self.perpetual_timer_data_pull.cancel()
         # Begin second slower process
         # Handle second process
-
 
         # operation_center.process_async_assemble_chosen_data_manager(self.get_sym())
         #

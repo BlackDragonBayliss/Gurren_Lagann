@@ -36,6 +36,8 @@ class Data_Manager(ABC):
         self.current_stock = None
         self.handle_stock_process_not_initiated = True
 
+        self.is_running = "0"
+
         self.golden_goose_priority = 11
 
     # def bind_data_object(self, stock):
@@ -100,6 +102,11 @@ class Data_Manager(ABC):
         self.golden_goose_priority = golden_goose_priority
     def get_golden_goose_priority(self):
         return self.golden_goose_priority
+
+    def get_is_running(self):
+        return self.is_running
+    def set_is_running(self, is_running):
+        self.is_running = is_running
 
 
     def clear_perpetual_timers(self):

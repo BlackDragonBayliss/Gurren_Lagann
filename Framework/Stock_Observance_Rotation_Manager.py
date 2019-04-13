@@ -6,8 +6,8 @@ class Stock_Observance_Rotation_Manager():
     def __init__(self, operation_center, top_stock_monument_composite):
         self.operation_center = operation_center
         self.top_stock_monument_composite = top_stock_monument_composite
-        self.isCurrentChosenDetermined = 0
-        self.list_values = []
+        self.isCurrentChosenDetermined = "0"
+        self.list_geese_values = []
 
 
     def change_over_data_managers_to_extended(self, data_manager_list):
@@ -73,55 +73,32 @@ class Stock_Observance_Rotation_Manager():
 
     def intake_query(self, current_query):
         self.current_query = current_query
-        print(self.current_query)
+
+        print("intake_query current_query: "+str(self.current_query))
+
         for key, value in current_query.items():
-            if key == 'isChosenDetermined':
+            if key == 'is_chosen_determined':
                 self.isCurrentChosenDetermined = value
-                print("isChosen: "+self.isCurrentChosenDetermined)
-            if key == 'dataList':
+                print("is_chosen_determined: "+self.isCurrentChosenDetermined)
+            if key == 'data_list':
                 dataList = value
-                self.list_values = dataList
-                print("dataList: "+str(self.list_values))
+                self.list_geese_values = dataList
+                print("data_list: "+str(self.list_geese_values))
 
         return self.isCurrentChosenDetermined
 
     def tag_data_managers(self):
         data_manager_list = self.top_stock_monument_composite.get_top_stock_data_manager_monument_list()
 
-        #Read results
-        item_list_store = []
+        print("tag_data_managers")
+
         for data_manager in data_manager_list:
-            # item_list_store = []
-            for value in self.list_values:
-                list_to_be_added = []
-                for key, value in value.items():
-                    if (key == "symbol"):
-                        list_to_be_added.append(value)
-                    if (key == "stockPriority"):
-                        list_to_be_added.append(value)
-                item_list_store.append(list_to_be_added)
-
-        #This was originally made to store symbol and priority.
-        #But then what happened. Symbol priority of extended,
-
-        print(str(item_list_store))
-
-        for data_manager_symbol in data_manager_symbol:
-            if(symbol1 == data_manager.get_sym()):
-                print("hit symbol: "+data_manager.get_sym())
-                data_manager.set_golden_goose_priority(priority1)
-
-            if (symbol2 == data_manager.get_sym()):
-                print("hit symbol: " + data_manager.get_sym())
-                data_manager.set_golden_goose_priority(priority2)
-
-            if (symbol3 == data_manager.get_sym()):
-                print("hit symbol: " + data_manager.get_sym())
-                data_manager.set_golden_goose_priority(priority3)
-
-                # print("symbol success: "+symbol)
-                # data_manager.set_golden_goose_priority(priority)
-                # print("retrieved priority: "+data_manager.get_golden_goose_priority())
+            print("data_manager.get_sym(): "+data_manager.get_sym())
+            for geese_values in self.list_geese_values:
+                print(geese_values)
+                if(geese_values[0][0] == data_manager.get_sym()):
+                    print("hit data_manager.get_sym(): "+data_manager.get_sym())
+                    data_manager.set_golden_goose_priority(geese_values[1])
 
         for data_manager in data_manager_list:
             print("DM: "+ data_manager.get_sym() +" priority: "+ str(data_manager.get_golden_goose_priority()))
