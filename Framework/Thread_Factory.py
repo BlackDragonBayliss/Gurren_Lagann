@@ -98,7 +98,6 @@ class Thread_Factory:
                                                operation_center, task_master):
         #Parse TSP from brokerage, call to assemble Chosen_Data_Manager objects
 
-
         type_converter.set_json_top_stocks(data)
         type_converter.set_highest_chosen()
         type_converter.calc_highest_chosen()
@@ -551,7 +550,6 @@ class Thread_Factory:
         asyncio.set_event_loop(loop)
 
         # test_sym_list = ['NRP','AAPL','USG']
-
         # extended_data_manager_list = operation_center.get_list_chosen_data_manager()
 
         if(operation_center.get_is_initial_extended_assembled() == "0"):
@@ -561,7 +559,6 @@ class Thread_Factory:
                                                                        operation_center.get_time_data_set_manager())
                 operation_center.top_stock_monument_composite.add_to_top_stock_data_manager_monument_list(
                     extended_data_manager_instance)
-
         else:
             print("start_background_loop_assemble_extended_data_manager: hit else")
 
@@ -626,7 +623,6 @@ class Thread_Factory:
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
         # test_sym_list = ['NRP','AAPL','USG']
-
 
         # extended_data_manager_list = operation_center.get_list_chosen_data_manager()
         # for sym in sym_list:

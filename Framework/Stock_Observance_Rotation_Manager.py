@@ -94,14 +94,25 @@ class Stock_Observance_Rotation_Manager():
 
         for data_manager in data_manager_list:
             print("data_manager.get_sym(): "+data_manager.get_sym())
-            for geese_values in self.list_geese_values:
-                print(geese_values)
-                if(geese_values[0][0] == data_manager.get_sym()):
-                    print("hit data_manager.get_sym(): "+data_manager.get_sym())
-                    data_manager.set_golden_goose_priority(geese_values[1])
+            # for geese_values in self.list_geese_values:
+            print("geese_values: "+str(self.list_geese_values))
+
+            #subsets or fidangle list control?
+
+            current_index = 0
+            index_to_grab = 0
+
+            for geese_value in self.list_geese_values:
+                if(geese_value == data_manager.get_sym()):
+                    index_to_grab = current_index + 3
+                    # print("hit data_manager.get_sym(): "+data_manager.get_sym())
+                    data_manager.set_golden_goose_priority(self.list_geese_values[index_to_grab])
+                current_index += 1
+
 
         for data_manager in data_manager_list:
             print("DM: "+ data_manager.get_sym() +" priority: "+ str(data_manager.get_golden_goose_priority()))
+
             # if(data_manager.get_is_golden_goose() == 1):
             #     data_manager.set_golden_goose_priority()
 
