@@ -95,7 +95,7 @@ class Operation_Center:
 
             self.is_second_hour = True
 
-            self.is_initial_extended_assembled = "0"
+            self.is_initial_extended_initiated = "0"
             self.is_initial_golden_goose_process_completed = "0"
 
 
@@ -997,11 +997,11 @@ class Operation_Center:
     def get_top_stock_monument_composite(self):
         return self.top_stock_monument_composite
 
-    def set_is_initial_extended_assembled(self, is_initial_extended_assembled):
-        self.is_initial_extended_assembled = is_initial_extended_assembled
+    def set_is_initial_extended_initiated(self, is_initial_extended_initiated):
+        self.is_initial_extended_initiated = is_initial_extended_initiated
 
-    def get_is_initial_extended_assembled(self):
-        return self.is_initial_extended_assembled
+    def get_is_initial_extended_initiated(self):
+        return self.is_initial_extended_initiated
 
     # def initiate_process_top_stocks_scrape(self):
     #     # self.data_manager_request_bundler.create_scrape_bundle_request(["aapl", "nvda", "ko"])

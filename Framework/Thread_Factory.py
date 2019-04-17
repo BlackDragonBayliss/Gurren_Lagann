@@ -552,40 +552,53 @@ class Thread_Factory:
         # test_sym_list = ['NRP','AAPL','USG']
         # extended_data_manager_list = operation_center.get_list_chosen_data_manager()
 
-        if(operation_center.get_is_initial_extended_assembled() == "0"):
+        #If extended assembly process has not been completed yet.
+        if(operation_center.get_is_initial_extended_initiated() == "0"):
             print("start_background_loop_assemble_extended_data_manager: hit true")
             for sym in sym_list:
                 extended_data_manager_instance = Extended_Data_Manager(sym, 0, operation_center,
                                                                        operation_center.get_time_data_set_manager())
                 operation_center.top_stock_monument_composite.add_to_top_stock_data_manager_monument_list(
                     extended_data_manager_instance)
+
+        # If extended assembly process has been completed.
         else:
             print("start_background_loop_assemble_extended_data_manager: hit else")
 
+            #Chosen initiation
             chosen = operation_center.top_stock_monument_composite.get_chosen_data_manager()
+            #Extended list initiated
             extended_list = operation_center.top_stock_monument_composite.get_top_stock_data_manager_monument_list()
+            #New symbol list
             new_symbol_list =  sym_list
 
+            #Match results list decided later in chosen and extended
             match_results = []
 
-            # Filter for chosen
+            # Filter for chosen match
             for new_sym in new_symbol_list:
                 if (new_sym == chosen.sym):
                     match_results.append(new_sym)
 
-            # Filter for extended.
+            # Filter for extended match
             for new_sym in new_symbol_list:
                 for extended in extended_list:
                     if (extended == new_sym):
                         match_results.append(extended)
 
+            #Print new symbol list before removal
             print("new_symbol_list before results: " + str(new_symbol_list))
+            print("Match results: " + str(match_results))
 
+            #for matched item, filter by symbol, remove item in new symbol list.
             for match_item in match_results:
                 new_symbol_list.remove(match_item)
-            print("Match results: " + str(match_results))
+
+
+            #Print new symbol list before removal
             print("new_symbol_list results: " +  str(new_symbol_list))
 
+            #For symbol in new_symbol_list
             for symbol in new_symbol_list:
                 print(symbol)
 
@@ -598,7 +611,7 @@ class Thread_Factory:
                     extended_data_manager_instance)
 
 
-        operation_center.set_is_initial_extended_assembled("1")
+        # operation_center.set_is_initial_extended_assembled("1")
         operation_center.process_async_initiate_extended_data_manager()
 
     def create_thread_async_assemble_extended_data_manager(self, list_of_objects):
@@ -696,17 +709,19 @@ class Thread_Factory:
     #Initiation
     def start_background_loop_initiate_extended_data_manager(self, data_manager_list, operation_center
                                                            ):
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
-
-        #passing DM list to...or
-        if(operation_center.get_is_initial_extended_assembled() == "0"):
+        #if Extended Data Manager process has not been initiated
+        #then for each data_manager init data process
+        #set set_is_initial_extended_initiated to true, "1"
+        if(operation_center.get_is_initial_extended_initiated() == "0"):
             for data_manager in data_manager_list:
                 print("init ex data_manager: "+data_manager.get_sym())
                 data_manager.init_data_processing()
 
-            operation_center.set_is_initial_extended_assembled("1")
+            operation_center.set_is_initial_extended_initiated("1")
 
+        #if Extended Data Manager process has already been completed
+        #for each data_manager in list, check if data_manager is running
+        #if data_manager is not running, init data processing for data manager.
         else:
             print("hit inside consecutive iteration extended data_manager")
             #Handle check DM isRunning
