@@ -105,7 +105,6 @@ class Stock_Observance_Rotation_Manager():
             for geese_value in self.list_geese_values:
                 if(geese_value == data_manager.get_sym()):
                     index_to_grab = current_index + 3
-                    # print("hit data_manager.get_sym(): "+data_manager.get_sym())
                     data_manager.set_golden_goose_priority(self.list_geese_values[index_to_grab])
                 current_index += 1
 
@@ -113,8 +112,6 @@ class Stock_Observance_Rotation_Manager():
         for data_manager in data_manager_list:
             print("DM: "+ data_manager.get_sym() +" priority: "+ str(data_manager.get_golden_goose_priority()))
 
-            # if(data_manager.get_is_golden_goose() == 1):
-            #     data_manager.set_golden_goose_priority()
 
     def rotate_stocks(self, golden_goose_report):
         self.golden_goose_report = golden_goose_report

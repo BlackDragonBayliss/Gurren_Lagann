@@ -724,13 +724,13 @@ class Thread_Factory:
         #if data_manager is not running, init data processing for data manager.
         else:
             print("hit inside consecutive iteration extended data_manager")
-            #Handle check DM isRunning
             for data_manager in data_manager_list:
                 if(data_manager.get_is_running() == "1"):
                     print("sweet running do nothing")
                 else:
                     print("init ex data_manager: "+data_manager.get_sym())
                     data_manager.init_data_processing()
+
 
     def create_thread_async_initiate_extended_data_manager(self, list_of_objects):
         count = 0
